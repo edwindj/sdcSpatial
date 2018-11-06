@@ -1,10 +1,11 @@
 Package: sdcSpatial
 Title: Statistical Disclosure Control for Spatial Data
 Version: 0.0.0.9000
-Authors@R: c(person("First", "Last", email = "edwindjonge@gmail.com", role = c("aut", "cre")))
+Authors@R: c(person("Edwin", "de Jonge", email = "edwindjonge@gmail.com", role = c("aut", "cre")))
 Description: Statistical Disclosure Control for Spatial Data.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/edwindj/sdcSpatial
 BugReports: https://github.com/edwindj/sdcSpatial/issues
+RoxygenNote: 6.1.0
