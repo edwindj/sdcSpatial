@@ -1,6 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+**PACKAGE IS IN HIGH FLUX**
+
 # sdcSpatial
 
 `sdcSpatial` is a R package to create smoothed spatial maps with the
@@ -12,7 +14,7 @@ within the original data set.
 Currently `sdcSpatial` can only be installed with `devtools`
 
 ``` r
-devtools::install_github("edwindj/sdcSpatial")
+remotes::install_github("edwindj/sdcSpatial")
 ```
 
 ## Example
