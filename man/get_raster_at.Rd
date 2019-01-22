@@ -6,6 +6,11 @@
 \usage{
 get_raster_at(x, res = 100)
 }
+\arguments{
+\item{x}{geographical object (that supports extent)}
+
+\item{res}{desired resolution (default 100).}
+}
 \description{
 Get a raster at a certain resolution (with rounded coordinates)
 }

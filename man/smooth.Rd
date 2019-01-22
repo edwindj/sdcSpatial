@@ -4,8 +4,8 @@
 \alias{smooth}
 \title{Create kde density version of a raster}
 \usage{
-smooth(x, bw = res(x), na.rm = TRUE, pad = TRUE, threshold = 10,
-  ...)
+smooth(x, bw = raster::res(x), na.rm = TRUE, pad = TRUE,
+  threshold = 10, ...)
 }
 \arguments{
 \item{x}{raster object}
@@ -13,6 +13,8 @@ smooth(x, bw = res(x), na.rm = TRUE, pad = TRUE, threshold = 10,
 \item{bw}{bandwidth}
 
 \item{na.rm}{should the \code{NA} value be removed from the raster?}
+
+\item{pad}{should the data be padded.}
 
 \item{threshold}{cells with a lower (weighted) value of this threshold will be removed.}
 
