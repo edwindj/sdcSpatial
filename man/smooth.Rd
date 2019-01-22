@@ -12,7 +12,9 @@ smooth(x, bw = res(x), na.rm = TRUE, pad = TRUE, threshold = 10,
 
 \item{bw}{bandwidth}
 
-\item{na.rm}{should the NA value be removed from the raster?}
+\item{na.rm}{should the \code{NA} value be removed from the raster?}
+
+\item{threshold}{cells with a lower (weighted) value of this threshold will be removed.}
 
 \item{...}{passed through to focal}
 }

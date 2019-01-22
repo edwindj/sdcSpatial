@@ -2,10 +2,9 @@
 #'
 #' @param x raster object
 #' @param bw bandwidth
-#' @param na.rm should the NA value be removed from the raster?
+#' @param na.rm should the `NA` value be removed from the raster?
 #' @param ... passed through to focal
-#' @threshold cells with a lower (weighted) value of this threshold will be removed.
-#'
+#' @param threshold cells with a lower (weighted) value of this threshold will be removed.
 #' @export
 smooth <- function(x, bw = res(x), na.rm = TRUE, pad = TRUE, threshold = 10, ...){
   w <- focalWeight(x, bw)

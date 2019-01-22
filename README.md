@@ -1,8 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/sdcSpatial)](https://cran.r-project.org/package=sdcSpatial)
 [![Travis build
 status](https://travis-ci.org/edwindj/sdcSpatial.svg?branch=master)](https://travis-ci.org/edwindj/sdcSpatial)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/edwindj/sdcSpatial?branch=master&svg=true)](https://ci.appveyor.com/project/edwindj/sdcSpatial)
 
 **PACKAGE IS IN DEVELOPMENT (HIGH FLUX), AT THE MOMENT DO NOT USE FOR
 PRODUCTION**
