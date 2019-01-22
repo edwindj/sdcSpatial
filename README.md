@@ -1,7 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-**PACKAGE IS IN HIGH FLUX**
+[![Travis build
+status](https://travis-ci.org/edwindj/sdcSpatial.svg?branch=master)](https://travis-ci.org/edwindj/sdcSpatial)
+
+**PACKAGE IS IN DEVELOPMENT (HIGH FLUX), AT THE MOMENT DO NOT USE FOR
+PRODUCTION**
 
 # sdcSpatial
 
