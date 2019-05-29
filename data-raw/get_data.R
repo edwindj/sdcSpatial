@@ -16,21 +16,17 @@ d <- data.table::fread(
 )
 
 e <- d[, doel := strsplit(verblijfsobjectgebruiksdoel,", ")]
-#e <- e[, .(doel = unlist(doel), x = x, y = y)]
-
 doelen <- unique(unlist(e$doel))
 
-for (doel in doelen){
-  d[, c(doel) := grepl(doel, verblijfsobjectgebruiksdoel)]
+for (dl in doelen){
+  d[, c(dl) := grepl(dl, verblijfsobjectgebruiksdoel)]
 }
 
 dir.create("data", recursive = TRUE, showWarnings = FALSE)
 
-offices <- d[kantoorfunctie==TRUE,.(x,y)]
-residences <- d[woonfunctie==TRUE, .(x,y)]
+saveRDS(d, "data-raw/buildings.rds")
 
-use_data(offices)
-use_data(residences)
+# use_data(offices)
 
 # TODO add simulated data for several cities.
 # Idea, draw a value from a distribution for all population members.
