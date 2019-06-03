@@ -7,7 +7,7 @@
 #'   \item \code{sens_cont} simulated sensitive continuous value
 #'   \item \code{sens_discrete} simulated sensitive discrete value
 #' }
-"westland"
+"enterprises"
 
 
 #' Data set generated with residence locations  from the open data BAG register (reference)
