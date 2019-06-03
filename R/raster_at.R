@@ -5,12 +5,13 @@
 #' @param res desired resolution (default 100).
 #' @param ... passed through to \code{\link{raster}} function.
 #' @export
-get_raster_at <- function(x, res = 100, ...){
+create_raster <- function(x, res = 100, ...){
     ext <- raster::extent(x)[] / res
     ext[c(1,3)] <- floor(ext[c(1,3)])
     ext[c(2,4)] <- ceiling(ext[c(2,4)])
     raster::raster( raster::extent(res*ext)
                   , res = res
+                  , crs = raster::crs(x)
                   , ...
                   )
 }
