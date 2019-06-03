@@ -8,4 +8,4 @@ warnings_are_errors: false
 before_install:
   - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
   - sudo apt-get --yes --force-yes update -qq
-  - sudo apt-get install --yes libproj-dev libgeos-dev libgdal-dev libudunits2-dev
+  - sudo apt-get install --yes libproj-dev libgeos-dev libgdal-dev libudunits2-dev r-cran-rcpp
