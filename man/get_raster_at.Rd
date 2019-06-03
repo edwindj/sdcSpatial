@@ -2,15 +2,17 @@
 % Please edit documentation in R/raster_at.R
 \name{get_raster_at}
 \alias{get_raster_at}
-\title{Get a raster at a certain resolution}
+\title{Create a raster at a certain resolution}
 \usage{
-get_raster_at(x, res = 100)
+get_raster_at(x, res = 100, ...)
 }
 \arguments{
-\item{x}{geographical object (that supports extent)}
+\item{x}{geographical object (that supports extent).}
 
 \item{res}{desired resolution (default 100).}
+
+\item{...}{passed through to \code{\link{raster}} function.}
 }
 \description{
-Get a raster at a certain resolution (with rounded coordinates)
+Utility function to generate a raster at a certain resolution (with rounded coordinates).
 }
