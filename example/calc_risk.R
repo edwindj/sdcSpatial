@@ -1,5 +1,7 @@
-data("westland")
-# create raster with 250 meter blocks
-coordinates(westland) <- ~x + y
+library(raster)
+x <- enterprises
+risk <- calc_risk(x, field="sens_cont", r = 500)
+risk
 
-r_risk <- calc_risk(westland, res = 250)
+hist(risk$risk)
+plot(risk$risk, col=rev(viridis::magma(10)))

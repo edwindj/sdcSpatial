@@ -2,6 +2,7 @@ library(sf)
 library(data.table)
 
 mun_2017 <- st_read("https://cartomap.github.io/nl/rd/gemeente_2017.geojson")
+nl <- st_union(mun_2017)
 buildings <- readRDS("data-raw/buildings.rds")
 
 mun_amersfoort <- mun_2017[mun_2017$statnaam == "Amersfoort", ]

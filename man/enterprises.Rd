@@ -3,18 +3,35 @@
 \docType{data}
 \name{enterprises}
 \alias{enterprises}
-\title{Data set generated with non-residence locations  from the open data BAG register (reference)
-The locations are realistic, but the associated data is simulated.}
-\format{An object of class \code{data.frame} with 8348 rows and 4 columns.}
+\title{Simulated data set with enterprise locations.}
+\format{An object of class \code{SpatialPointsDataFrame} with 8348 rows and 2 columns.}
 \usage{
 enterprises
 }
 \description{
+\code{enterprises} is generated from the dutch open data
+\href{https://zakelijk.kadaster.nl/bag-producten}{BAG register}.
+The locations are realistic, but the associated data is simulated.
+}
+\details{
 \itemize{
-\item \code{x} x coordinate in Dutch crs (epsg 28992)
-\item \code{y} y coordinate in Dutch crs (epsg 28992)
 \item \code{sens_cont} simulated sensitive continuous value
 \item \code{sens_discrete} simulated sensitive discrete value
 }
+}
+\examples{
+library(raster)
+
+data("enterprises")
+
+r <- create_raster(enterprises)
+r_cont <- rasterize(enterprises, r, field='sens_cont', fun = mean)
+plot(r_cont)
+
+enterprises_df <- as.data.frame(enterprises)
+summary(enterprises_df)
+}
+\references{
+Basisregistratie Adressen en Gebouwen https://zakelijk.kadaster.nl/bag-producten
 }
 \keyword{datasets}

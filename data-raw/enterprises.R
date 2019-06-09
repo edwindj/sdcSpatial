@@ -11,7 +11,7 @@ buildings <- readRDS("data-raw/buildings.rds")
 westland <- buildings[ x >= bb[1] & x <= bb[3]
                      & y >= bb[2] & y <= bb[4]
                      & !woonfunctie
-                     , c("x", "y")
+                     , .(x = as.integer(x), y = as.integer(y))
                      ]
 
 westland
@@ -79,4 +79,7 @@ is.na(r_v) <- getValues(r_d <= 2)
 plot(r_v, col=col)
 
 enterprises <- as.data.frame(westland)
+coordinates(enterprises) <- ~x+y
+proj4string(enterprises) <- "+init=epsg:28992"
+
 use_data(enterprises, overwrite = TRUE)

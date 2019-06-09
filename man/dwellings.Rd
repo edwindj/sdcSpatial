@@ -3,7 +3,7 @@
 \docType{data}
 \name{dwellings}
 \alias{dwellings}
-\title{Data set generated with residence locations  from the open data BAG register (reference)
+\title{Data set generated with residence locations  from the open data \href{https://zakelijk.kadaster.nl/bag-producten}{BAG register}
 The locations are realistic, but the associated data is simulated.}
 \format{An object of class \code{data.frame} with 90603 rows and 2 columns.}
 \usage{
@@ -11,10 +11,11 @@ dwellings
 }
 \description{
 \itemize{
-\item \code{x} x coordinate in Dutch crs (epsg 28992)
-\item \code{y} y coordinate in Dutch crs (epsg 28992)
-\item \code{sens_cont} simulated sensitive continuous value
-\item \code{sens_discrete} simulated sensitive discrete value
+\item \code{sens_cont} \code{numeric}, simulated sensitive continuous value
+\item \code{sens_discrete} \code{logical}, simulated discrete value
 }
+}
+\references{
+Basisregistratie Adressen en Gebouwen https://zakelijk.kadaster.nl/bag-producten
 }
 \keyword{datasets}

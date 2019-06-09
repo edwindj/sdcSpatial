@@ -1,20 +1,19 @@
-calc_risk <- function(x, r = create_raster(x, res = 200),  field, ...){
+#' @importFrom methods is
+calc_risk <- function(x,  variable, r = 200, ..., field = variable){
+  if (!is(r, "Raster")){
+    if (is.numeric(r) && length(r) < 3 ){
+      r <- create_raster(x, res = r)
+    } else{
+      stop("'r' is either a raster or the size of a raster")
+    }
+  }
   l <- list()
   l$max <- raster::rasterize(x, r, fun=max, field = field)
+  l$max2 <- raster::rasterize(x, r, fun=max2, field = field)
+
   l$mean <- raster::rasterize(x, r, fun=mean, field = field)
   l$count <- raster::rasterize(x, r, fun="count", field=field)
   l$risk <- (l$max/l$count)/l$mean
   # TODO add max2
   raster::brick(l, ...)
 }
-
-# x <- enterprises
-# sp::coordinates(x) <- ~ x+y
-# sp::proj4string(x) <- "+init=epsg:28992"
-# x
-# risk <- calc_risk(x, field="sens_cont")
-# risk
-#
-# library(raster)
-# hist(risk$risk)
-# plot(risk$risk, col=rev(viridis::magma(10)))

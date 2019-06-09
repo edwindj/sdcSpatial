@@ -3,3 +3,4 @@
 export(create_raster)
 export(is_disclosed)
 export(smooth)
+importFrom(methods,is)

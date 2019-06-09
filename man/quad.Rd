@@ -12,3 +12,4 @@ quad method
 \references{
 catalan
 }
+\keyword{internal}
