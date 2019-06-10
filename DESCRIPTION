@@ -17,4 +17,5 @@ Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat
 Imports: 
-    raster
+    raster,
+    methods
