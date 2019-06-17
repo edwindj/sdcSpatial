@@ -7,5 +7,6 @@
 #' @param  ... passed through to raster function
 #' @export
 is_disclosed <- function(r, value, p = 0.95, internal = FALSE, ...){
+  stop("Not implemented")
 }
 

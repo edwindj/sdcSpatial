@@ -1,5 +1,5 @@
 #' @importFrom methods is
-calc_risk <- function(x,  variable, r = 200, ..., field = variable){
+calc_block <- function(x,  variable, r = 200, ..., field = variable){
   if (!is(r, "Raster")){
     if (is.numeric(r) && length(r) < 3 ){
       r <- create_raster(x, res = r)
@@ -14,6 +14,9 @@ calc_risk <- function(x,  variable, r = 200, ..., field = variable){
   l$mean <- raster::rasterize(x, r, fun = mean, field = field)
   l$sum <- raster::rasterize(x, r, fun = sum, field = field)
   l$count <- raster::rasterize(x, r, fun = "count", field = field)
-  l$risk <- (l$max/l$count)/l$mean
+
+  l$risk <- l$max/l$sum
+  l$risk2 <- l$max/(l$sum - l$max2)
+  # TODO add risk2
   raster::brick(l, ...)
 }

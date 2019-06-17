@@ -18,20 +18,22 @@ The locations are realistic, but the associated data is simulated.
 \item \code{sens_cont} simulated sensitive continuous value
 \item \code{sens_discrete} simulated sensitive discrete value
 }
+
+This is an plot: \figure{README-example-1.png}{}
 }
 \examples{
-library(raster)
+library(sdcSpatial)
 
 data("enterprises")
 
 r <- create_raster(enterprises)
-r_cont <- rasterize(enterprises, r, field='sens_cont', fun = mean)
-plot(r_cont)
+r_cont <- raster::rasterize(enterprises, r, field='sens_cont', fun = mean)
+raster::plot(r_cont)
 
 enterprises_df <- as.data.frame(enterprises)
 summary(enterprises_df)
 }
 \references{
-Basisregistratie Adressen en Gebouwen https://zakelijk.kadaster.nl/bag-producten
+Basisregistratie Adressen en Gebouwen: \url{https://zakelijk.kadaster.nl/bag-producten}
 }
 \keyword{datasets}

@@ -13,7 +13,7 @@ xy <- xyFromCell(r, 1:ncell(r))
 
 values <- predict(model, newdata=as.data.frame(xy))
 value_rf <- predict(model_rf, newdata=as.data.frame(xy))
-value_knn <- FNN::knn.reg(ent[,1:2], xy, y = ent$sens_cont)$pred
+value_knn <- FNN::knn.reg(ent[,1:2], xy, y = ent$sens_cont, k=3)$pred
 
 r_rpart <- setValues(r, values)
 r_rf <- setValues(r, value_rf)
@@ -24,6 +24,7 @@ plot(r_rf)
 plot(r_knn)
 
 r_block <- raster::rasterize(enterprises, r, field="sens_cont", fun=mean)
+r_count <- raster::rasterize(enterprises, r, field="sens_cont", fun="count")
 plot(r_block)
 
 #is.na(r_rf) <- is.na(r_block)
@@ -39,3 +40,15 @@ plot(r_2)
 #plot(r_rf)
 plot(r_knn2)
 plot(r_block)
+
+# masking stuff
+
+mu <- exp(cellStats(log(r_block), mean))
+mu <- cellStats(r_block, mean)
+r_block[is.na(r_block)] <- mu
+
+plot(r_block)
+r_block_s <- smooth(r_block)
+summary(r_block_s)
+plot(r_block_s)
+summary(getValues(r_block_s))

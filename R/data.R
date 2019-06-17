@@ -7,7 +7,9 @@
 #'  * `sens_cont` simulated sensitive continuous value
 #'  * `sens_discrete` simulated sensitive discrete value
 #'
-#' @references Basisregistratie Adressen en Gebouwen https://zakelijk.kadaster.nl/bag-producten
+#' This is an plot: ![Hello](README-example-1.png)
+#'
+#' @references Basisregistratie Adressen en Gebouwen: <https://zakelijk.kadaster.nl/bag-producten>
 #' @example ./example/enterprises.R
 "enterprises"
 

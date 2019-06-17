@@ -15,7 +15,10 @@ BugReports: https://github.com/edwindj/sdcSpatial/issues
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 Suggests: 
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 Imports: 
     raster,
     methods
+VignetteBuilder: knitr
