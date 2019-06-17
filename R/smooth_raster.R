@@ -4,7 +4,7 @@
 #' @param x raster object
 #' @param bw bandwidth
 #' @param na.rm should the `NA` value be removed from the raster?
-#' @param pad should the data be padded.
+#' @param pad should the data be padded?
 #' @param ... passed through to [`focal`].
 #' @param threshold cells with a lower (weighted) value of this threshold will be removed.
 #' @export
