@@ -1,6 +1,6 @@
 library(raster)
 x <- enterprises
-risk <- calc_risk(x, field="sens_cont", r = 500)
+risk <- calc_risk(x, field="production", r = 500)
 risk
 
 hist(risk$risk)

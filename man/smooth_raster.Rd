@@ -5,7 +5,7 @@
 \title{Create kde density version of a raster}
 \usage{
 smooth_raster(x, bw = raster::res(x), na.rm = TRUE, pad = TRUE,
-  threshold = 10, ...)
+  threshold = NULL, ...)
 }
 \arguments{
 \item{x}{raster object}
@@ -14,7 +14,7 @@ smooth_raster(x, bw = raster::res(x), na.rm = TRUE, pad = TRUE,
 
 \item{na.rm}{should the \code{NA} value be removed from the raster?}
 
-\item{pad}{should the data be padded.}
+\item{pad}{should the data be padded?}
 
 \item{threshold}{cells with a lower (weighted) value of this threshold will be removed.}
 

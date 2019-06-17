@@ -8,11 +8,18 @@
 #' @param ... passed through to [`focal`].
 #' @param threshold cells with a lower (weighted) value of this threshold will be removed.
 #' @export
-smooth_raster <- function(x, bw = raster::res(x), na.rm = TRUE, pad = TRUE, threshold = 10, ...){
+smooth_raster <- function( x
+                         , bw = raster::res(x)
+                         , na.rm     = TRUE
+                         , pad       = TRUE
+                         , threshold = NULL
+                         , ...
+                         ){
   w <- raster::focalWeight(x, bw)
-  #s <- threshold * max(w)
-  x_s <- raster::focal(x, w = w, na.rm = na.rm, pad = pad, ...)
-  #is.na(x_s) <- x_s < s
+  x_s <- raster::focal(x, w = w, na.rm = na.rm, pad = pad, type="Gaus", ...)
+  if (is.numeric(threshold)){
+    is.na(x_s) <- x_s < threshold
+  }
   x_s
 }
 

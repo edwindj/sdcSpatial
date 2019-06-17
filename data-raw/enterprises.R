@@ -64,15 +64,15 @@ generate_spatial_data <- function(coords, values, value = "value", n_chunks = 20
 
 coords <- westland[,c("x","y")]
 values <- rlnorm(nrow(coords), meanlog = log(2000))
-westland <- generate_spatial_data(coords, values = values, value = "sens_cont")
+westland <- generate_spatial_data(coords, values = values, value = "production")
 values <- runif(nrow(westland))
-westland <- generate_spatial_data(westland, values = values, value = "sens_discrete")
+westland <- generate_spatial_data(westland, values = values, value = "fined")
 print(westland)
 #discretize with 0.05 score
-westland[, sens_discrete := sens_discrete < 0.05]
+westland[, fined := fined < 0.05]
 
 # testing
-r_v <- rasterize(st_as_sf(westland, coords=c("x", "y")), r, field= "sens_discrete", fun=mean)
+r_v <- rasterize(st_as_sf(westland, coords=c("x", "y")), r, field= "fined", fun=mean)
 plot(r_v, col=col, interpolate=F, axes=F, frame=F)
 mean(getValues(r_d > 2), na.rm=T)
 is.na(r_v) <- getValues(r_d <= 2)

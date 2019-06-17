@@ -17,8 +17,13 @@ Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    sp,
+    sf,
+    colorspace
 Imports: 
     raster,
     methods
+Depends:
+   R (>= 2.10)
 VignetteBuilder: knitr
