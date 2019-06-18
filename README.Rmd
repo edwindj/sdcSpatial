@@ -16,12 +16,9 @@ knitr::opts_chunk$set(
 [![Travis build status](https://travis-ci.org/edwindj/sdcSpatial.svg?branch=master)](https://travis-ci.org/edwindj/sdcSpatial) 
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/edwindj/sdcSpatial?branch=master&svg=true)](https://ci.appveyor.com/project/edwindj/sdcSpatial)
 
-**PACKAGE IS IN DEVELOPMENT (HIGH FLUX), AT THE MOMENT DO NOT USE FOR PRODUCTION**
-
 # sdcSpatial
 
-`sdcSpatial` is a R package to create smoothed spatial maps with the extra restriction that it tries protect the privacy of 
-the individuals within the original data set.
+`sdcSpatial` is a R package to create spatial raster maps from point data with the restriction that it tries protect the privacy of the individuals within the original data set.
 
 ## Installation
 
@@ -32,5 +29,5 @@ remotes::install_github("edwindj/sdcSpatial")
 
 ## Example
 
-```{r example, code=readLines("./example/enterprises.R")}
+```{r example, code=readLines("./example/protect_smooth.R")}
 ```
