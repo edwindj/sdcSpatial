@@ -4,10 +4,10 @@
 \alias{disclosure_risk}
 \title{Calculate disclosure risk}
 \usage{
-disclosure_risk(r, type = c("external", "internal", "discrete"))
+disclosure_risk(x, type = c("external", "internal", "discrete"))
 }
 \arguments{
-\item{r}{\link[raster:brick]{raster::brick} object created with \code{\link[=block_estimate]{block_estimate()}}}
+\item{x}{\link{sdcmap} object created with \code{\link[=block_estimate]{block_estimate()}}}
 
 \item{type}{what kind of measure should be used.}
 }

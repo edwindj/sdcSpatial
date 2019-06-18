@@ -4,11 +4,11 @@
 \alias{is_unsafe}
 \title{Raster with unsafe locations}
 \usage{
-is_unsafe(r, max_risk = 0.95, min_count = 10, type = c("external",
+is_unsafe(x, max_risk = 0.95, min_count = 10, type = c("external",
   "internal", "discrete"))
 }
 \arguments{
-\item{r}{\link[raster:brick]{raster::brick} object created with \code{\link[=block_estimate]{block_estimate()}}}
+\item{x}{\link{sdcmap} object created with \code{\link[=block_estimate]{block_estimate()}}}
 
 \item{max_risk}{a risk value higher than \code{max_risk} will be unsafe.}
 

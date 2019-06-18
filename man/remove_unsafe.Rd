@@ -4,10 +4,10 @@
 \alias{remove_unsafe}
 \title{remove unsafe cells from raster}
 \usage{
-remove_unsafe(r, max_risk = 0.95, min_count = 10, ...)
+remove_unsafe(x, max_risk = 0.95, min_count = 10, ...)
 }
 \arguments{
-\item{r}{\link[raster:brick]{raster::brick} object created with \code{\link[=block_estimate]{block_estimate()}}}
+\item{x}{\link{sdcmap} object created with \code{\link[=block_estimate]{block_estimate()}}}
 
 \item{max_risk}{a risk value higher than \code{max_risk} will be unsafe.}
 
@@ -21,18 +21,18 @@ remove unsafe cells from raster
 }
 \examples{
 library(raster)
+library(magrittr)
 
-b <- block_estimate_logical(dwellings, "unemployed", r=1e3)
+b <- block_estimate(dwellings, "unemployed", r=1e3)
 
 # plot the normally rastered data
-plot(b$mean, zlim=c(0,1))
+b \%>\%
+  plot(zlim=c(0,1))
 
-r_s <- remove_unsafe(b, type="discrete")
+b \%>\%
+  remove_unsafe() \%>\%
+  plot(zlim=c(0,1))
 
-hist(b$mean, xlim=c(0,1), ylim=c(0,150))
-hist(r_s, xlim=c(0,1), ylim=c(0,150))
-
-plot(r_s, zlim=c(0,1))
 }
 \seealso{
 Other disclosed: \code{\link{disclosure_risk}},

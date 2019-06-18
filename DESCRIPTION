@@ -20,7 +20,8 @@ Suggests:
     rmarkdown,
     sp,
     sf,
-    colorspace
+    colorspace,
+    magrittr
 Imports: 
     raster,
     methods

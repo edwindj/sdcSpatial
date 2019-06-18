@@ -21,3 +21,7 @@ to be used for the data.}
 \description{
 Calculate statistics needed for controling the disclosure
 }
+\examples{
+library(raster)
+block <- block_estimate(enterprises, field = "production", r = 500)
+}
