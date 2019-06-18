@@ -2,7 +2,7 @@
 % Please edit documentation in R/protect_smooth.R
 \name{protect_smooth}
 \alias{protect_smooth}
-\title{Protect a block_estimate by smoothing}
+\title{Protect a sdc_raster by smoothing}
 \usage{
 protect_smooth(x, bw = raster::res(x$value), ...)
 }
@@ -14,13 +14,13 @@ protect_smooth(x, bw = raster::res(x$value), ...)
 \item{...}{passed through to \code{\link{focal}}.}
 }
 \description{
-Protect a block_estimate by smoothing
+Protect a sdc_raster by smoothing
 }
 \examples{
 library(raster)
 library(magrittr)
 
-production <- block_estimate(enterprises, "production")
+production <- sdc_raster(enterprises, "production")
 plot(production)
 
 

@@ -8,7 +8,7 @@
 #' - internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value
 #' - discrete (logical variable), calculates the fraction of sensitive values.
 #'
-#' @param x [sdcmap] object created with [block_estimate()]
+#' @param x [sdc_raster] object created with [sdc_raster()]
 #' @param max_risk a risk value higher than `max_risk` will be unsafe.
 #' @param min_count a count lower than `min_count` will be unsafe.
 #' @param type what kind of measure should be used. (Details)

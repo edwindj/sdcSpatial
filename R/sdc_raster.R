@@ -7,10 +7,10 @@
 #' @param r either a desired resolution or a pre-existing [raster::raster] object.
 #' @param ... passed through to [raster::rasterize()]
 #' @param field synonym for `variable`. If both supplied, `field` has precedence.
-#' @example ./example/block_estimate.R
+#' @example ./example/sdc_raster.R
 #' @export
 #' @importFrom methods is
-block_estimate <- function(x,  variable, r = 200, ..., field = variable){
+sdc_raster <- function(x,  variable, r = 200, ..., field = variable){
   if (!is(r, "Raster")){
     if (is.numeric(r) && length(r) < 3 ){
       r <- create_raster(x, res = r)
@@ -44,5 +44,27 @@ block_estimate <- function(x,  variable, r = 200, ..., field = variable){
 
   info <- raster::brick(l, ...)
 
-  new_sdcmap(info, type = type)
+  new_sdc_raster(info, type = type)
+}
+
+# r is the result of sdc_raster
+new_sdc_raster <- function(r, type = c("numeric", "logical")){
+  structure(
+    list(
+      value = r$mean,
+      resolution = raster::res(r),
+      info = r,
+      scale = 1, # needed for smoothing ops
+      type = type
+    ), class="sdc_raster")
+}
+
+is_sdc_raster <- function(x, ...){
+  ("sdc_raster" %in% class(x))
+}
+
+assert_sdc_raster <- function(x, ...){
+  if (!is_sdc_raster(x)){
+    stop("an object of type sdc_raster was expected.")
+  }
 }

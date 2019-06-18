@@ -3,7 +3,7 @@
 #' remove unsafe cells from raster
 #' @inheritParams is_unsafe
 #' @param ... passed on to [`is_unsafe`].
-#' @return sdcmap object with unsafe cells set to `NA`.
+#' @return sdc_raster object with unsafe cells set to `NA`.
 #' @family disclosed
 #' @example ./example/remove_unsafe.R
 #' @export

@@ -3,7 +3,7 @@ library(raster)
 
 data("enterprises")
 
-production <- block_estimate(enterprises, "production")
+production <- sdc_raster(enterprises, "production")
 plot(production)
 unsafe <- is_unsafe(production)
 plot(unsafe)

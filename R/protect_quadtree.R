@@ -3,6 +3,6 @@
 #' quadtree method
 #' @param r Uses
 #' @keywords internal
-quadtree <- function(r, ...){
+protect_quadtree <- function(r, ...){
   #UseMethod("quadtree")
 }

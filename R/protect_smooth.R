@@ -1,6 +1,6 @@
-#' Protect a block_estimate by smoothing
+#' Protect a sdc_raster by smoothing
 #'
-#' Protect a block_estimate by smoothing
+#' Protect a sdc_raster by smoothing
 #' @inheritParams smooth_raster
 #' @example ./example/protect_smooth.R
 #' @export
@@ -9,7 +9,7 @@ protect_smooth <- function( x
                           #, na.rm     = TRUE
                           , ...
                           ){
-  assert_sdcmap(x)
+  assert_sdc_raster(x)
 
   r <- x$info
   # check if this is copy or reference

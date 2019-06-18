@@ -1,13 +1,13 @@
 #' Calculate disclosure risk
 #'
 #' Calculate disclosure risk
-#' @param x [sdcmap] object created with [block_estimate()]
+#' @param x [sdc_raster] object created with [sdc_raster()]
 #' @param type what kind of measure should be used.
-#' @return [raster::RasterLayer] object with the disclosure risk.
+#' @return [raster::raster] object with the disclosure risk.
 #' @export
 #' @family disclosed
 disclosure_risk <- function(x, type=c("external", "internal", "discrete")){
-  assert_sdcmap(x)
+  assert_sdc_raster(x)
   if (x$type == "logical" && type != "discrete"){
     type <- "discrete"
     message("setting risk type to 'discrete'.")

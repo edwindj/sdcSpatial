@@ -7,7 +7,7 @@
 remove_unsafe(x, max_risk = 0.95, min_count = 10, ...)
 }
 \arguments{
-\item{x}{\link{sdcmap} object created with \code{\link[=block_estimate]{block_estimate()}}}
+\item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
 
 \item{max_risk}{a risk value higher than \code{max_risk} will be unsafe.}
 
@@ -16,7 +16,7 @@ remove_unsafe(x, max_risk = 0.95, min_count = 10, ...)
 \item{...}{passed on to \code{\link{is_unsafe}}.}
 }
 \value{
-sdcmap object with unsafe cells set to \code{NA}.
+sdc_raster object with unsafe cells set to \code{NA}.
 }
 \description{
 remove unsafe cells from raster
@@ -24,7 +24,7 @@ remove unsafe cells from raster
 \examples{
 library(raster)
 
-b <- block_estimate(dwellings, "unemployed", r=200)
+b <- sdc_raster(dwellings, "unemployed", r=200)
 
 # plot the normally rastered data
 plot(b, zlim=c(0,1))
@@ -35,7 +35,7 @@ plot(b_safe, zlim=c(0,1))
 #plot(values(b$value), values(is_unsafe(b)))
 
 
-b <- block_estimate(dwellings, "unemployed", r=200)
+b <- sdc_raster(dwellings, "unemployed", r=200)
 
 # plot the normally rastered data
 plot(b, zlim=c(0,1))

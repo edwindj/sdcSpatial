@@ -7,12 +7,12 @@
 disclosure_risk(x, type = c("external", "internal", "discrete"))
 }
 \arguments{
-\item{x}{\link{sdcmap} object created with \code{\link[=block_estimate]{block_estimate()}}}
+\item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
 
 \item{type}{what kind of measure should be used.}
 }
 \value{
-\link[raster:RasterLayer]{raster::RasterLayer} object with the disclosure risk.
+\link[raster:raster]{raster::raster} object with the disclosure risk.
 }
 \description{
 Calculate disclosure risk

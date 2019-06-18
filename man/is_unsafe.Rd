@@ -8,7 +8,7 @@ is_unsafe(x, max_risk = 0.95, min_count = 10, type = c("external",
   "internal", "discrete"))
 }
 \arguments{
-\item{x}{\link{sdcmap} object created with \code{\link[=block_estimate]{block_estimate()}}}
+\item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
 
 \item{max_risk}{a risk value higher than \code{max_risk} will be unsafe.}
 
