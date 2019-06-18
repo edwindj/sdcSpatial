@@ -7,7 +7,7 @@
 disclosure_risk(r, type = c("external", "internal", "discrete"))
 }
 \arguments{
-\item{r}{\link[raster:brick]{raster::brick} object created with \code{\link[=calc_block]{calc_block()}}}
+\item{r}{\link[raster:brick]{raster::brick} object created with \code{\link[=block_estimate]{block_estimate()}}}
 
 \item{type}{what kind of measure should be used.}
 }

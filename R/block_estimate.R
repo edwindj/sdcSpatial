@@ -2,13 +2,14 @@
 #'
 #' Calculate statistics needed for controling the disclosure
 #' @param x [sp::SpatialPointsDataFrame] or [sf::sf] object that is used to create a raster.
-#' @param variable name of data column to be used for the data.
+#' @param variable name of data column or numeric with same length as `x`
+#' to be used for the data.
 #' @param r either a desired resolution or a pre-existing [raster::raster] object.
 #' @param ... passed through to [raster::rasterize()]
 #' @param field synonym for `variable`. If both supplied, `field` has precedence.
 #' @export
 #' @importFrom methods is
-calc_block <- function(x,  variable, r = 200, ..., field = variable){
+block_estimate <- function(x,  variable, r = 200, ..., field = variable){
   if (!is(r, "Raster")){
     if (is.numeric(r) && length(r) < 3 ){
       r <- create_raster(x, res = r)
@@ -40,7 +41,7 @@ calc_block <- function(x,  variable, r = 200, ..., field = variable){
 #' @param field synonym for `variable`. If both supplied, `field` has precedence.
 #' @export
 #' @importFrom methods is
-calc_block_logical <- function(x,  variable, r = 200, ..., field = variable){
+block_estimate_logical <- function(x,  variable, r = 200, ..., field = variable){
   if (!is(r, "Raster")){
     if (is.numeric(r) && length(r) < 3 ){
       r <- create_raster(x, res = r)

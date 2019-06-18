@@ -1,3 +1,3 @@
 library(raster)
 x <- enterprises
-block <- calc_block(x, field = "production", r = 500)
+block <- block_estimate(x, field = "production", r = 500)

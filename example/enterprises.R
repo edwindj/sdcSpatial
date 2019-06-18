@@ -3,7 +3,7 @@ library(raster)
 
 data("enterprises")
 
-production <- calc_block(enterprises, "production")
+production <- block_estimate(enterprises, "production")
 plot(production)
 plot(is_unsafe(production))
 plot(disclosure_risk(production))

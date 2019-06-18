@@ -1,6 +1,6 @@
 library(raster)
 
-b <- calc_block_logical(dwellings, "unemployed", r=1e3)
+b <- block_estimate_logical(dwellings, "unemployed", r=1e3)
 
 # plot the normally rastered data
 plot(b$mean, zlim=c(0,1))

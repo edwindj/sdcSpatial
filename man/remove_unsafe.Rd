@@ -7,7 +7,7 @@
 remove_unsafe(r, max_risk = 0.95, min_count = 10, ...)
 }
 \arguments{
-\item{r}{\link[raster:brick]{raster::brick} object created with \code{\link[=calc_block]{calc_block()}}}
+\item{r}{\link[raster:brick]{raster::brick} object created with \code{\link[=block_estimate]{block_estimate()}}}
 
 \item{max_risk}{a risk value higher than \code{max_risk} will be unsafe.}
 
@@ -22,7 +22,7 @@ remove unsafe cells from raster
 \examples{
 library(raster)
 
-b <- calc_block_logical(dwellings, "unemployed", r=1e3)
+b <- block_estimate_logical(dwellings, "unemployed", r=1e3)
 
 # plot the normally rastered data
 plot(b$mean, zlim=c(0,1))

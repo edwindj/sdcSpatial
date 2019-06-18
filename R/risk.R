@@ -8,7 +8,7 @@
 #' - internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value
 #' - discrete (logical variable), calculates the fraction of sensitive values.
 #'
-#' @param r [raster::brick] object created with [calc_block()]
+#' @param r [raster::brick] object created with [block_estimate()]
 #' @param max_risk a risk value higher than `max_risk` will be unsafe.
 #' @param min_count a count lower than `min_count` will be unsafe.
 #' @param type what kind of measure should be used. (Details)
@@ -24,7 +24,7 @@ is_unsafe <- function(r, max_risk = 0.95, min_count = 10, type=c("external", "in
 #' Calculate disclosure risk
 #'
 #' Calculate disclosure risk
-#' @param r [raster::brick] object created with [calc_block()]
+#' @param r [raster::brick] object created with [block_estimate()]
 #' @param type what kind of measure should be used.
 #' @return [raster::RasterLayer] object with the disclosure risk.
 #' @export
@@ -35,7 +35,7 @@ disclosure_risk <- function(r, type=c("external", "internal", "discrete")){
     switch( type
             , external = r$max / r$sum
             , internal = r$max / (r$sum - r$max2)
-            , discrete  = r$sum / r$count
+            , discrete = r$sum / r$count
   )
   risk
 }

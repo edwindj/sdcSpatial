@@ -23,7 +23,6 @@ smooth_raster <- function( x
   x_s
 }
 
-
 smooth <- function(...){
   .Deprecated("smooth_raster")
   smooth_raster(...)
