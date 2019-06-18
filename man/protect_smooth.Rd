@@ -38,7 +38,7 @@ production \%>\%
   hist()
 
 production \%>\%
-  protect_smooth(bw=400) \%>\%
-  disclosure_risk(min_count=2) \%>\%
+  protect_smooth(bw=600) \%>\%
+  disclosure_risk() \%>\%
   hist()
 }
