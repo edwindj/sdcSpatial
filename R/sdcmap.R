@@ -1,5 +1,5 @@
 # r is the result of block_estimate
-sdcmap <- function(r, type = c("numeric", "logical")){
+new_sdcmap <- function(r, type = c("numeric", "logical")){
   structure(
     list(
       value = r$mean,

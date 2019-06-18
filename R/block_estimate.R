@@ -43,5 +43,6 @@ block_estimate <- function(x,  variable, r = 200, ..., field = variable){
   }
 
   info <- raster::brick(l, ...)
-  sdcmap(info, type = type)
+
+  new_sdcmap(info, type = type)
 }

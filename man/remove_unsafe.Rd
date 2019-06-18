@@ -12,27 +12,38 @@ remove_unsafe(x, max_risk = 0.95, min_count = 10, ...)
 \item{max_risk}{a risk value higher than \code{max_risk} will be unsafe.}
 
 \item{min_count}{a count lower than \code{min_count} will be unsafe.}
+
+\item{...}{passed on to \code{\link{is_unsafe}}.}
 }
 \value{
-\link[raster:RasterLayer]{raster::RasterLayer} with unsafe cells set to \code{NA}.
+sdcmap object with unsafe cells set to \code{NA}.
 }
 \description{
 remove unsafe cells from raster
 }
 \examples{
 library(raster)
-library(magrittr)
 
-b <- block_estimate(dwellings, "unemployed", r=1e3)
+b <- block_estimate(dwellings, "unemployed", r=200)
 
 # plot the normally rastered data
-b \%>\%
-  plot(zlim=c(0,1))
+plot(b, zlim=c(0,1))
 
-b \%>\%
-  remove_unsafe() \%>\%
-  plot(zlim=c(0,1))
+b_safe <- remove_unsafe(b, type="discrete")
+plot(b_safe, zlim=c(0,1))
 
+#plot(values(b$value), values(is_unsafe(b)))
+
+
+b <- block_estimate(dwellings, "unemployed", r=200)
+
+# plot the normally rastered data
+plot(b, zlim=c(0,1))
+
+b_safe <- remove_unsafe(b, type="discrete")
+plot(b_safe, zlim=c(0,1))
+
+#plot(values(b$value), values(is_unsafe(b)))
 }
 \seealso{
 Other disclosed: \code{\link{disclosure_risk}},
