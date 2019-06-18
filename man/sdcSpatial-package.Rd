@@ -6,7 +6,9 @@
 \alias{sdcSpatial-package}
 \title{Privacy Protected maps}
 \description{
-Statistical Disclosure Control for Spatial Data.
+Privacy protected raster maps 
+  can be created from spatial point data. Protection
+  methods include smoothing, suppressing revealing values and quadtreeing.
 }
 \references{
 de Jonge, E., & de Wolf, P. P. (2016, September). Spatial smoothing and statistical disclosure control. In International Conference on Privacy in Statistical Databases (pp. 107-117). Springer, Cham.

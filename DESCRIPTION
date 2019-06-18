@@ -6,7 +6,9 @@ Authors@R: c(
   person("Peter-Paul", "de Wolf", role = c("aut")),
   person("Sapphire", "Han", role = c("aut"))
   )
-Description: Statistical Disclosure Control for Spatial Data.
+Description: Privacy protected raster maps 
+  can be created from spatial point data. Protection
+  methods include smoothing, suppressing revealing values and quadtreeing. 
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
@@ -20,8 +22,7 @@ Suggests:
     rmarkdown,
     sp,
     sf,
-    colorspace,
-    magrittr
+    colorspace
 Imports: 
     raster,
     methods

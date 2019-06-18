@@ -1,24 +1,12 @@
 library(raster)
-library(magrittr)
 
 production <- sdc_raster(enterprises, "production")
-plot(production)
+zlim <- c(0, 3e4)
 
+plot(production, zlim=zlim)
 
-production %>%
-  protect_smooth(bw = 400) %>%
-  plot(zlim=c(0,2e4))
+production_smoothed <- protect_smooth(production, bw = 400)
+plot(production_smoothed, zlim=zlim)
 
-production %>%
-  protect_smooth(bw = 400) %>%
-  remove_unsafe(min_count=2) %>%
-  plot(zlim=c(0,2e4))
-
-production %>%
-  is_unsafe(min_count=2) %>%
-  hist()
-
-production %>%
-  protect_smooth(bw=600) %>%
-  disclosure_risk() %>%
-  hist()
+production_smooth_safe  <- remove_unsafe(production_smoothed, min_count=2)
+plot(production_smooth_safe, zlim=zlim)
