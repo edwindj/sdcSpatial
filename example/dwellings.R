@@ -1,12 +1,9 @@
+unemployed <- sdc_raster(dwellings, "unemployed", r=500)
 
-b <- sdc_raster(dwellings, "unemployed", r=500)
+plot(unemployed)
+sensitivity_score(unemployed)
+plot_sensitive(unemployed)
 
-sensitive <- is_sensitive(b, max_risk = .9, min_count = 10, type="discrete")
-plot(sensitive)
-
-#
-# dw <- as.data.frame(dwellings)
-# b <- sdc_raster(dw[c("x", "y")], dw$unemployed, r = 500)
-# b
-#
-# sp::coordinates(dw) <- ~ x + y
+unemployed_smoothed <- protect_smooth(b, bw = 1e3)
+plot(unemployed_smoothed)
+plot_sensitive(unemployed_smoothed)

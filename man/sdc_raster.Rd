@@ -4,15 +4,22 @@
 \alias{sdc_raster}
 \title{Calculate statistics needed for controling the disclosure}
 \usage{
-sdc_raster(x, variable, r = 200, ..., field = variable)
+sdc_raster(x, variable, r = 200, max_risk = 0.95, min_count = 10,
+  ..., field = variable)
 }
 \arguments{
-\item{x}{\link[sp:SpatialPointsDataFrame]{sp::SpatialPointsDataFrame} or \link[sf:sf]{sf::sf} object that is used to create a raster.}
+\item{x}{\link[sp:SpatialPointsDataFrame]{sp::SpatialPointsDataFrame}, \link[sf:sf]{sf::sf} or a two column matrix or \link{data.frame}
+that is used to create a raster.}
 
 \item{variable}{name of data column or numeric with same length as \code{x}
 to be used for the data.}
 
 \item{r}{either a desired resolution or a pre-existing \link[raster:raster]{raster::raster} object.}
+
+\item{max_risk}{the maximum_risk score (\code{\link{disclosure_risk}}) before the data is considered sensitive}
+
+\item{min_count}{cells with a number of observations that are less then \code{min_count} are considered
+sensitive}
 
 \item{...}{passed through to \code{\link[raster:rasterize]{raster::rasterize()}}}
 
@@ -23,5 +30,20 @@ Calculate statistics needed for controling the disclosure
 }
 \examples{
 library(raster)
-block <- sdc_raster(enterprises, field = "production", r = 500)
+prod <- sdc_raster(enterprises, field = "production", r = 500)
+print(prod)
+
+prod <- sdc_raster(enterprises, field = "production", r = 1e3)
+print(prod)
+
+# get raster with the average production per cell averaged over the enterprises
+prod_mean <- mean(prod)
+summary(prod_mean)
+
+# get raster with the total production per cell
+prod_total <- sum(prod)
+summary(prod_total)
+}
+\seealso{
+\code{\link{plot}}
 }

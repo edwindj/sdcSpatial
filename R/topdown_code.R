@@ -6,4 +6,3 @@ topdown_code <- function(r, top = Inf, down = Inf, ..., upper = top, lower = dow
   clamped <- raster::clamp(r, upper = upper, lower = lower, ...)
   clamped
 }
-

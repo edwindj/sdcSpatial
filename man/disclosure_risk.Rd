@@ -4,12 +4,12 @@
 \alias{disclosure_risk}
 \title{Calculate disclosure risk}
 \usage{
-disclosure_risk(x, type = c("external", "internal", "discrete"))
+disclosure_risk(x, risk_type = c("external", "internal", "discrete"))
 }
 \arguments{
 \item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
 
-\item{type}{what kind of measure should be used.}
+\item{risk_type}{what kind of measure should be used.}
 }
 \value{
 \link[raster:raster]{raster::raster} object with the disclosure risk.

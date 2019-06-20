@@ -11,14 +11,19 @@
 #' @param x [sdc_raster] object created with [sdc_raster()]
 #' @param max_risk a risk value higher than `max_risk` will be sensitive.
 #' @param min_count a count lower than `min_count` will be sensitive.
-#' @param type what kind of measure should be used. (Details)
+#' @param risk_type what kind of measure should be used. (Details)
 #' @export
 #' @family disclosed
-is_sensitive <- function(x, max_risk = 0.95, min_count = 10, type=c("external", "internal", "discrete")){
-  r_risk <- disclosure_risk(x, type = type)
+is_sensitive <- function( x
+                        , max_risk = x$max_risk
+                        , min_count = x$min_count
+                        , risk_type=c("external", "internal", "discrete")
+                        ){
+  r_risk <- disclosure_risk(x, risk_type = risk_type)
 
   r <- x$info
   sensitive <- r_risk > max_risk | r$count < (x$scale*min_count)
+  names(sensitive) <- "sensitive"
   #raster::colortable(sensitive) <- c("white", "red")
   sensitive
 }

@@ -1,0 +1,18 @@
+summary.sdc_raster <- function(object, ...){
+  x <- object
+  r <- x$info
+
+  summ <- cbind( summary(r$sum)
+               , summary(r$count)
+               )
+
+  structure( list(
+    sum = summary(r$sum)
+  )
+  , class="sdc_raster_summary"
+  )
+}
+
+print.sdc_raster_summary <- function(x, ...){
+  x
+}

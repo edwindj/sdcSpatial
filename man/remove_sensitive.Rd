@@ -2,9 +2,13 @@
 % Please edit documentation in R/remove_sensitive.R
 \name{remove_sensitive}
 \alias{remove_sensitive}
+\alias{mask_sensitive}
 \title{remove sensitive cells from raster}
 \usage{
-remove_sensitive(x, max_risk = 0.95, min_count = 10, ...)
+remove_sensitive(x, max_risk = x$max_risk, min_count = x$min_count,
+  ...)
+
+mask_sensitive(x, max_risk = x$max_risk, min_count = x$min_count, ...)
 }
 \arguments{
 \item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
@@ -28,22 +32,10 @@ b <- sdc_raster(dwellings, "unemployed", r=200)
 
 # plot the normally rastered data
 plot(b, zlim=c(0,1))
+plot_sensitive(b)
 
-b_safe <- remove_sensitive(b, type="discrete")
+b_safe <- remove_sensitive(b, risk_type="discrete")
 plot(b_safe, zlim=c(0,1))
-
-#plot(values(b$value), values(is_sensitive(b)))
-
-
-b <- sdc_raster(dwellings, "unemployed", r=200)
-
-# plot the normally rastered data
-plot(b, zlim=c(0,1))
-
-b_safe <- remove_sensitive(b, type="discrete")
-plot(b_safe, zlim=c(0,1))
-
-#plot(values(b$value), values(is_sensitive(b)))
 }
 \seealso{
 Other disclosed: \code{\link{disclosure_risk}},

@@ -14,7 +14,7 @@ protect_smooth <- function( x
   r <- x$info
   # check if this is copy or reference
   w <- raster::focalWeight(r$count, d = bw, type="Gaus")
-  x$scale <- w[nrow(w)/2, ncol(w)/2]
+  x$scale <- x$scale * w[nrow(w)/2, ncol(w)/2]
 
   r$count <- smooth_raster(r$count, bw = bw, ...)
   r$sum <- smooth_raster(r$sum, bw = bw, ...)
