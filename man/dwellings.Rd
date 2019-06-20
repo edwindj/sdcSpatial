@@ -11,6 +11,8 @@ dwellings
 }
 \description{
 \itemize{
+\item \code{x} \code{integer}, x coordinate of dwelling
+\item \code{y} \code{integer}, y coordinate of dwelling
 \item \code{consumption} \code{numeric}, simulated continuous value
 \item \code{unemployed} \code{logical}, simulated discrete value
 }

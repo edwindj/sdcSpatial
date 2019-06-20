@@ -51,7 +51,7 @@ sdc_raster <- function(x,  variable, r = 200, ..., field = variable){
 new_sdc_raster <- function(r, type = c("numeric", "logical")){
   structure(
     list(
-      value = r$mean,
+      value = r$sum / r$count,
       resolution = raster::res(r),
       info = r,
       scale = 1, # needed for smoothing ops

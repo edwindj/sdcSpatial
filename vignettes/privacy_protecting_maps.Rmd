@@ -30,7 +30,7 @@ library(sdcSpatial)
 
 ## Methods
 
-### `calc_block`
+### `sdc_raster`
 
 ### `smooth_raster`
 

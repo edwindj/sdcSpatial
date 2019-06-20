@@ -19,6 +19,6 @@ is_unsafe <- function(x, max_risk = 0.95, min_count = 10, type=c("external", "in
 
   r <- x$info
   unsafe <- r_risk > max_risk | r$count < (x$scale*min_count)
-  raster::colortable(unsafe) <- c("white", "red")
+  #raster::colortable(unsafe) <- c("white", "red")
   unsafe
 }

@@ -7,7 +7,10 @@
 protect_quadtree(r, ...)
 }
 \arguments{
-\item{r}{Uses}
+\item{x}{\code{\link{sdc_raster}} object}
+}
+\value{
+a \code{\link{sdc_raster}} object, which has been
 }
 \description{
 quadtree method
