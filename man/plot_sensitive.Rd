@@ -2,14 +2,14 @@
 % Please edit documentation in R/plot.R
 \name{plot_sensitive}
 \alias{plot_sensitive}
-\title{Plot the sensitive cells of the sdc_raster}
+\title{Plot the sensitive cells of the sdc_raster.}
 \usage{
-plot_sensitive(x, fun = mean, ...)
+plot_sensitive(x, value = "mean", ...)
 }
 \arguments{
 \item{x}{\link{sdc_raster} object}
 
-\item{fun}{function  used to create visualisation.}
+\item{value}{\link{character} which value layer to be used for values, e.g. "sum", "count", "mean" (default).}
 
 \item{...}{Arguments passed on to \code{is_sensitive}
 \describe{
@@ -20,7 +20,7 @@ plot_sensitive(x, fun = mean, ...)
 }}
 }
 \description{
-Plot the sensitive cells of the sdc_raster
+Plot the sensitive cells of the sdc_raster.
 }
 \seealso{
 Other plotting: \code{\link{plot.sdc_raster}}

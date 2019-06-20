@@ -45,6 +45,7 @@ sdc_raster <- function( x
   # these are used in the smoothing and aggregation
   l$sum <- raster::rasterize(x, r, fun = sum, field = field)
   l$count <- raster::rasterize(x, r, fun = "count", field = field)
+  l$mean <- l$sum / l$count
 
   if (type == "numeric"){
     # needed for disclosure risk
@@ -52,9 +53,9 @@ sdc_raster <- function( x
     l$max2 <- raster::rasterize(x, r, fun = max2, field = field)
   }
 
-  info <- raster::brick(l, ...)
+  value <- raster::brick(l, ...)
 
-  new_sdc_raster(info, type = type, max_risk = max_risk, min_count = min_count)
+  new_sdc_raster(value, type = type, max_risk = max_risk, min_count = min_count)
 }
 
 # r is the result of sdc_raster
@@ -67,7 +68,7 @@ new_sdc_raster <- function( r
   structure(
     list(
       resolution = raster::res(r),
-      info = r,
+      value = r,
       max_risk = max_risk,
       min_count = min_count,
       scale = scale, # needed for protecting operations

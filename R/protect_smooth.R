@@ -11,20 +11,19 @@ protect_smooth <- function( x
                           ){
   assert_sdc_raster(x)
 
-  r <- x$info
+  r <- x$value
   # check if this is copy or reference
   w <- raster::focalWeight(r$count, d = bw, type="Gaus")
   x$scale <- x$scale * w[nrow(w)/2, ncol(w)/2]
 
   r$count <- smooth_raster(r$count, bw = bw, ...)
   r$sum <- smooth_raster(r$sum, bw = bw, ...)
-  # remove?
   r$mean <- r$sum / r$count
+
   if (x$type == "numeric"){
     r$max <- smooth_raster(r$max, bw = bw, ...)
     r$max2 <- smooth_raster(r$max2, bw = bw, ...)
   }
-  x$info <- r
-  x$value <- r$sum / r$count
+  x$value <- r
   x
 }

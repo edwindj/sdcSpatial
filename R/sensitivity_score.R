@@ -1,4 +1,4 @@
-#' mean sensitivity score for raster
+#' Mean sensitivity for raster
 #'
 #' The mean sensitity score calculates the fraction of cells (with a value)
 #' that are considered sensitive according to the used [`disclosure_risk`]

@@ -2,7 +2,7 @@
 % Please edit documentation in R/sensitivity_score.R
 \name{sensitivity_score}
 \alias{sensitivity_score}
-\title{mean sensitivity score for raster}
+\title{Mean sensitivity for raster}
 \usage{
 sensitivity_score(x, max_risk = x$max_risk, min_count = x$min_count,
   ...)

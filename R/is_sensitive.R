@@ -21,7 +21,7 @@ is_sensitive <- function( x
                         ){
   r_risk <- disclosure_risk(x, risk_type = risk_type)
 
-  r <- x$info
+  r <- x$value
   sensitive <- r_risk > max_risk | r$count < (x$scale*min_count)
   names(sensitive) <- "sensitive"
   #raster::colortable(sensitive) <- c("white", "red")

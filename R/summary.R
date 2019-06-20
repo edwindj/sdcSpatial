@@ -1,6 +1,6 @@
 summary.sdc_raster <- function(object, ...){
   x <- object
-  r <- x$info
+  r <- x$value
 
   summ <- cbind( summary(r$sum)
                , summary(r$count)

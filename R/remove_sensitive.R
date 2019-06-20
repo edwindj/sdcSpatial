@@ -1,6 +1,8 @@
 #' remove sensitive cells from raster
 #'
-#' remove sensitive cells from raster
+#' Remove sensitive cells from raster. These sensitive cells are set to NA.
+#' `mask_sensitive` and `remove_sensitive` are synonyms, to accommodate both
+#' experienced `raster`users as well as sdc users.
 #' @inheritParams is_sensitive
 #' @param ... passed on to [`is_sensitive`].
 #' @return sdc_raster object with sensitive cells set to `NA`.
@@ -16,13 +18,11 @@ remove_sensitive <- function(x, max_risk = x$max_risk, min_count = x$min_count, 
   # calculate sensitive stuff
   sensitive <- is_sensitive(x, ...)
   # removing/masking the data
-  x$info$sum <- raster::mask(x$info$sum, sensitive, maskvalue = 1)
-  x$info$count <- raster::mask(x$info$count, sensitive, maskvalue = 1)
+  x$value <- raster::mask(x$value, sensitive, maskvalue = 1)
   x
 }
 
 
-#' mask_sensitive and remove_sensitive are synonyms.
 #' @export
 #' @rdname remove_sensitive
 mask_sensitive <- remove_sensitive

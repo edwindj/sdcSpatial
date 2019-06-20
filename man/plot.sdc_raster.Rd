@@ -4,13 +4,13 @@
 \alias{plot.sdc_raster}
 \title{Plot a sdc_raster object}
 \usage{
-\method{plot}{sdc_raster}(x, fun = mean, ...,
+\method{plot}{sdc_raster}(x, value = "mean", ...,
   main = paste(substitute(x)))
 }
 \arguments{
 \item{x}{\link{sdc_raster} object to be plotted}
 
-\item{fun}{function to be used to derive values, e.g. \link{sum} or \link{mean} (default).}
+\item{value}{\link{character} which value layer to be used for values, e.g. "sum", "count", "mean" (default).}
 
 \item{...}{passed on to \code{\link[raster:plot]{raster::plot()}}}
 

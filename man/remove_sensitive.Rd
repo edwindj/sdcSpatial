@@ -23,7 +23,9 @@ mask_sensitive(x, max_risk = x$max_risk, min_count = x$min_count, ...)
 sdc_raster object with sensitive cells set to \code{NA}.
 }
 \description{
-remove sensitive cells from raster
+Remove sensitive cells from raster. These sensitive cells are set to NA.
+\code{mask_sensitive} and \code{remove_sensitive} are synonyms, to accommodate both
+experienced \code{raster}users as well as sdc users.
 }
 \examples{
 library(raster)

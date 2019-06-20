@@ -15,7 +15,7 @@ disclosure_risk <- function(x, risk_type=c("external", "internal", "discrete")){
     message("setting risk type to 'discrete'.")
   }
 
-  r <- x$info
+  r <- x$value
   risk <-
     switch( risk_type
             , external = r$max / r$sum
