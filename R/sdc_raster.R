@@ -67,7 +67,7 @@ new_sdc_raster <- function( r
                           ){
   structure(
     list(
-      resolution = raster::res(r),
+      #resolution = raster::res(r),
       value = r,
       max_risk = max_risk,
       min_count = min_count,
@@ -91,7 +91,7 @@ print.sdc_raster <- function(x, ...){
   cat(x$type, "sdc_raster object: \n"
      , "  max_risk:", x$max_risk
      , ", min_count:", x$min_count
-     , ", resolution:", x$resolution
+     , ", resolution:", raster::res(x$value)
      , "\n   mean sensitivity [0,1]: ", sensitivity_score(x)
   )
 }

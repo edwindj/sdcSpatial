@@ -54,6 +54,6 @@ amersfoort[, x := as.integer(x)]
 amersfoort[, y := as.integer(y)]
 
 dwellings <- as.data.frame(amersfoort)
-coordinates(dwellings) <- ~ x+y
-proj4string(dwellings) <- "+init=epsg:28992"
+# coordinates(dwellings) <- ~ x+y
+# proj4string(dwellings) <- "+init=epsg:28992"
 use_data(dwellings, overwrite = TRUE)

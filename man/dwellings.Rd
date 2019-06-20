@@ -5,7 +5,7 @@
 \alias{dwellings}
 \title{Simulated data set generated with residence locations  from the open data \href{https://zakelijk.kadaster.nl/bag-producten}{BAG register}
 The locations are realistic, but the associated data is simulated.}
-\format{An object of class \code{SpatialPointsDataFrame} with 90603 rows and 2 columns.}
+\format{An object of class \code{data.frame} with 90603 rows and 4 columns.}
 \usage{
 dwellings
 }

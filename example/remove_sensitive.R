@@ -1,10 +1,10 @@
 library(raster)
 
-b <- sdc_raster(dwellings, "unemployed", r=200)
+unemployed <- sdc_raster(dwellings[1:2], dwellings$unemployed, r=200)
 
 # plot the normally rastered data
-plot(b, zlim=c(0,1))
-plot_sensitive(b)
+plot(unemployed, zlim=c(0,1))
+plot_sensitive(unemployed)
 
-b_safe <- remove_sensitive(b, risk_type="discrete")
-plot(b_safe, zlim=c(0,1))
+unemployed_safe <- remove_sensitive(unemployed, risk_type="discrete")
+plot(unemployed_safe, zlim=c(0,1))
