@@ -4,7 +4,7 @@ Version: 0.1.0.9000
 Authors@R: c(
   person("Edwin", "de Jonge", email = "edwindjonge@gmail.com", role = c("aut", "cre")),
   person("Peter-Paul", "de Wolf", role = c("aut")),
-  person("Sapphire", "Han", role = c("aut"))
+  person("Sapphire", "Han", role = c("ctb"))
   )
 Description: Privacy protected raster maps 
   can be created from spatial point data. Protection
@@ -21,8 +21,7 @@ Suggests:
     knitr,
     rmarkdown,
     sp,
-    sf,
-    colorspace
+    sf
 Imports: 
     raster,
     methods

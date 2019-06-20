@@ -13,6 +13,8 @@ sensitivity_score(x, max_risk = x$max_risk, min_count = x$min_count,
 \item{max_risk}{a risk value higher than \code{max_risk} will be sensitive.}
 
 \item{min_count}{a count lower than \code{min_count} will be sensitive.}
+
+\item{...}{passed on to \code{\link{is_sensitive}}}
 }
 \description{
 The mean sensitity score calculates the fraction of cells (with a value)

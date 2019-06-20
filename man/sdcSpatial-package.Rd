@@ -27,7 +27,11 @@ Useful links:
 Authors:
 \itemize{
   \item Peter-Paul de Wolf
-  \item Sapphire Han
+}
+
+Other contributors:
+\itemize{
+  \item Sapphire Han [contributor]
 }
 
 }
