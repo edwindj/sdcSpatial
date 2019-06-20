@@ -7,10 +7,10 @@
 protect_quadtree <- function(r, ...){
   #UseMethod("quadtree")
 
-  # while unsafe or max resolution
+  # while sensitive or max resolution
   # - 1 aggregate with factor 2^count, count and sum, max
   # - 2 disaggregate with factor 2^count, scale to 2^-count
-  # - 3 apply mask to unsafe areas (setting rest to NA)
+  # - 3 apply mask to sensitive areas (setting rest to NA)
   # - 4 crop
   # - 5 cover from low detail to high detail
 }

@@ -6,7 +6,7 @@ plot.sdc_raster <- function(x, ...){
 plot_risk <- function(x, ...){
 }
 
-plot_unsafe <- function(x, ...){
+plot_sensitive <- function(x, ...){
 }
 
 

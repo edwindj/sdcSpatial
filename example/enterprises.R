@@ -5,8 +5,8 @@ data("enterprises")
 
 production <- sdc_raster(enterprises, "production")
 plot(production)
-unsafe <- is_unsafe(production)
-plot(unsafe)
+sensitive <- is_sensitive(production)
+plot(sensitive)
 plot(disclosure_risk(production))
 
 

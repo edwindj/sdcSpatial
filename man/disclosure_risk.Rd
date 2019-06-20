@@ -18,7 +18,7 @@ disclosure_risk(x, type = c("external", "internal", "discrete"))
 Calculate disclosure risk
 }
 \seealso{
-Other disclosed: \code{\link{is_unsafe}},
-  \code{\link{remove_unsafe}}
+Other disclosed: \code{\link{is_sensitive}},
+  \code{\link{remove_sensitive}}
 }
 \concept{disclosed}

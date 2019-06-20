@@ -26,13 +26,13 @@ values(l$count) <- 10
 b <- brick(l)
 sdc <- new_sdc_raster(b, "logical")
 plot(sdc)
-plot(is_unsafe(sdc))
+plot(is_sensitive(sdc))
 
 a <- aggregate(b, fact=2, fun=sum)
 sdc_a <- new_sdc_raster(a, "logical")
 sdc_a
 plot(sdc_a)
 
-plot(is_unsafe(sdc_a))
-plot(is_unsafe(sdc_a), zlim=c(0,1), col=c("white", "red"))
+plot(is_sensitive(sdc_a))
+plot(is_sensitive(sdc_a), zlim=c(0,1), col=c("white", "red"))
 
