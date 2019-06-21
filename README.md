@@ -47,23 +47,16 @@ production <- sdc_raster(enterprises, variable = "production", r = 200, min_coun
 
 print(production)
 #> numeric sdc_raster object: 
-#>    max_risk: 0.95 , min_count: 3 , resolution: 200 200 
-#>    mean sensitivity [0,1]:  0.6328234
+#>    resolution: 200 200 ,  max_risk: 0.95 , min_count: 3 
+#>    mean sensitivity score [0,1]:  0.6328234
 
 # plot the raster
 zlim <- c(0, 3e4)
+# show which raster cells are sensitive
 plot(production, zlim=zlim)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
-
-``` r
-
-# show which raster cells are sensitive
-plot_sensitive(production)
-```
-
-<img src="man/figures/README-example-2.png" width="100%" />
 
 ``` r
 
@@ -72,7 +65,7 @@ sensitive <- is_sensitive(production, min_count = 3)
 plot(sensitive, col = c('white', 'red'))
 ```
 
-<img src="man/figures/README-example-3.png" width="100%" />
+<img src="man/figures/README-example-2.png" width="100%" />
 
 ``` r
 
@@ -85,10 +78,10 @@ cellStats(sensitive, mean)
 
 # let's smooth to reduce the sensitivity
 smoothed <- protect_smooth(production, bw = 400)
-plot_sensitive(smoothed)
+plot(smoothed)
 ```
 
-<img src="man/figures/README-example-4.png" width="100%" />
+<img src="man/figures/README-example-3.png" width="100%" />
 
 ``` r
 
@@ -101,7 +94,7 @@ smoothed_safe <- remove_sensitive(smoothed, min_count = 3)
 plot(smoothed_safe, zlim=zlim)
 ```
 
-<img src="man/figures/README-example-5.png" width="100%" />
+<img src="man/figures/README-example-4.png" width="100%" />
 
 ``` r
 
@@ -113,10 +106,10 @@ production_total <- sum(smoothed_safe)
 filledContour(production_mean, nlevels = 6, main = "Mean production")
 ```
 
-<img src="man/figures/README-example-6.png" width="100%" />
+<img src="man/figures/README-example-5.png" width="100%" />
 
 ``` r
 filledContour(production_total, nlevels = 10, col = hcl.colors(11), main="Total production")
 ```
 
-<img src="man/figures/README-example-7.png" width="100%" />
+<img src="man/figures/README-example-6.png" width="100%" />

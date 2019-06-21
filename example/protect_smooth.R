@@ -8,10 +8,8 @@ print(production)
 
 # plot the raster
 zlim <- c(0, 3e4)
-plot(production, zlim=zlim)
-
 # show which raster cells are sensitive
-plot_sensitive(production)
+plot(production, zlim=zlim)
 
 # but we can also retrieve directly the raster
 sensitive <- is_sensitive(production, min_count = 3)
@@ -24,7 +22,7 @@ cellStats(sensitive, mean)
 
 # let's smooth to reduce the sensitivity
 smoothed <- protect_smooth(production, bw = 400)
-plot_sensitive(smoothed)
+plot(smoothed)
 
 # what is the sensitivy fraction?
 sensitivity_score(smoothed)
