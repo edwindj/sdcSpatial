@@ -1,8 +1,10 @@
 ---
-title: "Privacy protecting maps"
-output: rmarkdown::html_vignette
+title: "Introduction sdcSpatial: privacy protected density maps"
+output: 
+  rmarkdown::html_vignette:
+    df_print: kable
 vignette: >
-  %\VignetteIndexEntry{Privacy protecting maps}
+  %\VignetteIndexEntry{Introduction sdcSpatial: privacy protected density maps}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -12,26 +14,52 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+bref <- c(citation(), citation("raster"))
+writeLines(toBibtex(bref), "software.bib")
+
 # preloading
 library(sdcSpatial)
 ```
 Plotting data on a map is a popular and helpful tool to analyse spatial data. Increasingly spatial point
-data is becoming available [ref], resulting in more and more spatial plot  
-that not only are used for analytical purposes, but also for publication and communication. 
-In R [ref] it is easy to make spatial plots using e.g. the rspatial packages, ggplot, tmap, mapview or leaflet. However when the plot is meant to show the spatial distribution of a sensitive variable, it is possible that unwantedly a sensitive value of an individual person or enterprise is revealed. 
-It is desirable to make a plot that contains spatial patterns (if any) but protects the privacy of the 
-observed population as much as possible.
+data is becoming available resulting in more and more spatial plots that not only are used for analytical purposes, but also for publication and communication. 
+In R it is easy to make spatial plots using e.g. the rspatial packages, `ggplot2`, `tmap`, `mapview` or `leaflet`. However when the plot is meant to show the spatial distribution of a sensitive variable, it is possible that unwantedly a sensitive value of an individual person or enterprise is revealed. 
+It is desirable to make a plot that contains spatial patterns (if any) 
+but protects the privacy of the observed population as much as possible.
 
 `sdcSpatial` contains  functions to create spatial distribution maps, assess the risk of disclosure on a location and to suppress or adjust revealing values at certain locations.
 
 ```{r}
 library(sdcSpatial)
+library(raster)
+```
+## `raster`
+
+`sdcSpatial` builds heavily upon the `raster` package.
+
+## Assessment
+
+```{r}
+data("enterprises")
+class(enterprises)
+summary(enterprises@data)
+```
+```{r}
+production <- sdc_raster(enterprises, enterprises$production, r = 500)
+print(production)
 ```
 
-## Methods
+## Protection methods
 
-### `sdc_raster`
+```{r}
+plot_sensitive(production)
+```
+```{r}
+plot(remove_sensitive(production))
+```
 
-### `smooth_raster`
 
-### `quadtree`
+```{r}
+
+```
+

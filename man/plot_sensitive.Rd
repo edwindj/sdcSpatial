@@ -4,20 +4,18 @@
 \alias{plot_sensitive}
 \title{Plot the sensitive cells of the sdc_raster.}
 \usage{
-plot_sensitive(x, value = "mean", ...)
+plot_sensitive(x, value = "mean", main = "sensitive", ...)
 }
 \arguments{
 \item{x}{\link{sdc_raster} object}
 
 \item{value}{\link{character} which value layer to be used for values, e.g. "sum", "count", "mean" (default).}
 
-\item{...}{Arguments passed on to \code{is_sensitive}
-\describe{
-  \item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
-  \item{max_risk}{a risk value higher than \code{max_risk} will be sensitive.}
-  \item{min_count}{a count lower than \code{min_count} will be sensitive.}
-  \item{risk_type}{what kind of measure should be used. (Details)}
-}}
+\item{main}{\link{character} title of map.}
+
+\item{...}{passed on to \code{\link[raster:plot]{raster::plot()}}.}
+
+\item{col}{\link{character} title of map.}
 }
 \description{
 Plot the sensitive cells of the sdc_raster.

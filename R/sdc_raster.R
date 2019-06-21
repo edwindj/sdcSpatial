@@ -101,9 +101,9 @@ assert_sdc_raster <- function(x, ...){
 #' @export
 print.sdc_raster <- function(x, ...){
   cat(x$type, "sdc_raster object: \n"
-     , "  max_risk:", x$max_risk
-     , ", min_count:", x$min_count
-     , ", resolution:", raster::res(x$value)
-     , "\n   mean sensitivity [0,1]: ", sensitivity_score(x)
+      , "  resolution:", raster::res(x$value)
+      , ",  max_risk:", x$max_risk
+      , ", min_count:", x$min_count
+      , "\n   mean sensitivity score [0,1]: ", sensitivity_score(x)
   )
 }

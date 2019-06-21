@@ -2,7 +2,8 @@ Package: sdcSpatial
 Title: Statistical Disclosure Control for Spatial Data
 Version: 0.1.0.9000
 Authors@R: c(
-  person("Edwin", "de Jonge", email = "edwindjonge@gmail.com", role = c("aut", "cre")),
+  person("Edwin", "de Jonge", email = "edwindjonge@gmail.com", role = c("aut", "cre"), 
+    comment=c(ORCID="0000-0002-6580-4718")),
   person("Peter-Paul", "de Wolf", role = c("aut")),
   person("Sapphire", "Han", role = c("ctb"))
   )
