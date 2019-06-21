@@ -4,15 +4,36 @@
 \alias{protect_quadtree}
 \title{quadtree method}
 \usage{
-protect_quadtree(r, ...)
+protect_quadtree(x, ...)
 }
 \arguments{
 \item{x}{\code{\link{sdc_raster}} object}
+
+\item{...}{Arguments passed on to \code{is_sensitive}
+\describe{
+  \item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
+  \item{max_risk}{a risk value higher than \code{max_risk} will be sensitive.}
+  \item{min_count}{a count lower than \code{min_count} will be sensitive.}
+  \item{risk_type}{what kind of measure should be used. (Details)}
+}}
 }
 \value{
-a \code{\link{sdc_raster}} object, which has been
+a \code{\link{sdc_raster}} object, in which sensitive cells have been recursively aggregated until not sensitive.
 }
 \description{
 quadtree method
 }
-\keyword{internal}
+\examples{
+library(raster)
+
+fined <- sdc_raster(enterprises, enterprises$fined)
+plot_sensitive(fined)
+fined_qt <- protect_quadtree(fined)
+plot_sensitive(fined_qt)
+
+fined <- sdc_raster(enterprises, enterprises$fined, r=50)
+plot_sensitive(fined)
+fined_qt <- protect_quadtree(fined)
+plot_sensitive(fined_qt)
+
+}
