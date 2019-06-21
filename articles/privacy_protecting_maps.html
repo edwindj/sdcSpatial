@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy protecting maps • sdcSpatial</title>
+<title>Introduction sdcSpatial: privacy protected density maps • sdcSpatial</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Privacy protecting maps">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction sdcSpatial: privacy protected density maps">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -53,7 +53,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/privacy_protecting_maps.html">Privacy protecting maps</a>
+      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
     </li>
   </ul>
 </li>
@@ -77,7 +77,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Privacy protecting maps</h1>
+      <h1>Introduction sdcSpatial: privacy protected density maps</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/edwindj/sdcSpatial/blob/master/vignettes/privacy_protecting_maps.Rmd"><code>vignettes/privacy_protecting_maps.Rmd</code></a></small>
@@ -87,28 +87,46 @@
 
     
     
-<p>Plotting data on a map is a popular and helpful tool to analyse spatial data. Increasingly spatial point data is becoming available [ref], resulting in more and more spatial plot<br>
-that not only are used for analytical purposes, but also for publication and communication. In R [ref] it is easy to make spatial plots using e.g. the rspatial packages, ggplot, tmap, mapview or leaflet. However when the plot is meant to show the spatial distribution of a sensitive variable, it is possible that unwantedly a sensitive value of an individual person or enterprise is revealed. It is desirable to make a plot that contains spatial patterns (if any) but protects the privacy of the observed population as much as possible.</p>
+<p>Plotting data on a map is a popular and helpful tool to analyse spatial data. Increasingly spatial point data is becoming available resulting in more and more spatial plots that not only are used for analytical purposes, but also for publication and communication. In R it is easy to make spatial plots using e.g. the rspatial packages, <code>ggplot2</code>, <code>tmap</code>, <code>mapview</code> or <code>leaflet</code>. However when the plot is meant to show the spatial distribution of a sensitive variable, it is possible that unwantedly a sensitive value of an individual person or enterprise is revealed. It is desirable to make a plot that contains spatial patterns (if any) but protects the privacy of the observed population as much as possible.</p>
 <p><code>sdcSpatial</code> contains functions to create spatial distribution maps, assess the risk of disclosure on a location and to suppress or adjust revealing values at certain locations.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sdcSpatial)</a></code></pre></div>
-<div id="methods" class="section level2">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sdcSpatial)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(raster)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; Loading required package: sp</span></a></code></pre></div>
+<div id="raster" class="section level2">
 <h2 class="hasAnchor">
-<a href="#methods" class="anchor"></a>Methods</h2>
-<div id="sdc_raster" class="section level3">
-<h3 class="hasAnchor">
-<a href="#sdc_raster" class="anchor"></a><code>sdc_raster</code>
-</h3>
+<a href="#raster" class="anchor"></a><code>raster</code>
+</h2>
+<p><code>sdcSpatial</code> builds heavily upon the <code>raster</code> package.</p>
 </div>
-<div id="smooth_raster" class="section level3">
-<h3 class="hasAnchor">
-<a href="#smooth_raster" class="anchor"></a><code>smooth_raster</code>
-</h3>
+<div id="assessment" class="section level2">
+<h2 class="hasAnchor">
+<a href="#assessment" class="anchor"></a>Assessment</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"enterprises"</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/class">class</a></span>(enterprises)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; [1] "SpatialPointsDataFrame"</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; attr(,"package")</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; [1] "sp"</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(enterprises<span class="op">@</span>data)</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;    production          fined        </span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  Min.   :    59.46   Mode :logical  </span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  1st Qu.:  1019.98   FALSE:7931     </span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  Median :  1954.32   TRUE :417      </span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;  Mean   :  3249.59                  </span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  3rd Qu.:  3901.44                  </span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  Max.   :114467.56</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">production &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sdc_raster.html">sdc_raster</a></span>(enterprises, enterprises<span class="op">$</span>production, <span class="dt">r =</span> <span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(production)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; numeric sdc_raster object: </span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;    resolution: 500 500 ,  max_risk: 0.95 , min_count: 10 </span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;    mean sensitivity score [0,1]:  0.6432039</span></a></code></pre></div>
 </div>
-<div id="quadtree" class="section level3">
-<h3 class="hasAnchor">
-<a href="#quadtree" class="anchor"></a><code>quadtree</code>
-</h3>
-</div>
+<div id="protection-methods" class="section level2">
+<h2 class="hasAnchor">
+<a href="#protection-methods" class="anchor"></a>Protection methods</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(production)</a></code></pre></div>
+<p><img src="privacy_protecting_maps_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(<span class="kw"><a href="../reference/remove_sensitive.html">remove_sensitive</a></span>(production))</a></code></pre></div>
+<p><img src="privacy_protecting_maps_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 </div>
   </div>
 
@@ -117,7 +135,9 @@ that not only are used for analytical purposes, but also for publication and com
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#methods">Methods</a></li>
+<li><a href="#raster"><code>raster</code></a></li>
+      <li><a href="#assessment">Assessment</a></li>
+      <li><a href="#protection-methods">Protection methods</a></li>
       </ul>
 </div>
       </div>

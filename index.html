@@ -55,7 +55,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/privacy_protecting_maps.html">Privacy protecting maps</a>
+      <a href="articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
     </li>
   </ul>
 </li>
@@ -87,7 +87,7 @@
 <div id="sdcspatial" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#sdcspatial" class="anchor"></a>sdcSpatial</h1></div>
-<p><code>sdcSpatial</code> is an opensource R package to create spatial density (raster) maps from point data while protecting the privacy of individual observations within the original data set. Using standard rastering or density estimation for creating maps to be published may reveal sensitive values at locations.</p>
+<p><code>sdcSpatial</code> is an opensource R package to create spatial density (raster) maps from point data while protecting the privacy of individual observations. <em>Using standard rastering or density estimation for creating maps to be published can reveal sensitive values at locations</em>.</p>
 <p><code>sdcSpatial</code> offers a <code>sdc_raster</code> class that allows to:</p>
 <ul>
 <li>find out which locations are considered sensitive / unsafe for publishing: <code>plot_sensitive</code>, <code>is_sensitive</code>, <code>sensitivity_score</code>.</li>
@@ -114,53 +114,50 @@
 <a class="sourceLine" id="cb2-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(production)</a>
 <a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; numeric sdc_raster object: </span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;    max_risk: 0.95 , min_count: 3 , resolution: 200 200 </span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;    mean sensitivity [0,1]:  0.6328234</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;    resolution: 200 200 ,  max_risk: 0.95 , min_count: 3 </span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;    mean sensitivity score [0,1]:  0.6328234</span></a>
 <a class="sourceLine" id="cb2-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co"># plot the raster</span></a>
 <a class="sourceLine" id="cb2-14" data-line-number="14">zlim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="fl">3e4</span>)</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(production, <span class="dt">zlim=</span>zlim)</a></code></pre></div>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co"># show which raster cells are sensitive</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(production, <span class="dt">zlim=</span>zlim)</a></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># show which raster cells are sensitive</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="reference/plot_sensitive.html">plot_sensitive</a></span>(production)</a></code></pre></div>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># but we can also retrieve directly the raster</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">sensitive &lt;-<span class="st"> </span><span class="kw"><a href="reference/is_sensitive.html">is_sensitive</a></span>(production, <span class="dt">min_count =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(sensitive, <span class="dt">col =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'white'</span>, <span class="st">'red'</span>))</a></code></pre></div>
 <p><img src="reference/figures/README-example-2.png" width="100%"></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co"># but we can also retrieve directly the raster</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">sensitive &lt;-<span class="st"> </span><span class="kw"><a href="reference/is_sensitive.html">is_sensitive</a></span>(production, <span class="dt">min_count =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(sensitive, <span class="dt">col =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'white'</span>, <span class="st">'red'</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co"># what is the sensitivy fraction?</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="reference/sensitivity_score.html">sensitivity_score</a></span>(production)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; [1] 0.6328234</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co"># or equally</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/cellStats">cellStats</a></span>(sensitive, mean)</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; [1] 0.6328234</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co"># let's smooth to reduce the sensitivity</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">smoothed &lt;-<span class="st"> </span><span class="kw"><a href="reference/protect_smooth.html">protect_smooth</a></span>(production, <span class="dt">bw =</span> <span class="dv">400</span>)</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(smoothed)</a></code></pre></div>
 <p><img src="reference/figures/README-example-3.png" width="100%"></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co"># what is the sensitivy fraction?</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="reference/sensitivity_score.html">sensitivity_score</a></span>(production)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; [1] 0.6328234</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co"># or equally</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/cellStats">cellStats</a></span>(sensitive, mean)</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; [1] 0.6328234</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co"># let's smooth to reduce the sensitivity</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">smoothed &lt;-<span class="st"> </span><span class="kw"><a href="reference/protect_smooth.html">protect_smooth</a></span>(production, <span class="dt">bw =</span> <span class="dv">400</span>)</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="kw"><a href="reference/plot_sensitive.html">plot_sensitive</a></span>(smoothed)</a></code></pre></div>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="reference/sensitivity_score.html">sensitivity_score</a></span>(smoothed)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; [1] 0.1779744</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co"># let's remove the sensitive data.</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">smoothed_safe &lt;-<span class="st"> </span><span class="kw"><a href="reference/remove_sensitive.html">remove_sensitive</a></span>(smoothed, <span class="dt">min_count =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(smoothed_safe, <span class="dt">zlim=</span>zlim)</a></code></pre></div>
 <p><img src="reference/figures/README-example-4.png" width="100%"></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co"># what is the sensitivy fraction?</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw"><a href="reference/sensitivity_score.html">sensitivity_score</a></span>(smoothed)</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; [1] 0.1779744</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co"># let's communicate!</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">production_mean &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(smoothed_safe)</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">production_total &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(smoothed_safe)</a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co"># let's remove the sensitive data.</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">smoothed_safe &lt;-<span class="st"> </span><span class="kw"><a href="reference/remove_sensitive.html">remove_sensitive</a></span>(smoothed, <span class="dt">min_count =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(smoothed_safe, <span class="dt">zlim=</span>zlim)</a></code></pre></div>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co"># and cread</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_mean, <span class="dt">nlevels =</span> <span class="dv">6</span>, <span class="dt">main =</span> <span class="st">"Mean production"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-example-5.png" width="100%"></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co"># let's communicate!</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">production_mean &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(smoothed_safe)</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">production_total &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(smoothed_safe)</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co"># and cread</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_mean, <span class="dt">nlevels =</span> <span class="dv">6</span>, <span class="dt">main =</span> <span class="st">"Mean production"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_total, <span class="dt">nlevels =</span> <span class="dv">10</span>, <span class="dt">col =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/palettes">hcl.colors</a></span>(<span class="dv">11</span>), <span class="dt">main=</span><span class="st">"Total production"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-example-6.png" width="100%"></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_total, <span class="dt">nlevels =</span> <span class="dv">10</span>, <span class="dt">col =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/palettes">hcl.colors</a></span>(<span class="dv">11</span>), <span class="dt">main=</span><span class="st">"Total production"</span>)</a></code></pre></div>
-<p><img src="reference/figures/README-example-7.png" width="100%"></p>
 </div>
 </div>
   </div>
@@ -184,7 +181,7 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Edwin de Jonge <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Edwin de Jonge <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-6580-4718" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
 <li>Peter-Paul de Wolf <br><small class="roles"> Author </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>

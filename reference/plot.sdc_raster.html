@@ -86,7 +86,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Privacy protecting maps</a>
+      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
     </li>
   </ul>
 </li>
@@ -123,7 +123,7 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for sdc_raster</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>x</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"mean"</span>, <span class='no'>...</span>,
+<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>x</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"mean"</span>, <span class='kw'>sensitive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>,
   <span class='kw'>main</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/substitute'>substitute</a></span>(<span class='no'>x</span>)))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -131,11 +131,15 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p><a href='sdc_raster.html'>sdc_raster</a> object to be plotted</p></td>
+      <td><p><code><a href='sdc_raster.html'>sdc_raster</a></code> object to be plotted</p></td>
     </tr>
     <tr>
       <th>value</th>
-      <td><p><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a> which value layer to be used for values, e.g. "sum", "count", "mean" (default).</p></td>
+      <td><p><code>character</code> which value layer to be used for values, e.g. "sum", "count", "mean" (default).</p></td>
+    </tr>
+    <tr>
+      <th>sensitive</th>
+      <td><p><code>logical</code> show the sensitivity in the plot?</p></td>
     </tr>
     <tr>
       <th>...</th>

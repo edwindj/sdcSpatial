@@ -86,7 +86,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Privacy protecting maps</a>
+      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
     </li>
   </ul>
 </li>
@@ -122,7 +122,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>plot_sensitive</span>(<span class='no'>x</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"mean"</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_sensitive</span>(<span class='no'>x</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"mean"</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>"sensitive"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,13 +136,12 @@
       <td><p><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a> which value layer to be used for values, e.g. "sum", "count", "mean" (default).</p></td>
     </tr>
     <tr>
+      <th>main</th>
+      <td><p><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a> title of map.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code>is_sensitive</code></p><dl class='dl-horizontal'>
-  <dt>x</dt><dd><p><a href='sdc_raster.html'>sdc_raster</a> object created with <code><a href='sdc_raster.html'>sdc_raster()</a></code></p></dd>
-  <dt>max_risk</dt><dd><p>a risk value higher than <code>max_risk</code> will be sensitive.</p></dd>
-  <dt>min_count</dt><dd><p>a count lower than <code>min_count</code> will be sensitive.</p></dd>
-  <dt>risk_type</dt><dd><p>what kind of measure should be used. (Details)</p></dd>
-</dl></td>
+      <td><p>passed on to <code><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>raster::plot()</a></code>.</p></td>
     </tr>
     </table>
     

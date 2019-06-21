@@ -86,7 +86,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Privacy protecting maps</a>
+      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
     </li>
   </ul>
 </li>
@@ -155,33 +155,32 @@
 <span class='no'>production</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='kw'>variable</span> <span class='kw'>=</span> <span class='st'>"production"</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>200</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='fl'>3</span>)
 
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>production</span>)</div><div class='output co'>#&gt; numeric sdc_raster object: 
-#&gt;    max_risk: 0.95 , min_count: 3 , resolution: 200 200 
-#&gt;    mean sensitivity [0,1]:  0.6328234</div><div class='input'>
+#&gt;    resolution: 200 200 ,  max_risk: 0.95 , min_count: 3 
+#&gt;    mean sensitivity score [0,1]:  0.6328234</div><div class='input'>
 <span class='co'># plot the raster</span>
 <span class='no'>zlim</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>3e4</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>production</span>, <span class='kw'>zlim</span><span class='kw'>=</span><span class='no'>zlim</span>)</div><div class='img'><img src='protect_smooth-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># show which raster cells are sensitive</span>
-<span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>production</span>)</div><div class='img'><img src='protect_smooth-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>production</span>, <span class='kw'>zlim</span><span class='kw'>=</span><span class='no'>zlim</span>)</div><div class='img'><img src='protect_smooth-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># but we can also retrieve directly the raster</span>
 <span class='no'>sensitive</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='is_sensitive.html'>is_sensitive</a></span>(<span class='no'>production</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='fl'>3</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>sensitive</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'white'</span>, <span class='st'>'red'</span>))</div><div class='img'><img src='protect_smooth-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>sensitive</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'white'</span>, <span class='st'>'red'</span>))</div><div class='img'><img src='protect_smooth-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># what is the sensitivy fraction?</span>
 <span class='fu'><a href='sensitivity_score.html'>sensitivity_score</a></span>(<span class='no'>production</span>)</div><div class='output co'>#&gt; [1] 0.6328234</div><div class='input'><span class='co'># or equally</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/cellStats'>cellStats</a></span>(<span class='no'>sensitive</span>, <span class='no'>mean</span>)</div><div class='output co'>#&gt; [1] 0.6328234</div><div class='input'>
 <span class='co'># let's smooth to reduce the sensitivity</span>
 <span class='no'>smoothed</span> <span class='kw'>&lt;-</span> <span class='fu'>protect_smooth</span>(<span class='no'>production</span>, <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>400</span>)
-<span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>smoothed</span>)</div><div class='img'><img src='protect_smooth-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>smoothed</span>)</div><div class='img'><img src='protect_smooth-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># what is the sensitivy fraction?</span>
 <span class='fu'><a href='sensitivity_score.html'>sensitivity_score</a></span>(<span class='no'>smoothed</span>)</div><div class='output co'>#&gt; [1] 0.1779744</div><div class='input'>
 <span class='co'># let's remove the sensitive data.</span>
 <span class='no'>smoothed_safe</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='remove_sensitive.html'>remove_sensitive</a></span>(<span class='no'>smoothed</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='fl'>3</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>smoothed_safe</span>, <span class='kw'>zlim</span><span class='kw'>=</span><span class='no'>zlim</span>)</div><div class='img'><img src='protect_smooth-5.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>smoothed_safe</span>, <span class='kw'>zlim</span><span class='kw'>=</span><span class='no'>zlim</span>)</div><div class='img'><img src='protect_smooth-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># let's communicate!</span>
 <span class='no'>production_mean</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>(<span class='no'>smoothed_safe</span>)
 <span class='no'>production_total</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sum'>sum</a></span>(<span class='no'>smoothed_safe</span>)
 
 <span class='co'># and cread</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/filledContour'>filledContour</a></span>(<span class='no'>production_mean</span>, <span class='kw'>nlevels</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>"Mean production"</span>)</div><div class='img'><img src='protect_smooth-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/filledContour'>filledContour</a></span>(<span class='no'>production_total</span>, <span class='kw'>nlevels</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>hcl.colors</a></span>(<span class='fl'>11</span>), <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Total production"</span>)</div><div class='img'><img src='protect_smooth-7.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/filledContour'>filledContour</a></span>(<span class='no'>production_mean</span>, <span class='kw'>nlevels</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>"Mean production"</span>)</div><div class='img'><img src='protect_smooth-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/filledContour'>filledContour</a></span>(<span class='no'>production_total</span>, <span class='kw'>nlevels</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>hcl.colors</a></span>(<span class='fl'>11</span>), <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Total production"</span>)</div><div class='img'><img src='protect_smooth-6.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

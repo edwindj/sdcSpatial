@@ -89,7 +89,7 @@ The sensitivity of the data can be shown with plot_sensitive()." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Privacy protecting maps</a>
+      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
     </li>
   </ul>
 </li>
@@ -184,12 +184,12 @@ sensitive</p></td>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>raster</span>)
 <span class='no'>prod</span> <span class='kw'>&lt;-</span> <span class='fu'>sdc_raster</span>(<span class='no'>enterprises</span>, <span class='kw'>field</span> <span class='kw'>=</span> <span class='st'>"production"</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>500</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>prod</span>)</div><div class='output co'>#&gt; numeric sdc_raster object: 
-#&gt;    max_risk: 0.95 , min_count: 10 , resolution: 500 500 
-#&gt;    mean sensitivity [0,1]:  0.6432039</div><div class='input'>
+#&gt;    resolution: 500 500 ,  max_risk: 0.95 , min_count: 10 
+#&gt;    mean sensitivity score [0,1]:  0.6432039</div><div class='input'>
 <span class='no'>prod</span> <span class='kw'>&lt;-</span> <span class='fu'>sdc_raster</span>(<span class='no'>enterprises</span>, <span class='kw'>field</span> <span class='kw'>=</span> <span class='st'>"production"</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>1e3</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>prod</span>)</div><div class='output co'>#&gt; numeric sdc_raster object: 
-#&gt;    max_risk: 0.95 , min_count: 10 , resolution: 1000 1000 
-#&gt;    mean sensitivity [0,1]:  0.255814</div><div class='input'>
+#&gt;    resolution: 1000 1000 ,  max_risk: 0.95 , min_count: 10 
+#&gt;    mean sensitivity score [0,1]:  0.255814</div><div class='input'>
 <span class='co'># get raster with the average production per cell averaged over the enterprises</span>
 <span class='no'>prod_mean</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>(<span class='no'>prod</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>prod_mean</span>)</div><div class='output co'>#&gt;              layer

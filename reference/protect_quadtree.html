@@ -86,7 +86,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Privacy protecting maps</a>
+      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
     </li>
   </ul>
 </li>
@@ -156,11 +156,12 @@
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>raster</span>)
 
 <span class='no'>fined</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='no'>enterprises</span>$<span class='no'>fined</span>)
-<span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>fined</span>)</div><div class='img'><img src='protect_quadtree-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>fined_qt</span> <span class='kw'>&lt;-</span> <span class='fu'>protect_quadtree</span>(<span class='no'>fined</span>)
-<span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>fined_qt</span>)</div><div class='img'><img src='protect_quadtree-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>fined</span>)</div><div class='img'><img src='protect_quadtree-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>fined_qt</span> <span class='kw'>&lt;-</span> <span class='fu'>protect_quadtree</span>(<span class='no'>fined</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>fined_qt</span>)</div><div class='img'><img src='protect_quadtree-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>fined</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='no'>enterprises</span>$<span class='no'>fined</span>, <span class='kw'>r</span><span class='kw'>=</span><span class='fl'>50</span>)
-<span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>fined</span>)</div><div class='img'><img src='protect_quadtree-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>fined_qt</span> <span class='kw'>&lt;-</span> <span class='fu'>protect_quadtree</span>(<span class='no'>fined</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>fined</span>)</div><div class='img'><img src='protect_quadtree-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>fined_qt</span> <span class='kw'>&lt;-</span> <span class='fu'>protect_quadtree</span>(<span class='no'>fined</span>)
 <span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>fined_qt</span>)</div><div class='img'><img src='protect_quadtree-4.png' alt='' width='700' height='433' /></div><div class='input'>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

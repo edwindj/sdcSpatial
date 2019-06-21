@@ -87,7 +87,7 @@ that are considered sensitive according to the used disclosure_risk" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Privacy protecting maps</a>
+      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
     </li>
   </ul>
 </li>
@@ -160,8 +160,8 @@ that are considered sensitive according to the used <code><a href='disclosure_ri
 
 <span class='fu'>sensitivity_score</span>(<span class='no'>consumption</span>)</div><div class='output co'>#&gt; [1] 0.4207188</div><div class='input'><span class='co'># same as</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>consumption</span>)</div><div class='output co'>#&gt; numeric sdc_raster object: 
-#&gt;    max_risk: 0.95 , min_count: 10 , resolution: 500 500 
-#&gt;    mean sensitivity [0,1]:  0.4207188</div><div class='input'>
+#&gt;    resolution: 500 500 ,  max_risk: 0.95 , min_count: 10 
+#&gt;    mean sensitivity score [0,1]:  0.4207188</div><div class='input'>
 <span class='co'># change the rules! A higher norm generates more sensitive cells</span>
 <span class='fu'>sensitivity_score</span>(<span class='no'>consumption</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; [1] 0.5116279</div></pre>
   </div>

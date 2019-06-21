@@ -88,7 +88,7 @@ The locations are realistic, but the associated data is simulated." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Privacy protecting maps</a>
+      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
     </li>
   </ul>
 </li>
@@ -149,14 +149,15 @@ The locations are realistic, but the associated data is simulated.</p>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>raster</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: sp</span></div><div class='input'>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='st'>"enterprises"</span>)
 
-<span class='no'>production</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='st'>"production"</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='fl'>3</span>)
+<span class='no'>production</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='st'>"production"</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='fl'>10</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>production</span>)</div><div class='output co'>#&gt; numeric sdc_raster object: 
-#&gt;    max_risk: 0.95 , min_count: 3 , resolution: 200 200 
-#&gt;    mean sensitivity [0,1]:  0.6328234</div><div class='input'>
+#&gt;    resolution: 200 200 ,  max_risk: 0.95 , min_count: 10 
+#&gt;    mean sensitivity score [0,1]:  0.8581363</div><div class='input'>
 <span class='co'># show the average production per cell</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>production</span>, <span class='st'>"mean"</span>)</div><div class='img'><img src='enterprises-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>production</span>, <span class='kw'>min_count</span><span class='kw'>=</span><span class='fl'>2</span>) <span class='co'># adjust sensitivity score</span></div><div class='img'><img src='enterprises-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>production</span>, <span class='st'>"mean"</span>)</div><div class='img'><img src='enterprises-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>production</span>$<span class='no'>min_count</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span> <span class='co'># adjust norm for sdc</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>production</span>)</div><div class='img'><img src='enterprises-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>production_safe</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='remove_sensitive.html'>remove_sensitive</a></span>(<span class='no'>production</span>)
-<span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>production_safe</span>)</div><div class='img'><img src='enterprises-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>production_safe</span>)</div><div class='img'><img src='enterprises-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
