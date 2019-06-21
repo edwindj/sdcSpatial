@@ -2,31 +2,37 @@
 % Please edit documentation in R/sdc_raster.R
 \name{sdc_raster}
 \alias{sdc_raster}
-\title{Calculate statistics needed for controling the disclosure}
+\title{Raster map with privacy awareness}
 \usage{
 sdc_raster(x, variable, r = 200, max_risk = 0.95, min_count = 10,
-  ..., field = variable)
+  risk_type = c("external", "internal", "discrete"), ...,
+  field = variable)
 }
 \arguments{
 \item{x}{\link[sp:SpatialPointsDataFrame]{sp::SpatialPointsDataFrame}, \link[sf:sf]{sf::sf} or a two column matrix or \link{data.frame}
 that is used to create a raster.}
 
-\item{variable}{name of data column or numeric with same length as \code{x}
+\item{variable}{name of data column or \code{numeric} with same length as \code{x}
 to be used for the data.}
 
 \item{r}{either a desired resolution or a pre-existing \link[raster:raster]{raster::raster} object.}
 
-\item{max_risk}{the maximum_risk score (\code{\link{disclosure_risk}}) before the data is considered sensitive}
+\item{max_risk}{\code{numeric}, the maximum_risk score (\code{\link{disclosure_risk}}) before the data is considered sensitive}
 
-\item{min_count}{cells with a number of observations that are less then \code{min_count} are considered
+\item{min_count}{\code{numeric}, cells with a number of observations that are less then \code{min_count} are considered
 sensitive}
+
+\item{risk_type}{passed on to \code{\link[=disclosure_risk]{disclosure_risk()}}.}
 
 \item{...}{passed through to \code{\link[raster:rasterize]{raster::rasterize()}}}
 
 \item{field}{synonym for \code{variable}. If both supplied, \code{field} has precedence.}
 }
 \description{
-Calculate statistics needed for controling the disclosure
+\code{sdc_raster} derives \code{\link[raster:raster]{raster::raster}} objects from the supplied point data and calculates
+statistics needed for controling the sensitivity.
+The input to the function should be familiar for users of \code{\link[raster:rasterize]{raster::rasterize()}}.
+The sensitivity of the data can be shown with \code{\link[=plot_sensitive]{plot_sensitive()}}.
 }
 \examples{
 library(raster)
@@ -45,5 +51,9 @@ prod_total <- sum(prod)
 summary(prod_total)
 }
 \seealso{
-\code{\link{plot}}
+Other sensitive: \code{\link{disclosure_risk}},
+  \code{\link{is_sensitive}},
+  \code{\link{remove_sensitive}},
+  \code{\link{sensitivity_score}}
 }
+\concept{sensitive}

@@ -5,7 +5,7 @@
 \title{Raster with sensitive locations}
 \usage{
 is_sensitive(x, max_risk = x$max_risk, min_count = x$min_count,
-  risk_type = c("external", "internal", "discrete"))
+  risk_type = x$risk_type)
 }
 \arguments{
 \item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
@@ -29,7 +29,7 @@ Different risk functions can be used:
 }
 \seealso{
 Other sensitive: \code{\link{disclosure_risk}},
-  \code{\link{remove_sensitive}},
+  \code{\link{remove_sensitive}}, \code{\link{sdc_raster}},
   \code{\link{sensitivity_score}}
 }
 \concept{sensitive}

@@ -4,7 +4,7 @@
 \alias{disclosure_risk}
 \title{Calculate disclosure risk}
 \usage{
-disclosure_risk(x, risk_type = c("external", "internal", "discrete"))
+disclosure_risk(x, risk_type = x$risk_type)
 }
 \arguments{
 \item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
@@ -15,11 +15,18 @@ disclosure_risk(x, risk_type = c("external", "internal", "discrete"))
 \link[raster:raster]{raster::raster} object with the disclosure risk.
 }
 \description{
-Calculate disclosure risk
+Different risk functions can be used:
+}
+\details{
+\itemize{
+\item external (numeric variable), calculates how much the largest value comprises the total sum
+\item internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value
+\item discrete (logical variable), calculates the fraction of sensitive values.
+}
 }
 \seealso{
 Other sensitive: \code{\link{is_sensitive}},
-  \code{\link{remove_sensitive}},
+  \code{\link{remove_sensitive}}, \code{\link{sdc_raster}},
   \code{\link{sensitivity_score}}
 }
 \concept{sensitive}

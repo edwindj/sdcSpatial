@@ -1,25 +1,31 @@
-#' Calculate statistics needed for controling the disclosure
+#' Raster map with privacy awareness
 #'
-#' Calculate statistics needed for controling the disclosure
+#' `sdc_raster` derives [`raster::raster`] objects from the supplied point data and calculates
+#' statistics needed for controling the sensitivity.
+#' The input to the function should be familiar for users of [raster::rasterize()].
+#' The sensitivity of the data can be shown with [plot_sensitive()].
+#'
 #' @param x [sp::SpatialPointsDataFrame], [sf::sf] or a two column matrix or [data.frame]
 #' that is used to create a raster.
-#' @param variable name of data column or numeric with same length as `x`
+#' @param variable name of data column or `numeric` with same length as `x`
 #' to be used for the data.
 #' @param r either a desired resolution or a pre-existing [raster::raster] object.
-#' @param max_risk the maximum_risk score ([`disclosure_risk`]) before the data is considered sensitive
-#' @param min_count cells with a number of observations that are less then `min_count` are considered
+#' @param max_risk `numeric`, the maximum_risk score ([`disclosure_risk`]) before the data is considered sensitive
+#' @param min_count `numeric`, cells with a number of observations that are less then `min_count` are considered
 #' sensitive
+#' @param risk_type passed on to [disclosure_risk()].
 #' @param ... passed through to [raster::rasterize()]
 #' @param field synonym for `variable`. If both supplied, `field` has precedence.
 #' @example ./example/sdc_raster.R
 #' @export
 #' @importFrom methods is
-#' @seealso [`plot`]
+#' @family sensitive
 sdc_raster <- function( x
                       , variable
                       , r = 200
                       , max_risk = 0.95
                       , min_count = 10
+                      , risk_type = c("external", "internal", "discrete")
                       , ...
                       , field = variable
                       ){
@@ -39,6 +45,7 @@ sdc_raster <- function( x
   } else {
     stop("'variable' is not a numeric or logical.")
   }
+  risk_type <- if (type == "logical") "discrete" else match.arg(risk_type)
 
   l <- list()
 
@@ -55,7 +62,10 @@ sdc_raster <- function( x
 
   value <- raster::brick(l, ...)
 
-  new_sdc_raster(value, type = type, max_risk = max_risk, min_count = min_count)
+  new_sdc_raster( value, type = type
+                , max_risk = max_risk, min_count = min_count
+                , risk_type = risk_type
+                )
 }
 
 # r is the result of sdc_raster
@@ -63,6 +73,7 @@ new_sdc_raster <- function( r
                           , type = c("numeric", "logical")
                           , max_risk
                           , min_count
+                          , risk_type
                           , scale = 1
                           ){
   structure(
@@ -71,6 +82,7 @@ new_sdc_raster <- function( r
       value = r,
       max_risk = max_risk,
       min_count = min_count,
+      risk_type = risk_type,
       scale = scale, # needed for protecting operations
       type = type
     ), class="sdc_raster")

@@ -1,12 +1,17 @@
 #' Calculate disclosure risk
 #'
-#' Calculate disclosure risk
+#' Different risk functions can be used:
+#'
+#' - external (numeric variable), calculates how much the largest value comprises the total sum
+#' - internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value
+#' - discrete (logical variable), calculates the fraction of sensitive values.
+#'
 #' @param x [sdc_raster] object created with [sdc_raster()]
 #' @param risk_type what kind of measure should be used.
 #' @return [raster::raster] object with the disclosure risk.
 #' @export
 #' @family sensitive
-disclosure_risk <- function(x, risk_type=c("external", "internal", "discrete")){
+disclosure_risk <- function(x, risk_type = x$risk_type){
   assert_sdc_raster(x)
   risk_type <- match.arg(risk_type)
 

@@ -5,7 +5,7 @@
 #' @inheritParams is_sensitive
 #' @param ... passed on to [`is_sensitive`]
 #' @export
-#' @example ./example/sensitivty_score.R
+#' @example ./example/sensitivity_score.R
 #' @family sensitive
 sensitivity_score <- function(x, max_risk = x$max_risk, min_count = x$min_count, ...){
   x$max_risk <- max_risk
