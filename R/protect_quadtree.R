@@ -1,11 +1,12 @@
-#' quadtree method
+#' Protect a raster with the quadtree method.
 #'
-#' quadtree method
+#' Protect a raster with the quadtree method.
 #' @param x [`sdc_raster`] object
 #' @inheritDotParams is_sensitive
 #' @return a [`sdc_raster`] object, in which sensitive cells have been recursively aggregated until not sensitive.
 #' @export
 #' @example ./example/protect_quadtree.R
+#' @family protection methods
 protect_quadtree <- function(x, ...){
   sdc1 <- x
 

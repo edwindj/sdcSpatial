@@ -13,7 +13,7 @@
 #' @param min_count a count lower than `min_count` will be sensitive.
 #' @param risk_type what kind of measure should be used. (Details)
 #' @export
-#' @family disclosed
+#' @family sensitive
 is_sensitive <- function( x
                         , max_risk = x$max_risk
                         , min_count = x$min_count

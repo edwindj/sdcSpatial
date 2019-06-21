@@ -20,3 +20,9 @@ sensitivity_score(x, max_risk = x$max_risk, min_count = x$min_count,
 The mean sensitity score calculates the fraction of cells (with a value)
 that are considered sensitive according to the used \code{\link{disclosure_risk}}
 }
+\seealso{
+Other sensitive: \code{\link{disclosure_risk}},
+  \code{\link{is_sensitive}},
+  \code{\link{remove_sensitive}}
+}
+\concept{sensitive}

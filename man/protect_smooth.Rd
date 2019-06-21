@@ -14,7 +14,7 @@ protect_smooth(x, bw = raster::res(x$value), ...)
 \item{...}{passed through to \code{\link{focal}}.}
 }
 \description{
-Protect a sdc_raster by smoothing
+Protect a sdc_raster by smoothing.
 }
 \examples{
 library(sdcSpatial)
@@ -57,6 +57,11 @@ production_mean <- mean(smoothed_safe)
 production_total <- sum(smoothed_safe)
 
 # and cread
-filledContour(production_mean, nlevels = 6)
-filledContour(production_total, nlevels = 10, col = hcl.colors(11))
+filledContour(production_mean, nlevels = 6, main = "Mean production")
+filledContour(production_total, nlevels = 10, col = hcl.colors(11), main="Total production")
 }
+\seealso{
+Other protection methods: \code{\link{protect_quadtree}},
+  \code{\link{remove_sensitive}}
+}
+\concept{protection methods}

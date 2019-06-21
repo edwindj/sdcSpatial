@@ -5,7 +5,7 @@
 #' @param risk_type what kind of measure should be used.
 #' @return [raster::raster] object with the disclosure risk.
 #' @export
-#' @family disclosed
+#' @family sensitive
 disclosure_risk <- function(x, risk_type=c("external", "internal", "discrete")){
   assert_sdc_raster(x)
   risk_type <- match.arg(risk_type)

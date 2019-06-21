@@ -1,9 +1,10 @@
 #' Protect a sdc_raster by smoothing
 #'
-#' Protect a sdc_raster by smoothing
+#' Protect a sdc_raster by smoothing.
 #' @inheritParams smooth_raster
 #' @example ./example/protect_smooth.R
 #' @export
+#' @family protection methods
 protect_smooth <- function( x
                           , bw = raster::res(x$value)
                           #, na.rm     = TRUE

@@ -28,7 +28,8 @@ Different risk functions can be used:
 }
 }
 \seealso{
-Other disclosed: \code{\link{disclosure_risk}},
-  \code{\link{remove_sensitive}}
+Other sensitive: \code{\link{disclosure_risk}},
+  \code{\link{remove_sensitive}},
+  \code{\link{sensitivity_score}}
 }
-\concept{disclosed}
+\concept{sensitive}

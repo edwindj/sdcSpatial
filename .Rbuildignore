@@ -6,3 +6,6 @@
 ^example
 ^data-raw
 ^useR2019
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

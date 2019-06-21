@@ -2,7 +2,7 @@
 % Please edit documentation in R/protect_quadtree.R
 \name{protect_quadtree}
 \alias{protect_quadtree}
-\title{quadtree method}
+\title{Protect a raster with the quadtree method.}
 \usage{
 protect_quadtree(x, ...)
 }
@@ -21,7 +21,7 @@ protect_quadtree(x, ...)
 a \code{\link{sdc_raster}} object, in which sensitive cells have been recursively aggregated until not sensitive.
 }
 \description{
-quadtree method
+Protect a raster with the quadtree method.
 }
 \examples{
 library(raster)
@@ -37,3 +37,8 @@ fined_qt <- protect_quadtree(fined)
 plot_sensitive(fined_qt)
 
 }
+\seealso{
+Other protection methods: \code{\link{protect_smooth}},
+  \code{\link{remove_sensitive}}
+}
+\concept{protection methods}

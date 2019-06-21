@@ -18,7 +18,8 @@ disclosure_risk(x, risk_type = c("external", "internal", "discrete"))
 Calculate disclosure risk
 }
 \seealso{
-Other disclosed: \code{\link{is_sensitive}},
-  \code{\link{remove_sensitive}}
+Other sensitive: \code{\link{is_sensitive}},
+  \code{\link{remove_sensitive}},
+  \code{\link{sensitivity_score}}
 }
-\concept{disclosed}
+\concept{sensitive}

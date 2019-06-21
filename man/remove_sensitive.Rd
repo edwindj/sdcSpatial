@@ -40,7 +40,12 @@ unemployed_safe <- remove_sensitive(unemployed, risk_type="discrete")
 plot(unemployed_safe, zlim=c(0,1))
 }
 \seealso{
-Other disclosed: \code{\link{disclosure_risk}},
-  \code{\link{is_sensitive}}
+Other sensitive: \code{\link{disclosure_risk}},
+  \code{\link{is_sensitive}},
+  \code{\link{sensitivity_score}}
+
+Other protection methods: \code{\link{protect_quadtree}},
+  \code{\link{protect_smooth}}
 }
-\concept{disclosed}
+\concept{protection methods}
+\concept{sensitive}

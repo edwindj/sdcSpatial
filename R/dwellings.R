@@ -1,4 +1,6 @@
-#' Simulated data set generated with residence locations  from the open data [BAG register](https://zakelijk.kadaster.nl/bag-producten)
+#' Simulated dwellings data set
+#'
+#' The data are generated with residence locations from the Dutch open data [BAG register](https://zakelijk.kadaster.nl/bag-producten)
 #' The locations are realistic, but the associated data is simulated.
 #'
 #'  * `x` `integer`, x coordinate of dwelling

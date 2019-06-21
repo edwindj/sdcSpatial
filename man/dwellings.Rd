@@ -3,13 +3,16 @@
 \docType{data}
 \name{dwellings}
 \alias{dwellings}
-\title{Simulated data set generated with residence locations  from the open data \href{https://zakelijk.kadaster.nl/bag-producten}{BAG register}
-The locations are realistic, but the associated data is simulated.}
+\title{Simulated dwellings data set}
 \format{An object of class \code{data.frame} with 90603 rows and 4 columns.}
 \usage{
 dwellings
 }
 \description{
+The data are generated with residence locations from the Dutch open data \href{https://zakelijk.kadaster.nl/bag-producten}{BAG register}
+The locations are realistic, but the associated data is simulated.
+}
+\details{
 \itemize{
 \item \code{x} \code{integer}, x coordinate of dwelling
 \item \code{y} \code{integer}, y coordinate of dwelling
