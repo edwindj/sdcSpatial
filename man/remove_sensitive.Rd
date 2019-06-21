@@ -37,7 +37,7 @@ plot(unemployed, zlim=c(0,1))
 plot_sensitive(unemployed)
 
 unemployed_safe <- remove_sensitive(unemployed, risk_type="discrete")
-plot(unemployed_safe, zlim=c(0,1))
+plot_sensitive(unemployed_safe, zlim=c(0,1))
 }
 \seealso{
 Other sensitive: \code{\link{disclosure_risk}},

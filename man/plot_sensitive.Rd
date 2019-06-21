@@ -14,8 +14,6 @@ plot_sensitive(x, value = "mean", main = "sensitive", ...)
 \item{main}{\link{character} title of map.}
 
 \item{...}{passed on to \code{\link[raster:plot]{raster::plot()}}.}
-
-\item{col}{\link{character} title of map.}
 }
 \description{
 Plot the sensitive cells of the sdc_raster.

@@ -52,7 +52,7 @@ print(production)
 ## Protection methods
 
 ```{r}
-plot_sensitive(production)
+plot(production)
 ```
 ```{r}
 plot(remove_sensitive(production))

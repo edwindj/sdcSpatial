@@ -1,13 +1,14 @@
 #' Plot a sdc_raster object
 #'
 #' Plot a sdc_raster object
-#' @param x [`sdc_raster``] object to be plotted
+#' @param x [`sdc_raster`] object to be plotted
 #' @param value `character` which value layer to be used for values, e.g. "sum", "count", "mean" (default).
 #' @param sensitive `logical` show the sensitivity in the plot?
 #' @param ... passed on to [raster::plot()]
 #' @param main title of plot
 #' @family plotting
 #' @export
+#' @importFrom graphics par
 plot.sdc_raster <- function( x
                            , value = "mean"
                            , sensitive = TRUE
@@ -38,7 +39,6 @@ plot_risk <- function(x, ...){
 #' @param x [sdc_raster] object
 #' @param value [character] which value layer to be used for values, e.g. "sum", "count", "mean" (default).
 #' @param main [character] title of map.
-#' @param col [character] title of map.
 #' @param ... passed on to [raster::plot()].
 #' @export
 #' @family plotting

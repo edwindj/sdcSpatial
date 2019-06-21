@@ -4,11 +4,11 @@
 \alias{plot.sdc_raster}
 \title{Plot a sdc_raster object}
 \usage{
-plot.sdc_raster(x, value = "mean", sensitive = TRUE, ...,
+\method{plot}{sdc_raster}(x, value = "mean", sensitive = TRUE, ...,
   main = paste(substitute(x)))
 }
 \arguments{
-\item{x}{\link{`sdc_raster``} object to be plotted}
+\item{x}{\code{\link{sdc_raster}} object to be plotted}
 
 \item{value}{\code{character} which value layer to be used for values, e.g. "sum", "count", "mean" (default).}
 
