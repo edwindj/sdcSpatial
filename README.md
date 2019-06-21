@@ -11,9 +11,10 @@ status](https://ci.appveyor.com/api/projects/status/github/edwindj/sdcSpatial?br
 # sdcSpatial
 
 `sdcSpatial` is an opensource R package to create spatial density
-(raster) maps from point data with the restriction to protect the
-privacy of the individuals within the original data set. Locations can
-have a revealing value or too less observations.
+(raster) maps from point data while protecting the privacy of individual
+observations within the original data set. Using standard rastering or
+density estimation for creating maps to be published may reveal
+sensitive values at locations.
 
 `sdcSpatial` offers a `sdc_raster` class that allows to:
 
@@ -109,13 +110,13 @@ production_mean <- mean(smoothed_safe)
 production_total <- sum(smoothed_safe)
 
 # and cread
-filledContour(production_mean, nlevels = 6)
+filledContour(production_mean, nlevels = 6, main = "Mean production")
 ```
 
 <img src="man/figures/README-example-6.png" width="100%" />
 
 ``` r
-filledContour(production_total, nlevels = 10, col = hcl.colors(11))
+filledContour(production_total, nlevels = 10, col = hcl.colors(11), main="Total production")
 ```
 
 <img src="man/figures/README-example-7.png" width="100%" />

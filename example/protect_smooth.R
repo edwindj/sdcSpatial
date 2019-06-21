@@ -38,5 +38,5 @@ production_mean <- mean(smoothed_safe)
 production_total <- sum(smoothed_safe)
 
 # and cread
-filledContour(production_mean, nlevels = 6)
-filledContour(production_total, nlevels = 10, col = hcl.colors(11))
+filledContour(production_mean, nlevels = 6, main = "Mean production")
+filledContour(production_total, nlevels = 10, col = hcl.colors(11), main="Total production")
