@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="Calculate disclosure risk — disclosure_risk" />
 
-<meta property="og:description" content="Calculate disclosure risk" />
+<meta property="og:description" content="Different risk functions can be used:" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -118,11 +118,11 @@
 
     <div class="ref-description">
     
-    <p>Calculate disclosure risk</p>
+    <p>Different risk functions can be used:</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>disclosure_risk</span>(<span class='no'>x</span>, <span class='kw'>risk_type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"external"</span>, <span class='st'>"internal"</span>, <span class='st'>"discrete"</span>))</pre>
+    <pre class="usage"><span class='fu'>disclosure_risk</span>(<span class='no'>x</span>, <span class='kw'>risk_type</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>risk_type</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -141,10 +141,18 @@
 
     <p><a href='https://www.rdocumentation.org/packages/raster/topics/raster'>raster::raster</a> object with the disclosure risk.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <ul>
+<li><p>external (numeric variable), calculates how much the largest value comprises the total sum</p></li>
+<li><p>internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value</p></li>
+<li><p>discrete (logical variable), calculates the fraction of sensitive values.</p></li>
+</ul>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other sensitive: <code><a href='is_sensitive.html'>is_sensitive</a></code>,
-  <code><a href='remove_sensitive.html'>remove_sensitive</a></code>,
+  <code><a href='remove_sensitive.html'>remove_sensitive</a></code>, <code><a href='sdc_raster.html'>sdc_raster</a></code>,
   <code><a href='sensitivity_score.html'>sensitivity_score</a></code></p></div>
     
 
@@ -155,6 +163,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
           </ul>
