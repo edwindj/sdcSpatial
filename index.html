@@ -55,7 +55,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
+      <a href="articles/privacy_protecting_maps.html">Introduction sdcSpatial</a>
     </li>
   </ul>
 </li>
@@ -87,7 +87,7 @@
 <div id="sdcspatial" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#sdcspatial" class="anchor"></a>sdcSpatial</h1></div>
-<p><em>Publishing a map created using standard rastering or density estimation can reveal sensitive values at locations</em>. <code>sdcSpatial</code> is an opensource R package to create spatial density (raster) maps from point data while protecting the privacy of individual observations.</p>
+<p><em>Publishing a map created using standard rastering or density estimation can reveal sensitive values</em>. <code>sdcSpatial</code> is an opensource R package to create spatial density (raster) maps from point data while protecting the privacy of individual observations.</p>
 <p><code>sdcSpatial</code> offers a <code>sdc_raster</code> class that allows to:</p>
 <ul>
 <li>find out which locations are considered sensitive / unsafe for publishing: <code>plot_sensitive</code>, <code>is_sensitive</code>, <code>sensitivity_score</code>.</li>
@@ -155,7 +155,9 @@
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co"># and cread</span></a>
 <a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_mean, <span class="dt">nlevels =</span> <span class="dv">6</span>, <span class="dt">main =</span> <span class="st">"Mean production"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-example-5.png" width="100%"></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_total, <span class="dt">nlevels =</span> <span class="dv">10</span>, <span class="dt">col =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/palettes">hcl.colors</a></span>(<span class="dv">11</span>), <span class="dt">main=</span><span class="st">"Total production"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_total, <span class="dt">nlevels =</span> <span class="dv">15</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">             , <span class="dt">col =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/palettes">hcl.colors</a></span>(<span class="dv">21</span>, <span class="dt">rev=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">             , <span class="dt">main=</span><span class="st">"Total production"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-example-6.png" width="100%"></p>
 </div>
 </div>

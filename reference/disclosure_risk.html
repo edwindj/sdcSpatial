@@ -32,7 +32,9 @@
 
 <meta property="og:title" content="Calculate disclosure risk — disclosure_risk" />
 
-<meta property="og:description" content="Different risk functions can be used:" />
+<meta property="og:description" content="Disclosure risk function is used by is_sensitive() to determine the risk of
+a raster cell. It returns a score between 0 and 1 for cells that have a finite
+value (otherwise NA)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -86,7 +88,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
+      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial</a>
     </li>
   </ul>
 </li>
@@ -118,7 +120,9 @@
 
     <div class="ref-description">
     
-    <p>Different risk functions can be used:</p>
+    <p>Disclosure risk function is used by <code><a href='is_sensitive.html'>is_sensitive()</a></code> to determine the risk of
+a <code>raster</code> cell. It returns a score between 0 and 1 for cells that have a finite
+value (otherwise <code>NA</code>).</p>
     
     </div>
 
@@ -143,7 +147,7 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <ul>
+    <p>Different risk functions include:</p><ul>
 <li><p>external (numeric variable), calculates how much the largest value comprises the total sum</p></li>
 <li><p>internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value</p></li>
 <li><p>discrete (logical variable), calculates the fraction of sensitive values.</p></li>

@@ -32,9 +32,8 @@
 
 <meta property="og:title" content="Privacy Protected maps — sdcSpatial-package" />
 
-<meta property="og:description" content="Privacy protected raster maps 
-  can be created from spatial point data. Protection
-  methods include smoothing, suppressing revealing values and quadtreeing." />
+<meta property="og:description" content="sdcSpatial working horse is the sdc_raster() object upon which the
+following methods can be applied:" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -88,7 +87,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
+      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial</a>
     </li>
   </ul>
 </li>
@@ -120,13 +119,34 @@
 
     <div class="ref-description">
     
-    <p>Privacy protected raster maps 
-  can be created from spatial point data. Protection
-  methods include smoothing, suppressing revealing values and quadtreeing.</p>
+    <p><code>sdcSpatial</code> working horse is the <code><a href='sdc_raster.html'>sdc_raster()</a></code> object upon which the
+following methods can be applied:</p>
     
     </div>
 
         
+    <h2 class="hasAnchor" id="sensitivity-assessment"><a class="anchor" href="#sensitivity-assessment"></a>Sensitivity assessment</h2>
+
+    
+    <ul>
+<li><p><code><a href='plot.sdc_raster.html'>plot.sdc_raster()</a></code>, <code><a href='plot_sensitive.html'>plot_sensitive()</a></code></p></li>
+<li><p><code>print</code></p></li>
+<li><p><code><a href='is_sensitive.html'>is_sensitive()</a></code></p></li>
+</ul>
+    
+    <h2 class="hasAnchor" id="protection-methods"><a class="anchor" href="#protection-methods"></a>Protection methods</h2>
+
+    
+    <ul>
+<li><p><code><a href='remove_sensitive.html'>remove_sensitive()</a></code></p></li>
+<li><p><code><a href='protect_smooth.html'>protect_smooth()</a></code></p></li>
+<li><p><code><a href='protect_quadtree.html'>protect_quadtree()</a></code></p></li>
+</ul>
+    <p>@section Extraction:</p><ul>
+<li><p><code>sum</code></p></li>
+<li><p><code>mean</code></p></li>
+</ul>
+    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>de Jonge, E., &amp; de Wolf, P. P. (2016, September). Spatial smoothing and statistical disclosure control. In International Conference on Privacy in Statistical Databases (pp. 107-117). Springer, Cham.</p>
@@ -145,6 +165,10 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
+      <li><a href="#sensitivity-assessment">Sensitivity assessment</a></li>
+
+      <li><a href="#protection-methods">Protection methods</a></li>
+
       <li><a href="#references">References</a></li>
 
       <li><a href="#see-also">See also</a></li>

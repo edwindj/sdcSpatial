@@ -33,8 +33,7 @@
 <meta property="og:title" content="Raster map with privacy awareness — sdc_raster" />
 
 <meta property="og:description" content="sdc_raster derives raster::raster objects from the supplied point data and calculates
-statistics needed for controling the sensitivity.
-The input to the function should be familiar for users of raster::rasterize().
+statistics needed for controling their sensitivity to disclosure.
 The sensitivity of the data can be shown with plot_sensitive()." />
 <meta name="twitter:card" content="summary" />
 
@@ -89,7 +88,7 @@ The sensitivity of the data can be shown with plot_sensitive()." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial: privacy protected density maps</a>
+      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial</a>
     </li>
   </ul>
 </li>
@@ -122,8 +121,7 @@ The sensitivity of the data can be shown with plot_sensitive()." />
     <div class="ref-description">
     
     <p><code>sdc_raster</code> derives <code><a href='https://www.rdocumentation.org/packages/raster/topics/raster'>raster::raster</a></code> objects from the supplied point data and calculates
-statistics needed for controling the sensitivity.
-The input to the function should be familiar for users of <code><a href='https://www.rdocumentation.org/packages/raster/topics/rasterize'>raster::rasterize()</a></code>.
+statistics needed for controling their sensitivity to disclosure.
 The sensitivity of the data can be shown with <code><a href='plot_sensitive.html'>plot_sensitive()</a></code>.</p>
     
     </div>
@@ -147,7 +145,8 @@ to be used for the data.</p></td>
     </tr>
     <tr>
       <th>r</th>
-      <td><p>either a desired resolution or a pre-existing <a href='https://www.rdocumentation.org/packages/raster/topics/raster'>raster::raster</a> object.</p></td>
+      <td><p>either a desired resolution or a pre-existing <a href='https://www.rdocumentation.org/packages/raster/topics/raster'>raster::raster</a> object. In the first case, the
+crs of <code>x</code> (if present) will be used, in the latter the properties of the <code>r</code> will be kept.</p></td>
     </tr>
     <tr>
       <th>max_risk</th>
