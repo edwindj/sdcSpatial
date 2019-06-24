@@ -10,17 +10,17 @@ status](https://ci.appveyor.com/api/projects/status/github/edwindj/sdcSpatial?br
 
 # sdcSpatial
 
-`sdcSpatial` is an opensource R package to create spatial density
-(raster) maps from point data while protecting the privacy of individual
-observations. *Using standard rastering or density estimation for
-creating maps to be published can reveal sensitive values at locations*.
+*Publishing a map created using standard rastering or density estimation
+can reveal sensitive values at locations*. `sdcSpatial` is an opensource
+R package to create spatial density (raster) maps from point data while
+protecting the privacy of individual observations.
 
 `sdcSpatial` offers a `sdc_raster` class that allows to:
 
   - find out which locations are considered sensitive / unsafe for
     publishing: `plot_sensitive`, `is_sensitive`, `sensitivity_score`.
   - apply protection methods that reduce sensitiviy and enhance spatial
-    patterns: `protect_smooth`
+    patterns: `protect_smooth`, `protect_quadtree`.
   - remove sensitive locations: `remove_sensitive`.
   - extract relative as well as absolute density `raster`s that can be
     used with visualisation packages, such as `tmap` and `leaflet`:
