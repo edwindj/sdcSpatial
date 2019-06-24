@@ -4,7 +4,7 @@ subtitle: "Privacy protected density maps"
 output: 
   rmarkdown::html_vignette:
     df_print: kable
-    fig_width: 7
+    fig_width: 6
 vignette: >
   %\VignetteIndexEntry{Introduction sdcSpatial: privacy protected density maps}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,11 +14,12 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  out.width = "100%"
 )
 
-bref <- c(citation(), citation("raster"))
-writeLines(toBibtex(bref), "software.bib")
+# bref <- c(citation(), citation("raster"))
+# writeLines(toBibtex(bref), "software.bib")
 
 # preloading
 library(sdcSpatial)

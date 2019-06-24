@@ -6,12 +6,12 @@
 #'
 #' Different risk functions include:
 #'
-#' - external (numeric variable), calculates how much the largest value comprises the total sum
+#' - external (numeric variable), calculates how much the largest value comprises the total sum within a cell
 #' - internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value
 #' - discrete (logical variable), calculates the fraction of sensitive values.
 #'
 #' @param x [sdc_raster] object created with [sdc_raster()]
-#' @param risk_type what kind of measure should be used.
+#' @param risk_type `character`: "external", "internal", "discrete".
 #' @return [raster::raster] object with the disclosure risk.
 #' @export
 #' @family sensitive

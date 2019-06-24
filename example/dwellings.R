@@ -1,3 +1,4 @@
+\donttest{
 # dwellings is a data.frame, the best way is to first turn it
 # into a sf or sp object.
 
@@ -32,3 +33,4 @@ plot(consumption, col = hcl.colors(256, rev = TRUE, palette = "Purple-Blue"))
 
 # but we can also create a raster directly from a data.frame
 unemployed <- sdc_raster( dwellings[c("x","y")], dwellings$unemployed)
+}

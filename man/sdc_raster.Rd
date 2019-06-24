@@ -29,6 +29,18 @@ sensitive}
 
 \item{field}{synonym for \code{variable}. If both supplied, \code{field} has precedence.}
 }
+\value{
+object of \code{class} "sdc_raster":
+\itemize{
+\item \code{$value}: \code{\link[raster:brick]{raster::brick()}} object with differenct layers e.g. \code{count}, \code{sum}, \code{mean}.
+\item \code{$max_risk}: the threshold at the \code{\link[=disclosure_risk]{disclosure_risk()}} is considered sensitive.
+\item \code{$min_count}: the minimum number of observation before a cell is \strong{not} sensitive
+\item \code{$scale}: used together with \code{min_count} to determine sensitivity: result
+of protection operation \code{\link[=protect_smooth]{protect_smooth()}} or \code{\link[=protect_quadtree]{protect_quadtree()}}.
+\item \code{$type}: of \code{variable}, either \code{numeric} or \code{logical}
+\item \code{$risk_type}, "external", "internal" or "discrete".
+}
+}
 \description{
 \code{sdc_raster} derives \code{\link[raster:raster]{raster::raster}} objects from the supplied point data and calculates
 statistics needed for controling their sensitivity to disclosure.

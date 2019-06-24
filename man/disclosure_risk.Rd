@@ -9,7 +9,7 @@ disclosure_risk(x, risk_type = x$risk_type)
 \arguments{
 \item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
 
-\item{risk_type}{what kind of measure should be used.}
+\item{risk_type}{\code{character}: "external", "internal", "discrete".}
 }
 \value{
 \link[raster:raster]{raster::raster} object with the disclosure risk.
@@ -22,7 +22,7 @@ value (otherwise \code{NA}).
 \details{
 Different risk functions include:
 \itemize{
-\item external (numeric variable), calculates how much the largest value comprises the total sum
+\item external (numeric variable), calculates how much the largest value comprises the total sum within a cell
 \item internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value
 \item discrete (logical variable), calculates the fraction of sensitive values.
 }

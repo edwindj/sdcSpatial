@@ -16,6 +16,14 @@
 #' @param risk_type passed on to [disclosure_risk()].
 #' @param ... passed through to [raster::rasterize()]
 #' @param field synonym for `variable`. If both supplied, `field` has precedence.
+#' @return object of `class` "sdc_raster":
+#' - `$value`: [raster::brick()] object with differenct layers e.g. `count`, `sum`, `mean`.
+#' - `$max_risk`: the threshold at the [disclosure_risk()] is considered sensitive.
+#' - `$min_count`: the minimum number of observation before a cell is **not** sensitive
+#' - `$scale`: used together with `min_count` to determine sensitivity: result
+#' of protection operation [protect_smooth()] or [protect_quadtree()].
+#' - `$type`: of `variable`, either `numeric` or `logical`
+#' - `$risk_type`, "external", "internal" or "discrete".
 #' @example ./example/sdc_raster.R
 #' @export
 #' @importFrom methods is
