@@ -87,12 +87,11 @@
 <div id="sdcspatial" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#sdcspatial" class="anchor"></a>sdcSpatial</h1></div>
-<p><code>sdcSpatial</code> is an opensource R package to create spatial density (raster) maps from point data while protecting the privacy of individual observations. <em>Using standard rastering or density estimation for creating maps to be published can reveal sensitive values at locations</em>.</p>
+<p><em>Publishing a map created using standard rastering or density estimation can reveal sensitive values at locations</em>. <code>sdcSpatial</code> is an opensource R package to create spatial density (raster) maps from point data while protecting the privacy of individual observations.</p>
 <p><code>sdcSpatial</code> offers a <code>sdc_raster</code> class that allows to:</p>
 <ul>
 <li>find out which locations are considered sensitive / unsafe for publishing: <code>plot_sensitive</code>, <code>is_sensitive</code>, <code>sensitivity_score</code>.</li>
-<li>apply protection methods that reduce sensitiviy and enhance spatial patterns: <code>protect_smooth</code>
-</li>
+<li>apply protection methods that reduce sensitiviy and enhance spatial patterns: <code>protect_smooth</code>, <code>protect_quadtree</code>.</li>
 <li>remove sensitive locations: <code>remove_sensitive</code>.</li>
 <li>extract relative as well as absolute density <code>raster</code>s that can be used with visualisation packages, such as <code>tmap</code> and <code>leaflet</code>: <code>x$value$mean</code>, <code>x$value$sum</code>, <code>mean</code>, <code>sum</code>.</li>
 </ul>
