@@ -44,7 +44,7 @@ plot_risk <- function(x, ...){
 #' @family plotting
 plot_sensitive <- function(x, value = "mean", main = "sensitive", ...){
   assert_sdc_raster(x)
-  plot.sdc_raster(x, value = value, main = main, sensitive = FALSE, ...)
+  plot.sdc_raster(x, value = value, main = main, sensitive = FALSE, ..., col.main="red")
   sens <- is_sensitive(x)
   raster::colortable(sens) <- c("transparent", "red")
   raster::plot(sens, add = TRUE)

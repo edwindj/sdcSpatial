@@ -6,10 +6,33 @@
 \alias{sdcSpatial-package}
 \title{Privacy Protected maps}
 \description{
-Privacy protected raster maps 
-  can be created from spatial point data. Protection
-  methods include smoothing, suppressing revealing values and quadtreeing.
+\code{sdcSpatial} working horse is the \code{\link[=sdc_raster]{sdc_raster()}} object upon which the
+following methods can be applied:
 }
+\section{Sensitivity assessment}{
+
+\itemize{
+\item \code{\link[=plot.sdc_raster]{plot.sdc_raster()}}, \code{\link[=plot_sensitive]{plot_sensitive()}}
+\item \code{print}
+\item \code{\link[=is_sensitive]{is_sensitive()}}
+}
+}
+
+\section{Protection methods}{
+
+\itemize{
+\item \code{\link[=remove_sensitive]{remove_sensitive()}}
+\item \code{\link[=protect_smooth]{protect_smooth()}}
+\item \code{\link[=protect_quadtree]{protect_quadtree()}}
+}
+
+@section Extraction:
+\itemize{
+\item \code{sum}
+\item \code{mean}
+}
+}
+
 \references{
 de Jonge, E., & de Wolf, P. P. (2016, September). Spatial smoothing and statistical disclosure control. In International Conference on Privacy in Statistical Databases (pp. 107-117). Springer, Cham.
 

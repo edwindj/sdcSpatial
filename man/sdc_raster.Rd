@@ -15,7 +15,8 @@ that is used to create a raster.}
 \item{variable}{name of data column or \code{numeric} with same length as \code{x}
 to be used for the data.}
 
-\item{r}{either a desired resolution or a pre-existing \link[raster:raster]{raster::raster} object.}
+\item{r}{either a desired resolution or a pre-existing \link[raster:raster]{raster::raster} object. In the first case, the
+crs of \code{x} (if present) will be used, in the latter the properties of the \code{r} will be kept.}
 
 \item{max_risk}{\code{numeric}, the maximum_risk score (\code{\link{disclosure_risk}}) before the data is considered sensitive}
 
@@ -30,8 +31,7 @@ sensitive}
 }
 \description{
 \code{sdc_raster} derives \code{\link[raster:raster]{raster::raster}} objects from the supplied point data and calculates
-statistics needed for controling the sensitivity.
-The input to the function should be familiar for users of \code{\link[raster:rasterize]{raster::rasterize()}}.
+statistics needed for controling their sensitivity to disclosure.
 The sensitivity of the data can be shown with \code{\link[=plot_sensitive]{plot_sensitive()}}.
 }
 \examples{

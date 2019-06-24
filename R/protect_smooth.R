@@ -7,7 +7,6 @@
 #' @family protection methods
 protect_smooth <- function( x
                           , bw = raster::res(x$value)
-                          #, na.rm     = TRUE
                           , ...
                           ){
   assert_sdc_raster(x)

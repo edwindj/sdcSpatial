@@ -1,6 +1,10 @@
 #' Calculate disclosure risk
 #'
-#' Different risk functions can be used:
+#' Disclosure risk function is used by [is_sensitive()] to determine the risk of
+#' a `raster` cell. It returns a score between 0 and 1 for cells that have a finite
+#' value (otherwise `NA`).
+#'
+#' Different risk functions include:
 #'
 #' - external (numeric variable), calculates how much the largest value comprises the total sum
 #' - internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value

@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 # sdcSpatial
 
-_Publishing a map created using standard rastering or density estimation can reveal sensitive values at locations_.
+_Publishing a map created using standard rastering or density estimation can reveal sensitive values_.
 `sdcSpatial` is an opensource R package to create spatial density (raster) maps from point data while protecting the privacy of individual observations. 
 
 `sdcSpatial` offers a `sdc_raster` class that allows to:

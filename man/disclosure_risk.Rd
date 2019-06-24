@@ -15,9 +15,12 @@ disclosure_risk(x, risk_type = x$risk_type)
 \link[raster:raster]{raster::raster} object with the disclosure risk.
 }
 \description{
-Different risk functions can be used:
+Disclosure risk function is used by \code{\link[=is_sensitive]{is_sensitive()}} to determine the risk of
+a \code{raster} cell. It returns a score between 0 and 1 for cells that have a finite
+value (otherwise \code{NA}).
 }
 \details{
+Different risk functions include:
 \itemize{
 \item external (numeric variable), calculates how much the largest value comprises the total sum
 \item internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value

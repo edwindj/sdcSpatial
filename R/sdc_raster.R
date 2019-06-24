@@ -1,15 +1,15 @@
 #' Raster map with privacy awareness
 #'
 #' `sdc_raster` derives [`raster::raster`] objects from the supplied point data and calculates
-#' statistics needed for controling the sensitivity.
-#' The input to the function should be familiar for users of [raster::rasterize()].
+#' statistics needed for controling their sensitivity to disclosure.
 #' The sensitivity of the data can be shown with [plot_sensitive()].
 #'
 #' @param x [sp::SpatialPointsDataFrame], [sf::sf] or a two column matrix or [data.frame]
 #' that is used to create a raster.
 #' @param variable name of data column or `numeric` with same length as `x`
 #' to be used for the data.
-#' @param r either a desired resolution or a pre-existing [raster::raster] object.
+#' @param r either a desired resolution or a pre-existing [raster::raster] object. In the first case, the
+#' crs of `x` (if present) will be used, in the latter the properties of the `r` will be kept.
 #' @param max_risk `numeric`, the maximum_risk score ([`disclosure_risk`]) before the data is considered sensitive
 #' @param min_count `numeric`, cells with a number of observations that are less then `min_count` are considered
 #' sensitive
@@ -36,7 +36,6 @@ sdc_raster <- function( x
       stop("'r' must be either a raster or the size of a raster")
     }
   }
-
   v <- if (is.character(field)) x[[field]] else field
   type <- if (is.numeric(v)) {
     "numeric"

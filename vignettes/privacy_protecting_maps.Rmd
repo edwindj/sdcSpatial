@@ -1,8 +1,10 @@
 ---
-title: "Introduction sdcSpatial: privacy protected density maps"
+title: "Introduction sdcSpatial"
+subtitle: "Privacy protected density maps"
 output: 
   rmarkdown::html_vignette:
     df_print: kable
+    fig_width: 7
 vignette: >
   %\VignetteIndexEntry{Introduction sdcSpatial: privacy protected density maps}
   %\VignetteEngine{knitr::rmarkdown}

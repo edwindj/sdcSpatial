@@ -56,7 +56,7 @@ production_total <- sum(smoothed_safe)
 
 # and cread
 filledContour(production_mean, nlevels = 6, main = "Mean production")
-filledContour(production_total, nlevels = 10, col = hcl.colors(11), main="Total production")
+filledContour(production_total, nlevels = 15, col = hcl.colors(21, rev=TRUE), main="Total production")
 }
 \seealso{
 Other protection methods: \code{\link{protect_quadtree}},
