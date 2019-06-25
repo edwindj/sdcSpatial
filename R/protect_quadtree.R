@@ -1,12 +1,23 @@
-#' Protect a raster with the quadtree method.
+#' Protect a raster with  a quadtree method.
 #'
-#' Protect a raster with the quadtree method.
+#' `protect_quadtree` reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
+#' does this recursively until no sensitive cells are left.
+#'
+#' This implementation generalizes the method as described by Suñé et al, in which there is no
+#' risk function, and only a  `min_count` to determine sensitivity.
+#' Furthermore the examples given
+#' are only for count data (`x$value$count`), not for mean or summed values.
+#' Currently the translation feature is not (yet) implemented, for it does not take the
+#' `disclosure_risk` into account.
+#'
 #' @param x [`sdc_raster`] object
 #' @inheritDotParams is_sensitive
 #' @return a [`sdc_raster`] object, in which sensitive cells have been recursively aggregated until not sensitive.
 #' @export
 #' @example ./example/protect_quadtree.R
 #' @family protection methods
+#' @references Suñé, E., Rovira, C., Ibáñez, D., Farré, M. (2017). Statistical disclosure control on visualising geocoded population data using
+#' a structure in quadtrees, NTTS 2017
 protect_quadtree <- function(x, ...){
   sdc1 <- x
 

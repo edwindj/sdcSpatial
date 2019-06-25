@@ -2,7 +2,7 @@
 % Please edit documentation in R/protect_quadtree.R
 \name{protect_quadtree}
 \alias{protect_quadtree}
-\title{Protect a raster with the quadtree method.}
+\title{Protect a raster with  a quadtree method.}
 \usage{
 protect_quadtree(x, ...)
 }
@@ -21,7 +21,16 @@ protect_quadtree(x, ...)
 a \code{\link{sdc_raster}} object, in which sensitive cells have been recursively aggregated until not sensitive.
 }
 \description{
-Protect a raster with the quadtree method.
+\code{protect_quadtree} reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
+does this recursively until no sensitive cells are left.
+}
+\details{
+This implementation generalizes the method as described by Suñé et al, in which there is no
+risk function, and only a  \code{min_count} to determine sensitivity.
+Furthermore the examples given
+are only for count data (\code{x$value$count}), not for mean or summed values.
+Currently the translation feature is not (yet) implemented, for it does not take the
+\code{disclosure_risk} into account.
 }
 \examples{
 library(raster)
@@ -36,6 +45,10 @@ plot(fined)
 fined_qt <- protect_quadtree(fined)
 
 
+}
+\references{
+Suñé, E., Rovira, C., Ibáñez, D., Farré, M. (2017). Statistical disclosure control on visualising geocoded population data using
+a structure in quadtrees, NTTS 2017
 }
 \seealso{
 Other protection methods: \code{\link{protect_smooth}},
