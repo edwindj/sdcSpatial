@@ -2,7 +2,7 @@
 % Please edit documentation in R/sdc_raster.R
 \name{sdc_raster}
 \alias{sdc_raster}
-\title{Raster map with privacy awareness}
+\title{Create a raster map with privacy awareness}
 \usage{
 sdc_raster(x, variable, r = 200, max_risk = 0.95, min_count = 10,
   risk_type = c("external", "internal", "discrete"), ...,
@@ -10,18 +10,20 @@ sdc_raster(x, variable, r = 200, max_risk = 0.95, min_count = 10,
 }
 \arguments{
 \item{x}{\link[sp:SpatialPointsDataFrame]{sp::SpatialPointsDataFrame}, \link[sf:sf]{sf::sf} or a two column matrix or \link{data.frame}
-that is used to create a raster.}
+that is used to create a raster map.}
 
 \item{variable}{name of data column or \code{numeric} with same length as \code{x}
-to be used for the data.}
+to be used for the data in the raster map.}
 
-\item{r}{either a desired resolution or a pre-existing \link[raster:raster]{raster::raster} object. In the first case, the
-crs of \code{x} (if present) will be used, in the latter the properties of the \code{r} will be kept.}
+\item{r}{either a desired resolution or a pre-existing \link{raster} object.
+In the first case, the crs of \code{x} (if present) will be used, in the latter
+the properties of the \code{r} will be kept.}
 
-\item{max_risk}{\code{numeric}, the maximum_risk score (\code{\link{disclosure_risk}}) before the data is considered sensitive}
+\item{max_risk}{\code{numeric}, the maximum_risk score (\code{\link{disclosure_risk}})
+before a cell in the map is considered sensitive.}
 
-\item{min_count}{\code{numeric}, cells with a number of observations that are less then \code{min_count} are considered
-sensitive}
+\item{min_count}{\code{numeric}, a raster cell with less then \code{min_count}
+observations is considered sensitived.}
 
 \item{risk_type}{passed on to \code{\link[=disclosure_risk]{disclosure_risk()}}.}
 
@@ -33,18 +35,28 @@ sensitive}
 object of \code{class} "sdc_raster":
 \itemize{
 \item \code{$value}: \code{\link[raster:brick]{raster::brick()}} object with differenct layers e.g. \code{count}, \code{sum}, \code{mean}.
-\item \code{$max_risk}: the threshold at the \code{\link[=disclosure_risk]{disclosure_risk()}} is considered sensitive.
-\item \code{$min_count}: the minimum number of observation before a cell is \strong{not} sensitive
+\item \code{$max_risk}: see above.
+\item \code{$min_count}: see above.
 \item \code{$scale}: used together with \code{min_count} to determine sensitivity: result
 of protection operation \code{\link[=protect_smooth]{protect_smooth()}} or \code{\link[=protect_quadtree]{protect_quadtree()}}.
-\item \code{$type}: of \code{variable}, either \code{numeric} or \code{logical}
-\item \code{$risk_type}, "external", "internal" or "discrete".
+\item \code{$type}: data type of \code{variable}, either \code{numeric} or \code{logical}
+\item \code{$risk_type}, "external", "internal" or "discrete" (see \code{\link[=disclosure_risk]{disclosure_risk()}})
 }
 }
 \description{
-\code{sdc_raster} derives \code{\link[raster:raster]{raster::raster}} objects from the supplied point data and calculates
-statistics needed for controling their sensitivity to disclosure.
-The sensitivity of the data can be shown with \code{\link[=plot_sensitive]{plot_sensitive()}}.
+\code{sdc_raster} creates multiple \code{\link[raster:raster]{raster::raster}} objects
+("count", "mean", "sum") from supplied point data \code{x} and calculates
+the sensitivity to privacy disclosure for each location.
+}
+\details{
+A \code{sdc_raster} object is the vehicle that does the book keeping for calculating
+sensitivity. Protection methods work upon a \code{sdc_raster} and return a new
+\code{sdc_raster} in which the sensitivity is reduced.
+The sensitivity of the map can be assessed with \link{sensitivity_score},
+\code{\link[=plot.sdc_raster]{plot.sdc_raster()}}, \code{\link[=plot_sensitive]{plot_sensitive()}} or \code{print}.
+Reducing the sensitivity can be done with \code{\link[=protect_smooth]{protect_smooth()}},
+\code{\link[=protect_quadtree]{protect_quadtree()}} and \code{\link[=remove_sensitive]{remove_sensitive()}}. Raster maps for \code{mean},
+\code{sum} and \code{count} data can be extracted from the \code{$value} (\code{\link[=brick]{brick()}}).
 }
 \examples{
 library(raster)
@@ -64,7 +76,7 @@ summary(prod_total)
 }
 \seealso{
 Other sensitive: \code{\link{disclosure_risk}},
-  \code{\link{is_sensitive}},
+  \code{\link{is_sensitive}}, \code{\link{plot_sensitive}},
   \code{\link{remove_sensitive}},
   \code{\link{sensitivity_score}}
 }

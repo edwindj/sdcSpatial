@@ -1,10 +1,12 @@
 #' Protect a sdc_raster by smoothing
 #'
-#' Reduce the sensitivity by applying a Gaussian smoother.
+#' `protect_smooth` reduces the sensitivity by applying a Gaussian smoother,
+#' making the values less localized.
 #'
 #' The sensitivity of a raster can be decreased by applying a kernel density smoother as
 #' argued by de Jonge et al. (2016) and de Wolf et al. (2018). Smoothing spatially spreads
-#' localized values, reducing the risk for location disclosure.
+#' localized values, reducing the risk for location disclosure. Note that
+#' smoothing often visually enhances detection of spatial patterns.
 #' The kernel applied is a Gaussian kernel with a bandwidth `bw` supplied by the user.
 #' The smoother acts upon the `x$value$count` and `x$value$sum`
 #' from which a new `x$value$mean` is derived.

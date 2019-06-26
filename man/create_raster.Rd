@@ -19,3 +19,4 @@ create_raster(x, res = 200, ...)
 \description{
 Utility function to generate a raster at a certain resolution (with rounded coordinates).
 }
+\keyword{internal}

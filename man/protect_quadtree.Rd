@@ -7,10 +7,10 @@
 protect_quadtree(x, max_zoom = Inf, ...)
 }
 \arguments{
-\item{x}{\code{\link{sdc_raster}} object}
+\item{x}{\code{\link{sdc_raster}} object to be protected.}
 
-\item{max_zoom}{\code{numeric}, restricts the number of zoom and thus the max resolution.
-The max resolution = resolution * 2^max_zoom.}
+\item{max_zoom}{\code{numeric}, restricts the number of zoom steps and thereby the max resolution for the
+blocks. Each step will zoom with a factor of 2 in x and y so the max resolution = resolution * 2^max_zoom.}
 
 \item{...}{Arguments passed on to \code{is_sensitive}
 \describe{
@@ -21,11 +21,12 @@ The max resolution = resolution * 2^max_zoom.}
 }}
 }
 \value{
-a \code{\link{sdc_raster}} object, in which sensitive cells have been recursively aggregated until not sensitive.
+a \code{\link{sdc_raster}} object, in which sensitive cells have been recursively aggregated until not sensitive or
+when max_zoom has been reached.
 }
 \description{
 \code{protect_quadtree} reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
-does this recursively until no sensitive cells are left.
+does this recursively until no sensitive cells are left or when the maximum zoom levels has been reached.
 }
 \details{
 This implementation generalizes the method as described by Suñé et al., in which there is no
@@ -50,7 +51,8 @@ plot(fined_qt, col=hcl.colors(20, "Blues", rev=TRUE))
 
 }
 \references{
-Suñé, E., Rovira, C., Ibáñez, D., Farré, M. (2017). Statistical disclosure control on visualising geocoded population data using
+Suñé, E., Rovira, C., Ibáñez, D., Farré, M. (2017).
+Statistical disclosure control on visualising geocoded population data using
 a structure in quadtrees, NTTS 2017
 }
 \seealso{

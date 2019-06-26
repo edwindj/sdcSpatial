@@ -6,7 +6,7 @@
 #' the `value` and its `sensitivity`.
 #'
 #' @param x [`sdc_raster`] object to be plotted
-#' @param value `character` which value layer to be used for values, e.g. "sum", "count", "mean" (default).
+#' @param value `character` which value layer to be used for plotting, e.g. "sum", "count", "mean" (default).
 #' @param sensitive `logical` show the sensitivity in the plot?
 #' @param col color palette to be used, passed on to [raster::plot()].
 #' @param ... passed on to [raster::plot()]
@@ -41,7 +41,9 @@ plot_risk <- function(x, ...){
 
 #' Plot the sensitive cells of the sdc_raster.
 #'
-#' Plots t the sensitive cells of the sdc_raster
+#' Plots t the sensitive cells of the sdc_raster. The sensitive cells are
+#' plotted in red. The sensitive cells are determined using [`is_sensitive`].
+#'
 #' @param x [sdc_raster] object
 #' @param value [character] which value layer to be used for values,
 #'  e.g. "sum", "count", "mean" (default).
@@ -49,6 +51,7 @@ plot_risk <- function(x, ...){
 #' @param ... passed on to [`plot.sdc_raster`].
 #' @export
 #' @family plotting
+#' @family sensitive
 #' @importFrom grDevices hcl.colors
 plot_sensitive <- function(x, value = "mean", main = "sensitive", ...){
   assert_sdc_raster(x)

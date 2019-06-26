@@ -1,6 +1,8 @@
-#' Raster with sensitive locations
+#' Return raster with sensitive locations.
 #'
 #' Create a binary raster with sensitive locations.
+#'
+#' By default the risk settings are taken from `x`, but they can be overriden.
 #'
 #' Different risk functions can be used:
 #'

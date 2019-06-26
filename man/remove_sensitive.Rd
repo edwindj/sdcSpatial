@@ -23,7 +23,12 @@ mask_sensitive(x, max_risk = x$max_risk, min_count = x$min_count, ...)
 sdc_raster object with sensitive cells set to \code{NA}.
 }
 \description{
-Remove sensitive cells from raster. These sensitive cells are set to NA.
+\code{remove_sensitive} removes sensitive cells from a \code{\link{sdc_raster}}.
+The sensitive cells, as found by \code{\link[=is_sensitive]{is_sensitive()}} are set to NA.
+}
+\details{
+Removing sensitive cells is a protection method, which often is useful to
+finalize map protection after other protection methods have been applied.
 \code{mask_sensitive} and \code{remove_sensitive} are synonyms, to accommodate both
 experienced \code{raster} users as well as sdc users.
 }
@@ -43,8 +48,8 @@ unemployed$value
 }
 \seealso{
 Other sensitive: \code{\link{disclosure_risk}},
-  \code{\link{is_sensitive}}, \code{\link{sdc_raster}},
-  \code{\link{sensitivity_score}}
+  \code{\link{is_sensitive}}, \code{\link{plot_sensitive}},
+  \code{\link{sdc_raster}}, \code{\link{sensitivity_score}}
 
 Other protection methods: \code{\link{protect_quadtree}},
   \code{\link{protect_smooth}}

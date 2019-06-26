@@ -17,9 +17,16 @@ e.g. "sum", "count", "mean" (default).}
 \item{...}{passed on to \code{\link{plot.sdc_raster}}.}
 }
 \description{
-Plots t the sensitive cells of the sdc_raster
+Plots t the sensitive cells of the sdc_raster. The sensitive cells are
+plotted in red. The sensitive cells are determined using \code{\link{is_sensitive}}.
 }
 \seealso{
 Other plotting: \code{\link{plot.sdc_raster}}
+
+Other sensitive: \code{\link{disclosure_risk}},
+  \code{\link{is_sensitive}},
+  \code{\link{remove_sensitive}}, \code{\link{sdc_raster}},
+  \code{\link{sensitivity_score}}
 }
 \concept{plotting}
+\concept{sensitive}

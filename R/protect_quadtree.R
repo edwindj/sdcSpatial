@@ -1,7 +1,7 @@
 #' Protect a raster with  a quadtree method.
 #'
 #' `protect_quadtree` reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
-#' does this recursively until no sensitive cells are left.
+#' does this recursively until no sensitive cells are left or when the maximum zoom levels has been reached.
 #'
 #' This implementation generalizes the method as described by Suñé et al., in which there is no
 #' risk function, and only a  `min_count` to determine sensitivity.
@@ -10,15 +10,17 @@
 #' Currently the translation feature of the article is not (yet) implemented, for the
 #' original method does not take the `disclosure_risk` into account.
 #'
-#' @param x [`sdc_raster`] object
-#' @param max_zoom `numeric`, restricts the number of zoom and thus the max resolution.
-#' The max resolution = resolution * 2^max_zoom.
+#' @param x [`sdc_raster`] object to be protected.
+#' @param max_zoom `numeric`, restricts the number of zoom steps and thereby the max resolution for the
+#' blocks. Each step will zoom with a factor of 2 in x and y so the max resolution = resolution * 2^max_zoom.
 #' @inheritDotParams is_sensitive
-#' @return a [`sdc_raster`] object, in which sensitive cells have been recursively aggregated until not sensitive.
+#' @return a [`sdc_raster`] object, in which sensitive cells have been recursively aggregated until not sensitive or
+#' when max_zoom has been reached.
 #' @export
 #' @example ./example/protect_quadtree.R
 #' @family protection methods
-#' @references Suñé, E., Rovira, C., Ibáñez, D., Farré, M. (2017). Statistical disclosure control on visualising geocoded population data using
+#' @references Suñé, E., Rovira, C., Ibáñez, D., Farré, M. (2017).
+#' Statistical disclosure control on visualising geocoded population data using
 #' a structure in quadtrees, NTTS 2017
 protect_quadtree <- function(x, max_zoom = Inf, ...){
   # copy the object

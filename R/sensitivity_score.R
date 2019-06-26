@@ -1,6 +1,6 @@
 #' Mean sensitivity for raster
 #'
-#' The mean sensitity score calculates the fraction of cells (with a value)
+#' `sensitivity_score` calculates the fraction of cells (with a value)
 #' that are considered sensitive according to the used [`disclosure_risk`]
 #' @inheritParams is_sensitive
 #' @param ... passed on to [`is_sensitive`]

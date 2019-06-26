@@ -5,7 +5,7 @@
 #' @param res desired resolution (default 200).
 #' @param ... passed through to \code{\link{raster}} function.
 #' @return [`raster::raster`] object
-#' @export
+#' @keywords internal
 create_raster <- function(x, res = 200, ...){
   stopifnot(length(res) == 1)
   ext <- raster::extent(x)[] / res

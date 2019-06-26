@@ -1,29 +1,40 @@
-#' Raster map with privacy awareness
+#' Create a raster map with privacy awareness
 #'
-#' `sdc_raster` derives [`raster::raster`] objects from the supplied point data and calculates
-#' statistics needed for controling their sensitivity to disclosure.
-#' The sensitivity of the data can be shown with [plot_sensitive()].
+#' `sdc_raster` creates multiple [`raster::raster`] objects
+#' ("count", "mean", "sum") from supplied point data `x` and calculates
+#' the sensitivity to privacy disclosure for each location.
+#'
+#' A `sdc_raster` object is the vehicle that does the book keeping for calculating
+#' sensitivity. Protection methods work upon a `sdc_raster` and return a new
+#' `sdc_raster` in which the sensitivity is reduced.
+#' The sensitivity of the map can be assessed with [sensitivity_score],
+#' [plot.sdc_raster()], [plot_sensitive()] or `print`.
+#' Reducing the sensitivity can be done with [protect_smooth()],
+#' [protect_quadtree()] and [remove_sensitive()]. Raster maps for `mean`,
+#' `sum` and `count` data can be extracted from the `$value` ([brick()]).
 #'
 #' @param x [sp::SpatialPointsDataFrame], [sf::sf] or a two column matrix or [data.frame]
-#' that is used to create a raster.
+#' that is used to create a raster map.
 #' @param variable name of data column or `numeric` with same length as `x`
-#' to be used for the data.
-#' @param r either a desired resolution or a pre-existing [raster::raster] object. In the first case, the
-#' crs of `x` (if present) will be used, in the latter the properties of the `r` will be kept.
-#' @param max_risk `numeric`, the maximum_risk score ([`disclosure_risk`]) before the data is considered sensitive
-#' @param min_count `numeric`, cells with a number of observations that are less then `min_count` are considered
-#' sensitive
+#' to be used for the data in the raster map.
+#' @param r either a desired resolution or a pre-existing [raster] object.
+#' In the first case, the crs of `x` (if present) will be used, in the latter
+#' the properties of the `r` will be kept.
+#' @param max_risk `numeric`, the maximum_risk score ([`disclosure_risk`])
+#' before a cell in the map is considered sensitive.
+#' @param min_count `numeric`, a raster cell with less then `min_count`
+#' observations is considered sensitived.
 #' @param risk_type passed on to [disclosure_risk()].
 #' @param ... passed through to [raster::rasterize()]
 #' @param field synonym for `variable`. If both supplied, `field` has precedence.
 #' @return object of `class` "sdc_raster":
 #' - `$value`: [raster::brick()] object with differenct layers e.g. `count`, `sum`, `mean`.
-#' - `$max_risk`: the threshold at the [disclosure_risk()] is considered sensitive.
-#' - `$min_count`: the minimum number of observation before a cell is **not** sensitive
+#' - `$max_risk`: see above.
+#' - `$min_count`: see above.
 #' - `$scale`: used together with `min_count` to determine sensitivity: result
 #' of protection operation [protect_smooth()] or [protect_quadtree()].
-#' - `$type`: of `variable`, either `numeric` or `logical`
-#' - `$risk_type`, "external", "internal" or "discrete".
+#' - `$type`: data type of `variable`, either `numeric` or `logical`
+#' - `$risk_type`, "external", "internal" or "discrete" (see [disclosure_risk()])
 #' @example ./example/sdc_raster.R
 #' @export
 #' @importFrom methods is

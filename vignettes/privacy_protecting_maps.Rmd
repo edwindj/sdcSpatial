@@ -1,9 +1,9 @@
 ---
-title: "Introduction sdcSpatial"
+title: "Introducing sdcSpatial"
 subtitle: "Privacy protected density maps"
 output: 
   rmarkdown::html_vignette:
-    df_print: kable
+    df_print: default
     fig_width: 6
 vignette: >
   %\VignetteIndexEntry{Introduction sdcSpatial: privacy protected density maps}
@@ -18,55 +18,167 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-# bref <- c(citation(), citation("raster"))
-# writeLines(toBibtex(bref), "software.bib")
-
 # preloading
 library(sdcSpatial)
 ```
-Plotting data on a map is a popular and helpful tool to analyse spatial data. 
-In R it is easy to make spatial plots using e.g. spatial packages, `ggplot2`, 
+
+Plotting data on a map is a popular and helpful tool to analyze spatial data. 
+R makes it easy to plot spatial data using packages such as `ggplot2`, 
 `tmap`, `mapview` or `leaflet`. 
 However when plotting the spatial distribution of a 
-sensitive variable, you may unwantedly reveal a sensitive value of an 
-individual observation, e.g. the income of a person. Adjusting data or output
-to 
+_sensitive_ variable, you may accidentally reveal a sensitive value of an 
+individual observation, e.g. the income of a person. The procedure of adjusting
+output data to protect individual observations is called 
+_statistical disclosure control_ and several open source tools are available, 
+including [$\tau$-Argus](http://research.cbs.nl/casc/tau.htm) and R packages [sdcTable](https://cran.r-project.org/package=sdcTable)
+and [sdcMicro](https://cran.r-project.org/package=sdcMicro). Most SDC software
+operates on values of records, mostly ignoring spatial properties (if any) 
+of data.
 
 `sdcSpatial` contains  functions to create spatial distribution maps, 
-assess the risk of disclosure on a location and to suppress or adjust 
-revealing values at certain locations.
+assess the risk of disclosure in locations on the map and to suppress 
+or adjust locations with revealing sensitive values.
 
 ```{r}
 library(sdcSpatial)
 library(raster)
 ```
-## `raster`
 
-`sdcSpatial` builds heavily upon the `raster` package.
+## Data
 
-## Assessment
+`sdcSpatial` contains two simulated datasets with realistic locations: 
+`dwellings` and `enterprises`.
+Lets have a look at the dataset `enterprises`.
 
 ```{r}
 data("enterprises")
-class(enterprises)
-summary(enterprises@data)
-```
-```{r}
-production <- sdc_raster(enterprises, enterprises$production, r = 500)
-print(production)
+head(enterprises)
 ```
 
-## Protection methods
+`enterprises` is a `SpatialPointsDataFrame` object, but `sdc_raster` works
+equally well with `sf` and `data.frame` objects with point data (locations).
+
+```{r}
+summary(enterprises)
+```
+
+`enterprises` contains two simulated variables: `production` (numeric) and 
+`fined` (logical), and we are interested in their spatial distribution.
+Let's first plot the locations of enterprises:
+
+```{r}
+sp::plot(enterprises)
+```
+There are many locations and a lot of over-plotting or _occlusion_ is taking 
+place: a better visualization method to reveal spatial patterns in this case 
+is to create
+a raster or density plot. Since we are interested in the spatial distribution
+of `production` we would like to rasterize the data, which can be done with 
+`raster::rasterize` or `ggplot2::geom_tile` but for didactic sake we use
+`sdc_raster` to create a raster map with a 500m grid.
+
+```{r}
+production <- sdc_raster(enterprises, "production", r = 500)
+plot(production, value="mean", sensitive=FALSE, main="mean production")
+```
+We have plotted the mean production, other stats are kept in the `production$value` object:
+
+```{r}
+raster::plot(production$value[[1:3]])
+```
+
+
+```{r}
+print(production)
+```
+Printing the `production` object shows that when we demand that a raster cell 
+should at least have 10 observations 
+(`min_count`) and its maximum value should not comprise 95% (`max_risk`) of its total value, 
+then 64% of the data in the map is sensitive!
+
+For enterprise data a threshold of 10 may be on the high side, so let us change that
+into 5:
+
+```{r}
+production$min_count <- 5
+production$max_risk <- 0.9
+# or equally 
+production <- sdc_raster(enterprises, "production", r = 500, min_count = 5)
+sensitivity_score(production)
+```
+The score dropped, but which cells are we talking about?
 
 ```{r}
 plot(production)
+sensitive_cells <- is_sensitive(production)
 ```
+
+`sensitive_cells` is a `raster` which can be used for further inspection. 
+
+Let us try to reduce the sensitivity of the map using a smoothing method:
+
 ```{r}
-plot(remove_sensitive(production))
+production_smoothed <- protect_smooth(production, bw = 500)
+plot(production_smoothed)
 ```
-
+In this case smoothing reduced the number of sensitive locations drastically! 
+Let us remove the remaining sensitive cells
 
 ```{r}
-
+production_safe <- remove_sensitive(production_smoothed)
+sensitivity_score(production_safe) # check, double check
 ```
+
+We can improve upon the "blocky" map by using `raster::disaggregate`. We can 
+plot the following:
+
+```{r}
+mean_production <- mean(production_safe)
+mean_production <- raster::disaggregate(mean_production, 10, "bilinear")
+raster::plot(mean_production, col=hcl.colors(15, "YlOrRd", rev = TRUE))
+```
+
+
+`protect_quadtree` is another protecting method, which we demonstrate with
+the other variable `fined`. 
+
+First we create a more fine grained (punned not intended) raster for the variable
+`fined`. 
+
+```{r}
+fined <- sdc_raster(enterprises, "fined", min_count = 5, r = 200, max_risk = 0.8)
+print(fined)
+```
+
+Which is rather sensitive, let us have a look at the locations:
+```{r}
+col <- hcl.colors(10, rev=TRUE)
+plot(fined, "mean", col=col)
+```
+
+The quadtree method aggregates sensitive cells with its 3 neighbors and does this
+recursively: the result is as follows:
+
+```{r}
+fined_qt <- protect_quadtree(fined)
+plot(fined_qt, col=col)
+```
+which has a sensitivity score of `r sensitivity_score(fined_qt)`.
+
+The method has the advantage of locally selecting the necessary resolution to 
+suppress sensitive values, while the `protect_smooth` method uses a fixed bandwidth.
+
+The result is blocky in comparison with the smoothing method:
+```{r}
+fined_smooth <- protect_smooth(fined, bw = 500)
+plot(fined_smooth, col = col)
+sensitivity_score(fined_smooth)
+```
+
+
+
+## Many thanks to `raster`
+
+`sdcSpatial` builds heavily upon the excellent [raster](https://cran.r-project.org/package=raster) package: it creates `raster` maps and uses the machinery of `raster` to calculate sensitivity
+and to apply protection methods to raster maps. 
 

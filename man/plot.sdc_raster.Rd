@@ -11,7 +11,7 @@
 \arguments{
 \item{x}{\code{\link{sdc_raster}} object to be plotted}
 
-\item{value}{\code{character} which value layer to be used for values, e.g. "sum", "count", "mean" (default).}
+\item{value}{\code{character} which value layer to be used for plotting, e.g. "sum", "count", "mean" (default).}
 
 \item{sensitive}{\code{logical} show the sensitivity in the plot?}
 

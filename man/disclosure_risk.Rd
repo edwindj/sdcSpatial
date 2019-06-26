@@ -7,7 +7,7 @@
 disclosure_risk(x, risk_type = x$risk_type)
 }
 \arguments{
-\item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
+\item{x}{\code{\link{sdc_raster}} object.}
 
 \item{risk_type}{\code{character}: "external", "internal", "discrete".}
 }
@@ -15,7 +15,7 @@ disclosure_risk(x, risk_type = x$risk_type)
 \link[raster:raster]{raster::raster} object with the disclosure risk.
 }
 \description{
-Disclosure risk function is used by \code{\link[=is_sensitive]{is_sensitive()}} to determine the risk of
+The disclosure risk function is used by \code{\link[=is_sensitive]{is_sensitive()}} to determine the risk of
 a \code{raster} cell. It returns a score between 0 and 1 for cells that have a finite
 value (otherwise \code{NA}).
 }
@@ -29,6 +29,7 @@ Different risk functions include:
 }
 \seealso{
 Other sensitive: \code{\link{is_sensitive}},
+  \code{\link{plot_sensitive}},
   \code{\link{remove_sensitive}}, \code{\link{sdc_raster}},
   \code{\link{sensitivity_score}}
 }

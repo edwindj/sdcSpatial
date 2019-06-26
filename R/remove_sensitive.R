@@ -1,6 +1,10 @@
 #' Remove sensitive cells from raster
 #'
-#' Remove sensitive cells from raster. These sensitive cells are set to NA.
+#' `remove_sensitive` removes sensitive cells from a [`sdc_raster`].
+#' The sensitive cells, as found by [is_sensitive()] are set to NA.
+#'
+#' Removing sensitive cells is a protection method, which often is useful to
+#' finalize map protection after other protection methods have been applied.
 #' `mask_sensitive` and `remove_sensitive` are synonyms, to accommodate both
 #' experienced `raster` users as well as sdc users.
 #' @inheritParams is_sensitive

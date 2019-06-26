@@ -17,7 +17,7 @@ sensitivity_score(x, max_risk = x$max_risk, min_count = x$min_count,
 \item{...}{passed on to \code{\link{is_sensitive}}}
 }
 \description{
-The mean sensitity score calculates the fraction of cells (with a value)
+\code{sensitivity_score} calculates the fraction of cells (with a value)
 that are considered sensitive according to the used \code{\link{disclosure_risk}}
 }
 \examples{
@@ -32,7 +32,7 @@ sensitivity_score(consumption, min_count = 20)
 }
 \seealso{
 Other sensitive: \code{\link{disclosure_risk}},
-  \code{\link{is_sensitive}},
+  \code{\link{is_sensitive}}, \code{\link{plot_sensitive}},
   \code{\link{remove_sensitive}}, \code{\link{sdc_raster}}
 }
 \concept{sensitive}

@@ -1,6 +1,6 @@
 #' Calculate disclosure risk
 #'
-#' Disclosure risk function is used by [is_sensitive()] to determine the risk of
+#' The disclosure risk function is used by [is_sensitive()] to determine the risk of
 #' a `raster` cell. It returns a score between 0 and 1 for cells that have a finite
 #' value (otherwise `NA`).
 #'
@@ -10,7 +10,7 @@
 #' - internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value
 #' - discrete (logical variable), calculates the fraction of sensitive values.
 #'
-#' @param x [sdc_raster] object created with [sdc_raster()]
+#' @param x [`sdc_raster`] object.
 #' @param risk_type `character`: "external", "internal", "discrete".
 #' @return [raster::raster] object with the disclosure risk.
 #' @export

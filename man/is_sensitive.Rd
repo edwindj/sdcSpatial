@@ -2,7 +2,7 @@
 % Please edit documentation in R/is_sensitive.R
 \name{is_sensitive}
 \alias{is_sensitive}
-\title{Raster with sensitive locations}
+\title{Return raster with sensitive locations.}
 \usage{
 is_sensitive(x, max_risk = x$max_risk, min_count = x$min_count,
   risk_type = x$risk_type)
@@ -20,6 +20,8 @@ is_sensitive(x, max_risk = x$max_risk, min_count = x$min_count,
 Create a binary raster with sensitive locations.
 }
 \details{
+By default the risk settings are taken from \code{x}, but they can be overriden.
+
 Different risk functions can be used:
 \itemize{
 \item external (numeric variable), calculates how much the largest value comprises the total sum
@@ -41,6 +43,7 @@ is_sensitive(unemployed)
 }
 \seealso{
 Other sensitive: \code{\link{disclosure_risk}},
+  \code{\link{plot_sensitive}},
   \code{\link{remove_sensitive}}, \code{\link{sdc_raster}},
   \code{\link{sensitivity_score}}
 }
