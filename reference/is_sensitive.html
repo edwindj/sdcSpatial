@@ -130,7 +130,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p><a href='sdc_raster.html'>sdc_raster</a> object created with <code><a href='sdc_raster.html'>sdc_raster()</a></code></p></td>
+      <td><p><code><a href='sdc_raster.html'>sdc_raster</a></code> object.</p></td>
     </tr>
     <tr>
       <th>max_risk</th>
@@ -142,7 +142,7 @@
     </tr>
     <tr>
       <th>risk_type</th>
-      <td><p>what kind of measure should be used. (Details)</p></td>
+      <td><p>what kind of measure should be used (see details).</p></td>
     </tr>
     </table>
     
@@ -161,6 +161,26 @@
   <code><a href='sensitivity_score.html'>sensitivity_score</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>dwellings_sp</span> <span class='kw'>&lt;-</span> <span class='no'>dwellings</span>
+<span class='kw pkg'>sp</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/sp/topics/coordinates'>coordinates</a></span>(<span class='no'>dwellings_sp</span>) <span class='kw'>&lt;-</span> ~ <span class='no'>x</span> + <span class='no'>y</span>
+<span class='kw pkg'>sp</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/sp/topics/is.projected'>proj4string</a></span>(<span class='no'>dwellings_sp</span>) <span class='kw'>&lt;-</span> <span class='st'>"+init=epsg:28992"</span>
+
+<span class='co'># create a 1km grid</span>
+<span class='no'>unemployed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>dwellings_sp</span>, <span class='no'>dwellings_sp</span>$<span class='no'>unemployed</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>1e3</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>unemployed</span>)</div><div class='output co'>#&gt; logical sdc_raster object: 
+#&gt;    resolution: 1000 1000 ,  max_risk: 0.95 , min_count: 10 
+#&gt;    mean sensitivity score [0,1]:  0.2767296</div><div class='input'>
+<span class='co'># retrieve the sensitive cells</span>
+<span class='fu'>is_sensitive</span>(<span class='no'>unemployed</span>)</div><div class='output co'>#&gt; class      : RasterLayer 
+#&gt; dimensions : 14, 13, 182  (nrow, ncol, ncell)
+#&gt; resolution : 1000, 1000  (x, y)
+#&gt; extent     : 149000, 162000, 457000, 471000  (xmin, xmax, ymin, ymax)
+#&gt; crs        : +init=epsg:28992 
+#&gt; source     : memory
+#&gt; names      : sensitive 
+#&gt; values     : 0, 1  (min, max)
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -170,7 +190,9 @@
       <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

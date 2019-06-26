@@ -32,8 +32,9 @@
 
 <meta property="og:title" content="Privacy Protected maps — sdcSpatial-package" />
 
-<meta property="og:description" content="sdcSpatial working horse is the sdc_raster() object upon which the
-following methods can be applied:" />
+<meta property="og:description" content="sdcSpatial contains  functions to create spatial distribution maps,
+assess the risk of disclosure on a location and to suppress or adjust
+revealing values at certain locations." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -119,12 +120,18 @@ following methods can be applied:" />
 
     <div class="ref-description">
     
-    <p><code>sdcSpatial</code> working horse is the <code><a href='sdc_raster.html'>sdc_raster()</a></code> object upon which the
-following methods can be applied:</p>
+    <p><code>sdcSpatial</code> contains  functions to create spatial distribution maps,
+assess the risk of disclosure on a location and to suppress or adjust
+revealing values at certain locations.</p>
     
     </div>
 
         
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>sdcSpatial</code> working horse is the <code><a href='sdc_raster.html'>sdc_raster()</a></code> object upon which the
+following methods can be applied:</p>
+    
     <h2 class="hasAnchor" id="sensitivity-assessment"><a class="anchor" href="#sensitivity-assessment"></a>Sensitivity assessment</h2>
 
     
@@ -142,9 +149,13 @@ following methods can be applied:</p>
 <li><p><code><a href='protect_smooth.html'>protect_smooth()</a></code></p></li>
 <li><p><code><a href='protect_quadtree.html'>protect_quadtree()</a></code></p></li>
 </ul>
-    <p>@section Extraction:</p><ul>
-<li><p><code>sum</code></p></li>
-<li><p><code>mean</code></p></li>
+    
+    <h2 class="hasAnchor" id="extraction"><a class="anchor" href="#extraction"></a>Extraction</h2>
+
+    
+    <ul>
+<li><p><code>sum</code>, extract the <code>sum</code> layer from a <code>sdc_raster</code> object</p></li>
+<li><p><code>mean</code>, extract the <code>mean</code> layer from a <code>sdc_raster</code> object</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -167,9 +178,13 @@ a structure in quadtrees, NTTS 2017</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
+      <li><a href="#details">Details</a></li>
+
       <li><a href="#sensitivity-assessment">Sensitivity assessment</a></li>
 
       <li><a href="#protection-methods">Protection methods</a></li>
+
+      <li><a href="#extraction">Extraction</a></li>
 
       <li><a href="#references">References</a></li>
 

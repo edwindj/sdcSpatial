@@ -152,8 +152,13 @@ from which a new <code>x$value$mean</code> is derived.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>de Jonge, E., &amp; de Wolf, P. P. (2016, September). Spatial smoothing and statistical disclosure control. In International Conference on Privacy in Statistical Databases (pp. 107-117). Springer, Cham.</p>
-<p>de Wolf, P. P., &amp; de Jonge, E. (2018, September). Safely Plotting Continuous Variables on a Map. In International Conference on Privacy in Statistical Databases (pp. 347-359). Springer, Cham.</p>
+    <p>de Jonge, E., &amp; de Wolf, P. P. (2016, September).
+Spatial smoothing and statistical disclosure control.
+In International Conference on Privacy in Statistical Databases
+(pp. 107-117). Springer, Cham.</p>
+<p>de Wolf, P. P., &amp; de Jonge, E. (2018, September).
+Safely Plotting Continuous Variables on a Map. In International Conference
+on Privacy in Statistical Databases (pp. 347-359). Springer, Cham.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -186,7 +191,7 @@ from which a new <code>x$value$mean</code> is derived.</p>
 <span class='fu'><a href='sensitivity_score.html'>sensitivity_score</a></span>(<span class='no'>production</span>)</div><div class='output co'>#&gt; [1] 0.6328234</div><div class='input'><span class='co'># or equally</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/cellStats'>cellStats</a></span>(<span class='no'>sensitive</span>, <span class='no'>mean</span>)</div><div class='output co'>#&gt; [1] 0.6328234</div><div class='input'>
 <span class='co'># let's smooth to reduce the sensitivity</span>
-<span class='no'>smoothed</span> <span class='kw'>&lt;-</span> <span class='fu'>protect_smooth</span>(<span class='no'>production</span>, <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>400</span>)
+<span class='no'>smoothed</span> <span class='kw'>&lt;-</span> <span class='fu'>protect_smooth</span>(<span class='no'>production</span>, <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>400</span>, <span class='kw'>keep_resolution</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>smoothed</span>)</div><div class='img'><img src='protect_smooth-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># what is the sensitivy fraction?</span>
 <span class='fu'><a href='sensitivity_score.html'>sensitivity_score</a></span>(<span class='no'>smoothed</span>)</div><div class='output co'>#&gt; [1] 0.09800066</div><div class='input'>
