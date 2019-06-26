@@ -5,7 +5,8 @@
 \title{Plot a sdc_raster object}
 \usage{
 \method{plot}{sdc_raster}(x, value = "mean", sensitive = TRUE, ...,
-  main = paste(substitute(x)))
+  main = paste(substitute(x)), col = hcl.colors(20, "Blues", rev =
+  TRUE))
 }
 \arguments{
 \item{x}{\code{\link{sdc_raster}} object to be plotted}
@@ -17,6 +18,8 @@
 \item{...}{passed on to \code{\link[raster:plot]{raster::plot()}}}
 
 \item{main}{title of plot}
+
+\item{col}{color palette to be used, passed on to \code{\link[raster:plot]{raster::plot()}}.}
 }
 \description{
 Plot a sdc_raster object

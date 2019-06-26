@@ -14,14 +14,26 @@ protect_smooth(x, bw = raster::res(x$value), ...)
 \item{...}{passed through to \code{\link{focal}}.}
 }
 \description{
-Protect a sdc_raster by smoothing.
+Reduce the sensitivity by applying a Gaussian smoother.
+}
+\details{
+The sensitivity of a raster can be decreased by applying a kernel density smoother as
+argued by de Jonge et al. (2016) and de Wolf et al. (2018). Smoothing spatially spreads
+localized values, reducing the risk for location disclosure.
+The kernel applied is a Gaussian kernel with a bandwidth \code{bw} supplied by the user.
+The smoother acts upon the \code{x$value$count} and \code{x$value$sum}
+from which a new \code{x$value$mean} is derived.
 }
 \examples{
 library(sdcSpatial)
 library(raster)
 
-# create a sdc_raster from point data with raster with resolution of 200m
-production <- sdc_raster(enterprises, variable = "production", r = 200, min_count = 3)
+data(enterprises)
+
+# create a sdc_raster from point data with raster with
+# a resolution of 200m
+production <- sdc_raster(enterprises, variable = "production"
+                        , r = 200, min_count = 3)
 
 print(production)
 
@@ -54,13 +66,17 @@ plot(smoothed_safe, zlim=zlim)
 production_mean <- mean(smoothed_safe)
 production_total <- sum(smoothed_safe)
 
-# and cread
-filledContour(production_mean, nlevels = 6, main = "Mean production")
+# and create a contour plot
+raster::filledContour(production_mean, nlevels = 6, main = "Mean production")
 
-filledContour(production$value$sum)
-filledContour(production_total, nlevels = 15
+raster::filledContour(production_total, nlevels = 15
              , col = hcl.colors(21, rev=TRUE)
              , main="Total production")
+}
+\references{
+de Jonge, E., & de Wolf, P. P. (2016, September). Spatial smoothing and statistical disclosure control. In International Conference on Privacy in Statistical Databases (pp. 107-117). Springer, Cham.
+
+de Wolf, P. P., & de Jonge, E. (2018, September). Safely Plotting Continuous Variables on a Map. In International Conference on Privacy in Statistical Databases (pp. 347-359). Springer, Cham.
 }
 \seealso{
 Other protection methods: \code{\link{protect_quadtree}},

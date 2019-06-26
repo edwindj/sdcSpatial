@@ -4,13 +4,20 @@
 \alias{smooth_raster}
 \title{Create kde density version of a raster}
 \usage{
-smooth_raster(x, bw = raster::res(x), na.rm = TRUE, pad = TRUE,
+smooth_raster(x, bw = raster::res(x), smooth_fact = 5,
+  keep_resolution = TRUE, na.rm = TRUE, pad = TRUE,
   threshold = NULL, ...)
 }
 \arguments{
 \item{x}{raster object}
 
 \item{bw}{bandwidth}
+
+\item{smooth_fact}{\code{integer}, disaggregates the raster to have a
+better smoothing}
+
+\item{keep_resolution}{\code{integer}, should the returned map have same
+resolution as \code{x}?}
 
 \item{na.rm}{should the \code{NA} value be removed from the raster?}
 

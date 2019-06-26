@@ -4,10 +4,13 @@
 \alias{protect_quadtree}
 \title{Protect a raster with  a quadtree method.}
 \usage{
-protect_quadtree(x, ...)
+protect_quadtree(x, max_zoom = Inf, ...)
 }
 \arguments{
 \item{x}{\code{\link{sdc_raster}} object}
+
+\item{max_zoom}{\code{numeric}, restricts the number of zoom and thus the max resolution.
+The max resolution = resolution * 2^max_zoom.}
 
 \item{...}{Arguments passed on to \code{is_sensitive}
 \describe{
@@ -25,12 +28,12 @@ a \code{\link{sdc_raster}} object, in which sensitive cells have been recursivel
 does this recursively until no sensitive cells are left.
 }
 \details{
-This implementation generalizes the method as described by Suñé et al, in which there is no
+This implementation generalizes the method as described by Suñé et al., in which there is no
 risk function, and only a  \code{min_count} to determine sensitivity.
-Furthermore the examples given
-are only for count data (\code{x$value$count}), not for mean or summed values.
-Currently the translation feature is not (yet) implemented, for it does not take the
-\code{disclosure_risk} into account.
+Furthermore the method the article
+only handles count data (\code{x$value$count}), not mean or summed values.
+Currently the translation feature of the article is not (yet) implemented, for the
+original method does not take the \code{disclosure_risk} into account.
 }
 \examples{
 library(raster)
@@ -43,7 +46,7 @@ plot(fined_qt)
 fined <- sdc_raster(enterprises, enterprises$fined, r=50)
 plot(fined)
 fined_qt <- protect_quadtree(fined)
-
+plot(fined_qt, col=hcl.colors(20, "Blues", rev=TRUE))
 
 }
 \references{

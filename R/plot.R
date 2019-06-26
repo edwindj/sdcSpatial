@@ -4,6 +4,7 @@
 #' @param x [`sdc_raster`] object to be plotted
 #' @param value `character` which value layer to be used for values, e.g. "sum", "count", "mean" (default).
 #' @param sensitive `logical` show the sensitivity in the plot?
+#' @param col color palette to be used, passed on to [raster::plot()].
 #' @param ... passed on to [raster::plot()]
 #' @param main title of plot
 #' @family plotting
@@ -14,6 +15,7 @@ plot.sdc_raster <- function( x
                            , sensitive = TRUE
                            , ...
                            , main = paste(substitute(x))
+                           , col = hcl.colors(20, "Blues", rev = TRUE)
                            ){
   # TODO improve argument handling setting main etc.
   #main <- paste0(main)
@@ -23,10 +25,10 @@ plot.sdc_raster <- function( x
   }
 
   r <- x$value[[value]]
-  raster::plot(r, ..., main=main)
+  raster::plot(r, ..., main=main, col = col)
 
   if (isTRUE(sensitive)){
-    plot_sensitive(x, value = value, ...)
+    plot_sensitive(x, value = value, col = col, ...)
   }
 }
 
@@ -35,13 +37,14 @@ plot_risk <- function(x, ...){
 
 #' Plot the sensitive cells of the sdc_raster.
 #'
-#' Plot the sensitive cells of the sdc_raster.
+#' Plots t the sensitive cells of the sdc_raster
 #' @param x [sdc_raster] object
 #' @param value [character] which value layer to be used for values, e.g. "sum", "count", "mean" (default).
 #' @param main [character] title of map.
-#' @param ... passed on to [raster::plot()].
+#' @param ... passed on to [`plot.sdc_raster`].
 #' @export
 #' @family plotting
+#' @importFrom grDevices hcl.colors
 plot_sensitive <- function(x, value = "mean", main = "sensitive", ...){
   assert_sdc_raster(x)
   plot.sdc_raster(x, value = value, main = main, sensitive = FALSE, ..., col.main="red")

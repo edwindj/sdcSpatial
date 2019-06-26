@@ -3,14 +3,16 @@
 #' `protect_quadtree` reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
 #' does this recursively until no sensitive cells are left.
 #'
-#' This implementation generalizes the method as described by Suñé et al, in which there is no
+#' This implementation generalizes the method as described by Suñé et al., in which there is no
 #' risk function, and only a  `min_count` to determine sensitivity.
-#' Furthermore the examples given
-#' are only for count data (`x$value$count`), not for mean or summed values.
-#' Currently the translation feature is not (yet) implemented, for it does not take the
-#' `disclosure_risk` into account.
+#' Furthermore the method the article
+#' only handles count data (`x$value$count`), not mean or summed values.
+#' Currently the translation feature of the article is not (yet) implemented, for the
+#' original method does not take the `disclosure_risk` into account.
 #'
 #' @param x [`sdc_raster`] object
+#' @param max_zoom `numeric`, restricts the number of zoom and thus the max resolution.
+#' The max resolution = resolution * 2^max_zoom.
 #' @inheritDotParams is_sensitive
 #' @return a [`sdc_raster`] object, in which sensitive cells have been recursively aggregated until not sensitive.
 #' @export
@@ -18,61 +20,66 @@
 #' @family protection methods
 #' @references Suñé, E., Rovira, C., Ibáñez, D., Farré, M. (2017). Statistical disclosure control on visualising geocoded population data using
 #' a structure in quadtrees, NTTS 2017
-protect_quadtree <- function(x, ...){
-  sdc1 <- x
+protect_quadtree <- function(x, max_zoom = Inf, ...){
+  # copy the object
+  sdc <- x
 
   zoom <- seq_len(floor(log(min(nrow(x$value), ncol(x$value)), 2)))
+  zoom <- zoom[zoom < max_zoom]
 
-  # TODO optional restriction to max zoom
   for (fact in 2^zoom){
     # logical
-    z1 <- sdc1$value
+    z1 <- sdc$value
 
     #sdc1$value <- z1
-    z1$sens <- is_sensitive(sdc1)
-
+    z1$sens <- is_sensitive(sdc)
     # maybe use scale of sdc1?
     z1$scale <- 1
     # use scale to adjust count?
     #z1 <- subset(z1, c("sum", "count", "sens", "scale"))
 
-    # not sure if we should do a rescaling of sum and count with scale (if that is sdc1$scale)
+    # not sure if we should do a rescaling of sum and count with scale (if that is sdc$scale)
     z2 <- raster::aggregate(z1[[c("sum", "count", "sens", "scale")]], fact=fact, fun=sum) #
 
     # bigger area, so rescale
     z2$sum <- z2$sum/z2$scale
     z2$count <- z2$count/z2$scale
 
-    if (sdc1$type == "numeric"){
-      z2$max = raster::aggregate(sdc1$value$max, fact = fact, fun = max)
+    if (sdc$type == "numeric"){
+      z2$max = raster::aggregate(sdc$value$max, fact = fact, fun = max)
       # not correct, the max2 of max should be also used!
-      z2$max2 = raster::aggregate(sdc1$value$max2, fact = fact, fun = max)
+      z2$max2 = raster::aggregate(sdc$value$max2, fact = fact, fun = max)
     }
     # reorder z1 to have same order as z2, implicitly dropping "mean'
     z1 <- z1[[names(z2)]]
 
     z2 <- raster::mask(z2, z2$sens, maskvalue=0)
     z2 <- raster::disaggregate(z2, fact=fact)
+
+    # crop needed because aggregate might have changed the raster size
     z2 <- raster::crop(z2, z1)
     z2 <- raster::cover(z2, z1)
-    sdc1$value <- z2[[c("sum", "count")]]
-    sdc1$scale  <- sdc1$scale / z2$scale
+
+    sdc$value <- z2[[c("sum", "count")]]
+    sdc$scale  <- sdc$scale / z2$scale
 
     # not directly necessary to do here, but helps in debugging
-    sdc1$value$mean <- mean(sdc1)
+    sdc$value$mean <- mean(sdc)
 
-    if (sdc1$type == "numeric"){
-      sdc1$value$max = z2$max
-      sdc1$value$max2 = z2$max2
+    if (sdc$type == "numeric"){
+      sdc$value$max = z2$max
+      sdc$value$max2 = z2$max2
     }
   }
-  #last check: if a lowest detail block is still sensitive, replace it with its highest detail.
-  sens <- is_sensitive(sdc1, ...)
-  value <- raster::mask(x$value, sens, maskvalue = 0)
-  value <- raster::cover(value, sdc1$value)
-  sdc1$value <- value
+
+  # last check: if a lowest detail block is still sensitive, replace it with its highest detail.
+  # sens <- is_sensitive(sdc, ...)
+  # value <- raster::mask(x$value, sens, maskvalue = 0)
+  # value <- raster::cover(value, sdc$value)
+  # sdc$value <- value
+
   # adjust scale
-  sdc1
+  sdc
 }
 
 # N <- 4
@@ -90,4 +97,6 @@ protect_quadtree <- function(x, ...){
 # b1 <- brick(l)
 # as.matrix(b1$count)
 #
-# sdc <- new_sdc_raster(b1, "logical", max_risk = 0.95, min_count=10)
+# sdc <- new_sdc_raster(b1, "logical", max_risk = 0.95, min_count=10, risk_type = "discrete")
+# plot(sdc)
+# plot(protect_quadtree(sdc))

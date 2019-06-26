@@ -24,13 +24,17 @@ knitr::opts_chunk$set(
 # preloading
 library(sdcSpatial)
 ```
-Plotting data on a map is a popular and helpful tool to analyse spatial data. Increasingly spatial point
-data is becoming available resulting in more and more spatial plots that not only are used for analytical purposes, but also for publication and communication. 
-In R it is easy to make spatial plots using e.g. the rspatial packages, `ggplot2`, `tmap`, `mapview` or `leaflet`. However when the plot is meant to show the spatial distribution of a sensitive variable, it is possible that unwantedly a sensitive value of an individual person or enterprise is revealed. 
-It is desirable to make a plot that contains spatial patterns (if any) 
-but protects the privacy of the observed population as much as possible.
+Plotting data on a map is a popular and helpful tool to analyse spatial data. 
+In R it is easy to make spatial plots using e.g. spatial packages, `ggplot2`, 
+`tmap`, `mapview` or `leaflet`. 
+However when plotting the spatial distribution of a 
+sensitive variable, you may unwantedly reveal a sensitive value of an 
+individual observation, e.g. the income of a person. Adjusting data or output
+to 
 
-`sdcSpatial` contains  functions to create spatial distribution maps, assess the risk of disclosure on a location and to suppress or adjust revealing values at certain locations.
+`sdcSpatial` contains  functions to create spatial distribution maps, 
+assess the risk of disclosure on a location and to suppress or adjust 
+revealing values at certain locations.
 
 ```{r}
 library(sdcSpatial)

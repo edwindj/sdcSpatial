@@ -11,9 +11,9 @@ status](https://ci.appveyor.com/api/projects/status/github/edwindj/sdcSpatial?br
 # sdcSpatial
 
 *Publishing a map created using standard rastering or density estimation
-can reveal sensitive values at locations*. `sdcSpatial` is an opensource
-R package to create spatial density (raster) maps from point data while
-protecting the privacy of individual observations.
+can reveal sensitive values*. `sdcSpatial` is an opensource R package to
+create spatial density (raster) maps from point data while protecting
+the privacy of individual observations.
 
 `sdcSpatial` offers a `sdc_raster` class that allows to:
 
@@ -41,8 +41,12 @@ library(sdcSpatial)
 library(raster)
 #> Loading required package: sp
 
-# create a sdc_raster from point data with raster with resolution of 200m
-production <- sdc_raster(enterprises, variable = "production", r = 200, min_count = 3)
+data(enterprises)
+
+# create a sdc_raster from point data with raster with
+# a resolution of 200m
+production <- sdc_raster(enterprises, variable = "production"
+                        , r = 200, min_count = 3)
 
 print(production)
 #> numeric sdc_raster object: 
@@ -86,7 +90,7 @@ plot(smoothed)
 
 # what is the sensitivy fraction?
 sensitivity_score(smoothed)
-#> [1] 0.1779744
+#> [1] 0.09800066
 
 # let's remove the sensitive data.
 smoothed_safe <- remove_sensitive(smoothed, min_count = 3)
@@ -101,14 +105,17 @@ plot(smoothed_safe, zlim=zlim)
 production_mean <- mean(smoothed_safe)
 production_total <- sum(smoothed_safe)
 
-# and cread
-filledContour(production_mean, nlevels = 6, main = "Mean production")
+# and create a contour plot
+raster::filledContour(production_mean, nlevels = 6, main = "Mean production")
 ```
 
 <img src="man/figures/README-example-5.png" width="100%" />
 
 ``` r
-filledContour(production_total, nlevels = 10, col = hcl.colors(11), main="Total production")
+
+raster::filledContour(production_total, nlevels = 15
+             , col = hcl.colors(21, rev=TRUE)
+             , main="Total production")
 ```
 
 <img src="man/figures/README-example-6.png" width="100%" />
