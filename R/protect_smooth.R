@@ -13,8 +13,13 @@
 #' @example ./example/protect_smooth.R
 #' @export
 #' @family protection methods
-#' @references de Jonge, E., & de Wolf, P. P. (2016, September). Spatial smoothing and statistical disclosure control. In International Conference on Privacy in Statistical Databases (pp. 107-117). Springer, Cham.
-#' @references de Wolf, P. P., & de Jonge, E. (2018, September). Safely Plotting Continuous Variables on a Map. In International Conference on Privacy in Statistical Databases (pp. 347-359). Springer, Cham.
+#' @references de Jonge, E., & de Wolf, P. P. (2016, September).
+#' Spatial smoothing and statistical disclosure control.
+#' In International Conference on Privacy in Statistical Databases
+#' (pp. 107-117). Springer, Cham.
+#' @references de Wolf, P. P., & de Jonge, E. (2018, September).
+#' Safely Plotting Continuous Variables on a Map. In International Conference
+#' on Privacy in Statistical Databases (pp. 347-359). Springer, Cham.
 protect_smooth <- function( x
                           , bw = raster::res(x$value)
                           , ...
@@ -28,6 +33,7 @@ protect_smooth <- function( x
   # currently choosing center: maybe off center is a better idea
   x$scale <- x$scale * w[ceiling(nrow(w)/4), ceiling(ncol(w)/4)]
 
+  # TODO adjust for keep_resolution
   r$count <- smooth_raster(r$count, bw = bw, ...)
   r$sum <- smooth_raster(r$sum, bw = bw, ...)
   r$mean <- r$sum / r$count

@@ -8,7 +8,7 @@ sensitivity_score(x, max_risk = x$max_risk, min_count = x$min_count,
   ...)
 }
 \arguments{
-\item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
+\item{x}{\code{\link{sdc_raster}} object.}
 
 \item{max_risk}{a risk value higher than \code{max_risk} will be sensitive.}
 

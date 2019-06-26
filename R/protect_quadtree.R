@@ -53,6 +53,7 @@ protect_quadtree <- function(x, max_zoom = Inf, ...){
     # reorder z1 to have same order as z2, implicitly dropping "mean'
     z1 <- z1[[names(z2)]]
 
+    #only take value that were sensitive
     z2 <- raster::mask(z2, z2$sens, maskvalue=0)
     z2 <- raster::disaggregate(z2, fact=fact)
 

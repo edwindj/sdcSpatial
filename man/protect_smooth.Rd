@@ -52,7 +52,7 @@ sensitivity_score(production)
 cellStats(sensitive, mean)
 
 # let's smooth to reduce the sensitivity
-smoothed <- protect_smooth(production, bw = 400)
+smoothed <- protect_smooth(production, bw = 400, keep_resolution=TRUE)
 plot(smoothed)
 
 # what is the sensitivy fraction?
@@ -74,9 +74,14 @@ raster::filledContour(production_total, nlevels = 15
              , main="Total production")
 }
 \references{
-de Jonge, E., & de Wolf, P. P. (2016, September). Spatial smoothing and statistical disclosure control. In International Conference on Privacy in Statistical Databases (pp. 107-117). Springer, Cham.
+de Jonge, E., & de Wolf, P. P. (2016, September).
+Spatial smoothing and statistical disclosure control.
+In International Conference on Privacy in Statistical Databases
+(pp. 107-117). Springer, Cham.
 
-de Wolf, P. P., & de Jonge, E. (2018, September). Safely Plotting Continuous Variables on a Map. In International Conference on Privacy in Statistical Databases (pp. 347-359). Springer, Cham.
+de Wolf, P. P., & de Jonge, E. (2018, September).
+Safely Plotting Continuous Variables on a Map. In International Conference
+on Privacy in Statistical Databases (pp. 347-359). Springer, Cham.
 }
 \seealso{
 Other protection methods: \code{\link{protect_quadtree}},

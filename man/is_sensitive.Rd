@@ -8,13 +8,13 @@ is_sensitive(x, max_risk = x$max_risk, min_count = x$min_count,
   risk_type = x$risk_type)
 }
 \arguments{
-\item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
+\item{x}{\code{\link{sdc_raster}} object.}
 
 \item{max_risk}{a risk value higher than \code{max_risk} will be sensitive.}
 
 \item{min_count}{a count lower than \code{min_count} will be sensitive.}
 
-\item{risk_type}{what kind of measure should be used. (Details)}
+\item{risk_type}{what kind of measure should be used (see details).}
 }
 \description{
 Create a binary raster with sensitive locations.
@@ -26,6 +26,18 @@ Different risk functions can be used:
 \item internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value
 \item discrete (logical variable), calculates the fraction of sensitive values.
 }
+}
+\examples{
+dwellings_sp <- dwellings
+sp::coordinates(dwellings_sp) <- ~ x + y
+sp::proj4string(dwellings_sp) <- "+init=epsg:28992"
+
+# create a 1km grid
+unemployed <- sdc_raster(dwellings_sp, dwellings_sp$unemployed, r = 1e3)
+print(unemployed)
+
+# retrieve the sensitive cells
+is_sensitive(unemployed)
 }
 \seealso{
 Other sensitive: \code{\link{disclosure_risk}},

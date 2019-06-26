@@ -3,10 +3,11 @@
 #' Create kde density version of a raster
 #' @param x raster object
 #' @param bw bandwidth
-#' @param smooth_fact `integer`, disaggregates the raster to have a
+#' @param smooth_fact `integer`, disaggregate factor to have a
 #' better smoothing
 #' @param keep_resolution `integer`, should the returned map have same
-#' resolution as `x`?
+#' resolution as `x` or keep the disaggregated raster resulting from
+#' `smooth_fact`?
 #' @param na.rm should the `NA` value be removed from the raster?
 #' @param pad should the data be padded?
 #' @param ... passed through to [`focal`].
@@ -26,12 +27,14 @@ smooth_raster <- function( x
     return(x)
   }
 
-  x <- raster::disaggregate(x, 5)
+  x <- raster::disaggregate(x, smooth_fact)
 
   w <- raster::focalWeight(x, bw)
   x_s <- raster::focal(x, w = w, na.rm = na.rm, pad = pad, type="Gaus", ...)
 
-  x_s <- raster::aggregate(x_s, fact = 5, fun=mean)
+  if (isTRUE(keep_resolution)){
+    x_s <- raster::aggregate(x_s, fact = smooth_fact, fun=mean)
+  }
 
   if (is.numeric(threshold)){
     is.na(x_s) <- x_s < threshold

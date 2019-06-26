@@ -3,7 +3,7 @@
 \name{remove_sensitive}
 \alias{remove_sensitive}
 \alias{mask_sensitive}
-\title{remove sensitive cells from raster}
+\title{Remove sensitive cells from raster}
 \usage{
 remove_sensitive(x, max_risk = x$max_risk, min_count = x$min_count,
   ...)
@@ -11,7 +11,7 @@ remove_sensitive(x, max_risk = x$max_risk, min_count = x$min_count,
 mask_sensitive(x, max_risk = x$max_risk, min_count = x$min_count, ...)
 }
 \arguments{
-\item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
+\item{x}{\code{\link{sdc_raster}} object.}
 
 \item{max_risk}{a risk value higher than \code{max_risk} will be sensitive.}
 
@@ -25,7 +25,7 @@ sdc_raster object with sensitive cells set to \code{NA}.
 \description{
 Remove sensitive cells from raster. These sensitive cells are set to NA.
 \code{mask_sensitive} and \code{remove_sensitive} are synonyms, to accommodate both
-experienced \code{raster}users as well as sdc users.
+experienced \code{raster} users as well as sdc users.
 }
 \examples{
 library(raster)

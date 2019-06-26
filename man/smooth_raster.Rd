@@ -13,11 +13,12 @@ smooth_raster(x, bw = raster::res(x), smooth_fact = 5,
 
 \item{bw}{bandwidth}
 
-\item{smooth_fact}{\code{integer}, disaggregates the raster to have a
+\item{smooth_fact}{\code{integer}, disaggregate factor to have a
 better smoothing}
 
 \item{keep_resolution}{\code{integer}, should the returned map have same
-resolution as \code{x}?}
+resolution as \code{x} or keep the disaggregated raster resulting from
+\code{smooth_fact}?}
 
 \item{na.rm}{should the \code{NA} value be removed from the raster?}
 

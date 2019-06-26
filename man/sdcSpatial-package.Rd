@@ -6,6 +6,11 @@
 \alias{sdcSpatial-package}
 \title{Privacy Protected maps}
 \description{
+\code{sdcSpatial} contains  functions to create spatial distribution maps,
+assess the risk of disclosure on a location and to suppress or adjust
+revealing values at certain locations.
+}
+\details{
 \code{sdcSpatial} working horse is the \code{\link[=sdc_raster]{sdc_raster()}} object upon which the
 following methods can be applied:
 }
@@ -25,11 +30,13 @@ following methods can be applied:
 \item \code{\link[=protect_smooth]{protect_smooth()}}
 \item \code{\link[=protect_quadtree]{protect_quadtree()}}
 }
+}
 
-@section Extraction:
+\section{Extraction}{
+
 \itemize{
-\item \code{sum}
-\item \code{mean}
+\item \code{sum}, extract the \code{sum} layer from a \code{sdc_raster} object
+\item \code{mean}, extract the \code{mean} layer from a \code{sdc_raster} object
 }
 }
 

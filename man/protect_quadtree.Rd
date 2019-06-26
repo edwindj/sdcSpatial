@@ -14,10 +14,10 @@ The max resolution = resolution * 2^max_zoom.}
 
 \item{...}{Arguments passed on to \code{is_sensitive}
 \describe{
-  \item{x}{\link{sdc_raster} object created with \code{\link[=sdc_raster]{sdc_raster()}}}
+  \item{x}{\code{\link{sdc_raster}} object.}
   \item{max_risk}{a risk value higher than \code{max_risk} will be sensitive.}
   \item{min_count}{a count lower than \code{min_count} will be sensitive.}
-  \item{risk_type}{what kind of measure should be used. (Details)}
+  \item{risk_type}{what kind of measure should be used (see details).}
 }}
 }
 \value{

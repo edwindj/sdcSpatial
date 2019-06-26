@@ -1,6 +1,10 @@
 #' Plot a sdc_raster object
 #'
-#' Plot a sdc_raster object
+#' Plot a sdc_raster object together with its sensitivity.
+#'
+#' When `sensitive` is set to `TRUE`, a side-by-side plot will be made of
+#' the `value` and its `sensitivity`.
+#'
 #' @param x [`sdc_raster`] object to be plotted
 #' @param value `character` which value layer to be used for values, e.g. "sum", "count", "mean" (default).
 #' @param sensitive `logical` show the sensitivity in the plot?
@@ -39,7 +43,8 @@ plot_risk <- function(x, ...){
 #'
 #' Plots t the sensitive cells of the sdc_raster
 #' @param x [sdc_raster] object
-#' @param value [character] which value layer to be used for values, e.g. "sum", "count", "mean" (default).
+#' @param value [character] which value layer to be used for values,
+#'  e.g. "sum", "count", "mean" (default).
 #' @param main [character] title of map.
 #' @param ... passed on to [`plot.sdc_raster`].
 #' @export
@@ -47,7 +52,9 @@ plot_risk <- function(x, ...){
 #' @importFrom grDevices hcl.colors
 plot_sensitive <- function(x, value = "mean", main = "sensitive", ...){
   assert_sdc_raster(x)
-  plot.sdc_raster(x, value = value, main = main, sensitive = FALSE, ..., col.main="red")
+  plot.sdc_raster( x, value = value, main = main, sensitive = FALSE
+                 , ..., col.main="red"
+                 )
   sens <- is_sensitive(x)
   raster::colortable(sens) <- c("transparent", "red")
   raster::plot(sens, add = TRUE)

@@ -9,7 +9,8 @@ plot_sensitive(x, value = "mean", main = "sensitive", ...)
 \arguments{
 \item{x}{\link{sdc_raster} object}
 
-\item{value}{\link{character} which value layer to be used for values, e.g. "sum", "count", "mean" (default).}
+\item{value}{\link{character} which value layer to be used for values,
+e.g. "sum", "count", "mean" (default).}
 
 \item{main}{\link{character} title of map.}
 

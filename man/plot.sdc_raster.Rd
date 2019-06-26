@@ -22,7 +22,11 @@
 \item{col}{color palette to be used, passed on to \code{\link[raster:plot]{raster::plot()}}.}
 }
 \description{
-Plot a sdc_raster object
+Plot a sdc_raster object together with its sensitivity.
+}
+\details{
+When \code{sensitive} is set to \code{TRUE}, a side-by-side plot will be made of
+the \code{value} and its \code{sensitivity}.
 }
 \seealso{
 Other plotting: \code{\link{plot_sensitive}}
