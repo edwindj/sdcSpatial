@@ -171,6 +171,19 @@ sensitive</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>object of <code>class</code> "sdc_raster":</p><ul>
+<li><p><code>$value</code>: <code><a href='https://www.rdocumentation.org/packages/raster/topics/brick'>raster::brick()</a></code> object with differenct layers e.g. <code>count</code>, <code>sum</code>, <code>mean</code>.</p></li>
+<li><p><code>$max_risk</code>: the threshold at the <code><a href='disclosure_risk.html'>disclosure_risk()</a></code> is considered sensitive.</p></li>
+<li><p><code>$min_count</code>: the minimum number of observation before a cell is <strong>not</strong> sensitive</p></li>
+<li><p><code>$scale</code>: used together with <code>min_count</code> to determine sensitivity: result
+of protection operation <code><a href='protect_smooth.html'>protect_smooth()</a></code> or <code><a href='protect_quadtree.html'>protect_quadtree()</a></code>.</p></li>
+<li><p><code>$type</code>: of <code>variable</code>, either <code>numeric</code> or <code>logical</code></p></li>
+<li><p><code>$risk_type</code>, "external", "internal" or "discrete".</p></li>
+</ul>
+
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other sensitive: <code><a href='disclosure_risk.html'>disclosure_risk</a></code>,
@@ -213,6 +226,8 @@ sensitive</p></td>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

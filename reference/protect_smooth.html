@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="Protect a sdc_raster by smoothing — protect_smooth" />
 
-<meta property="og:description" content="Protect a sdc_raster by smoothing." />
+<meta property="og:description" content="Reduce the sensitivity by applying a Gaussian smoother." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -118,7 +118,7 @@
 
     <div class="ref-description">
     
-    <p>Protect a sdc_raster by smoothing.</p>
+    <p>Reduce the sensitivity by applying a Gaussian smoother.</p>
     
     </div>
 
@@ -141,6 +141,20 @@
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The sensitivity of a raster can be decreased by applying a kernel density smoother as
+argued by de Jonge et al. (2016) and de Wolf et al. (2018). Smoothing spatially spreads
+localized values, reducing the risk for location disclosure.
+The kernel applied is a Gaussian kernel with a bandwidth <code>bw</code> supplied by the user.
+The smoother acts upon the <code>x$value$count</code> and <code>x$value$sum</code>
+from which a new <code>x$value$mean</code> is derived.</p>
+    
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>de Jonge, E., &amp; de Wolf, P. P. (2016, September). Spatial smoothing and statistical disclosure control. In International Conference on Privacy in Statistical Databases (pp. 107-117). Springer, Cham.</p>
+<p>de Wolf, P. P., &amp; de Jonge, E. (2018, September). Safely Plotting Continuous Variables on a Map. In International Conference on Privacy in Statistical Databases (pp. 347-359). Springer, Cham.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other protection methods: <code><a href='protect_quadtree.html'>protect_quadtree</a></code>,
@@ -151,8 +165,12 @@
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>sdcSpatial</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>raster</span>)
 
-<span class='co'># create a sdc_raster from point data with raster with resolution of 200m</span>
-<span class='no'>production</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='kw'>variable</span> <span class='kw'>=</span> <span class='st'>"production"</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>200</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='fl'>3</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>enterprises</span>)
+
+<span class='co'># create a sdc_raster from point data with raster with</span>
+<span class='co'># a resolution of 200m</span>
+<span class='no'>production</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='kw'>variable</span> <span class='kw'>=</span> <span class='st'>"production"</span>
+                        , <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>200</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='fl'>3</span>)
 
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>production</span>)</div><div class='output co'>#&gt; numeric sdc_raster object: 
 #&gt;    resolution: 200 200 ,  max_risk: 0.95 , min_count: 3 
@@ -171,7 +189,7 @@
 <span class='no'>smoothed</span> <span class='kw'>&lt;-</span> <span class='fu'>protect_smooth</span>(<span class='no'>production</span>, <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>400</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>smoothed</span>)</div><div class='img'><img src='protect_smooth-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># what is the sensitivy fraction?</span>
-<span class='fu'><a href='sensitivity_score.html'>sensitivity_score</a></span>(<span class='no'>smoothed</span>)</div><div class='output co'>#&gt; [1] 0.1779744</div><div class='input'>
+<span class='fu'><a href='sensitivity_score.html'>sensitivity_score</a></span>(<span class='no'>smoothed</span>)</div><div class='output co'>#&gt; [1] 0.09800066</div><div class='input'>
 <span class='co'># let's remove the sensitive data.</span>
 <span class='no'>smoothed_safe</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='remove_sensitive.html'>remove_sensitive</a></span>(<span class='no'>smoothed</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='fl'>3</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>smoothed_safe</span>, <span class='kw'>zlim</span><span class='kw'>=</span><span class='no'>zlim</span>)</div><div class='img'><img src='protect_smooth-4.png' alt='' width='700' height='433' /></div><div class='input'>
@@ -179,14 +197,21 @@
 <span class='no'>production_mean</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>(<span class='no'>smoothed_safe</span>)
 <span class='no'>production_total</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sum'>sum</a></span>(<span class='no'>smoothed_safe</span>)
 
-<span class='co'># and cread</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/filledContour'>filledContour</a></span>(<span class='no'>production_mean</span>, <span class='kw'>nlevels</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>"Mean production"</span>)</div><div class='img'><img src='protect_smooth-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/filledContour'>filledContour</a></span>(<span class='no'>production_total</span>, <span class='kw'>nlevels</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>hcl.colors</a></span>(<span class='fl'>21</span>, <span class='kw'>rev</span><span class='kw'>=</span><span class='fl'>TRUE</span>), <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Total production"</span>)</div><div class='img'><img src='protect_smooth-6.png' alt='' width='700' height='433' /></div></pre>
+<span class='co'># and create a contour plot</span>
+<span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/filledContour'>filledContour</a></span>(<span class='no'>production_mean</span>, <span class='kw'>nlevels</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>"Mean production"</span>)</div><div class='img'><img src='protect_smooth-5.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/filledContour'>filledContour</a></span>(<span class='no'>production_total</span>, <span class='kw'>nlevels</span> <span class='kw'>=</span> <span class='fl'>15</span>
+             , <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>hcl.colors</a></span>(<span class='fl'>21</span>, <span class='kw'>rev</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
+             , <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Total production"</span>)</div><div class='img'><img src='protect_smooth-6.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#references">References</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

@@ -88,7 +88,7 @@
 
     
     
-<p>Plotting data on a map is a popular and helpful tool to analyse spatial data. Increasingly spatial point data is becoming available resulting in more and more spatial plots that not only are used for analytical purposes, but also for publication and communication. In R it is easy to make spatial plots using e.g. the rspatial packages, <code>ggplot2</code>, <code>tmap</code>, <code>mapview</code> or <code>leaflet</code>. However when the plot is meant to show the spatial distribution of a sensitive variable, it is possible that unwantedly a sensitive value of an individual person or enterprise is revealed. It is desirable to make a plot that contains spatial patterns (if any) but protects the privacy of the observed population as much as possible.</p>
+<p>Plotting data on a map is a popular and helpful tool to analyse spatial data. In R it is easy to make spatial plots using e.g. spatial packages, <code>ggplot2</code>, <code>tmap</code>, <code>mapview</code> or <code>leaflet</code>. However when plotting the spatial distribution of a sensitive variable, you may unwantedly reveal a sensitive value of an individual observation, e.g. the income of a person. Adjusting data or output to</p>
 <p><code>sdcSpatial</code> contains functions to create spatial distribution maps, assess the risk of disclosure on a location and to suppress or adjust revealing values at certain locations.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sdcSpatial)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(raster)</a>
@@ -125,9 +125,9 @@
 <h2 class="hasAnchor">
 <a href="#protection-methods" class="anchor"></a>Protection methods</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(production)</a></code></pre></div>
-<p><img src="privacy_protecting_maps_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p><img src="privacy_protecting_maps_files/figure-html/unnamed-chunk-4-1.png" width="100%"></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(<span class="kw"><a href="../reference/remove_sensitive.html">remove_sensitive</a></span>(production))</a></code></pre></div>
-<p><img src="privacy_protecting_maps_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+<p><img src="privacy_protecting_maps_files/figure-html/unnamed-chunk-5-1.png" width="100%"></p>
 </div>
   </div>
 

@@ -108,18 +108,22 @@
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(raster)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Loading required package: sp</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co"># create a sdc_raster from point data with raster with resolution of 200m</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">production &lt;-<span class="st"> </span><span class="kw"><a href="reference/sdc_raster.html">sdc_raster</a></span>(enterprises, <span class="dt">variable =</span> <span class="st">"production"</span>, <span class="dt">r =</span> <span class="dv">200</span>, <span class="dt">min_count =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(production)</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; numeric sdc_raster object: </span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;    resolution: 200 200 ,  max_risk: 0.95 , min_count: 3 </span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;    mean sensitivity score [0,1]:  0.6328234</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co"># plot the raster</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14">zlim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="fl">3e4</span>)</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co"># show which raster cells are sensitive</span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(production, <span class="dt">zlim=</span>zlim)</a></code></pre></div>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(enterprises)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co"># create a sdc_raster from point data with raster with</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co"># a resolution of 200m</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">production &lt;-<span class="st"> </span><span class="kw"><a href="reference/sdc_raster.html">sdc_raster</a></span>(enterprises, <span class="dt">variable =</span> <span class="st">"production"</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">                        , <span class="dt">r =</span> <span class="dv">200</span>, <span class="dt">min_count =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(production)</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; numeric sdc_raster object: </span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt;    resolution: 200 200 ,  max_risk: 0.95 , min_count: 3 </span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt;    mean sensitivity score [0,1]:  0.6328234</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co"># plot the raster</span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18">zlim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="fl">3e4</span>)</a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co"># show which raster cells are sensitive</span></a>
+<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(production, <span class="dt">zlim=</span>zlim)</a></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># but we can also retrieve directly the raster</span></a>
@@ -141,7 +145,7 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co"># what is the sensitivy fraction?</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="reference/sensitivity_score.html">sensitivity_score</a></span>(smoothed)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; [1] 0.1779744</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; [1] 0.09800066</span></a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co"># let's remove the sensitive data.</span></a>
 <a class="sourceLine" id="cb5-7" data-line-number="7">smoothed_safe &lt;-<span class="st"> </span><span class="kw"><a href="reference/remove_sensitive.html">remove_sensitive</a></span>(smoothed, <span class="dt">min_count =</span> <span class="dv">3</span>)</a>
@@ -152,12 +156,13 @@
 <a class="sourceLine" id="cb6-3" data-line-number="3">production_mean &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(smoothed_safe)</a>
 <a class="sourceLine" id="cb6-4" data-line-number="4">production_total &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(smoothed_safe)</a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co"># and cread</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_mean, <span class="dt">nlevels =</span> <span class="dv">6</span>, <span class="dt">main =</span> <span class="st">"Mean production"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co"># and create a contour plot</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">raster<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_mean, <span class="dt">nlevels =</span> <span class="dv">6</span>, <span class="dt">main =</span> <span class="st">"Mean production"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-example-5.png" width="100%"></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_total, <span class="dt">nlevels =</span> <span class="dv">15</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">             , <span class="dt">col =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/palettes">hcl.colors</a></span>(<span class="dv">21</span>, <span class="dt">rev=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">             , <span class="dt">main=</span><span class="st">"Total production"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">raster<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_total, <span class="dt">nlevels =</span> <span class="dv">15</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">             , <span class="dt">col =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/palettes">hcl.colors</a></span>(<span class="dv">21</span>, <span class="dt">rev=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">             , <span class="dt">main=</span><span class="st">"Total production"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-example-6.png" width="100%"></p>
 </div>
 </div>

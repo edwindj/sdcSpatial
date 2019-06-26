@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Protect a raster with the quadtree method. — protect_quadtree • sdcSpatial</title>
+<title>Protect a raster with  a quadtree method. — protect_quadtree • sdcSpatial</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,10 @@
 
 
 
-<meta property="og:title" content="Protect a raster with the quadtree method. — protect_quadtree" />
+<meta property="og:title" content="Protect a raster with  a quadtree method. — protect_quadtree" />
 
-<meta property="og:description" content="Protect a raster with the quadtree method." />
+<meta property="og:description" content="protect_quadtree reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
+does this recursively until no sensitive cells are left." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,18 +112,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Protect a raster with the quadtree method.</h1>
+    <h1>Protect a raster with  a quadtree method.</h1>
     <small class="dont-index">Source: <a href='https://github.com/edwindj/sdcSpatial/blob/master/R/protect_quadtree.R'><code>R/protect_quadtree.R</code></a></small>
     <div class="hidden name"><code>protect_quadtree.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Protect a raster with the quadtree method.</p>
+    <p><code>protect_quadtree</code> reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
+does this recursively until no sensitive cells are left.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>protect_quadtree</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>protect_quadtree</span>(<span class='no'>x</span>, <span class='kw'>max_zoom</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -130,6 +132,11 @@
     <tr>
       <th>x</th>
       <td><p><code><a href='sdc_raster.html'>sdc_raster</a></code> object</p></td>
+    </tr>
+    <tr>
+      <th>max_zoom</th>
+      <td><p><code>numeric</code>, restricts the number of zoom and thus the max resolution.
+The max resolution = resolution * 2^max_zoom.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -146,6 +153,20 @@
 
     <p>a <code><a href='sdc_raster.html'>sdc_raster</a></code> object, in which sensitive cells have been recursively aggregated until not sensitive.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This implementation generalizes the method as described by Suñé et al., in which there is no
+risk function, and only a  <code>min_count</code> to determine sensitivity.
+Furthermore the method the article
+only handles count data (<code>x$value$count</code>), not mean or summed values.
+Currently the translation feature of the article is not (yet) implemented, for the
+original method does not take the <code>disclosure_risk</code> into account.</p>
+    
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Suñé, E., Rovira, C., Ibáñez, D., Farré, M. (2017). Statistical disclosure control on visualising geocoded population data using
+a structure in quadtrees, NTTS 2017</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other protection methods: <code><a href='protect_smooth.html'>protect_smooth</a></code>,
@@ -160,8 +181,7 @@
 <span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>fined_qt</span>)</div><div class='img'><img src='protect_quadtree-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>fined</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='no'>enterprises</span>$<span class='no'>fined</span>, <span class='kw'>r</span><span class='kw'>=</span><span class='fl'>50</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>fined</span>)</div><div class='img'><img src='protect_quadtree-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>fined_qt</span> <span class='kw'>&lt;-</span> <span class='fu'>protect_quadtree</span>(<span class='no'>fined</span>)
-<span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>fined_qt</span>)</div><div class='img'><img src='protect_quadtree-4.png' alt='' width='700' height='433' /></div><div class='input'>
-
+<span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>fined_qt</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>hcl.colors</a></span>(<span class='fl'>20</span>, <span class='st'>"Blues"</span>, <span class='kw'>rev</span><span class='kw'>=</span><span class='fl'>TRUE</span>))</div><div class='img'><img src='protect_quadtree-4.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -170,6 +190,10 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#references">References</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

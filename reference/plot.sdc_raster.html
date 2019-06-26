@@ -124,7 +124,8 @@
 
     <pre class="usage"><span class='co'># S3 method for sdc_raster</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>x</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"mean"</span>, <span class='kw'>sensitive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>,
-  <span class='kw'>main</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/substitute'>substitute</a></span>(<span class='no'>x</span>)))</pre>
+  <span class='kw'>main</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/substitute'>substitute</a></span>(<span class='no'>x</span>)), <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>hcl.colors</a></span>(<span class='fl'>20</span>, <span class='st'>"Blues"</span>, <span class='kw'>rev</span> <span class='kw'>=</span>
+  <span class='fl'>TRUE</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,6 +149,10 @@
     <tr>
       <th>main</th>
       <td><p>title of plot</p></td>
+    </tr>
+    <tr>
+      <th>col</th>
+      <td><p>color palette to be used, passed on to <code><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>raster::plot()</a></code>.</p></td>
     </tr>
     </table>
     

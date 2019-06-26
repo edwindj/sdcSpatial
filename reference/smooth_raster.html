@@ -122,7 +122,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>smooth_raster</span>(<span class='no'>x</span>, <span class='kw'>bw</span> <span class='kw'>=</span> <span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/resolution'>res</a></span>(<span class='no'>x</span>), <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>pad</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <pre class="usage"><span class='fu'>smooth_raster</span>(<span class='no'>x</span>, <span class='kw'>bw</span> <span class='kw'>=</span> <span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/resolution'>res</a></span>(<span class='no'>x</span>), <span class='kw'>smooth_fact</span> <span class='kw'>=</span> <span class='fl'>5</span>,
+  <span class='kw'>keep_resolution</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>pad</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -135,6 +136,16 @@
     <tr>
       <th>bw</th>
       <td><p>bandwidth</p></td>
+    </tr>
+    <tr>
+      <th>smooth_fact</th>
+      <td><p><code>integer</code>, disaggregates the raster to have a
+better smoothing</p></td>
+    </tr>
+    <tr>
+      <th>keep_resolution</th>
+      <td><p><code>integer</code>, should the returned map have same
+resolution as <code>x</code>?</p></td>
     </tr>
     <tr>
       <th>na.rm</th>

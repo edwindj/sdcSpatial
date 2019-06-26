@@ -173,7 +173,18 @@ experienced <code>raster</code>users as well as sdc users.</p>
 <span class='co'># plot the normally rastered data</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/plot'>plot</a></span>(<span class='no'>unemployed</span>, <span class='kw'>zlim</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>))</div><div class='img'><img src='remove_sensitive-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>unemployed</span>)</div><div class='img'><img src='remove_sensitive-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>unemployed_safe</span> <span class='kw'>&lt;-</span> <span class='fu'>remove_sensitive</span>(<span class='no'>unemployed</span>, <span class='kw'>risk_type</span><span class='kw'>=</span><span class='st'>"discrete"</span>)
-<span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>unemployed_safe</span>, <span class='kw'>zlim</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>))</div><div class='img'><img src='remove_sensitive-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>unemployed_safe</span>, <span class='kw'>zlim</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>))</div><div class='img'><img src='remove_sensitive-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>unemployed</span>)</div><div class='output co'>#&gt; logical sdc_raster object: 
+#&gt;    resolution: 200 200 ,  max_risk: 0.95 , min_count: 10 
+#&gt;    mean sensitivity score [0,1]:  0.4572576</div><div class='input'><span class='no'>unemployed</span>$<span class='no'>value</span></div><div class='output co'>#&gt; class      : RasterBrick 
+#&gt; dimensions : 62, 61, 3782, 3  (nrow, ncol, ncell, nlayers)
+#&gt; resolution : 200, 200  (x, y)
+#&gt; extent     : 149400, 161600, 457800, 470200  (xmin, xmax, ymin, ymax)
+#&gt; crs        : NA 
+#&gt; source     : memory
+#&gt; names      : sum, count, mean 
+#&gt; min values :   0,     1,    0 
+#&gt; max values : 195,   329,    1 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

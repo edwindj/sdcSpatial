@@ -137,7 +137,7 @@ value (otherwise <code>NA</code>).</p>
     </tr>
     <tr>
       <th>risk_type</th>
-      <td><p>what kind of measure should be used.</p></td>
+      <td><p><code>character</code>: "external", "internal", "discrete".</p></td>
     </tr>
     </table>
     
@@ -148,7 +148,7 @@ value (otherwise <code>NA</code>).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Different risk functions include:</p><ul>
-<li><p>external (numeric variable), calculates how much the largest value comprises the total sum</p></li>
+<li><p>external (numeric variable), calculates how much the largest value comprises the total sum within a cell</p></li>
 <li><p>internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value</p></li>
 <li><p>discrete (logical variable), calculates the fraction of sensitive values.</p></li>
 </ul>
