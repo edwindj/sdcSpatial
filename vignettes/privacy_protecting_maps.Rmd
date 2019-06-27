@@ -41,7 +41,6 @@ or adjust locations with revealing sensitive values.
 
 ```{r}
 library(sdcSpatial)
-library(raster)
 ```
 
 ## Data
@@ -139,8 +138,8 @@ raster::plot(mean_production, col=hcl.colors(15, "YlOrRd", rev = TRUE))
 ```
 
 
-`protect_quadtree` is another protecting method, which we demonstrate with
-the other variable `fined`. 
+`protect_quadtree` is also a protecting method, which we demonstrate with
+the variable `fined`. 
 
 First we create a more fine grained (punned not intended) raster for the variable
 `fined`. 
@@ -168,7 +167,8 @@ which has a sensitivity score of `r sensitivity_score(fined_qt)`.
 The method has the advantage of locally selecting the necessary resolution to 
 suppress sensitive values, while the `protect_smooth` method uses a fixed bandwidth.
 
-The result is blocky in comparison with the smoothing method:
+The result is blocky in comparison with the smoothing method, but safer if you 
+look at the sensitive cells in high fined areas.
 ```{r}
 fined_smooth <- protect_smooth(fined, bw = 500)
 plot(fined_smooth, col = col)
