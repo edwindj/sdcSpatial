@@ -88,7 +88,7 @@
 
     
     
-<p>Plotting data on a map is a popular and helpful tool to analyze spatial data. R makes it easy to plot spatial data using packages such as <code>ggplot2</code>, <code>tmap</code>, <code>mapview</code> or <code>leaflet</code>. However when plotting the spatial distribution of a <em>sensitive</em> variable, you may accidentally reveal a sensitive value of an individual observation, e.g. the income of a person. The procedure of adjusting output data to protect individual observations is called <em>statistical disclosure control</em> and several open source tools are available, including <a href="http://research.cbs.nl/casc/tau.htm"><span class="math inline">\(\tau\)</span>-Argus</a> and R packages <a href="https://cran.r-project.org/package=sdcTable">sdcTable</a> and <a href="https://cran.r-project.org/package=sdcMicro">sdcMicro</a>. Most SDC software operates on values of records, mostly ignoring spatial properties (if any) of data.</p>
+<p>Plotting data on a map is a popular and helpful tool to analyze spatial data. R makes it easy to plot spatial data with packages such as <code>ggplot2</code>, <code>tmap</code>, <code>mapview</code> or <code>leaflet</code>. However when plotting the spatial distribution of a <em>sensitive</em> variable, e.g. income or unemployed, you may accidentally reveal a sensitive value of an individual observation. The procedure of adjusting output data to protect individual observations is called <em>statistical disclosure control</em> and several open source tools are available, including <a href="http://research.cbs.nl/casc/tau.htm"><span class="math inline">\(\tau\)</span>-Argus</a> and R packages <a href="https://cran.r-project.org/package=sdcTable">sdcTable</a> and <a href="https://cran.r-project.org/package=sdcMicro">sdcMicro</a>. Most SDC software operates on values of records, mostly ignoring spatial properties (if any) of data.</p>
 <p><code>sdcSpatial</code> contains functions to create spatial distribution maps, assess the risk of disclosure in locations on the map and to suppress or adjust locations with revealing sensitive values.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sdcSpatial)</a></code></pre></div>
 <div id="data" class="section level2">
@@ -141,7 +141,7 @@
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt;    resolution: 500 500 ,  max_risk: 0.95 , min_count: 10 </span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;    mean sensitivity score [0,1]:  0.6432039</span></a></code></pre></div>
 <p>Printing the <code>production</code> object shows that when we demand that a raster cell should at least have 10 observations (<code>min_count</code>) and its maximum value should not comprise 95% (<code>max_risk</code>) of its total value, then 64% of the data in the map is sensitive!</p>
-<p>For enterprise data a threshold of 10 may be on the high side, so let us change that into 5:</p>
+<p>For enterprise data a threshold of 10 may be on the high side for a 500m by 500m block, so let us change that into 5:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">production<span class="op">$</span>min_count &lt;-<span class="st"> </span><span class="dv">5</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">production<span class="op">$</span>max_risk &lt;-<span class="st"> </span><span class="fl">0.9</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co"># or equally </span></a>
@@ -169,7 +169,7 @@
 <a class="sourceLine" id="cb13-6" data-line-number="6">raster<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(mean_production, <span class="dt">col=</span>col)</a></code></pre></div>
 <p><img src="privacy_protecting_maps_files/figure-html/unnamed-chunk-12-1.png" width="100%"></p>
 <p><code>protect_quadtree</code> is also a protecting method, which we demonstrate with the variable <code>fined</code>.</p>
-<p>First we create a more fine grained (punned not intended) raster for the variable <code>fined</code>.</p>
+<p>First we create a more fine grained (pun not intended) raster for the variable <code>fined</code>.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">fined &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sdc_raster.html">sdc_raster</a></span>(enterprises, <span class="st">"fined"</span>, <span class="dt">min_count =</span> <span class="dv">5</span>, <span class="dt">r =</span> <span class="dv">200</span>, <span class="dt">max_risk =</span> <span class="fl">0.8</span>)</a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(fined)</a>
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#&gt; logical sdc_raster object: </span></a>

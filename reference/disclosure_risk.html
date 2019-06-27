@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate disclosure risk — disclosure_risk • sdcSpatial</title>
+<title>Calculate disclosure risk for raster cells — disclosure_risk • sdcSpatial</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Calculate disclosure risk — disclosure_risk" />
+<meta property="og:title" content="Calculate disclosure risk for raster cells — disclosure_risk" />
 
 <meta property="og:description" content="The disclosure risk function is used by is_sensitive() to determine the risk of
 a raster cell. It returns a score between 0 and 1 for cells that have a finite
@@ -113,7 +113,7 @@ value (otherwise NA)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate disclosure risk</h1>
+    <h1>Calculate disclosure risk for raster cells</h1>
     <small class="dont-index">Source: <a href='https://github.com/edwindj/sdcSpatial/blob/master/R/disclosure_risk.R'><code>R/disclosure_risk.R</code></a></small>
     <div class="hidden name"><code>disclosure_risk.Rd</code></div>
     </div>
@@ -148,9 +148,11 @@ value (otherwise <code>NA</code>).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Different risk functions include:</p><ul>
-<li><p>external (numeric variable), calculates how much the largest value comprises the total sum within a cell</p></li>
-<li><p>internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value</p></li>
-<li><p>discrete (logical variable), calculates the fraction of sensitive values.</p></li>
+<li><p>external (numeric variable), calculates how much the largest value
+comprises the total sum within a cell</p></li>
+<li><p>internal (numeric variable), calculates how much the largest value
+comprises the sum without the second largest value</p></li>
+<li><p>discrete (logical variable), calculates the fraction of <code>TRUE</code> vs <code>FALSE</code></p></li>
 </ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
