@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Raster with sensitive locations — is_sensitive • sdcSpatial</title>
+<title>Return raster with sensitive locations. — is_sensitive • sdcSpatial</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Raster with sensitive locations — is_sensitive" />
+<meta property="og:title" content="Return raster with sensitive locations. — is_sensitive" />
 
 <meta property="og:description" content="Create a binary raster with sensitive locations." />
 <meta name="twitter:card" content="summary" />
@@ -86,7 +86,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial</a>
+      <a href="../articles/privacy_protecting_maps.html">Introducing sdcSpatial</a>
     </li>
   </ul>
 </li>
@@ -111,7 +111,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Raster with sensitive locations</h1>
+    <h1>Return raster with sensitive locations.</h1>
     <small class="dont-index">Source: <a href='https://github.com/edwindj/sdcSpatial/blob/master/R/is_sensitive.R'><code>R/is_sensitive.R</code></a></small>
     <div class="hidden name"><code>is_sensitive.Rd</code></div>
     </div>
@@ -148,7 +148,8 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Different risk functions can be used:</p><ul>
+    <p>By default the risk settings are taken from <code>x</code>, but they can be overriden.</p>
+<p>Different risk functions can be used:</p><ul>
 <li><p>external (numeric variable), calculates how much the largest value comprises the total sum</p></li>
 <li><p>internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value</p></li>
 <li><p>discrete (logical variable), calculates the fraction of sensitive values.</p></li>
@@ -157,6 +158,7 @@
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other sensitive: <code><a href='disclosure_risk.html'>disclosure_risk</a></code>,
+  <code><a href='plot_sensitive.html'>plot_sensitive</a></code>,
   <code><a href='remove_sensitive.html'>remove_sensitive</a></code>, <code><a href='sdc_raster.html'>sdc_raster</a></code>,
   <code><a href='sensitivity_score.html'>sensitivity_score</a></code></p></div>
     

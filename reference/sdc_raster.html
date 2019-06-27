@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Raster map with privacy awareness — sdc_raster • sdcSpatial</title>
+<title>Create a raster map with privacy awareness — sdc_raster • sdcSpatial</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +30,11 @@
 
 
 
-<meta property="og:title" content="Raster map with privacy awareness — sdc_raster" />
+<meta property="og:title" content="Create a raster map with privacy awareness — sdc_raster" />
 
-<meta property="og:description" content="sdc_raster derives raster::raster objects from the supplied point data and calculates
-statistics needed for controling their sensitivity to disclosure.
-The sensitivity of the data can be shown with plot_sensitive()." />
+<meta property="og:description" content="sdc_raster creates multiple raster::raster objects
+(&quot;count&quot;, &quot;mean&quot;, &quot;sum&quot;) from supplied point data x and calculates
+the sensitivity to privacy disclosure for each location." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -88,7 +88,7 @@ The sensitivity of the data can be shown with plot_sensitive()." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial</a>
+      <a href="../articles/privacy_protecting_maps.html">Introducing sdcSpatial</a>
     </li>
   </ul>
 </li>
@@ -113,16 +113,16 @@ The sensitivity of the data can be shown with plot_sensitive()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Raster map with privacy awareness</h1>
+    <h1>Create a raster map with privacy awareness</h1>
     <small class="dont-index">Source: <a href='https://github.com/edwindj/sdcSpatial/blob/master/R/sdc_raster.R'><code>R/sdc_raster.R</code></a></small>
     <div class="hidden name"><code>sdc_raster.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>sdc_raster</code> derives <code><a href='https://www.rdocumentation.org/packages/raster/topics/raster'>raster::raster</a></code> objects from the supplied point data and calculates
-statistics needed for controling their sensitivity to disclosure.
-The sensitivity of the data can be shown with <code><a href='plot_sensitive.html'>plot_sensitive()</a></code>.</p>
+    <p><code>sdc_raster</code> creates multiple <code><a href='https://www.rdocumentation.org/packages/raster/topics/raster'>raster::raster</a></code> objects
+("count", "mean", "sum") from supplied point data <code>x</code> and calculates
+the sensitivity to privacy disclosure for each location.</p>
     
     </div>
 
@@ -136,26 +136,28 @@ The sensitivity of the data can be shown with <code><a href='plot_sensitive.html
     <tr>
       <th>x</th>
       <td><p><a href='https://www.rdocumentation.org/packages/sp/topics/SpatialPoints'>sp::SpatialPointsDataFrame</a>, <a href='https://www.rdocumentation.org/packages/sf/topics/sf'>sf::sf</a> or a two column matrix or <a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a>
-that is used to create a raster.</p></td>
+that is used to create a raster map.</p></td>
     </tr>
     <tr>
       <th>variable</th>
       <td><p>name of data column or <code>numeric</code> with same length as <code>x</code>
-to be used for the data.</p></td>
+to be used for the data in the raster map.</p></td>
     </tr>
     <tr>
       <th>r</th>
-      <td><p>either a desired resolution or a pre-existing <a href='https://www.rdocumentation.org/packages/raster/topics/raster'>raster::raster</a> object. In the first case, the
-crs of <code>x</code> (if present) will be used, in the latter the properties of the <code>r</code> will be kept.</p></td>
+      <td><p>either a desired resolution or a pre-existing raster object.
+In the first case, the crs of <code>x</code> (if present) will be used, in the latter
+the properties of the <code>r</code> will be kept.</p></td>
     </tr>
     <tr>
       <th>max_risk</th>
-      <td><p><code>numeric</code>, the maximum_risk score (<code><a href='disclosure_risk.html'>disclosure_risk</a></code>) before the data is considered sensitive</p></td>
+      <td><p><code>numeric</code>, the maximum_risk score (<code><a href='disclosure_risk.html'>disclosure_risk</a></code>)
+before a cell in the map is considered sensitive.</p></td>
     </tr>
     <tr>
       <th>min_count</th>
-      <td><p><code>numeric</code>, cells with a number of observations that are less then <code>min_count</code> are considered
-sensitive</p></td>
+      <td><p><code>numeric</code>, a raster cell with less then <code>min_count</code>
+observations is considered sensitived.</p></td>
     </tr>
     <tr>
       <th>risk_type</th>
@@ -175,19 +177,30 @@ sensitive</p></td>
 
     <p>object of <code>class</code> "sdc_raster":</p><ul>
 <li><p><code>$value</code>: <code><a href='https://www.rdocumentation.org/packages/raster/topics/brick'>raster::brick()</a></code> object with differenct layers e.g. <code>count</code>, <code>sum</code>, <code>mean</code>.</p></li>
-<li><p><code>$max_risk</code>: the threshold at the <code><a href='disclosure_risk.html'>disclosure_risk()</a></code> is considered sensitive.</p></li>
-<li><p><code>$min_count</code>: the minimum number of observation before a cell is <strong>not</strong> sensitive</p></li>
+<li><p><code>$max_risk</code>: see above.</p></li>
+<li><p><code>$min_count</code>: see above.</p></li>
 <li><p><code>$scale</code>: used together with <code>min_count</code> to determine sensitivity: result
 of protection operation <code><a href='protect_smooth.html'>protect_smooth()</a></code> or <code><a href='protect_quadtree.html'>protect_quadtree()</a></code>.</p></li>
-<li><p><code>$type</code>: of <code>variable</code>, either <code>numeric</code> or <code>logical</code></p></li>
-<li><p><code>$risk_type</code>, "external", "internal" or "discrete".</p></li>
+<li><p><code>$type</code>: data type of <code>variable</code>, either <code>numeric</code> or <code>logical</code></p></li>
+<li><p><code>$risk_type</code>, "external", "internal" or "discrete" (see <code><a href='disclosure_risk.html'>disclosure_risk()</a></code>)</p></li>
 </ul>
 
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>A <code>sdc_raster</code> object is the vehicle that does the book keeping for calculating
+sensitivity. Protection methods work upon a <code>sdc_raster</code> and return a new
+<code>sdc_raster</code> in which the sensitivity is reduced.
+The sensitivity of the map can be assessed with <a href='sensitivity_score.html'>sensitivity_score</a>,
+<code><a href='plot.sdc_raster.html'>plot.sdc_raster()</a></code>, <code><a href='plot_sensitive.html'>plot_sensitive()</a></code> or <code>print</code>.
+Reducing the sensitivity can be done with <code><a href='protect_smooth.html'>protect_smooth()</a></code>,
+<code><a href='protect_quadtree.html'>protect_quadtree()</a></code> and <code><a href='remove_sensitive.html'>remove_sensitive()</a></code>. Raster maps for <code>mean</code>,
+<code>sum</code> and <code>count</code> data can be extracted from the <code>$value</code> (<code><a href='https://www.rdocumentation.org/packages/raster/topics/brick'>brick()</a></code>).</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other sensitive: <code><a href='disclosure_risk.html'>disclosure_risk</a></code>,
-  <code><a href='is_sensitive.html'>is_sensitive</a></code>,
+  <code><a href='is_sensitive.html'>is_sensitive</a></code>, <code><a href='plot_sensitive.html'>plot_sensitive</a></code>,
   <code><a href='remove_sensitive.html'>remove_sensitive</a></code>,
   <code><a href='sensitivity_score.html'>sensitivity_score</a></code></p></div>
     
@@ -227,6 +240,8 @@ of protection operation <code><a href='protect_smooth.html'>protect_smooth()</a>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

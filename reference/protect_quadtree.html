@@ -33,7 +33,7 @@
 <meta property="og:title" content="Protect a raster with  a quadtree method. — protect_quadtree" />
 
 <meta property="og:description" content="protect_quadtree reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
-does this recursively until no sensitive cells are left." />
+does this recursively until no sensitive cells are left or when the maximum zoom levels has been reached." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -87,7 +87,7 @@ does this recursively until no sensitive cells are left." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial</a>
+      <a href="../articles/privacy_protecting_maps.html">Introducing sdcSpatial</a>
     </li>
   </ul>
 </li>
@@ -120,7 +120,7 @@ does this recursively until no sensitive cells are left." />
     <div class="ref-description">
     
     <p><code>protect_quadtree</code> reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
-does this recursively until no sensitive cells are left.</p>
+does this recursively until no sensitive cells are left or when the maximum zoom levels has been reached.</p>
     
     </div>
 
@@ -131,12 +131,12 @@ does this recursively until no sensitive cells are left.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p><code><a href='sdc_raster.html'>sdc_raster</a></code> object</p></td>
+      <td><p><code><a href='sdc_raster.html'>sdc_raster</a></code> object to be protected.</p></td>
     </tr>
     <tr>
       <th>max_zoom</th>
-      <td><p><code>numeric</code>, restricts the number of zoom and thus the max resolution.
-The max resolution = resolution * 2^max_zoom.</p></td>
+      <td><p><code>numeric</code>, restricts the number of zoom steps and thereby the max resolution for the
+blocks. Each step will zoom with a factor of 2 in x and y so the max resolution = resolution * 2^max_zoom.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -151,7 +151,8 @@ The max resolution = resolution * 2^max_zoom.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a <code><a href='sdc_raster.html'>sdc_raster</a></code> object, in which sensitive cells have been recursively aggregated until not sensitive.</p>
+    <p>a <code><a href='sdc_raster.html'>sdc_raster</a></code> object, in which sensitive cells have been recursively aggregated until not sensitive or
+when max_zoom has been reached.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -164,7 +165,8 @@ original method does not take the <code>disclosure_risk</code> into account.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Suñé, E., Rovira, C., Ibáñez, D., Farré, M. (2017). Statistical disclosure control on visualising geocoded population data using
+    <p>Suñé, E., Rovira, C., Ibáñez, D., Farré, M. (2017).
+Statistical disclosure control on visualising geocoded population data using
 a structure in quadtrees, NTTS 2017</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>

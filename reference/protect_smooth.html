@@ -32,7 +32,8 @@
 
 <meta property="og:title" content="Protect a sdc_raster by smoothing — protect_smooth" />
 
-<meta property="og:description" content="Reduce the sensitivity by applying a Gaussian smoother." />
+<meta property="og:description" content="protect_smooth reduces the sensitivity by applying a Gaussian smoother,
+making the values less localized." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -86,7 +87,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/privacy_protecting_maps.html">Introduction sdcSpatial</a>
+      <a href="../articles/privacy_protecting_maps.html">Introducing sdcSpatial</a>
     </li>
   </ul>
 </li>
@@ -118,7 +119,8 @@
 
     <div class="ref-description">
     
-    <p>Reduce the sensitivity by applying a Gaussian smoother.</p>
+    <p><code>protect_smooth</code> reduces the sensitivity by applying a Gaussian smoother,
+making the values less localized.</p>
     
     </div>
 
@@ -145,7 +147,8 @@
 
     <p>The sensitivity of a raster can be decreased by applying a kernel density smoother as
 argued by de Jonge et al. (2016) and de Wolf et al. (2018). Smoothing spatially spreads
-localized values, reducing the risk for location disclosure.
+localized values, reducing the risk for location disclosure. Note that
+smoothing often visually enhances detection of spatial patterns.
 The kernel applied is a Gaussian kernel with a bandwidth <code>bw</code> supplied by the user.
 The smoother acts upon the <code>x$value$count</code> and <code>x$value$sum</code>
 from which a new <code>x$value$mean</code> is derived.</p>
