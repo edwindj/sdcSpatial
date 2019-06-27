@@ -19,10 +19,13 @@ plot.sdc_raster <- function( x
                            , sensitive = TRUE
                            , ...
                            , main = paste(substitute(x))
-                           , col = hcl.colors(20, "Blues", rev = TRUE)
-                           ){
+                           , col                           ){
   # TODO improve argument handling setting main etc.
   #main <- paste0(main)
+  if (missing(col)){
+    col <- Blues10
+  }
+
   if (isTRUE(sensitive)){
     old_par <- par(mfrow=c(1,2))
     on.exit(par(old_par))
@@ -52,7 +55,6 @@ plot_risk <- function(x, ...){
 #' @export
 #' @family plotting
 #' @family sensitive
-#' @importFrom grDevices hcl.colors
 plot_sensitive <- function(x, value = "mean", main = "sensitive", ...){
   assert_sdc_raster(x)
   plot.sdc_raster( x, value = value, main = main, sensitive = FALSE
@@ -63,3 +65,11 @@ plot_sensitive <- function(x, value = "mean", main = "sensitive", ...){
   raster::plot(sens, add = TRUE)
   invisible(sens)
 }
+
+
+# generated with
+# Blues10 <- hcl.colors(10, "Blues", rev = TRUE)
+Blues10 <- c("#F4FAFE", "#E1F0F8", "#C8DFEE", "#ACCCE4"
+            , "#8FB7D9", "#709FCD",  "#5087C1", "#316DB3"
+            , "#305292", "#273871"
+            )

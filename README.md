@@ -80,7 +80,7 @@ cellStats(sensitive, mean)
 #> [1] 0.6328234
 
 # let's smooth to reduce the sensitivity
-smoothed <- protect_smooth(production, bw = 400)
+smoothed <- protect_smooth(production, bw = 400, keep_resolution=TRUE)
 plot(smoothed)
 ```
 
@@ -113,8 +113,13 @@ raster::filledContour(production_mean, nlevels = 6, main = "Mean production")
 
 ``` r
 
-raster::filledContour(production_total, nlevels = 15
-             , col = hcl.colors(21, rev=TRUE)
+
+# generated with R 3.6 >=
+#col <- hcl.colors(10, rev=TRUE)
+col <- c("#FDE333", "#BBDD38", "#6CD05E", "#00BE7D",
+         "#00A890", "#008E98",  "#007094", "#185086", "#422C70", "#4B0055")
+raster::filledContour(production_total, nlevels = 10
+             , col = col
              , main="Total production")
 ```
 

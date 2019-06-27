@@ -16,8 +16,8 @@ if (requireNamespace("sf")){
   sensitivity_score(unemployed)
 
   unemployed_smoothed <- protect_smooth(unemployed, bw = 0.4e3)
-  plot(unemployed_smoothed, col=hcl.colors(10, "Blues", rev=TRUE))
-  plot(unemployed_smoothed, col=hcl.colors(10, "Greens", rev=TRUE), "sum")
+  plot(unemployed_smoothed, main="Employment rate")
+  plot(unemployed_smoothed, "sum", main = "Employment")
 } else {
   message("Package 'sf' was not installed.")
 }
@@ -29,7 +29,7 @@ sp::proj4string(dwellings_sp) <- "+init=epsg:28992"
 consumption <- sdc_raster(dwellings_sp, dwellings_sp$consumption, r = 500)
 consumption
 
-plot(consumption, col = hcl.colors(256, rev = TRUE, palette = "Purple-Blue"))
+plot(consumption)
 
 # but we can also create a raster directly from a data.frame
 unemployed <- sdc_raster( dwellings[c("x","y")], dwellings$unemployed)

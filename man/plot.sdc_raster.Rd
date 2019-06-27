@@ -5,8 +5,7 @@
 \title{Plot a sdc_raster object}
 \usage{
 \method{plot}{sdc_raster}(x, value = "mean", sensitive = TRUE, ...,
-  main = paste(substitute(x)), col = hcl.colors(20, "Blues", rev =
-  TRUE))
+  main = paste(substitute(x)), col)
 }
 \arguments{
 \item{x}{\code{\link{sdc_raster}} object to be plotted}

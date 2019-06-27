@@ -47,7 +47,7 @@ plot(fined_qt)
 fined <- sdc_raster(enterprises, enterprises$fined, r=50)
 plot(fined)
 fined_qt <- protect_quadtree(fined)
-plot(fined_qt, col=hcl.colors(20, "Blues", rev=TRUE))
+plot(fined_qt)
 
 }
 \references{
