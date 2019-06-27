@@ -60,6 +60,7 @@ unemployed <- sdc_raster( dwellings[c("x","y")], dwellings$unemployed)
 }
 }
 \references{
-Basisregistratie Adressen en Gebouwen https://zakelijk.kadaster.nl/bag-producten
+Basisregistratie Adressen en Gebouwen
+\url{https://zakelijk.kadaster.nl/bag-producten}
 }
 \keyword{datasets}

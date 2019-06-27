@@ -51,18 +51,24 @@ plot_risk <- function(x, ...){
 #' @param value [character] which value layer to be used for values,
 #'  e.g. "sum", "count", "mean" (default).
 #' @param main [character] title of map.
+#' @param col color palette to be used, passed on to [raster::plot()].
 #' @param ... passed on to [`plot.sdc_raster`].
 #' @export
 #' @family plotting
 #' @family sensitive
-plot_sensitive <- function(x, value = "mean", main = "sensitive", ...){
+plot_sensitive <- function(x, value = "mean", main = "sensitive", col, ...){
   assert_sdc_raster(x)
+
+  if (missing(col)){
+    col <- Blues10
+  }
+
   plot.sdc_raster( x, value = value, main = main, sensitive = FALSE
-                 , ..., col.main="red"
+                 , ..., col.main="red", col,
                  )
   sens <- is_sensitive(x)
   raster::colortable(sens) <- c("transparent", "red")
-  raster::plot(sens, add = TRUE)
+  raster::plot(sens, add = TRUE, ...)
   invisible(sens)
 }
 

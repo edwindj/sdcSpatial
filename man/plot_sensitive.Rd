@@ -4,7 +4,7 @@
 \alias{plot_sensitive}
 \title{Plot the sensitive cells of the sdc_raster.}
 \usage{
-plot_sensitive(x, value = "mean", main = "sensitive", ...)
+plot_sensitive(x, value = "mean", main = "sensitive", col, ...)
 }
 \arguments{
 \item{x}{\link{sdc_raster} object}
@@ -13,6 +13,8 @@ plot_sensitive(x, value = "mean", main = "sensitive", ...)
 e.g. "sum", "count", "mean" (default).}
 
 \item{main}{\link{character} title of map.}
+
+\item{col}{color palette to be used, passed on to \code{\link[raster:plot]{raster::plot()}}.}
 
 \item{...}{passed on to \code{\link{plot.sdc_raster}}.}
 }

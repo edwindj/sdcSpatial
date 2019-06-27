@@ -2,7 +2,7 @@
 % Please edit documentation in R/disclosure_risk.R
 \name{disclosure_risk}
 \alias{disclosure_risk}
-\title{Calculate disclosure risk}
+\title{Calculate disclosure risk for raster cells}
 \usage{
 disclosure_risk(x, risk_type = x$risk_type)
 }
@@ -22,9 +22,11 @@ value (otherwise \code{NA}).
 \details{
 Different risk functions include:
 \itemize{
-\item external (numeric variable), calculates how much the largest value comprises the total sum within a cell
-\item internal (numeric variable), calculates how much the largest value comprises the sum without the second largest value
-\item discrete (logical variable), calculates the fraction of sensitive values.
+\item external (numeric variable), calculates how much the largest value
+comprises the total sum within a cell
+\item internal (numeric variable), calculates how much the largest value
+comprises the sum without the second largest value
+\item discrete (logical variable), calculates the fraction of \code{TRUE} vs \code{FALSE}
 }
 }
 \seealso{

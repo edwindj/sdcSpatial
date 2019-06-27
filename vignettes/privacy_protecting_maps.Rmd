@@ -23,11 +23,12 @@ library(sdcSpatial)
 ```
 
 Plotting data on a map is a popular and helpful tool to analyze spatial data. 
-R makes it easy to plot spatial data using packages such as `ggplot2`, 
+R makes it easy to plot spatial data with packages such as `ggplot2`, 
 `tmap`, `mapview` or `leaflet`. 
 However when plotting the spatial distribution of a 
-_sensitive_ variable, you may accidentally reveal a sensitive value of an 
-individual observation, e.g. the income of a person. The procedure of adjusting
+_sensitive_ variable, e.g. income or unemployed, 
+you may accidentally reveal a sensitive value of an 
+individual observation. The procedure of adjusting
 output data to protect individual observations is called 
 _statistical disclosure control_ and several open source tools are available, 
 including [$\tau$-Argus](http://research.cbs.nl/casc/tau.htm) and R packages [sdcTable](https://cran.r-project.org/package=sdcTable)
@@ -95,8 +96,8 @@ should at least have 10 observations
 (`min_count`) and its maximum value should not comprise 95% (`max_risk`) of its total value, 
 then 64% of the data in the map is sensitive!
 
-For enterprise data a threshold of 10 may be on the high side, so let us change that
-into 5:
+For enterprise data a threshold of 10 may be on the high side for a 500m by 500m
+block, so let us change that into 5:
 
 ```{r}
 production$min_count <- 5
@@ -144,7 +145,7 @@ raster::plot(mean_production, col=col)
 `protect_quadtree` is also a protecting method, which we demonstrate with
 the variable `fined`. 
 
-First we create a more fine grained (punned not intended) raster for the variable
+First we create a more fine grained (pun not intended) raster for the variable
 `fined`. 
 
 ```{r}

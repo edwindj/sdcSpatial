@@ -10,5 +10,6 @@
 #'  * `unemployed`, `logical`, simulated discrete value
 #'
 #' @example ./example/dwellings.R
-#' @references Basisregistratie Adressen en Gebouwen https://zakelijk.kadaster.nl/bag-producten
+#' @references Basisregistratie Adressen en Gebouwen
+#' <https://zakelijk.kadaster.nl/bag-producten>
 "dwellings"
