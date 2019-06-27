@@ -207,8 +207,13 @@ on Privacy in Statistical Databases (pp. 347-359). Springer, Cham.</p>
 
 <span class='co'># and create a contour plot</span>
 <span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/filledContour'>filledContour</a></span>(<span class='no'>production_mean</span>, <span class='kw'>nlevels</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>"Mean production"</span>)</div><div class='img'><img src='protect_smooth-5.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/filledContour'>filledContour</a></span>(<span class='no'>production_total</span>, <span class='kw'>nlevels</span> <span class='kw'>=</span> <span class='fl'>15</span>
-             , <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>hcl.colors</a></span>(<span class='fl'>21</span>, <span class='kw'>rev</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
+
+<span class='co'># generated with R 3.6 &gt;=</span>
+<span class='co'>#col &lt;- hcl.colors(10, rev=TRUE)</span>
+<span class='no'>col</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"#FDE333"</span>, <span class='st'>"#BBDD38"</span>, <span class='st'>"#6CD05E"</span>, <span class='st'>"#00BE7D"</span>,
+         <span class='st'>"#00A890"</span>, <span class='st'>"#008E98"</span>,  <span class='st'>"#007094"</span>, <span class='st'>"#185086"</span>, <span class='st'>"#422C70"</span>, <span class='st'>"#4B0055"</span>)
+<span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/filledContour'>filledContour</a></span>(<span class='no'>production_total</span>, <span class='kw'>nlevels</span> <span class='kw'>=</span> <span class='fl'>10</span>
+             , <span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>col</span>
              , <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Total production"</span>)</div><div class='img'><img src='protect_smooth-6.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

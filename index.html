@@ -160,9 +160,14 @@
 <a class="sourceLine" id="cb6-7" data-line-number="7">raster<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_mean, <span class="dt">nlevels =</span> <span class="dv">6</span>, <span class="dt">main =</span> <span class="st">"Mean production"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-example-5.png" width="100%"></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">raster<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_total, <span class="dt">nlevels =</span> <span class="dv">15</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">             , <span class="dt">col =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/palettes">hcl.colors</a></span>(<span class="dv">21</span>, <span class="dt">rev=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">             , <span class="dt">main=</span><span class="st">"Total production"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co"># generated with R 3.6 &gt;=</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#col &lt;- hcl.colors(10, rev=TRUE)</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">col &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"#FDE333"</span>, <span class="st">"#BBDD38"</span>, <span class="st">"#6CD05E"</span>, <span class="st">"#00BE7D"</span>,</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">         <span class="st">"#00A890"</span>, <span class="st">"#008E98"</span>,  <span class="st">"#007094"</span>, <span class="st">"#185086"</span>, <span class="st">"#422C70"</span>, <span class="st">"#4B0055"</span>)</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">raster<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/filledContour">filledContour</a></span>(production_total, <span class="dt">nlevels =</span> <span class="dv">10</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">             , <span class="dt">col =</span> col</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">             , <span class="dt">main=</span><span class="st">"Total production"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-example-6.png" width="100%"></p>
 </div>
 </div>
