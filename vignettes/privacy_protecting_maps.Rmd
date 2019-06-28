@@ -26,15 +26,17 @@ Plotting data on a map is a popular and helpful tool to analyze spatial data.
 R makes it easy to plot spatial data with packages such as `ggplot2`, 
 `tmap`, `mapview` or `leaflet`. 
 However when plotting the spatial distribution of a 
-_sensitive_ variable, e.g. income or unemployed, 
+_sensitive_ variable, e.g. income or unemployment, 
 you may accidentally reveal a sensitive value of an 
-individual observation. The procedure of adjusting
-output data to protect individual observations is called 
-_statistical disclosure control_ and several open source tools are available, 
-including [$\tau$-Argus](http://research.cbs.nl/casc/tau.htm) and R packages [sdcTable](https://cran.r-project.org/package=sdcTable)
-and [sdcMicro](https://cran.r-project.org/package=sdcMicro). Most SDC software
-operates on values of records, mostly ignoring spatial properties (if any) 
-of data.
+individual observation. 
+_Statistical disclosure control_ (SDC) deals with problems related to privacy in connection with 
+publishing statistics. SDC provides measures to assess disclosure risk and methods to 
+reduce disclosure risk in publications while trying to minimize information loss.
+
+Several open source tools are available; see [sdcTools](https://github.com/sdcTools) for a collection of them. Commonly used tools include the standalone software tools [$\mu$-argus](http://research.cbs.nl/casc/mu.htm) and [$\tau$-argus](http://research.cbs.nl/casc/tau.htm) as well as the R-packages [sdcTable](https://cran.r-project.org/package=sdcTable)
+and [sdcMicro](https://cran.r-project.org/package=sdcMicro).
+
+Traditionally, SDC software operates on values of (aggregated) records, where it does not directly make use of spatial characteristics that might be present in the data.
 
 `sdcSpatial` contains  functions to create spatial distribution maps, 
 assess the risk of disclosure in locations on the map and to suppress 
