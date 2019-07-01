@@ -64,7 +64,7 @@ plot_sensitive <- function(x, value = "mean", main = "sensitive", col, ...){
   }
 
   plot.sdc_raster( x, value = value, main = main, sensitive = FALSE
-                 , ..., col.main="red", col,
+                 , ..., col.main="red", col = col,
                  )
   sens <- is_sensitive(x)
   raster::colortable(sens) <- c("transparent", "red")
