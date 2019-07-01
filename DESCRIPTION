@@ -1,6 +1,6 @@
 Package: sdcSpatial
 Title: Statistical Disclosure Control for Spatial Data
-Version: 0.1.0.9000
+Version: 0.1.0
 Authors@R: c(
   person("Edwin", "de Jonge", email = "edwindjonge@gmail.com", role = c("aut", "cre"), 
     comment=c(ORCID="0000-0002-6580-4718")),
@@ -9,7 +9,7 @@ Authors@R: c(
   )
 Description: Privacy protected raster maps 
   can be created from spatial point data. Protection
-  methods include smoothing, suppressing revealing values and quadtreeing. 
+  methods include smoothing, suppressing revealing values and a quad tree method. 
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
