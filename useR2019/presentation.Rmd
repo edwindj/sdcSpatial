@@ -1,0 +1,25 @@
+---
+title: "sdcSpatial: Privacy protected maps"
+author: "Edwin de Jonge"
+date: "useR! 2019"
+output: 
+  beamer_presentation:
+    include: 
+      in_header: ./00tex/presheader.tex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Who am I?
+
+- Statistical consultant / Data Scientist at Statistics Netherlands (CBS)
+- Expertise (apart fro)
+
+  - R programming
+  - d
+
+Statistics Netherlands is producer of all main official statistics in the 
+Netherlands
+- EuOfficial  

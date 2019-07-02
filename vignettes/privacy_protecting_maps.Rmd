@@ -152,8 +152,14 @@ mean_production <- mean(production_safe)
 mean_production <- raster::disaggregate(mean_production, 10, "bilinear")
 # generated with R >= 3.6
 # col <- hcl.colors(10, "YlOrRd", rev = TRUE)
-col <- c("#FFFFC8", "#FEF1B2", "#FADC8A", "#F7C252", "#F5A400", "#F18000",  "#EB5500", "#D12D00", "#A90D00", "#7D0025")
+col <- c("#FFFFC8", "#FEF1B2", "#FADC8A", "#F7C252", "#F5A400", "#F18000", 
+         "#EB5500", "#D12D00", "#A90D00", "#7D0025")
 raster::plot(mean_production, col=col)
+
+# library(leaflet)
+# leaflet() %>% 
+#   leaflet::addTiles() %>% 
+#   leaflet::addRasterImage(mean_production, colors = col, opacity = 0.5)
 ```
 
 
