@@ -66,6 +66,9 @@ summary(enterprises)
 
 `enterprises` contains two simulated variables: `production` (numeric) and 
 `fined` (logical), and we are interested in their spatial distribution.
+
+## Plotting 
+
 Let's first plot the locations of enterprises:
 
 ```{r}
@@ -89,6 +92,7 @@ We have plotted the mean production, other stats are kept in the `production$val
 raster::plot(production$value[[1:3]])
 ```
 
+## Sensitive locations
 
 ```{r}
 print(production)
@@ -105,7 +109,8 @@ block, so let us change that into 5:
 production$min_count <- 5
 production$max_risk <- 0.9
 # or equally 
-production <- sdc_raster(enterprises, "production", r = 500, min_count = 5)
+production <- sdc_raster(enterprises, "production"
+                        , r = 500, min_count = 5, max_risk = 0.9)
 sensitivity_score(production)
 ```
 The score dropped, but which cells are we talking about?
@@ -116,6 +121,8 @@ sensitive_cells <- is_sensitive(production)
 ```
 
 `sensitive_cells` is a `raster` which can be used for further inspection. 
+
+## Reducing sensitivity
 
 Let us try to reduce the sensitivity of the map using a smoothing method:
 
@@ -175,7 +182,7 @@ which has a sensitivity score of `r sensitivity_score(fined_qt)`.
 The method has the advantage of locally selecting the necessary resolution to 
 suppress sensitive values, while the `protect_smooth` method uses a fixed bandwidth.
 
-The result is blocky in comparison with the smoothing method, but safer if you 
+The protection result is blocky in comparison with the smoothing method, but safer if you 
 look at the sensitive cells in high fined areas.
 ```{r}
 fined_smooth <- protect_smooth(fined, bw = 500)
@@ -185,7 +192,7 @@ sensitivity_score(fined_smooth)
 
 
 
-## Many thanks to `raster`
+## Thanks to `raster`
 
 `sdcSpatial` builds heavily upon the excellent [raster](https://cran.r-project.org/package=raster) package: it creates `raster` maps and uses the machinery of `raster` to calculate sensitivity
 and to apply protection methods to raster maps. 
