@@ -132,9 +132,9 @@
 <a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt;  Max.   :114467.56</span></a></code></pre></div>
 <p><code>enterprises</code> contains two simulated variables: <code>production</code> (numeric) and <code>fined</code> (logical), and we are interested in their spatial distribution.</p>
 </div>
-<div id="plotting" class="section level2">
+<div id="view-the-data" class="section level2">
 <h2 class="hasAnchor">
-<a href="#plotting" class="anchor"></a>Plotting</h2>
+<a href="#view-the-data" class="anchor"></a>View the data</h2>
 <p>Let’s first plot the locations of enterprises:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">sp<span class="op">::</span><span class="kw">plot</span>(enterprises)</a></code></pre></div>
 <p><img src="privacy_protecting_maps_files/figure-html/unnamed-chunk-4-1.png" width="100%"> There are many locations and a lot of over-plotting or <em>occlusion</em> is taking place: a better visualization method to reveal spatial patterns in this case is to create a raster or density plot. Since we are interested in the spatial distribution of <code>production</code> we would like to rasterize the data, which can be done with <code><a href="https://www.rdocumentation.org/packages/raster/topics/rasterize">raster::rasterize</a></code> or <code>ggplot2::geom_tile</code> but for didactic sake we use <code>sdc_raster</code> to create a raster map with a 500m grid.</p>
@@ -143,16 +143,21 @@
 <p><img src="privacy_protecting_maps_files/figure-html/unnamed-chunk-5-1.png" width="100%"> We have plotted the mean production, other stats are kept in the <code>production$value</code> object:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">raster<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(production<span class="op">$</span>value[[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]])</a></code></pre></div>
 <p><img src="privacy_protecting_maps_files/figure-html/unnamed-chunk-6-1.png" width="100%"></p>
+<p>The important question is:</p>
+<blockquote>
+<p>Can we publish this map or does it contain sensitive values?</p>
+</blockquote>
 </div>
 <div id="sensitive-locations" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sensitive-locations" class="anchor"></a>Sensitive locations</h2>
+<p>Let us see how many of the values are sensitive:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(production)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; numeric sdc_raster object: </span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt;    resolution: 500 500 ,  max_risk: 0.95 , min_count: 10 </span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;    mean sensitivity score [0,1]:  0.6432039</span></a></code></pre></div>
-<p>Printing the <code>production</code> object shows that when we demand that a raster cell should at least have 10 observations (<code>min_count</code>) and its maximum value should not comprise 95% (<code>max_risk</code>) of its total value, then 64% of the data in the map is sensitive!</p>
-<p>For enterprise data a threshold of 10 may be on the high side for a 500m by 500m block, so let us change that into 5:</p>
+<p>Printing the <code>production</code> object shows that when we demand that a raster cell should at least have 10 observations (<code>min_count</code>) and its value should not be dominated by one enterprise (<code>max_risk</code>), then 64% of the data in the map is sensitive!</p>
+<p>For a 500m by 500m block a threshold of 10 enterprises is on the high side, so let us change that into 5:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">production<span class="op">$</span>min_count &lt;-<span class="st"> </span><span class="dv">5</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">production<span class="op">$</span>max_risk &lt;-<span class="st"> </span><span class="fl">0.9</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co"># or equally </span></a>
@@ -223,7 +228,7 @@
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#data">Data</a></li>
-      <li><a href="#plotting">Plotting</a></li>
+      <li><a href="#view-the-data">View the data</a></li>
       <li><a href="#sensitive-locations">Sensitive locations</a></li>
       <li><a href="#reducing-sensitivity">Reducing sensitivity</a></li>
       <li><a href="#thanks-to-raster">Thanks to <code>raster</code></a></li>
