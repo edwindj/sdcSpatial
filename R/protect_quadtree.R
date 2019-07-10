@@ -1,14 +1,16 @@
 #' Protect a raster with  a quadtree method.
 #'
-#' `protect_quadtree` reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
-#' does this recursively until no sensitive cells are left or when the maximum zoom levels has been reached.
+#' `protect_quadtree` reduces sensitivy by aggregating sensisitve cells with its
+#'  three neighbors, and does this recursively until no sensitive cells are
+#'  left or when the maximum zoom levels has been reached.
 #'
-#' This implementation generalizes the method as described by Suñé et al., in which there is no
+#' This implementation generalizes the method as described by Suñé et al., in
+#' which there is no
 #' risk function, and only a  `min_count` to determine sensitivity.
 #' Furthermore the method the article
 #' only handles count data (`x$value$count`), not mean or summed values.
-#' Currently the translation feature of the article is not (yet) implemented, for the
-#' original method does not take the `disclosure_risk` into account.
+#' Currently the translation feature of the article is not (yet) implemented,
+#' for the original method does not take the `disclosure_risk` into account.
 #'
 #' @param x [`sdc_raster`] object to be protected.
 #' @param max_zoom `numeric`, restricts the number of zoom steps and thereby the max resolution for the
@@ -49,8 +51,10 @@ protect_quadtree <- function(x, max_zoom = Inf, ...){
 
     if (sdc$type == "numeric"){
       z2$max = raster::aggregate(sdc$value$max, fact = fact, fun = max)
+      z2$max <- z2$max / z2$scale
       # not correct, the max2 of max should be also used!
       z2$max2 = raster::aggregate(sdc$value$max2, fact = fact, fun = max)
+      z2$max2 <- z2$max2 / z2$scale
     }
     # reorder z1 to have same order as z2, implicitly dropping "mean'
     z1 <- z1[[names(z2)]]
