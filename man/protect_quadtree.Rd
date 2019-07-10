@@ -25,16 +25,18 @@ a \code{\link{sdc_raster}} object, in which sensitive cells have been recursivel
 when max_zoom has been reached.
 }
 \description{
-\code{protect_quadtree} reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
-does this recursively until no sensitive cells are left or when the maximum zoom levels has been reached.
+\code{protect_quadtree} reduces sensitivy by aggregating sensisitve cells with its
+three neighbors, and does this recursively until no sensitive cells are
+left or when the maximum zoom levels has been reached.
 }
 \details{
-This implementation generalizes the method as described by Suñé et al., in which there is no
+This implementation generalizes the method as described by Suñé et al., in
+which there is no
 risk function, and only a  \code{min_count} to determine sensitivity.
 Furthermore the method the article
 only handles count data (\code{x$value$count}), not mean or summed values.
-Currently the translation feature of the article is not (yet) implemented, for the
-original method does not take the \code{disclosure_risk} into account.
+Currently the translation feature of the article is not (yet) implemented,
+for the original method does not take the \code{disclosure_risk} into account.
 }
 \examples{
 library(raster)

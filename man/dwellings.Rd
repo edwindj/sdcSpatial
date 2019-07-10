@@ -49,7 +49,10 @@ if (requireNamespace("sf")){
 dwellings_sp <- dwellings
 # or change a data.frame into a sp object
 sp::coordinates(dwellings_sp) <- ~ x + y
-sp::proj4string(dwellings_sp) <- "+init=epsg:28992"
+tryCatch(
+  # not working on some OS versions.
+  sp::proj4string(dwellings_sp) <- "+init=epsg:28992"
+)
 consumption <- sdc_raster(dwellings_sp, dwellings_sp$consumption, r = 500)
 consumption
 

@@ -1,7 +1,8 @@
 ---
 title: "sdcSpatial: Privacy protected density maps"
-author: "Edwin de Jonge @edwindjonge"
+author: "Edwin de Jonge \\@edwindjonge"
 date: "useR! 2019"
+bibliography: sdcmap.bib
 output: 
   beamer_presentation:
     include: 
@@ -20,30 +21,24 @@ knitr::include_graphics("fig/privacy.jpg")
 
 ## sdcSpatial: Privacy protected maps
 
-### Goal:
-
-> Create maps, and ensure that no details are revealed on individuals.
-
-## sdcSpatial: Privacy protected maps
-
 ### `sdcSpatial` has methods for:
 
 - Creating a raster map: `sdc_raster` for pop density, value density and mean
-density.
+density, using the excellent `raster` package by @Hijmans2019.
 - Which locations are sensitive: `plot_sensitive`, `is_sensitive`
 - Adjust raster map to protect data: `protect_smooth`, `protect_quadtree`
 - Remove sensitive locations.
 
 ## Who am I?
 
-- Statistical consultant, Data Scientist @cbs.nl / Statistics NL
+- Statistical consultant, Data Scientist \@cbs.nl / Statistics NL
 - Expertise:
 
   - **R programming**
   - Data Cleaning with R
   - **Data visualization**
   - Complex networks analysis
-  - @edwindjonge / <https://github.com/edwindj>
+  - \@edwindjonge / <https://github.com/edwindj>
 
 ## What is SN / CBS?
 
@@ -54,7 +49,7 @@ Netherlands:
 Finance etc.
 - Part of the European Statistical System, ESS.
 
-### Privacy motivation
+### Motivation for `sdcSpatial`
 
 - ESS has European Code of Statistical Practice (predates GDPR, European law 
 on Data Protection): no individual information on persons and enterprises 
@@ -84,7 +79,8 @@ unemployed <- sdc_raster( dwellings[c("x", "y")]
                         )
 print(unemployed)
 ```
-### What is the sensitivity?
+
+## What is the sensitivity?
 
 Binary score (`logical`) per raster cell indicating 
 if it's unsafe to publish.
@@ -121,10 +117,12 @@ plot(unemployed)
 
 ## how to improve?
 
-- Use a coarser raster: `sdc_raster`.
-- Spatial smoothing: `protect_smooth`[^jonge].
-- Quadtree aggregation: `protect_quadtree`.
-- Removing sensitive locations: `remove_sensitive`.
+### Options: 
+
+a) Use a coarser raster: `sdc_raster`.
+b) Spatial smoothing: `protect_smooth` method by @WolfJonge2018, @JongeWolf2016.
+c) Quadtree aggregation: `protect_quadtree` method by @Sune2017.
+d) Removing sensitive locations: `remove_sensitive`.
 
 
 ## Option: coarsening
@@ -134,15 +132,38 @@ unemployed_1km <- sdc_raster(dwellings[c("x", "y")], dwellings$unemployed, r =1e
 plot(unemployed_1km)
 ```
 
+## Option: Coarsening
 
-## Option Smoothing
+### Pros
+
+- Simple and easy explainable
+
+### Cons
+
+- Detailed spatial patterns are removed
+- visually unattractive: "Blocky"
+
+## Option: KDE-smoothing
 
 ```{r, out.height="90%", warning=FALSE}
 unemployed_smoothed <- protect_smooth(unemployed, bw = 1500)
 plot(unemployed_smoothed)
 ```
 
-## Quadtree
+## Options: KDE-smoothing
+
+### Pro's
+
+- Often enhances spatial pattern visualisation.
+- Makes it a density map, e.g. contour map
+
+### Con's
+
+- Does not remove all sensitive values (depends on bandwidth `bw`)
+- A fixed band width is used for all locations: may removed detailed patterns  
+spatial processes often have location dependent band widths. (= future work)
+
+## Option: Quadtree
 
 ```{r, warning=FALSE}
 unemployed_100m <- sdc_raster(dwellings[c("x","y")], dwellings$unemployed, r = 200)
@@ -151,17 +172,31 @@ plot(unemployed_qt)
 ```
 
 
-## Implementation `sdc_raster`
+## Publish: visual interpolation
 
-- built upon excellent `raster` 
-- Creates internally an `raster::brick` object
-- Stores the stats needed for calculating disclosure.
+- To make the raster visually more attractive, but still safe: 
 
-##
+\scriptsize
+```{r, out.height="80%"}
+raster::filledContour(mean(unemployed_smoothed), main="Unemployement rate")
+```
+
+## Option: Quadtree
+
+### Pro
+
+- Adapts to data density
+- Adjusts until no sensitive data is left.
+
+### Cons
+
+- Visually: "Blocky" / "Mondrian-like" result.
+
+### Cons
 
 ## The end
 
-### Thank you for your antention!
+### Thank you for your atention!
 
 ### Questions?
 
@@ -174,3 +209,5 @@ install.packages("sdcSpatial")
 ### Feedback and suggestions?
 
 <https://github.com/edwindj/sdcSpatial/issues>
+
+## References
