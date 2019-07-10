@@ -1,5 +1,5 @@
 ---
-title: "sdcSpatial: Privacy protected maps"
+title: "sdcSpatial: Privacy protected density maps"
 author: "Edwin de Jonge @edwindjonge"
 date: "useR! 2019"
 output: 
@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## sdcSpatial: Privacy protected maps
 
-```{r}
+```{r, echo=FALSE}
 knitr::include_graphics("fig/privacy.jpg")
 ```
 
@@ -43,131 +43,104 @@ density.
   - Data Cleaning with R
   - **Data visualization**
   - Complex networks analysis
+  - @edwindjonge / <https://github.com/edwindj>
 
 ## What is SN / CBS?
 
 Statistics Netherlands is producer of all main official statistics in the 
-Netherlands, 
+Netherlands:
 
-- Stats on Demographics, Economy (GDP), Education, Environment, Agriculture, 
+- Stats on Demographics, economy (GDP), education, environment, agriculture, 
 Finance etc.
-- Part of the European Statistical System, ESS (including Eurostat).
+- Part of the European Statistical System, ESS.
 
-### Motivation
+### Privacy motivation
 
 - ESS has European Code of Statistical Practice (predates GDPR, European law 
-on Data Protection) that no individual information on persons and enterprises 
+on Data Protection): no individual information on persons and enterprises 
 may be revealed.
 
-## Sdc?
+## Sdc in `sdcSpatial`?
 
-SDC = Statistical Disclosure Control
+SDC = "Statistical Disclosure Control"
 
 ### Collection of statistical methods to:
 
-- Check if data is safe to be published
+- Check if density map is safe to be published
 - Protect data by slightly altering (aggregated) data
   - adding noise
   - shifting mass
 - Most SDC methods operate on records.
 - **`sdcSpatial` works upon location data.**
 
-## Create raster maps
+## Lets create a raster map with `sdc_raster`
 
 ```{r}
 library(sdcSpatial)
-data("enterprises", package="sdcSpatial")
+unemployed <- sdc_raster( dwellings[c("x", "y")] 
+                        , dwellings$unemployed
+                        , r = 500
+                        , min_count = 10 # min support
+                        )
+print(unemployed)
 ```
+### What is the sensitivity?
 
-## Disclosure risk
+Binary score (`logical`) per raster cell indicating 
+if it's unsafe to publish.
 
-To assess if a location has a sensitive value, sdcSpatial uses a 
-_disclosure risk_.
+### Calculated:
 
-- external: how much is the sum of
+a) Per location $(x_i,y_i)$ (raster cell)
+b) Using risk function `disclosure_risk` $r(x,y) \in [0,1]$. 
+How accurate can an attacker estimate the value of an individual?  
+If $r(x_i,y_i) >$ `max_risk` then $(x_i,y_i)$ is sensitive.
+c) Using a minimum number of observations.  
+If $\textsf{count}_i$ `< min_count`, then $(x_i,y_i)$ is sensitive.
 
 ## Type of raster density maps:
 
 Density can be area-based:
 
-- # people per square (`$count`): e.g. population density
-- (total) value per square (`$sum`): e.g. energy usage density
+- number of people per square (`unemployed$value$count`): population density
+- (total) value per square (`unemployed$value$sum`): number of unemployed per square.
 
-Density can population based:
-- Mean value per square (`$mean`): average energy usage.
+Or density can population based:
+- Mean value per square (`unemployed$value$mean`): probability of being unemployed per square.
 
-_All types can be valid, but for total the following remark can be made_
-
-## xkcd
-
-
-## `sdcSpatial`: Assessment
-
-To assess if a map is risky, sdcSpatial offers the following options:
-
-- plot_sensitive
-
-## 
-
-\scriptsize
-```{r}
-library(sdcSpatial)
-production <- sdc_raster( enterprises  # location data set with enterprises 
-                        , enterprises$production # production individuals
-                        , r = 500   # raster size: 500m
-                        , min_count = 5  # minimum obs per raster cell
-                        )
-print(production)
-```
+_All types can be valid, but note that (total) value per square 
+strongly interacts with population density. (see <https://xkcd.com/1138>)_
 
 
-```{r, eval=FALSE}
-plot(production)
-```
+## So let's plot!
 
-
-##
-
-```{r, echo = FALSE}
-plot(production)
-```
-
-##
-
-### What is the sensitivity?
-
-Binary score (`logical`): is het safe (enough) to be published.
-
-### Calculation:
-
-a) Per location $(x,y)$  = (raster cell)
-b) Use risk function `disclosure_risk` $r(x,y) \in [0,1]$. 
-How accurate can an attacker estimate the value of an individual? 
-If $r(x,y) > $ `max_risk` then $(x,y)$ is considered unsafe.
-b) Use a minimum number of observations. 
-if `count < min_count`, then $(x,y)$ is considered unsafe.
-
-##
-
-So how can we improve upon that?
-
-```{r}
-unemployed_1km <- sdc_raster(dwellings[c("x", "y")], dwellings$unemployed, r =1e3)
-plot(unemployed_1km)
-```
-
-## Option 1 coarser grid
-
-```{r}
-unemployed <- sdc_raster(dwellings[c("x", "y")], dwellings$unemployed, r = 500)
+```{r, out.height="90%"}
 plot(unemployed)
 ```
 
 
-```{r}
-plot(protect_smooth(unemployed, bw = 1.5e3))
+## how to improve?
+
+- Use a coarser raster: `sdc_raster`.
+- Spatial smoothing: `protect_smooth`[^jonge].
+- Quadtree aggregation: `protect_quadtree`.
+- Removing sensitive locations: `remove_sensitive`.
+
+
+## Option: coarsening
+
+```{r, out.height="90%"}
+unemployed_1km <- sdc_raster(dwellings[c("x", "y")], dwellings$unemployed, r =1e3)
+plot(unemployed_1km)
 ```
 
+
+## Option Smoothing
+
+```{r, out.height="90%", warning=FALSE}
+unemployed_smoothed <- protect_smooth(unemployed, bw = 1500)
+plot(unemployed_smoothed)
+```
 
 ## Quadtree
 
