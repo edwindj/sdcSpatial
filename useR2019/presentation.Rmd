@@ -1,7 +1,7 @@
 ---
 title: "sdcSpatial: Privacy protected density maps"
 author: "Edwin de Jonge \\@edwindjonge"
-date: "useR! 2019"
+date: "useR! 2019, July 11 2019"
 bibliography: sdcmap.bib
 output: 
   beamer_presentation:
@@ -25,9 +25,9 @@ knitr::include_graphics("fig/privacy.jpg")
 
 - Creating a raster map: `sdc_raster` for pop density, value density and mean
 density, using the excellent `raster` package by @Hijmans2019.
-- Which locations are sensitive: `plot_sensitive`, `is_sensitive`
-- Adjust raster map to protect data: `protect_smooth`, `protect_quadtree`
-- Remove sensitive locations.
+- Finding out which locations are sensitive: `plot_sensitive`, `is_sensitive`
+- Adjusting raster map for protecting data: `protect_smooth`, `protect_quadtree`
+- Removing sensitive locations.
 
 ## Who am I?
 
@@ -52,8 +52,8 @@ Finance etc.
 ### Motivation for `sdcSpatial`
 
 - ESS has European Code of Statistical Practice (predates GDPR, European law 
-on Data Protection): no individual information on persons and enterprises 
-may be revealed.
+on Data Protection):  
+**no individual information may be revealed**.
 
 ## Sdc in `sdcSpatial`?
 
@@ -61,26 +61,36 @@ SDC = "Statistical Disclosure Control"
 
 ### Collection of statistical methods to:
 
-- Check if density map is safe to be published
+- Check if data is safe to be published
 - Protect data by slightly altering (aggregated) data
   - adding noise
   - shifting mass
 - Most SDC methods operate on records.
-- **`sdcSpatial` works upon location data.**
+- **`sdcSpatial` works upon locations.**
 
-## Lets create a raster map with `sdc_raster`
+## Let's create a `sdc_raster`
+
+### Creation:
+
+\scriptsize
 
 ```{r}
 library(sdcSpatial)
 unemployed <- sdc_raster( dwellings[c("x", "y")] 
                         , dwellings$unemployed
-                        , r = 500
+                        , r = 500 # raster resolution of 500m
                         , min_count = 10 # min support
                         )
+```
+
+### What is it about?
+
+\scriptsize
+```{r}
 print(unemployed)
 ```
 
-## What is the sensitivity?
+## What is sensitivity?
 
 Binary score (`logical`) per raster cell indicating 
 if it's unsafe to publish.
@@ -98,20 +108,20 @@ If $\textsf{count}_i$ `< min_count`, then $(x_i,y_i)$ is sensitive.
 
 Density can be area-based:
 
-- number of people per square (`unemployed$value$count`): population density
-- (total) value per square (`unemployed$value$sum`): number of unemployed per square.
+- **number of people** per square (`unemployed$value$count`): population density.
+- **(total) value** per square (`unemployed$value$sum`): number of unemployed per square.
 
-Or density can population based:
-- Mean value per square (`unemployed$value$mean`): probability of being unemployed per square.
+Or density can population-based:
 
-_All types can be valid, but note that (total) value per square 
-strongly interacts with population density. (see <https://xkcd.com/1138>)_
+- **Mean value** per square (`unemployed$value$mean`): probability of being unemployed per square.
 
+_Note: All density types are valid, but (total) value per square 
+strongly interacts with population density. (see <https://xkcd.com/1138>)_.
 
-## So let's plot!
+## Plotting a `sdc_raster`
 
-```{r, out.height="90%"}
-plot(unemployed)
+```{r, out.height="70%"}
+plot(unemployed, "mean")
 ```
 
 
@@ -120,16 +130,19 @@ plot(unemployed)
 ### Options: 
 
 a) Use a coarser raster: `sdc_raster`.
-b) Spatial smoothing: `protect_smooth` method by @WolfJonge2018, @JongeWolf2016.
-c) Quadtree aggregation: `protect_quadtree` method by @Sune2017.
-d) Removing sensitive locations: `remove_sensitive`.
+b) Apply Spatial smoothing: `protect_smooth` method by @WolfJonge2018, @JongeWolf2016.
+c) Aggregate with a Quad tree: `protect_quadtree` method by @Sune2017.
+d) Remove sensitive locations: `remove_sensitive`.
 
 
-## Option: coarsening
+## Option: coarser raster
 
-```{r, out.height="90%"}
-unemployed_1km <- sdc_raster(dwellings[c("x", "y")], dwellings$unemployed, r =1e3)
-plot(unemployed_1km)
+\scriptsize 
+
+```{r, out.height="70%"}
+unemployed_1km <- sdc_raster( dwellings[c("x", "y")]
+                            , dwellings$unemployed, r =1e3)
+plot(unemployed_1km, "mean")
 ```
 
 ## Option: Coarsening
@@ -145,43 +158,39 @@ plot(unemployed_1km)
 
 ## Option: KDE-smoothing
 
-```{r, out.height="90%", warning=FALSE}
+\scriptsize 
+
+```{r, out.height="70%", warning=FALSE}
 unemployed_smoothed <- protect_smooth(unemployed, bw = 1500)
-plot(unemployed_smoothed)
+plot(unemployed_smoothed, "mean")
 ```
 
 ## Options: KDE-smoothing
 
 ### Pro's
 
-- Often enhances spatial pattern visualisation.
-- Makes it a density map, e.g. contour map
+- Often enhances spatial pattern visualization, removing spatial noise.
+- Makes it a density map and used as source for e.g. contour map.
 
 ### Con's
 
 - Does not remove all sensitive values (depends on bandwidth `bw`)
-- A fixed band width is used for all locations: may removed detailed patterns  
+- A fixed band width is used for all locations: may remove detailed patterns...  
 spatial processes often have location dependent band widths. (= future work)
 
-## Option: Quadtree
+## Option: Quad tree
 
-```{r, warning=FALSE}
-unemployed_100m <- sdc_raster(dwellings[c("x","y")], dwellings$unemployed, r = 200)
+\scriptsize
+```{r, warning=FALSE, out.height="70%"}
+unemployed_100m <- sdc_raster( dwellings[c("x","y")], dwellings$unemployed
+                             , r = 100) # use a finer raster
 unemployed_qt <- protect_quadtree(unemployed_100m)
 plot(unemployed_qt)
 ```
 
 
-## Publish: visual interpolation
 
-- To make the raster visually more attractive, but still safe: 
-
-\scriptsize
-```{r, out.height="80%"}
-raster::filledContour(mean(unemployed_smoothed), main="Unemployement rate")
-```
-
-## Option: Quadtree
+## Option: Quad tree
 
 ### Pro
 
@@ -192,11 +201,22 @@ raster::filledContour(mean(unemployed_smoothed), main="Unemployement rate")
 
 - Visually: "Blocky" / "Mondrian-like" result.
 
-### Cons
+## Publish: visual interpolation
+
+So in 5 lines we create a visual attractive map that is safe: 
+
+\scriptsize
+```{r, out.height="70%"}
+unemployed <- sdc_raster(dwellings[c("x","y")], dwellings$unemployed, r=500)
+unemployed_smoothed <- protect_smooth(unemployed, bw = 1500)
+unemployed_safe <- remove_sensitive(unemployed_smoothed)
+mean_unemployed <- mean(unemployed_safe)
+raster::filledContour(mean_unemployed, main="Unemployment rate")
+```
 
 ## The end
 
-### Thank you for your atention!
+### Thank you for your attention!
 
 ### Questions?
 
