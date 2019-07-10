@@ -23,11 +23,11 @@ knitr::include_graphics("fig/privacy.jpg")
 
 ### `sdcSpatial` has methods for:
 
-- Creating a raster map: `sdc_raster` for pop density, value density and mean
+- **Creating** a **raster** map: `sdc_raster` for pop density, value density and mean
 density, using the excellent `raster` package by @Hijmans2019.
-- Finding out which locations are sensitive: `plot_sensitive`, `is_sensitive`
-- Adjusting raster map for protecting data: `protect_smooth`, `protect_quadtree`
-- Removing sensitive locations.
+- **Finding out** which locations are **sensitive**: `plot_sensitive`, `is_sensitive`.
+- Adjusting raster map for **protecting data**: `protect_smooth`, `protect_quadtree`.
+- **Removing sensitive** locations.
 
 ## Who am I?
 
@@ -42,7 +42,7 @@ density, using the excellent `raster` package by @Hijmans2019.
 
 ## What is SN / CBS?
 
-Statistics Netherlands is producer of all main official statistics in the 
+Statistics Netherlands is producer main official statistics in the 
 Netherlands:
 
 - Stats on Demographics, economy (GDP), education, environment, agriculture, 
@@ -90,6 +90,10 @@ unemployed <- sdc_raster( dwellings[c("x", "y")]
 print(unemployed)
 ```
 
+### 
+
+42% of the data on this map is sensitive!
+
 ## What is sensitivity?
 
 Binary score (`logical`) per raster cell indicating 
@@ -100,9 +104,9 @@ if it's unsafe to publish.
 a) Per location $(x_i,y_i)$ (raster cell)
 b) Using risk function `disclosure_risk` $r(x,y) \in [0,1]$. 
 How accurate can an attacker estimate the value of an individual?  
-If $r(x_i,y_i) >$ `max_risk` then $(x_i,y_i)$ is sensitive.
+If $r(x_i,y_i) >$ **`max_risk`** then $(x_i,y_i)$ is sensitive.
 c) Using a minimum number of observations.  
-If $\textsf{count}_i$ `< min_count`, then $(x_i,y_i)$ is sensitive.
+If $\textsf{count}_i <$ **`min_count`**, then $(x_i,y_i)$ is sensitive.
 
 ## Type of raster density maps:
 
@@ -116,7 +120,8 @@ Or density can population-based:
 - **Mean value** per square (`unemployed$value$mean`): probability of being unemployed per square.
 
 _Note: All density types are valid, but (total) value per square 
-strongly interacts with population density. (see <https://xkcd.com/1138>)_.
+strongly interacts with population density.  
+(e.g. <https://xkcd.com/1138>)_.
 
 ## Plotting a `sdc_raster`
 
@@ -125,12 +130,12 @@ plot(unemployed, "mean")
 ```
 
 
-## how to improve?
+## How to reduce sensitivity?
 
 ### Options: 
 
 a) Use a coarser raster: `sdc_raster`.
-b) Apply Spatial smoothing: `protect_smooth` method by @WolfJonge2018, @JongeWolf2016.
+b) Apply spatial smoothing: `protect_smooth` method by @WolfJonge2018, @JongeWolf2016.
 c) Aggregate with a Quad tree: `protect_quadtree` method by @Sune2017.
 d) Remove sensitive locations: `remove_sensitive`.
 
