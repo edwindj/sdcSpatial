@@ -173,7 +173,10 @@ The locations are realistic, but the associated data is simulated.</p>
 <span class='no'>dwellings_sp</span> <span class='kw'>&lt;-</span> <span class='no'>dwellings</span>
 <span class='co'># or change a data.frame into a sp object</span>
 <span class='kw pkg'>sp</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/sp/topics/coordinates'>coordinates</a></span>(<span class='no'>dwellings_sp</span>) <span class='kw'>&lt;-</span> ~ <span class='no'>x</span> + <span class='no'>y</span>
-<span class='kw pkg'>sp</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/sp/topics/is.projected'>proj4string</a></span>(<span class='no'>dwellings_sp</span>) <span class='kw'>&lt;-</span> <span class='st'>"+init=epsg:28992"</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/conditions'>tryCatch</a></span>(
+  <span class='co'># not working on some OS versions.</span>
+  <span class='kw pkg'>sp</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/sp/topics/is.projected'>proj4string</a></span>(<span class='no'>dwellings_sp</span>) <span class='kw'>&lt;-</span> <span class='st'>"+init=epsg:28992"</span>
+)
 <span class='no'>consumption</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>dwellings_sp</span>, <span class='no'>dwellings_sp</span>$<span class='no'>consumption</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>500</span>)
 <span class='no'>consumption</span></div><div class='output co'>#&gt; numeric sdc_raster object: 
 #&gt;    resolution: 500 500 ,  max_risk: 0.95 , min_count: 10 

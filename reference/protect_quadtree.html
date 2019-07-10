@@ -32,8 +32,9 @@
 
 <meta property="og:title" content="Protect a raster with  a quadtree method. — protect_quadtree" />
 
-<meta property="og:description" content="protect_quadtree reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
-does this recursively until no sensitive cells are left or when the maximum zoom levels has been reached." />
+<meta property="og:description" content="protect_quadtree reduces sensitivy by aggregating sensisitve cells with its
+three neighbors, and does this recursively until no sensitive cells are
+left or when the maximum zoom levels has been reached." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -119,8 +120,9 @@ does this recursively until no sensitive cells are left or when the maximum zoom
 
     <div class="ref-description">
     
-    <p><code>protect_quadtree</code> reduces sensitivy by aggregating sensisitve cells with its three neighbors, and
-does this recursively until no sensitive cells are left or when the maximum zoom levels has been reached.</p>
+    <p><code>protect_quadtree</code> reduces sensitivy by aggregating sensisitve cells with its
+three neighbors, and does this recursively until no sensitive cells are
+left or when the maximum zoom levels has been reached.</p>
     
     </div>
 
@@ -156,12 +158,13 @@ when max_zoom has been reached.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This implementation generalizes the method as described by Suñé et al., in which there is no
+    <p>This implementation generalizes the method as described by Suñé et al., in
+which there is no
 risk function, and only a  <code>min_count</code> to determine sensitivity.
 Furthermore the method the article
 only handles count data (<code>x$value$count</code>), not mean or summed values.
-Currently the translation feature of the article is not (yet) implemented, for the
-original method does not take the <code>disclosure_risk</code> into account.</p>
+Currently the translation feature of the article is not (yet) implemented,
+for the original method does not take the <code>disclosure_risk</code> into account.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 

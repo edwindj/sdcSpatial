@@ -166,8 +166,10 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>dwellings_sp</span> <span class='kw'>&lt;-</span> <span class='no'>dwellings</span>
 <span class='kw pkg'>sp</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/sp/topics/coordinates'>coordinates</a></span>(<span class='no'>dwellings_sp</span>) <span class='kw'>&lt;-</span> ~ <span class='no'>x</span> + <span class='no'>y</span>
-<span class='kw pkg'>sp</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/sp/topics/is.projected'>proj4string</a></span>(<span class='no'>dwellings_sp</span>) <span class='kw'>&lt;-</span> <span class='st'>"+init=epsg:28992"</span>
-
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/conditions'>tryCatch</a></span>(
+  <span class='co'># does not work on some OS versions</span>
+  <span class='kw pkg'>sp</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/sp/topics/is.projected'>proj4string</a></span>(<span class='no'>dwellings_sp</span>) <span class='kw'>&lt;-</span> <span class='st'>"+init=epsg:28992"</span>
+)
 <span class='co'># create a 1km grid</span>
 <span class='no'>unemployed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>dwellings_sp</span>, <span class='no'>dwellings_sp</span>$<span class='no'>unemployed</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>1e3</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>unemployed</span>)</div><div class='output co'>#&gt; logical sdc_raster object: 
