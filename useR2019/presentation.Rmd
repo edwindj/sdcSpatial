@@ -21,7 +21,7 @@ knitr::include_graphics("fig/privacy.jpg")
 
 ## sdcSpatial: Privacy protected maps
 
-### `sdcSpatial` has methods for:
+### Takeout message: `sdcSpatial` has methods for:
 
 - **Creating** a **raster** map: `sdc_raster` for pop density, value density and mean
 density, using the excellent `raster` package by @Hijmans2019.
@@ -29,7 +29,7 @@ density, using the excellent `raster` package by @Hijmans2019.
 - Adjusting raster map for **protecting data**: `protect_smooth`, `protect_quadtree`.
 - **Removing sensitive** locations.
 
-## Who am I and Why sdcSpatial?
+## Who am I and why sdcSpatial?
 
 - Statistical consultant, Data Scientist \@cbs.nl / Statistics NL
 - Statistics Netherlands is producer main official statistics in the 
@@ -57,6 +57,15 @@ SDC = "Statistical Disclosure Control"
   - shifting mass
 - Most SDC methods operate on records.
 - **`sdcSpatial` works upon locations.**
+
+## Data 
+
+```{r}
+data(dwellings, package="sdcSpatial")
+nrow(dwellings)
+head(dwellings) # consumption/unemployed are simulated!
+```
+
 
 ## Let's create a `sdc_raster`
 
@@ -103,13 +112,13 @@ If $\textsf{count}_i <$ **`min_count`**, then $(x_i,y_i)$ is sensitive.
 ### External (`numeric`)
 
 $$
-r(x,y) = \max \frac{v_i}{\sum_i v_i} \textrm{with } v_i \textrm{ in } (x,y)
+r(x,y) = \max \frac{v_i}{\sum_{i \in (x,y)} v_i} \textrm{with } v_i \in \mathbb{R}
 $$
 
 ### Discrete (`logical`)
 
 $$
-r(x,y) = \frac{1}{n} \sum_i v_i \textrm{ with } v_i \in \{0,1\} 
+r(x,y) = \frac{1}{n} \sum_{i \in (x,y)} v_i \textrm{ with } v_i \in \{0,1\} 
 $$
 
 ## Type of raster density maps:
