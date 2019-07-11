@@ -29,25 +29,15 @@ density, using the excellent `raster` package by @Hijmans2019.
 - Adjusting raster map for **protecting data**: `protect_smooth`, `protect_quadtree`.
 - **Removing sensitive** locations.
 
-## Who am I?
+## Who am I and Why sdcSpatial?
 
 - Statistical consultant, Data Scientist \@cbs.nl / Statistics NL
-- Expertise:
-
-  - **R programming**
-  - Data Cleaning with R
-  - **Data visualization**
-  - Complex networks analysis
-  - \@edwindjonge / <https://github.com/edwindj>
-
-## What is SN / CBS?
-
-Statistics Netherlands is producer main official statistics in the 
+- Statistics Netherlands is producer main official statistics in the 
 Netherlands:
 
-- Stats on Demographics, economy (GDP), education, environment, agriculture, 
+    - Stats on Demographics, economy (GDP), education, environment, agriculture, 
 Finance etc.
-- Part of the European Statistical System, ESS.
+    - Part of the European Statistical System, ESS.
 
 ### Motivation for `sdcSpatial`
 
@@ -76,14 +66,14 @@ SDC = "Statistical Disclosure Control"
 
 ```{r}
 library(sdcSpatial)
-unemployed <- sdc_raster( dwellings[c("x", "y")] 
-                        , dwellings$unemployed
+unemployed <- sdc_raster( dwellings[c("x", "y")] # realistic locations
+                        , dwellings$unemployed # simulated data!
                         , r = 500 # raster resolution of 500m
                         , min_count = 10 # min support
                         )
 ```
 
-### What is it about?
+### What has been created?
 
 \scriptsize
 ```{r}
@@ -108,16 +98,32 @@ If $r(x_i,y_i) >$ **`max_risk`** then $(x_i,y_i)$ is sensitive.
 c) Using a minimum number of observations.  
 If $\textsf{count}_i <$ **`min_count`**, then $(x_i,y_i)$ is sensitive.
 
+## Disclosure risks
+
+### External (`numeric`)
+
+$$
+r(x,y) = \max \frac{v_i}{\sum_i v_i} \textrm{with } v_i \textrm{ in } (x,y)
+$$
+
+### Discrete (`logical`)
+
+$$
+r(x,y) = \frac{1}{n} \sum_i v_i \textrm{ with } v_i \in \{0,1\} 
+$$
+
 ## Type of raster density maps:
+
+(Stored in `unemployed$value`):
 
 Density can be area-based:
 
-- **number of people** per square (`unemployed$value$count`): population density.
-- **(total) value** per square (`unemployed$value$sum`): number of unemployed per square.
+- **number of people** per square (`$count`): population density.
+- **(total) value** per square (`$sum`): number of unemployed per square.
 
 Or density can population-based:
 
-- **Mean value** per square (`unemployed$value$mean`): probability of being unemployed per square.
+- **Mean value** per square (`$mean`): unemployment rate per square.
 
 _Note: All density types are valid, but (total) value per square 
 strongly interacts with population density.  
@@ -135,9 +141,10 @@ plot(unemployed, "mean")
 ### Options: 
 
 a) Use a coarser raster: `sdc_raster`.
-b) Apply spatial smoothing: `protect_smooth` method by @WolfJonge2018, @JongeWolf2016.
-c) Aggregate with a Quad tree: `protect_quadtree` method by @Sune2017.
-d) Remove sensitive locations: `remove_sensitive`.
+b) Apply spatial smoothing: **`protect_smooth`** method by @WolfJonge2018, @JongeWolf2016.
+c) Aggregate sensitive cells hierarchically with a quad tree until not 
+sensitive: **`protect_quadtree`** method by @Sune2017.
+d) Remove sensitive locations: **`remove_sensitive`**.
 
 
 ## Option: coarser raster
@@ -146,7 +153,7 @@ d) Remove sensitive locations: `remove_sensitive`.
 
 ```{r, out.height="70%"}
 unemployed_1km <- sdc_raster( dwellings[c("x", "y")]
-                            , dwellings$unemployed, r =1e3)
+                            , dwellings$unemployed, r =1e3) # 1km!
 plot(unemployed_1km, "mean")
 ```
 
