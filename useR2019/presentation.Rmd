@@ -177,7 +177,7 @@ plot(unemployed_1km, "mean")
 - Detailed spatial patterns are removed
 - visually unattractive: "Blocky"
 
-## Option: KDE-smoothing
+## Option: `protect_smooth`
 
 \scriptsize 
 
@@ -186,7 +186,7 @@ unemployed_smoothed <- protect_smooth(unemployed, bw = 1500)
 plot(unemployed_smoothed, "mean")
 ```
 
-## Options: KDE-smoothing
+## Option: `protect_smooth`
 
 ### Pro's
 
@@ -199,7 +199,7 @@ plot(unemployed_smoothed, "mean")
 - A fixed band width is used for all locations: may remove detailed patterns...  
 spatial processes often have location dependent band widths. (= future work)
 
-## Option: Quad tree
+## Option: `protect_quadtree`
 
 \scriptsize
 ```{r, warning=FALSE, out.height="70%"}
@@ -211,7 +211,7 @@ plot(unemployed_qt)
 
 
 
-## Option: Quad tree
+## Option: `protect_quadtree`
 
 ### Pro
 
@@ -224,7 +224,7 @@ plot(unemployed_qt)
 
 ## Publish: visual interpolation
 
-So in 5 lines we create a visual attractive map that is safe: 
+In 5 lines we create a visual attractive map that is safe: 
 
 \scriptsize
 ```{r, out.height="70%"}
