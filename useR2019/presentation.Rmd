@@ -24,7 +24,7 @@ knitr::include_graphics("fig/privacy.jpg")
 ### Takeout message: `sdcSpatial` has methods for:
 
 - **Creating** a **raster** map: `sdc_raster` for pop density, value density and mean
-density, using the excellent `raster` package by @Hijmans2019.
+density, using the excellent `raster` [@Hijmans2019].
 - **Finding out** which locations are **sensitive**: `plot_sensitive`, `is_sensitive`.
 - Adjusting raster map for **protecting data**: `protect_smooth`, `protect_quadtree`.
 - **Removing sensitive** locations.
@@ -150,11 +150,10 @@ plot(unemployed, "mean")
 ### Options: 
 
 a) Use a coarser raster: `sdc_raster`.
-b) Apply spatial smoothing: **`protect_smooth`** method by @WolfJonge2018, @JongeWolf2016.
+b) Apply spatial smoothing: **`protect_smooth`** [@WolfJonge2018; @JongeWolf2016].
 c) Aggregate sensitive cells hierarchically with a quad tree until not 
-sensitive: **`protect_quadtree`** method by @Sune2017.
+sensitive: **`protect_quadtree`** [@Sune2017].
 d) Remove sensitive locations: **`remove_sensitive`**.
-
 
 ## Option: coarser raster
 
