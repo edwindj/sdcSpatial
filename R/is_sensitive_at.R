@@ -7,6 +7,7 @@
 #' @inheritDotParams is_sensitive
 #' @return `logical` vector with
 #' @example ./example/is_sensitive_at.R
+#' @family sensitive
 #' @export
 is_sensitive_at <- function(x, xy, ...){
   sens <- is_sensitive(x, ...)
