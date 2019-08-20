@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • sdcSpatial</title>
+<title>Calculate sensitivity from  raster at x,y locations. — is_sensitive_at • sdcSpatial</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Calculate sensitivity from  raster at x,y locations. — is_sensitive_at" />
+
+<meta property="og:description" content="Calculate sensitivity from  raster at x,y locations." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -106,120 +109,65 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Calculate sensitivity from  raster at x,y locations.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/edwindj/sdcSpatial/blob/master/R/is_sensitive_at.R'><code>R/is_sensitive_at.R</code></a></small>
+    <div class="hidden name"><code>is_sensitive_at.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Calculate sensitivity from  raster at x,y locations.</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="disclosure_risk.html">disclosure_risk()</a></code> </p>
-        </td>
-        <td><p>Calculate disclosure risk for raster cells</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dwellings.html">dwellings</a></code> </p>
-        </td>
-        <td><p>Simulated dwellings data set</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="enterprises.html">enterprises</a></code> </p>
-        </td>
-        <td><p>Simulated data set with enterprise locations.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_sensitive.html">is_sensitive()</a></code> </p>
-        </td>
-        <td><p>Return raster with sensitive locations.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_sensitive_at.html">is_sensitive_at()</a></code> </p>
-        </td>
-        <td><p>Calculate sensitivity from  raster at x,y locations.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot.sdc_raster.html">plot(<i>&lt;sdc_raster&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plot a sdc_raster object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_sensitive.html">plot_sensitive()</a></code> </p>
-        </td>
-        <td><p>Plot the sensitive cells of the sdc_raster.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="protect_quadtree.html">protect_quadtree()</a></code> </p>
-        </td>
-        <td><p>Protect a raster with  a quadtree method.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="protect_smooth.html">protect_smooth()</a></code> </p>
-        </td>
-        <td><p>Protect a sdc_raster by smoothing</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="remove_sensitive.html">remove_sensitive()</a></code> <code><a href="remove_sensitive.html">mask_sensitive()</a></code> </p>
-        </td>
-        <td><p>Remove sensitive cells from raster</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sdcSpatial-package.html">sdcSpatial-package</a></code> </p>
-        </td>
-        <td><p>Privacy Protected maps</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sdc_raster.html">sdc_raster()</a></code> </p>
-        </td>
-        <td><p>Create a raster map with privacy awareness</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sensitivity_score.html">sensitivity_score()</a></code> </p>
-        </td>
-        <td><p>Mean sensitivity for raster</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="smooth_raster.html">smooth_raster()</a></code> </p>
-        </td>
-        <td><p>Create kde density version of a raster</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>is_sensitive_at</span>(<span class='no'>x</span>, <span class='no'>xy</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p><code><a href='sdc_raster.html'>sdc_raster()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>xy</th>
+      <td><p>matrix of x and y coordinates, or a SpatialPoints or
+SpatialPointsDataFrame object</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Arguments passed on to <code>is_sensitive</code></p><dl class='dl-horizontal'>
+  <dt>x</dt><dd><p><code><a href='sdc_raster.html'>sdc_raster</a></code> object.</p></dd>
+  <dt>max_risk</dt><dd><p>a risk value higher than <code>max_risk</code> will be sensitive.</p></dd>
+  <dt>min_count</dt><dd><p>a count lower than <code>min_count</code> will be sensitive.</p></dd>
+  <dt>risk_type</dt><dd><p>what kind of measure should be used (see details).</p></dd>
+</dl></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p><code>logical</code> vector with</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>production</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='st'>"production"</span>)
+
+<span class='co'># add the sensitive variable to original data set.</span>
+<span class='no'>enterprises</span>$<span class='no'>sensitive</span> <span class='kw'>&lt;-</span> <span class='fu'>is_sensitive_at</span>(<span class='no'>production</span>, <span class='no'>enterprises</span>)</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 
