@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate sensitivity from  raster at x,y locations. — is_sensitive_at • sdcSpatial</title>
+<title>Calculate sensitivity from  a sdc_raster at x,y locations. — is_sensitive_at • sdcSpatial</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Calculate sensitivity from  raster at x,y locations. — is_sensitive_at" />
+<meta property="og:title" content="Calculate sensitivity from  a sdc_raster at x,y locations. — is_sensitive_at" />
 
-<meta property="og:description" content="Calculate sensitivity from  raster at x,y locations." />
+<meta property="og:description" content="Calculate sensitivity from  a sdc_raster at x,y locations.
+A typical use is to calculate the sensitivity for each of the locations x
+was created with (see example)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -90,6 +92,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -111,14 +116,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate sensitivity from  raster at x,y locations.</h1>
+    <h1>Calculate sensitivity from  a sdc_raster at x,y locations.</h1>
     <small class="dont-index">Source: <a href='https://github.com/edwindj/sdcSpatial/blob/master/R/is_sensitive_at.R'><code>R/is_sensitive_at.R</code></a></small>
     <div class="hidden name"><code>is_sensitive_at.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Calculate sensitivity from  raster at x,y locations.</p>
+    <p>Calculate sensitivity from  a sdc_raster at x,y locations.
+A typical use is to calculate the sensitivity for each of the locations <code>x</code>
+was created with (see example).</p>
     
     </div>
 
@@ -151,6 +158,13 @@ SpatialPointsDataFrame object</p></td>
 
     <p><code>logical</code> vector with</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other sensitive: <code><a href='disclosure_risk.html'>disclosure_risk</a></code>,
+  <code><a href='is_sensitive.html'>is_sensitive</a></code>, <code><a href='plot_sensitive.html'>plot_sensitive</a></code>,
+  <code><a href='remove_sensitive.html'>remove_sensitive</a></code>, <code><a href='sdc_raster.html'>sdc_raster</a></code>,
+  <code><a href='sensitivity_score.html'>sensitivity_score</a></code></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>production</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='st'>"production"</span>)
@@ -164,6 +178,8 @@ SpatialPointsDataFrame object</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
