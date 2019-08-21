@@ -30,8 +30,8 @@ comprises the sum without the second largest value
 }
 }
 \seealso{
-Other sensitive: \code{\link{is_sensitive}},
-  \code{\link{plot_sensitive}},
+Other sensitive: \code{\link{is_sensitive_at}},
+  \code{\link{is_sensitive}}, \code{\link{plot_sensitive}},
   \code{\link{remove_sensitive}}, \code{\link{sdc_raster}},
   \code{\link{sensitivity_score}}
 }

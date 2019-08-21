@@ -76,6 +76,7 @@ summary(prod_total)
 }
 \seealso{
 Other sensitive: \code{\link{disclosure_risk}},
+  \code{\link{is_sensitive_at}},
   \code{\link{is_sensitive}}, \code{\link{plot_sensitive}},
   \code{\link{remove_sensitive}},
   \code{\link{sensitivity_score}}

@@ -26,6 +26,7 @@ plotted in red. The sensitive cells are determined using \code{\link{is_sensitiv
 Other plotting: \code{\link{plot.sdc_raster}}
 
 Other sensitive: \code{\link{disclosure_risk}},
+  \code{\link{is_sensitive_at}},
   \code{\link{is_sensitive}},
   \code{\link{remove_sensitive}}, \code{\link{sdc_raster}},
   \code{\link{sensitivity_score}}

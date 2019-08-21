@@ -2,7 +2,7 @@
 % Please edit documentation in R/is_sensitive_at.R
 \name{is_sensitive_at}
 \alias{is_sensitive_at}
-\title{Calculate sensitivity from  raster at x,y locations.}
+\title{Calculate sensitivity from  a sdc_raster at x,y locations.}
 \usage{
 is_sensitive_at(x, xy, ...)
 }
@@ -24,7 +24,9 @@ SpatialPointsDataFrame object}
 \code{logical} vector with
 }
 \description{
-Calculate sensitivity from  raster at x,y locations.
+Calculate sensitivity from  a sdc_raster at x,y locations.
+A typical use is to calculate the sensitivity for each of the locations \code{x}
+was created with (see example).
 }
 \examples{
 production <- sdc_raster(enterprises, "production")
@@ -32,3 +34,10 @@ production <- sdc_raster(enterprises, "production")
 # add the sensitive variable to original data set.
 enterprises$sensitive <- is_sensitive_at(production, enterprises)
 }
+\seealso{
+Other sensitive: \code{\link{disclosure_risk}},
+  \code{\link{is_sensitive}}, \code{\link{plot_sensitive}},
+  \code{\link{remove_sensitive}}, \code{\link{sdc_raster}},
+  \code{\link{sensitivity_score}}
+}
+\concept{sensitive}
