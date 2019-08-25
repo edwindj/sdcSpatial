@@ -30,7 +30,12 @@ observations.
 
 ## Installation
 
-Currently `sdcSpatial` can only be installed with `devtools`
+``` r
+install.packages("sdcSpatial")
+```
+
+To install the current development version of `sdcSpatial` with
+`devtools`
 
 ``` r
 remotes::install_github("edwindj/sdcSpatial")
