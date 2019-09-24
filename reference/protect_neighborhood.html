@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot the sensitive cells of the sdc_raster. — plot_sensitive • sdcSpatial</title>
+<title>protects raster by summing over the neighborhood — protect_neighborhood • sdcSpatial</title>
 
 
 <!-- jquery -->
@@ -35,9 +35,8 @@
 
 
 
-<meta property="og:title" content="Plot the sensitive cells of the sdc_raster. — plot_sensitive" />
-<meta property="og:description" content="Plots t the sensitive cells of the sdc_raster. The sensitive cells are
-plotted in red. The sensitive cells are determined using is_sensitive." />
+<meta property="og:title" content="protects raster by summing over the neighborhood — protect_neighborhood" />
+<meta property="og:description" content="protects raster by summing over the neighborhood" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,59 +120,44 @@ plotted in red. The sensitive cells are determined using is_sensitive." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot the sensitive cells of the sdc_raster.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/edwindj/sdcSpatial/blob/master/R/plot.R'><code>R/plot.R</code></a></small>
-    <div class="hidden name"><code>plot_sensitive.Rd</code></div>
+    <h1>protects raster by summing over the neighborhood</h1>
+    <small class="dont-index">Source: <a href='https://github.com/edwindj/sdcSpatial/blob/master/R/protect_neighborhood.R'><code>R/protect_neighborhood.R</code></a></small>
+    <div class="hidden name"><code>protect_neighborhood.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plots t the sensitive cells of the sdc_raster. The sensitive cells are
-plotted in red. The sensitive cells are determined using <code><a href='is_sensitive.html'>is_sensitive</a></code>.</p>
+    <p>protects raster by summing over the neighborhood</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_sensitive</span>(<span class='no'>x</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"mean"</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>"sensitive"</span>, <span class='no'>col</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>protect_neighborhood</span>(<span class='no'>x</span>, <span class='kw'>radius</span> <span class='kw'>=</span> <span class='fl'>10</span> * <span class='kw pkg'>raster</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/raster/man/resolution.html'>res</a></span>(<span class='no'>x</span>$<span class='no'>value</span>)[<span class='fl'>1</span>], <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p><a href='sdc_raster.html'>sdc_raster</a> object</p></td>
+      <td><p><code><a href='sdc_raster.html'>sdc_raster()</a></code> object to be protected</p></td>
     </tr>
     <tr>
-      <th>value</th>
-      <td><p><a href='https://rdrr.io/r/base/character.html'>character</a> which value layer to be used for values,
-e.g. "sum", "count", "mean" (default).</p></td>
-    </tr>
-    <tr>
-      <th>main</th>
-      <td><p><a href='https://rdrr.io/r/base/character.html'>character</a> title of map.</p></td>
-    </tr>
-    <tr>
-      <th>col</th>
-      <td><p>color palette to be used, passed on to <code><a href='https://rdrr.io/pkg/raster/man/plot.html'>raster::plot()</a></code>.</p></td>
+      <th>radius</th>
+      <td><p>of the neighborhood to take</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>passed on to <code><a href='plot.sdc_raster.html'>plot.sdc_raster</a></code>.</p></td>
+      <td><p>not used at the moment</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>Other plotting: <code><a href='plot.sdc_raster.html'>plot.sdc_raster</a></code></p>
-<p>Other sensitive: <code><a href='disclosure_risk.html'>disclosure_risk</a></code>,
-  <code><a href='is_sensitive_at.html'>is_sensitive_at</a></code>,
-  <code><a href='is_sensitive.html'>is_sensitive</a></code>,
-  <code><a href='remove_sensitive.html'>remove_sensitive</a></code>, <code><a href='sdc_raster.html'>sdc_raster</a></code>,
-  <code><a href='sensitivity_score.html'>sensitivity_score</a></code></p></div>
+    <p><code>sdc_raster</code> object</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
 
   </div>
