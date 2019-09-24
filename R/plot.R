@@ -72,7 +72,6 @@ plot_sensitive <- function(x, value = "mean", main = "sensitive", col, ...){
   invisible(sens)
 }
 
-
 # generated with
 # Blues10 <- hcl.colors(10, "Blues", rev = TRUE)
 Blues10 <- c("#F4FAFE", "#E1F0F8", "#C8DFEE", "#ACCCE4"
