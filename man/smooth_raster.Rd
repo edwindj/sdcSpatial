@@ -5,8 +5,8 @@
 \title{Create kde density version of a raster}
 \usage{
 smooth_raster(x, bw = raster::res(x), smooth_fact = 5,
-  keep_resolution = TRUE, na.rm = TRUE, pad = TRUE,
-  threshold = NULL, ...)
+  keep_resolution = TRUE, na.rm = TRUE, pad = TRUE, padValue = NA,
+  threshold = NULL, type = c("Gauss", "circle", "rectangle"), ...)
 }
 \arguments{
 \item{x}{raster object}
@@ -24,7 +24,11 @@ resolution as \code{x} or keep the disaggregated raster resulting from
 
 \item{pad}{should the data be padded?}
 
+\item{padValue}{what should the padding value be?}
+
 \item{threshold}{cells with a lower (weighted) value of this threshold will be removed.}
+
+\item{type}{what is the type of smoothing (see \code{raster::focal()})}
 
 \item{...}{passed through to \code{\link{focal}}.}
 }

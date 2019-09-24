@@ -10,6 +10,8 @@
 #' `smooth_fact`?
 #' @param na.rm should the `NA` value be removed from the raster?
 #' @param pad should the data be padded?
+#' @param padValue what should the padding value be?
+#' @param type what is the type of smoothing (see `raster::focal()`)
 #' @param ... passed through to [`focal`].
 #' @param threshold cells with a lower (weighted) value of this threshold will be removed.
 #' @export

@@ -1,6 +1,10 @@
 #' protects raster by summing over the neighborhood
-#' @param x `sdc_raster()`
+#'
+#' protects raster by summing over the neighborhood
+#' @param x `sdc_raster()` object to be protected
 #' @param radius of the neighborhood to take
+#' @param ... not used at the moment
+#' @return `sdc_raster` object
 protect_neighborhood <- function(x, radius = 10 * raster::res(x$value)[1], ...){
   assert_sdc_raster(x)
 
