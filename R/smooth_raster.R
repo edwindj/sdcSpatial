@@ -19,9 +19,12 @@ smooth_raster <- function( x
                          , keep_resolution = TRUE
                          , na.rm           = TRUE
                          , pad             = TRUE
+                         , padValue        = NA
                          , threshold       = NULL
+                         , type            = c("Gauss", "circle", "rectangle")
                          , ...
                          ){
+
   if (any(bw < raster::res(x))){
     warning("bandwidth 'bw' is smaller than resolution.")
     return(x)
@@ -29,8 +32,9 @@ smooth_raster <- function( x
 
   x <- raster::disaggregate(x, smooth_fact)
 
-  w <- raster::focalWeight(x, bw)
-  x_s <- raster::focal(x, w = w, na.rm = na.rm, pad = pad, type="Gaus", ...)
+  type <- match.arg(type)
+  w <- raster::focalWeight(x, bw, type = type)
+  x_s <- raster::focal(x, w = w, na.rm = na.rm, pad = pad, ...)
 
   if (isTRUE(keep_resolution)){
     x_s <- raster::aggregate(x_s, fact = smooth_fact, fun=mean)

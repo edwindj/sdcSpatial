@@ -97,7 +97,7 @@ plot(smoothed)
 
 # what is the sensitivy fraction?
 sensitivity_score(smoothed)
-#> [1] 0.09800066
+#> [1] 0.01408451
 
 # let's remove the sensitive data.
 smoothed_safe <- remove_sensitive(smoothed, min_count = 3)
