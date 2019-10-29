@@ -44,9 +44,10 @@ raster::filledContour(production_mean, nlevels = 6, main = "Mean production")
 
 
 # generated with R 3.6 >=
-#col <- hcl.colors(10, rev=TRUE)
-col <- c("#FDE333", "#BBDD38", "#6CD05E", "#00BE7D",
-         "#00A890", "#008E98",  "#007094", "#185086", "#422C70", "#4B0055")
-raster::filledContour(production_total, nlevels = 10
+#col <- hcl.colors(11, rev=TRUE)
+col <- c("#FDE333", "#C2DE34", "#7ED357", "#00C475", "#00B28A", "#009B95"
+        ,  "#008298", "#006791", "#274983", "#44286E", "#4B0055"
+        )
+raster::filledContour(production_total, nlevels = 11
              , col = col
              , main="Total production")
