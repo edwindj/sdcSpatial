@@ -33,7 +33,7 @@ sensitivity_score(smoothed)
 
 # let's remove the sensitive data.
 smoothed_safe <- remove_sensitive(smoothed, min_count = 3)
-plot(smoothed_safe, zlim=zlim)
+plot(smoothed_safe)
 
 # let's communicate!
 production_mean <- mean(smoothed_safe)
