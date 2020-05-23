@@ -5,6 +5,7 @@ Authors@R: c(
   person("Edwin", "de Jonge", email = "edwindjonge@gmail.com", role = c("aut", "cre"), 
     comment=c(ORCID="0000-0002-6580-4718")),
   person("Peter-Paul", "de Wolf", role = c("aut")),
+  person("Douwe", "Hut", role = c("ctb")),
   person("Sapphire", "Han", role = c("ctb"))
   )
 Description: Privacy protected raster maps 
