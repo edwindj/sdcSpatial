@@ -4,8 +4,7 @@
 \alias{topdown_code}
 \title{Remove revealing high and low values}
 \usage{
-topdown_code(r, top = Inf, down = -Inf, ..., upper = top,
-  lower = down)
+topdown_code(r, top = Inf, down = -Inf, ..., upper = top, lower = down)
 }
 \description{
 Remove revealing high and low values

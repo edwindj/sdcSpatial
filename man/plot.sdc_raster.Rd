@@ -4,8 +4,14 @@
 \alias{plot.sdc_raster}
 \title{Plot a sdc_raster object}
 \usage{
-\method{plot}{sdc_raster}(x, value = "mean", sensitive = TRUE, ...,
-  main = paste(substitute(x)), col)
+\method{plot}{sdc_raster}(
+  x,
+  value = "mean",
+  sensitive = TRUE,
+  ...,
+  main = paste(substitute(x)),
+  col
+)
 }
 \arguments{
 \item{x}{\code{\link{sdc_raster}} object to be plotted}
@@ -28,6 +34,7 @@ When \code{sensitive} is set to \code{TRUE}, a side-by-side plot will be made of
 the \code{value} and its \code{sensitivity}.
 }
 \seealso{
-Other plotting: \code{\link{plot_sensitive}}
+Other plotting: 
+\code{\link{plot_sensitive}()}
 }
 \concept{plotting}

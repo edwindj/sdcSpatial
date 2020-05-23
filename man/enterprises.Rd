@@ -4,7 +4,17 @@
 \name{enterprises}
 \alias{enterprises}
 \title{Simulated data set with enterprise locations.}
-\format{An object of class \code{SpatialPointsDataFrame} with 8348 rows and 2 columns.}
+\format{
+An object of class \code{SpatialPointsDataFrame} with 8348 rows and 2 columns.
+
+\describe{
+\item{production}{\code{numeric} simulated production (lognormal).}
+\item{fined}{logical simulated variable if an enterprise is fined or not.}
+}
+}
+\source{
+Basisregistratie Adressen en Gebouwen: \url{https://zakelijk.kadaster.nl/bag-producten}
+}
 \usage{
 enterprises
 }
@@ -12,12 +22,6 @@ enterprises
 \code{enterprises} is generated from the dutch open data
 \href{https://zakelijk.kadaster.nl/bag-producten}{BAG register}.
 The locations are realistic, but the associated data is simulated.
-}
-\details{
-\itemize{
-\item \code{production} \code{\link{numeric}} simulated production (lognormal).
-\item \code{fined} \code{\link{logical}} simulated variable if an enterprise is fined or not.
-}
 }
 \examples{
 library(sdcSpatial)
@@ -35,8 +39,5 @@ plot(production)
 
 production_safe <- remove_sensitive(production)
 plot(production_safe)
-}
-\references{
-Basisregistratie Adressen en Gebouwen: \url{https://zakelijk.kadaster.nl/bag-producten}
 }
 \keyword{datasets}

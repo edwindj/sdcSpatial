@@ -4,9 +4,18 @@
 \alias{smooth_raster}
 \title{Create kde density version of a raster}
 \usage{
-smooth_raster(x, bw = raster::res(x), smooth_fact = 5,
-  keep_resolution = TRUE, na.rm = TRUE, pad = TRUE, padValue = NA,
-  threshold = NULL, type = c("Gauss", "circle", "rectangle"), ...)
+smooth_raster(
+  x,
+  bw = raster::res(x),
+  smooth_fact = 5,
+  keep_resolution = TRUE,
+  na.rm = TRUE,
+  pad = TRUE,
+  padValue = NA,
+  threshold = NULL,
+  type = c("Gauss", "circle", "rectangle"),
+  ...
+)
 }
 \arguments{
 \item{x}{raster object}

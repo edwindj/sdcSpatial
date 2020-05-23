@@ -3,10 +3,12 @@
 #' `enterprises` is generated from the dutch open data
 #' [BAG register](https://zakelijk.kadaster.nl/bag-producten).
 #' The locations are realistic, but the associated data is simulated.
+#' @format An object of class `SpatialPointsDataFrame` with 8348 rows and 2 columns.
 #'
-#'  * `production` [`numeric`] simulated production (lognormal).
-#'  * `fined` [`logical`] simulated variable if an enterprise is fined or not.
-#'
-#' @references Basisregistratie Adressen en Gebouwen: <https://zakelijk.kadaster.nl/bag-producten>
+#' \describe{
+#'  \item{production}{`numeric` simulated production (lognormal).}
+#'  \item{fined}{logical simulated variable if an enterprise is fined or not.}
+#' }
+#' @source Basisregistratie Adressen en Gebouwen: <https://zakelijk.kadaster.nl/bag-producten>
 #' @example ./example/enterprises.R
 "enterprises"

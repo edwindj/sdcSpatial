@@ -4,7 +4,20 @@
 \name{dwellings}
 \alias{dwellings}
 \title{Simulated dwellings data set}
-\format{An object of class \code{data.frame} with 90603 rows and 4 columns.}
+\format{
+a \code{data.frame} with 90603 rows and 4 columns.
+
+\describe{
+\item{x}{integer, x coordinate of dwelling (crs 28992)}
+\item{y}{integer, y coordinate of dwelling (crs 28992)}
+\item{consumption}{numeric, simulated continuous value}
+\item{unemployed}{logical, simulated discrete value}
+}
+}
+\source{
+Basisregistratie Adressen en Gebouwen
+\url{https://zakelijk.kadaster.nl/bag-producten}
+}
 \usage{
 dwellings
 }
@@ -12,14 +25,6 @@ dwellings
 The data are generated with residence/household locations from the Dutch open
 data \href{https://zakelijk.kadaster.nl/bag-producten}{BAG register}.
 The locations are realistic, but the associated data is simulated.
-}
-\details{
-\itemize{
-\item \code{x}, \code{integer}, x coordinate of dwelling (crs 28992)
-\item \code{y}, \code{integer}, y coordinate of dwelling (crs 28992)
-\item \code{consumption}, \code{numeric}, simulated continuous value
-\item \code{unemployed}, \code{logical}, simulated discrete value
-}
 }
 \examples{
 \donttest{
@@ -61,9 +66,5 @@ plot(consumption)
 # but we can also create a raster directly from a data.frame
 unemployed <- sdc_raster( dwellings[c("x","y")], dwellings$unemployed)
 }
-}
-\references{
-Basisregistratie Adressen en Gebouwen
-\url{https://zakelijk.kadaster.nl/bag-producten}
 }
 \keyword{datasets}

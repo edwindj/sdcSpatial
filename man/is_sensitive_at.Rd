@@ -12,13 +12,13 @@ is_sensitive_at(x, xy, ...)
 \item{xy}{matrix of x and y coordinates, or a SpatialPoints or
 SpatialPointsDataFrame object}
 
-\item{...}{Arguments passed on to \code{is_sensitive}
-\describe{
-  \item{x}{\code{\link{sdc_raster}} object.}
-  \item{max_risk}{a risk value higher than \code{max_risk} will be sensitive.}
-  \item{min_count}{a count lower than \code{min_count} will be sensitive.}
-  \item{risk_type}{what kind of measure should be used (see details).}
-}}
+\item{...}{
+  Arguments passed on to \code{\link[=is_sensitive]{is_sensitive}}
+  \describe{
+    \item{\code{max_risk}}{a risk value higher than \code{max_risk} will be sensitive.}
+    \item{\code{min_count}}{a count lower than \code{min_count} will be sensitive.}
+    \item{\code{risk_type}}{what kind of measure should be used (see details).}
+  }}
 }
 \value{
 \code{logical} vector with
@@ -35,9 +35,12 @@ production <- sdc_raster(enterprises, "production")
 enterprises$sensitive <- is_sensitive_at(production, enterprises)
 }
 \seealso{
-Other sensitive: \code{\link{disclosure_risk}},
-  \code{\link{is_sensitive}}, \code{\link{plot_sensitive}},
-  \code{\link{remove_sensitive}}, \code{\link{sdc_raster}},
-  \code{\link{sensitivity_score}}
+Other sensitive: 
+\code{\link{disclosure_risk}()},
+\code{\link{is_sensitive}()},
+\code{\link{plot_sensitive}()},
+\code{\link{remove_sensitive}()},
+\code{\link{sdc_raster}()},
+\code{\link{sensitivity_score}()}
 }
 \concept{sensitive}

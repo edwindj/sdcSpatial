@@ -12,13 +12,13 @@ protect_quadtree(x, max_zoom = Inf, ...)
 \item{max_zoom}{\code{numeric}, restricts the number of zoom steps and thereby the max resolution for the
 blocks. Each step will zoom with a factor of 2 in x and y so the max resolution = resolution * 2^max_zoom.}
 
-\item{...}{Arguments passed on to \code{is_sensitive}
-\describe{
-  \item{x}{\code{\link{sdc_raster}} object.}
-  \item{max_risk}{a risk value higher than \code{max_risk} will be sensitive.}
-  \item{min_count}{a count lower than \code{min_count} will be sensitive.}
-  \item{risk_type}{what kind of measure should be used (see details).}
-}}
+\item{...}{
+  Arguments passed on to \code{\link[=is_sensitive]{is_sensitive}}
+  \describe{
+    \item{\code{max_risk}}{a risk value higher than \code{max_risk} will be sensitive.}
+    \item{\code{min_count}}{a count lower than \code{min_count} will be sensitive.}
+    \item{\code{risk_type}}{what kind of measure should be used (see details).}
+  }}
 }
 \value{
 a \code{\link{sdc_raster}} object, in which sensitive cells have been recursively aggregated until not sensitive or
@@ -58,7 +58,8 @@ Statistical disclosure control on visualising geocoded population data using
 a structure in quadtrees, NTTS 2017
 }
 \seealso{
-Other protection methods: \code{\link{protect_smooth}},
-  \code{\link{remove_sensitive}}
+Other protection methods: 
+\code{\link{protect_smooth}()},
+\code{\link{remove_sensitive}()}
 }
 \concept{protection methods}

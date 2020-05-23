@@ -62,7 +62,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Edwin de Jonge \email{edwindjonge@gmail.com} (0000-0002-6580-4718)
+\strong{Maintainer}: Edwin de Jonge \email{edwindjonge@gmail.com} (\href{https://orcid.org/0000-0002-6580-4718}{ORCID})
 
 Authors:
 \itemize{

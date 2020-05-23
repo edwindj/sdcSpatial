@@ -4,8 +4,12 @@
 \alias{is_sensitive}
 \title{Return raster with sensitive locations.}
 \usage{
-is_sensitive(x, max_risk = x$max_risk, min_count = x$min_count,
-  risk_type = x$risk_type)
+is_sensitive(
+  x,
+  max_risk = x$max_risk,
+  min_count = x$min_count,
+  risk_type = x$risk_type
+)
 }
 \arguments{
 \item{x}{\code{\link{sdc_raster}} object.}
@@ -44,10 +48,12 @@ print(unemployed)
 is_sensitive(unemployed)
 }
 \seealso{
-Other sensitive: \code{\link{disclosure_risk}},
-  \code{\link{is_sensitive_at}},
-  \code{\link{plot_sensitive}},
-  \code{\link{remove_sensitive}}, \code{\link{sdc_raster}},
-  \code{\link{sensitivity_score}}
+Other sensitive: 
+\code{\link{disclosure_risk}()},
+\code{\link{is_sensitive_at}()},
+\code{\link{plot_sensitive}()},
+\code{\link{remove_sensitive}()},
+\code{\link{sdc_raster}()},
+\code{\link{sensitivity_score}()}
 }
 \concept{sensitive}

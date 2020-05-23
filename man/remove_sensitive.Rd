@@ -5,8 +5,7 @@
 \alias{mask_sensitive}
 \title{Remove sensitive cells from raster}
 \usage{
-remove_sensitive(x, max_risk = x$max_risk, min_count = x$min_count,
-  ...)
+remove_sensitive(x, max_risk = x$max_risk, min_count = x$min_count, ...)
 
 mask_sensitive(x, max_risk = x$max_risk, min_count = x$min_count, ...)
 }
@@ -47,13 +46,17 @@ print(unemployed)
 unemployed$value
 }
 \seealso{
-Other sensitive: \code{\link{disclosure_risk}},
-  \code{\link{is_sensitive_at}},
-  \code{\link{is_sensitive}}, \code{\link{plot_sensitive}},
-  \code{\link{sdc_raster}}, \code{\link{sensitivity_score}}
+Other sensitive: 
+\code{\link{disclosure_risk}()},
+\code{\link{is_sensitive_at}()},
+\code{\link{is_sensitive}()},
+\code{\link{plot_sensitive}()},
+\code{\link{sdc_raster}()},
+\code{\link{sensitivity_score}()}
 
-Other protection methods: \code{\link{protect_quadtree}},
-  \code{\link{protect_smooth}}
+Other protection methods: 
+\code{\link{protect_quadtree}()},
+\code{\link{protect_smooth}()}
 }
 \concept{protection methods}
 \concept{sensitive}
