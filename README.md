@@ -12,6 +12,8 @@ Statistics](https://awesome.re/mentioned-badge.svg)](http://www.awesomeofficials
 
 # sdcSpatial
 
+**`protect_adaptive` is still in testing phase and will be released to CRAN asap**
+
 *Publishing a raster density map can reveal sensitive values*.
 `sdcSpatial` is an opensource R package for creating spatial density
 (raster) maps from point data while protecting the privacy of individual
