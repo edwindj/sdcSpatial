@@ -34,7 +34,7 @@ protect_smooth <- function( x
 
   # currently choosing center: maybe off center is a better idea
   #x$scale <- x$scale * w[ceiling(nrow(w)/4), ceiling(ncol(w)/4)]
-  x$scale <- x$scale * w[ceiling(nrow(w)/2), ceiling(ncol(w)/2)]
+  x$scale <- x$scale * w[1,1]
 
   # TODO adjust for keep_resolution
   r$count <- smooth_raster(r$count, bw = bw, ...)
