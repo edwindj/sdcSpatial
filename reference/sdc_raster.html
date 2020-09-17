@@ -74,7 +74,7 @@ the sensitivity to privacy disclosure for each location." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sdcSpatial</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
       </span>
     </div>
 
@@ -193,10 +193,9 @@ observations is considered sensitived.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>object of <code>class</code> "sdc_raster":</p><ul>
-<li><p><code>$value</code>: <code><a href='https://rdrr.io/pkg/raster/man/brick.html'>raster::brick()</a></code> object with differenct layers e.g. <code>count</code>, <code>sum</code>, <code>mean</code>.</p></li>
+<li><p><code>$value</code>: <code><a href='https://rdrr.io/pkg/raster/man/brick.html'>raster::brick()</a></code> object with different layers e.g. <code>count</code>, <code>sum</code>, <code>mean</code>, <code>scale</code>.</p></li>
 <li><p><code>$max_risk</code>: see above.</p></li>
-<li><p><code>$min_count</code>: see above.</p></li>
-<li><p><code>$scale</code>: used together with <code>min_count</code> to determine sensitivity: result
+<li><p><code>$min_count</code>: see above.
 of protection operation <code><a href='protect_smooth.html'>protect_smooth()</a></code> or <code><a href='protect_quadtree.html'>protect_quadtree()</a></code>.</p></li>
 <li><p><code>$type</code>: data type of <code>variable</code>, either <code>numeric</code> or <code>logical</code></p></li>
 <li><p><code>$risk_type</code>, "external", "internal" or "discrete" (see <code><a href='disclosure_risk.html'>disclosure_risk()</a></code>)</p></li>

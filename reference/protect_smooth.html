@@ -73,7 +73,7 @@ making the values less localized." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sdcSpatial</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
       </span>
     </div>
 
@@ -207,12 +207,12 @@ on Privacy in Statistical Databases (pp. 347-359). Springer, Cham.</p>
 <span class='fu'><a href='https://rdrr.io/pkg/raster/man/cellStats.html'>cellStats</a></span>(<span class='kw'>sensitive</span>, <span class='kw'>mean</span>)
 </div><div class='output co'>#&gt; [1] 0.6328234</div><div class='input'>
 <span class='co'># let's smooth to reduce the sensitivity</span>
-<span class='kw'>smoothed</span> <span class='op'>&lt;-</span> <span class='fu'>protect_smooth</span>(<span class='kw'>production</span>, bw = <span class='fl'>400</span>)
+<span class='kw'>smoothed</span> <span class='op'>&lt;-</span> <span class='fu'>protect_smooth</span>(<span class='kw'>production</span>, bw = <span class='fl'>400</span>, keep_resolution=<span class='fl'>FALSE</span>)
 <span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='kw'>smoothed</span>)
 </div><div class='img'><img src='protect_smooth-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># what is the sensitivy fraction?</span>
 <span class='fu'><a href='sensitivity_score.html'>sensitivity_score</a></span>(<span class='kw'>smoothed</span>)
-</div><div class='output co'>#&gt; [1] 0.006885759</div><div class='input'>
+</div><div class='output co'>#&gt; [1] 0.007962441</div><div class='input'>
 <span class='co'># let's remove the sensitive data.</span>
 <span class='kw'>smoothed_safe</span> <span class='op'>&lt;-</span> <span class='fu'><a href='remove_sensitive.html'>remove_sensitive</a></span>(<span class='kw'>smoothed</span>, min_count = <span class='fl'>3</span>)
 <span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='kw'>smoothed_safe</span>)

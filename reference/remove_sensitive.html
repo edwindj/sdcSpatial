@@ -73,7 +73,7 @@ The sensitive cells, as found by is_sensitive() are set to NA." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sdcSpatial</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
       </span>
     </div>
 
@@ -196,15 +196,14 @@ experienced <code>raster</code> users as well as sdc users.</p>
 </div><div class='output co'>#&gt; logical sdc_raster object: 
 #&gt;    resolution: 200 200 ,  max_risk: 0.95 , min_count: 10 
 #&gt;    mean sensitivity score [0,1]:  0.4572576</div><div class='input'><span class='kw'>unemployed</span><span class='op'>$</span><span class='kw'>value</span>
-</div><div class='output co'>#&gt; class      : RasterBrick 
-#&gt; dimensions : 62, 61, 3782, 3  (nrow, ncol, ncell, nlayers)
+</div><div class='output co'>#&gt; class      : RasterStack 
+#&gt; dimensions : 62, 61, 3782, 4  (nrow, ncol, ncell, nlayers)
 #&gt; resolution : 200, 200  (x, y)
 #&gt; extent     : 149400, 161600, 457800, 470200  (xmin, xmax, ymin, ymax)
 #&gt; crs        : NA 
-#&gt; source     : memory
-#&gt; names      : sum, count, mean 
-#&gt; min values :   0,     1,    0 
-#&gt; max values : 195,   329,    1 
+#&gt; names      : sum, count, mean, scale 
+#&gt; min values :   0,     1,    0,     1 
+#&gt; max values : 195,   329,    1,     1 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
