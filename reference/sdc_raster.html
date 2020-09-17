@@ -137,14 +137,14 @@ the sensitivity to privacy disclosure for each location.</p>
     </div>
 
     <pre class="usage"><span class='fu'>sdc_raster</span>(
-  <span class='no'>x</span>,
-  <span class='no'>variable</span>,
-  <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>200</span>,
-  <span class='kw'>max_risk</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
-  <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-  <span class='kw'>risk_type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"external"</span>, <span class='st'>"internal"</span>, <span class='st'>"discrete"</span>),
-  <span class='no'>...</span>,
-  <span class='kw'>field</span> <span class='kw'>=</span> <span class='no'>variable</span>
+  <span class='kw'>x</span>,
+  <span class='kw'>variable</span>,
+  r = <span class='fl'>200</span>,
+  max_risk = <span class='fl'>0.95</span>,
+  min_count = <span class='fl'>10</span>,
+  risk_type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"external"</span>, <span class='st'>"internal"</span>, <span class='st'>"discrete"</span>),
+  <span class='kw'>...</span>,
+  field = <span class='kw'>variable</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -162,7 +162,7 @@ to be used for the data in the raster map.</p></td>
     </tr>
     <tr>
       <th>r</th>
-      <td><p>either a desired resolution or a pre-existing raster object.
+      <td><p>either a desired resolution or a pre-existing <a href='https://rdrr.io/pkg/raster/man/raster.html'>raster</a> object.
 In the first case, the crs of <code>x</code> (if present) will be used, in the latter
 the properties of the <code>r</code> will be kept.</p></td>
     </tr>
@@ -223,18 +223,21 @@ Reducing the sensitivity can be done with <code><a href='protect_smooth.html'>pr
 <code><a href='sensitivity_score.html'>sensitivity_score</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>raster</span>)
-<span class='no'>prod</span> <span class='kw'>&lt;-</span> <span class='fu'>sdc_raster</span>(<span class='no'>enterprises</span>, <span class='kw'>field</span> <span class='kw'>=</span> <span class='st'>"production"</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>500</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>prod</span>)</div><div class='output co'>#&gt; numeric sdc_raster object: 
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://rspatial.org/raster'>raster</a></span>)
+<span class='kw'>prod</span> <span class='op'>&lt;-</span> <span class='fu'>sdc_raster</span>(<span class='kw'>enterprises</span>, field = <span class='st'>"production"</span>, r = <span class='fl'>500</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>prod</span>)
+</div><div class='output co'>#&gt; numeric sdc_raster object: 
 #&gt;    resolution: 500 500 ,  max_risk: 0.95 , min_count: 10 
 #&gt;    mean sensitivity score [0,1]:  0.6432039</div><div class='input'>
-<span class='no'>prod</span> <span class='kw'>&lt;-</span> <span class='fu'>sdc_raster</span>(<span class='no'>enterprises</span>, <span class='kw'>field</span> <span class='kw'>=</span> <span class='st'>"production"</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>1e3</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>prod</span>)</div><div class='output co'>#&gt; numeric sdc_raster object: 
+<span class='kw'>prod</span> <span class='op'>&lt;-</span> <span class='fu'>sdc_raster</span>(<span class='kw'>enterprises</span>, field = <span class='st'>"production"</span>, r = <span class='fl'>1e3</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>prod</span>)
+</div><div class='output co'>#&gt; numeric sdc_raster object: 
 #&gt;    resolution: 1000 1000 ,  max_risk: 0.95 , min_count: 10 
 #&gt;    mean sensitivity score [0,1]:  0.255814</div><div class='input'>
 <span class='co'># get raster with the average production per cell averaged over the enterprises</span>
-<span class='no'>prod_mean</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>prod</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>prod_mean</span>)</div><div class='output co'>#&gt;              layer
+<span class='kw'>prod_mean</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='kw'>prod</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>prod_mean</span>)
+</div><div class='output co'>#&gt;              layer
 #&gt; Min.      383.4914
 #&gt; 1st Qu.  1425.1032
 #&gt; Median   2463.0075
@@ -242,8 +245,9 @@ Reducing the sensitivity can be done with <code><a href='protect_smooth.html'>pr
 #&gt; Max.    11871.0465
 #&gt; NA's        6.0000</div><div class='input'>
 <span class='co'># get raster with the total production per cell</span>
-<span class='no'>prod_total</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span>(<span class='no'>prod</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>prod_total</span>)</div><div class='output co'>#&gt;                 sum
+<span class='kw'>prod_total</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span>(<span class='kw'>prod</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>prod_total</span>)
+</div><div class='output co'>#&gt;                 sum
 #&gt; Min.       1115.291
 #&gt; 1st Qu.   14887.530
 #&gt; Median    58206.438
@@ -265,7 +269,7 @@ Reducing the sensitivity can be done with <code><a href='protect_smooth.html'>pr
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

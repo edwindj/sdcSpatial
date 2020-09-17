@@ -133,10 +133,10 @@
     </div>
 
     <pre class="usage"><span class='fu'>is_sensitive</span>(
-  <span class='no'>x</span>,
-  <span class='kw'>max_risk</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>max_risk</span>,
-  <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>min_count</span>,
-  <span class='kw'>risk_type</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>risk_type</span>
+  <span class='kw'>x</span>,
+  max_risk = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>max_risk</span>,
+  min_count = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>min_count</span>,
+  risk_type = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>risk_type</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -180,19 +180,21 @@
 <code><a href='sensitivity_score.html'>sensitivity_score</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dwellings_sp</span> <span class='kw'>&lt;-</span> <span class='no'>dwellings</span>
-<span class='kw pkg'>sp</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sp/man/coordinates.html'>coordinates</a></span>(<span class='no'>dwellings_sp</span>) <span class='kw'>&lt;-</span> ~ <span class='no'>x</span> + <span class='no'>y</span>
+    <pre class="examples"><div class='input'><span class='kw'>dwellings_sp</span> <span class='op'>&lt;-</span> <span class='kw'>dwellings</span>
+<span class='kw'>sp</span>::<span class='fu'><a href='https://rdrr.io/pkg/sp/man/coordinates.html'>coordinates</a></span>(<span class='kw'>dwellings_sp</span>) <span class='op'>&lt;-</span> <span class='op'>~</span> <span class='kw'>x</span> <span class='op'>+</span> <span class='kw'>y</span>
 <span class='fu'><a href='https://rdrr.io/r/base/conditions.html'>tryCatch</a></span>(
   <span class='co'># does not work on some OS versions</span>
-  <span class='kw pkg'>sp</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sp/man/is.projected.html'>proj4string</a></span>(<span class='no'>dwellings_sp</span>) <span class='kw'>&lt;-</span> <span class='st'>"+init=epsg:28992"</span>
+  <span class='kw'>sp</span>::<span class='fu'><a href='https://rdrr.io/pkg/sp/man/is.projected.html'>proj4string</a></span>(<span class='kw'>dwellings_sp</span>) <span class='op'>&lt;-</span> <span class='st'>"+init=epsg:28992"</span>
 )
 <span class='co'># create a 1km grid</span>
-<span class='no'>unemployed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>dwellings_sp</span>, <span class='no'>dwellings_sp</span>$<span class='no'>unemployed</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>1e3</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>unemployed</span>)</div><div class='output co'>#&gt; logical sdc_raster object: 
+<span class='kw'>unemployed</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='kw'>dwellings_sp</span>, <span class='kw'>dwellings_sp</span><span class='op'>$</span><span class='kw'>unemployed</span>, r = <span class='fl'>1e3</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>unemployed</span>)
+</div><div class='output co'>#&gt; logical sdc_raster object: 
 #&gt;    resolution: 1000 1000 ,  max_risk: 0.95 , min_count: 10 
 #&gt;    mean sensitivity score [0,1]:  0.2767296</div><div class='input'>
 <span class='co'># retrieve the sensitive cells</span>
-<span class='fu'>is_sensitive</span>(<span class='no'>unemployed</span>)</div><div class='output co'>#&gt; class      : RasterLayer 
+<span class='fu'>is_sensitive</span>(<span class='kw'>unemployed</span>)
+</div><div class='output co'>#&gt; class      : RasterLayer 
 #&gt; dimensions : 14, 13, 182  (nrow, ncol, ncell)
 #&gt; resolution : 1000, 1000  (x, y)
 #&gt; extent     : 149000, 162000, 457000, 471000  (xmin, xmax, ymin, ymax)
@@ -216,7 +218,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -134,9 +134,9 @@ The sensitive cells, as found by is_sensitive() are set to NA." />
 The sensitive cells, as found by <code><a href='is_sensitive.html'>is_sensitive()</a></code> are set to NA.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>remove_sensitive</span>(<span class='no'>x</span>, <span class='kw'>max_risk</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>max_risk</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>min_count</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>remove_sensitive</span>(<span class='kw'>x</span>, max_risk = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>max_risk</span>, min_count = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>min_count</span>, <span class='kw'>...</span>)
 
-<span class='fu'>mask_sensitive</span>(<span class='no'>x</span>, <span class='kw'>max_risk</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>max_risk</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>min_count</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>mask_sensitive</span>(<span class='kw'>x</span>, max_risk = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>max_risk</span>, min_count = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>min_count</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -182,16 +182,21 @@ experienced <code>raster</code> users as well as sdc users.</p>
 <code><a href='protect_smooth.html'>protect_smooth</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>raster</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://rspatial.org/raster'>raster</a></span>)
 
-<span class='no'>unemployed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>dwellings</span>[<span class='fl'>1</span>:<span class='fl'>2</span>], <span class='no'>dwellings</span>$<span class='no'>unemployed</span>, <span class='kw'>r</span><span class='kw'>=</span><span class='fl'>200</span>)
+<span class='kw'>unemployed</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='kw'>dwellings</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>], <span class='kw'>dwellings</span><span class='op'>$</span><span class='kw'>unemployed</span>, r=<span class='fl'>200</span>)
 
 <span class='co'># plot the normally rastered data</span>
-<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='no'>unemployed</span>, <span class='kw'>zlim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>))</div><div class='img'><img src='remove_sensitive-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>unemployed</span>)</div><div class='img'><img src='remove_sensitive-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='no'>unemployed_safe</span> <span class='kw'>&lt;-</span> <span class='fu'>remove_sensitive</span>(<span class='no'>unemployed</span>, <span class='kw'>risk_type</span><span class='kw'>=</span><span class='st'>"discrete"</span>)
-<span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='no'>unemployed_safe</span>, <span class='kw'>zlim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>))</div><div class='img'><img src='remove_sensitive-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>unemployed</span>)</div><div class='output co'>#&gt; logical sdc_raster object: 
+<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='kw'>unemployed</span>, zlim=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>))
+</div><div class='img'><img src='remove_sensitive-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='kw'>unemployed</span>)
+</div><div class='img'><img src='remove_sensitive-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='kw'>unemployed_safe</span> <span class='op'>&lt;-</span> <span class='fu'>remove_sensitive</span>(<span class='kw'>unemployed</span>, risk_type=<span class='st'>"discrete"</span>)
+<span class='fu'><a href='plot_sensitive.html'>plot_sensitive</a></span>(<span class='kw'>unemployed_safe</span>, zlim=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>))
+</div><div class='img'><img src='remove_sensitive-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>unemployed</span>)
+</div><div class='output co'>#&gt; logical sdc_raster object: 
 #&gt;    resolution: 200 200 ,  max_risk: 0.95 , min_count: 10 
-#&gt;    mean sensitivity score [0,1]:  0.4572576</div><div class='input'><span class='no'>unemployed</span>$<span class='no'>value</span></div><div class='output co'>#&gt; class      : RasterBrick 
+#&gt;    mean sensitivity score [0,1]:  0.4572576</div><div class='input'><span class='kw'>unemployed</span><span class='op'>$</span><span class='kw'>value</span>
+</div><div class='output co'>#&gt; class      : RasterBrick 
 #&gt; dimensions : 62, 61, 3782, 3  (nrow, ncol, ncell, nlayers)
 #&gt; resolution : 200, 200  (x, y)
 #&gt; extent     : 149400, 161600, 457800, 470200  (xmin, xmax, ymin, ymax)
@@ -216,7 +221,7 @@ experienced <code>raster</code> users as well as sdc users.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

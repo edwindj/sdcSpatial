@@ -134,7 +134,7 @@ that are considered sensitive according to the used disclosure_risk" />
 that are considered sensitive according to the used <code><a href='disclosure_risk.html'>disclosure_risk</a></code></p>
     </div>
 
-    <pre class="usage"><span class='fu'>sensitivity_score</span>(<span class='no'>x</span>, <span class='kw'>max_risk</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>max_risk</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='no'>x</span>$<span class='no'>min_count</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>sensitivity_score</span>(<span class='kw'>x</span>, max_risk = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>max_risk</span>, min_count = <span class='kw'>x</span><span class='op'>$</span><span class='kw'>min_count</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,14 +168,17 @@ that are considered sensitive according to the used <code><a href='disclosure_ri
 <code><a href='sdc_raster.html'>sdc_raster</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>consumption</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>dwellings</span>[<span class='fl'>1</span>:<span class='fl'>2</span>], <span class='kw'>variable</span> <span class='kw'>=</span> <span class='no'>dwellings</span>$<span class='no'>consumption</span>, <span class='kw'>r</span> <span class='kw'>=</span> <span class='fl'>500</span>)
+    <pre class="examples"><div class='input'><span class='kw'>consumption</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='kw'>dwellings</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>], variable = <span class='kw'>dwellings</span><span class='op'>$</span><span class='kw'>consumption</span>, r = <span class='fl'>500</span>)
 
-<span class='fu'>sensitivity_score</span>(<span class='no'>consumption</span>)</div><div class='output co'>#&gt; [1] 0.4207188</div><div class='input'><span class='co'># same as</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>consumption</span>)</div><div class='output co'>#&gt; numeric sdc_raster object: 
+<span class='fu'>sensitivity_score</span>(<span class='kw'>consumption</span>)
+</div><div class='output co'>#&gt; [1] 0.4207188</div><div class='input'><span class='co'># same as</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>consumption</span>)
+</div><div class='output co'>#&gt; numeric sdc_raster object: 
 #&gt;    resolution: 500 500 ,  max_risk: 0.95 , min_count: 10 
 #&gt;    mean sensitivity score [0,1]:  0.4207188</div><div class='input'>
 <span class='co'># change the rules! A higher norm generates more sensitive cells</span>
-<span class='fu'>sensitivity_score</span>(<span class='no'>consumption</span>, <span class='kw'>min_count</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; [1] 0.5116279</div></pre>
+<span class='fu'>sensitivity_score</span>(<span class='kw'>consumption</span>, min_count = <span class='fl'>20</span>)
+</div><div class='output co'>#&gt; [1] 0.5116279</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -191,7 +194,7 @@ that are considered sensitive according to the used <code><a href='disclosure_ri
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

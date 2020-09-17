@@ -136,7 +136,7 @@ three neighbors, and does this recursively until no sensitive cells are
 left or when the maximum zoom levels has been reached.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>protect_quadtree</span>(<span class='no'>x</span>, <span class='kw'>max_zoom</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>protect_quadtree</span>(<span class='kw'>x</span>, max_zoom = <span class='fl'>Inf</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,7 +152,7 @@ blocks. Each step will zoom with a factor of 2 in x and y so the max resolution 
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code><a href='is_sensitive.html'>is_sensitive</a></code></p><dl'>
+      <td><p>Arguments passed on to <code><a href='is_sensitive.html'>is_sensitive</a></code></p><dl>
     <dt><code>max_risk</code></dt><dd><p>a risk value higher than <code>max_risk</code> will be sensitive.</p></dd>
     <dt><code>min_count</code></dt><dd><p>a count lower than <code>min_count</code> will be sensitive.</p></dd>
     <dt><code>risk_type</code></dt><dd><p>what kind of measure should be used (see details).</p></dd>
@@ -186,14 +186,18 @@ a structure in quadtrees, NTTS 2017</p>
 <code><a href='remove_sensitive.html'>remove_sensitive</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>raster</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://rspatial.org/raster'>raster</a></span>)
 
-<span class='no'>fined</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='no'>enterprises</span>$<span class='no'>fined</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='no'>fined</span>)</div><div class='img'><img src='protect_quadtree-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>fined_qt</span> <span class='kw'>&lt;-</span> <span class='fu'>protect_quadtree</span>(<span class='no'>fined</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='no'>fined_qt</span>)</div><div class='img'><img src='protect_quadtree-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='no'>fined</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='no'>enterprises</span>$<span class='no'>fined</span>, <span class='kw'>r</span><span class='kw'>=</span><span class='fl'>50</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='no'>fined</span>)</div><div class='img'><img src='protect_quadtree-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>fined_qt</span> <span class='kw'>&lt;-</span> <span class='fu'>protect_quadtree</span>(<span class='no'>fined</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='no'>fined_qt</span>)</div><div class='img'><img src='protect_quadtree-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='kw'>fined</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='kw'>enterprises</span>, <span class='kw'>enterprises</span><span class='op'>$</span><span class='kw'>fined</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='kw'>fined</span>)
+</div><div class='img'><img src='protect_quadtree-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='kw'>fined_qt</span> <span class='op'>&lt;-</span> <span class='fu'>protect_quadtree</span>(<span class='kw'>fined</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='kw'>fined_qt</span>)
+</div><div class='img'><img src='protect_quadtree-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='kw'>fined</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='kw'>enterprises</span>, <span class='kw'>enterprises</span><span class='op'>$</span><span class='kw'>fined</span>, r=<span class='fl'>50</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='kw'>fined</span>)
+</div><div class='img'><img src='protect_quadtree-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='kw'>fined_qt</span> <span class='op'>&lt;-</span> <span class='fu'>protect_quadtree</span>(<span class='kw'>fined</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='kw'>fined_qt</span>)
+</div><div class='img'><img src='protect_quadtree-4.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -210,7 +214,7 @@ a structure in quadtrees, NTTS 2017</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

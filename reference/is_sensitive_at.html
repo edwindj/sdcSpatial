@@ -136,7 +136,7 @@ A typical use is to calculate the sensitivity for each of the locations <code>x<
 was created with (see example).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>is_sensitive_at</span>(<span class='no'>x</span>, <span class='no'>xy</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>is_sensitive_at</span>(<span class='kw'>x</span>, <span class='kw'>xy</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,7 +152,7 @@ SpatialPointsDataFrame object</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code><a href='is_sensitive.html'>is_sensitive</a></code></p><dl'>
+      <td><p>Arguments passed on to <code><a href='is_sensitive.html'>is_sensitive</a></code></p><dl>
     <dt><code>max_risk</code></dt><dd><p>a risk value higher than <code>max_risk</code> will be sensitive.</p></dd>
     <dt><code>min_count</code></dt><dd><p>a count lower than <code>min_count</code> will be sensitive.</p></dd>
     <dt><code>risk_type</code></dt><dd><p>what kind of measure should be used (see details).</p></dd>
@@ -175,10 +175,11 @@ SpatialPointsDataFrame object</p></td>
 <code><a href='sensitivity_score.html'>sensitivity_score</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>production</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='no'>enterprises</span>, <span class='st'>"production"</span>)
+    <pre class="examples"><div class='input'><span class='kw'>production</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='kw'>enterprises</span>, <span class='st'>"production"</span>)
 
 <span class='co'># add the sensitive variable to original data set.</span>
-<span class='no'>enterprises</span>$<span class='no'>sensitive</span> <span class='kw'>&lt;-</span> <span class='fu'>is_sensitive_at</span>(<span class='no'>production</span>, <span class='no'>enterprises</span>)</div></pre>
+<span class='kw'>enterprises</span><span class='op'>$</span><span class='kw'>sensitive</span> <span class='op'>&lt;-</span> <span class='fu'>is_sensitive_at</span>(<span class='kw'>production</span>, <span class='kw'>enterprises</span>)
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -194,7 +195,7 @@ SpatialPointsDataFrame object</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
