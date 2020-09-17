@@ -16,7 +16,7 @@ sdc_raster(
 )
 }
 \arguments{
-\item{x}{\link[sp:SpatialPointsDataFrame]{sp::SpatialPointsDataFrame}, \link[sf:sf]{sf::sf} or a two column matrix or \link{data.frame}
+\item{x}{\link[sp:SpatialPoints]{sp::SpatialPointsDataFrame}, \link[sf:sf]{sf::sf} or a two column matrix or \link{data.frame}
 that is used to create a raster map.}
 
 \item{variable}{name of data column or \code{numeric} with same length as \code{x}
@@ -41,10 +41,9 @@ observations is considered sensitived.}
 \value{
 object of \code{class} "sdc_raster":
 \itemize{
-\item \verb{$value}: \code{\link[raster:brick]{raster::brick()}} object with differenct layers e.g. \code{count}, \code{sum}, \code{mean}.
+\item \verb{$value}: \code{\link[raster:brick]{raster::brick()}} object with different layers e.g. \code{count}, \code{sum}, \code{mean}, \code{scale}.
 \item \verb{$max_risk}: see above.
 \item \verb{$min_count}: see above.
-\item \verb{$scale}: used together with \code{min_count} to determine sensitivity: result
 of protection operation \code{\link[=protect_smooth]{protect_smooth()}} or \code{\link[=protect_quadtree]{protect_quadtree()}}.
 \item \verb{$type}: data type of \code{variable}, either \code{numeric} or \code{logical}
 \item \verb{$risk_type}, "external", "internal" or "discrete" (see \code{\link[=disclosure_risk]{disclosure_risk()}})

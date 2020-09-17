@@ -71,6 +71,7 @@ Authors:
 
 Other contributors:
 \itemize{
+  \item Douwe Hut [contributor]
   \item Sapphire Han [contributor]
 }
 

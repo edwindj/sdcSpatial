@@ -37,24 +37,25 @@ protect_quadtree <- function(x, max_zoom = Inf, ...){
 
     #sdc1$value <- z1
     z1$sens <- is_sensitive(sdc)
-    # maybe use scale of sdc1?
-    z1$scale <- 1
+
+    #
+    z1$area <- 1
     # use scale to adjust count?
     #z1 <- subset(z1, c("sum", "count", "sens", "scale"))
 
     # not sure if we should do a rescaling of sum and count with scale (if that is sdc$scale)
-    z2 <- raster::aggregate(z1[[c("sum", "count", "sens", "scale")]], fact=fact, fun=sum) #
+    z2 <- raster::aggregate(z1[[c("sum", "count", "sens", "area")]], fact=fact, fun=sum) #
 
     # bigger area, so rescale
-    z2$sum <- z2$sum/z2$scale
-    z2$count <- z2$count/z2$scale
+    z2$sum <- z2$sum/z2$area
+    z2$count <- z2$count/z2$area
 
     if (sdc$type == "numeric"){
       z2$max = raster::aggregate(sdc$value$max, fact = fact, fun = max)
-      z2$max <- z2$max / z2$scale
+      z2$max <- z2$max / z2$area
       # not correct, the max2 of max should be also used!
       z2$max2 = raster::aggregate(sdc$value$max2, fact = fact, fun = max)
-      z2$max2 <- z2$max2 / z2$scale
+      z2$max2 <- z2$max2 / z2$area
     }
     # reorder z1 to have same order as z2, implicitly dropping "mean'
     z1 <- z1[[names(z2)]]
@@ -67,8 +68,9 @@ protect_quadtree <- function(x, max_zoom = Inf, ...){
     z2 <- raster::crop(z2, z1)
     z2 <- raster::cover(z2, z1)
 
-    sdc$value <- z2[[c("sum", "count")]]
-    sdc$scale  <- sdc$scale / z2$scale
+    sdc$value$sum <- z2$sum
+    sdc$value$count <- z2$count
+    sdc$value$scale <- sdc$value$scale / z2$area
 
     # not directly necessary to do here, but helps in debugging
     sdc$value$mean <- mean(sdc)

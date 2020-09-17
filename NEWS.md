@@ -1,3 +1,10 @@
+# version 0.5.0
+
+* Added a `protect_neighborhood` function
+* Fixed a bug in `protect_smooth`, it now can return a higher resolution version
+`keep_resolution=FALSE`.
+* internal improvements with $scale.
+
 # sdcSpatial 0.2.0.9000
 
 * Added a `NEWS.md` file to track changes to the package.

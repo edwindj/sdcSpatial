@@ -32,11 +32,19 @@ smooth_raster <- function( x
     return(x)
   }
 
-  x <- raster::disaggregate(x, smooth_fact)
+  x_s <- raster::disaggregate(x, smooth_fact)
 
   type <- match.arg(type)
-  w <- raster::focalWeight(x, bw, type = type)
-  x_s <- raster::focal(x, w = w, na.rm = na.rm, pad = pad, ...)
+  w <- raster::focalWeight(x_s, bw, type = type)
+  x_s$scale <- w[1,1] * x_s$scale
+
+  # loop through the layers in the brick
+  for (n in names(x_s)){
+    if (n %in% c("scale", "mean")){
+      next
+    }
+    x_s[[n]] <- raster::focal(x_s[[n]], w = w, na.rm = na.rm, pad = pad, ...)
+  }
 
   if (isTRUE(keep_resolution)){
     x_s <- raster::aggregate(x_s, fact = smooth_fact, fun=mean)

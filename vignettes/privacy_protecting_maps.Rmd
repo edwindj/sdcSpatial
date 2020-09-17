@@ -137,6 +137,7 @@ production_smoothed <- protect_smooth(production, bw = 500)
 plot(production_smoothed)
 ```
 In this case smoothing reduced the number of sensitive locations drastically! 
+
 Let us remove the remaining sensitive cells
 
 ```{r}
@@ -196,8 +197,9 @@ suppress sensitive values, while the `protect_smooth` method uses a fixed bandwi
 
 The protection result is blocky in comparison with the smoothing method, but safer if you 
 look at the sensitive cells in high fined areas.
+
 ```{r}
-fined_smooth <- protect_smooth(fined, bw = 500)
+fined_smooth <- protect_smooth(fined, bw = 500, keep_resolution=FALSE)
 plot(fined_smooth, col = col)
 sensitivity_score(fined_smooth)
 ```

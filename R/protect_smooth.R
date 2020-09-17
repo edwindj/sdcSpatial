@@ -29,22 +29,18 @@ protect_smooth <- function( x
   assert_sdc_raster(x)
 
   r <- x$value
-  # check if this is copy or reference
-  w <- raster::focalWeight(r$count, d = bw, type="Gaus")
 
-  # currently choosing center: maybe off center is a better idea
-  #x$scale <- x$scale * w[ceiling(nrow(w)/4), ceiling(ncol(w)/4)]
-  x$scale <- x$scale * w[1,1]
+  # # check if this is copy or reference
+  # w <- raster::focalWeight(r$count, d = bw, type="Gaus")
+  #
+  # # currently choosing center: maybe off center is a better idea
+  # #x$scale <- x$scale * w[ceiling(nrow(w)/4), ceiling(ncol(w)/4)]
+  # x$scale <- x$scale * w[1,1]
 
   # TODO adjust for keep_resolution
-  r$count <- smooth_raster(r$count, bw = bw, ...)
-  r$sum <- smooth_raster(r$sum, bw = bw, ...)
+  r <- smooth_raster(r, bw = bw, ...)
+  # mean should be recalculated
   r$mean <- r$sum / r$count
-
-  if (x$type == "numeric"){
-    r$max <- smooth_raster(r$max, bw = bw, ...)
-    r$max2 <- smooth_raster(r$max2, bw = bw, ...)
-  }
   x$value <- r
   x
 }

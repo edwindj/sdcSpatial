@@ -28,10 +28,9 @@
 #' @param ... passed through to [raster::rasterize()]
 #' @param field synonym for `variable`. If both supplied, `field` has precedence.
 #' @return object of `class` "sdc_raster":
-#' - `$value`: [raster::brick()] object with differenct layers e.g. `count`, `sum`, `mean`.
+#' - `$value`: [raster::brick()] object with different layers e.g. `count`, `sum`, `mean`, `scale`.
 #' - `$max_risk`: see above.
 #' - `$min_count`: see above.
-#' - `$scale`: used together with `min_count` to determine sensitivity: result
 #' of protection operation [protect_smooth()] or [protect_quadtree()].
 #' - `$type`: data type of `variable`, either `numeric` or `logical`
 #' - `$risk_type`, "external", "internal" or "discrete" (see [disclosure_risk()])
@@ -79,6 +78,7 @@ sdc_raster <- function( x
   }
 
   value <- raster::brick(l, ...)
+  value$scale <- 1
 
   new_sdc_raster( value, type = type
                 , max_risk = max_risk, min_count = min_count
@@ -92,7 +92,6 @@ new_sdc_raster <- function( r
                           , max_risk
                           , min_count
                           , risk_type
-                          , scale = 1
                           ){
   structure(
     list(

@@ -28,6 +28,10 @@ cellStats(sensitive, mean)
 smoothed <- protect_smooth(production, bw = 400)
 plot(smoothed)
 
+# let's smooth to reduce the sensitivity, with higher resolution
+smoothed <- protect_smooth(production, bw = 400, fact=4, keep_resolution=FALSE)
+plot(smoothed)
+
 # what is the sensitivy fraction?
 sensitivity_score(smoothed)
 
