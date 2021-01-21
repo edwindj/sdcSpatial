@@ -104,76 +104,86 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">"sdcSpatial"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"sdcSpatial"</span><span class="op">)</span></code></pre></div>
 <p>To install the current development version of <code>sdcSpatial</code> with <code>devtools</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"edwindj/sdcSpatial"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"edwindj/sdcSpatial"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">library</span>(sdcSpatial)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">library</span>(raster)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; Loading required package: sp</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">data</span>(enterprises)</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># create a sdc_raster from point data with raster with</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co"># a resolution of 200m</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a>production &lt;-<span class="st"> </span><span class="kw">sdc_raster</span>(enterprises, <span class="dt">variable =</span> <span class="st">"production"</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>                        , <span class="dt">r =</span> <span class="dv">200</span>, <span class="dt">min_count =</span> <span class="dv">3</span>)</span>
-<span id="cb3-11"><a href="#cb3-11"></a></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="kw">print</span>(production)</span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; numeric sdc_raster object: </span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt;    resolution: 200 200 ,  max_risk: 0.95 , min_count: 3 </span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt;    mean sensitivity score [0,1]:  0.6328234</span></span>
-<span id="cb3-16"><a href="#cb3-16"></a></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="co"># plot the raster</span></span>
-<span id="cb3-18"><a href="#cb3-18"></a>zlim &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">3e4</span>)</span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="co"># show which raster cells are sensitive</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a><span class="kw">plot</span>(production, <span class="dt">zlim=</span>zlim)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/edwindj/sdcSpatial">sdcSpatial</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span>
+<span class="co">#&gt; Loading required package: sp</span>
+
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">enterprises</span><span class="op">)</span>
+
+<span class="co"># create a sdc_raster from point data with raster with</span>
+<span class="co"># a resolution of 200m</span>
+<span class="va">production</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/sdc_raster.html">sdc_raster</a></span><span class="op">(</span><span class="va">enterprises</span>, variable <span class="op">=</span> <span class="st">"production"</span>
+                        , r <span class="op">=</span> <span class="fl">200</span>, min_count <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">production</span><span class="op">)</span>
+<span class="co">#&gt; numeric sdc_raster object: </span>
+<span class="co">#&gt;    resolution: 200 200 ,  max_risk: 0.95 , min_count: 3 </span>
+<span class="co">#&gt;    mean sensitivity score [0,1]:  0.6328234</span>
+
+<span class="co"># plot the raster</span>
+<span class="va">zlim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3e4</span><span class="op">)</span>
+<span class="co"># show which raster cells are sensitive</span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">production</span>, zlim<span class="op">=</span><span class="va">zlim</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># but we can also retrieve directly the raster</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>sensitive &lt;-<span class="st"> </span><span class="kw">is_sensitive</span>(production, <span class="dt">min_count =</span> <span class="dv">3</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="kw">plot</span>(sensitive, <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">'white'</span>, <span class="st">'red'</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># but we can also retrieve directly the raster</span>
+<span class="va">sensitive</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/is_sensitive.html">is_sensitive</a></span><span class="op">(</span><span class="va">production</span>, min_count <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">sensitive</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'white'</span>, <span class="st">'red'</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-2.png" width="100%"></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># what is the sensitivy fraction?</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">sensitivity_score</span>(production)</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt; [1] 0.6328234</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># or equally</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="kw">cellStats</span>(sensitive, mean)</span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt; [1] 0.6328234</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co"># let's smooth to reduce the sensitivity</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>smoothed &lt;-<span class="st"> </span><span class="kw">protect_smooth</span>(production, <span class="dt">bw =</span> <span class="dv">400</span>)</span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="kw">plot</span>(smoothed)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># what is the sensitivy fraction?</span>
+<span class="fu"><a href="reference/sensitivity_score.html">sensitivity_score</a></span><span class="op">(</span><span class="va">production</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.6328234</span>
+<span class="co"># or equally</span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/cellStats.html">cellStats</a></span><span class="op">(</span><span class="va">sensitive</span>, <span class="va">mean</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.6328234</span>
+
+<span class="co"># let's smooth to reduce the sensitivity</span>
+<span class="va">smoothed</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/protect_smooth.html">protect_smooth</a></span><span class="op">(</span><span class="va">production</span>, bw <span class="op">=</span> <span class="fl">400</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">smoothed</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-3.png" width="100%"></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># let's smooth to reduce the sensitivity, with higher resolution</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>smoothed &lt;-<span class="st"> </span><span class="kw">protect_smooth</span>(production, <span class="dt">bw =</span> <span class="dv">400</span>, <span class="dt">fact=</span><span class="dv">4</span>, <span class="dt">keep_resolution=</span><span class="ot">FALSE</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">plot</span>(smoothed)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># let's smooth to reduce the sensitivity, with higher resolution</span>
+<span class="va">smoothed</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/protect_smooth.html">protect_smooth</a></span><span class="op">(</span><span class="va">production</span>, bw <span class="op">=</span> <span class="fl">400</span>, fact<span class="op">=</span><span class="fl">4</span>, keep_resolution<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">smoothed</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-4.png" width="100%"></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># what is the sensitivy fraction?</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">sensitivity_score</span>(smoothed)</span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt; [1] 0.007962441</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co"># let's remove the sensitive data.</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>smoothed_safe &lt;-<span class="st"> </span><span class="kw">remove_sensitive</span>(smoothed, <span class="dt">min_count =</span> <span class="dv">3</span>)</span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="kw">plot</span>(smoothed_safe)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># what is the sensitivy fraction?</span>
+<span class="fu"><a href="reference/sensitivity_score.html">sensitivity_score</a></span><span class="op">(</span><span class="va">smoothed</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.007962441</span>
+
+<span class="co"># let's remove the sensitive data.</span>
+<span class="va">smoothed_safe</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/remove_sensitive.html">remove_sensitive</a></span><span class="op">(</span><span class="va">smoothed</span>, min_count <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">smoothed_safe</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-5.png" width="100%"></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># let's communicate!</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>production_mean &lt;-<span class="st"> </span><span class="kw">mean</span>(smoothed_safe)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>production_total &lt;-<span class="st"> </span><span class="kw">sum</span>(smoothed_safe)</span>
-<span id="cb8-4"><a href="#cb8-4"></a></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="co"># and create a contour plot</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a>raster<span class="op">::</span><span class="kw">filledContour</span>(production_mean, <span class="dt">nlevels =</span> <span class="dv">6</span>, <span class="dt">main =</span> <span class="st">"Mean production"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># let's communicate!</span>
+<span class="va">production_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">smoothed_safe</span><span class="op">)</span>
+<span class="va">production_total</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">smoothed_safe</span><span class="op">)</span>
+
+<span class="co"># and create a contour plot</span>
+<span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/filledContour.html">filledContour</a></span><span class="op">(</span><span class="va">production_mean</span>, nlevels <span class="op">=</span> <span class="fl">6</span>, main <span class="op">=</span> <span class="st">"Mean production"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-6.png" width="100%"></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># generated with R 3.6 &gt;=</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#col &lt;- hcl.colors(11, rev=TRUE)</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>col &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"#FDE333"</span>, <span class="st">"#C2DE34"</span>, <span class="st">"#7ED357"</span>, <span class="st">"#00C475"</span>, <span class="st">"#00B28A"</span>, <span class="st">"#009B95"</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a>        ,  <span class="st">"#008298"</span>, <span class="st">"#006791"</span>, <span class="st">"#274983"</span>, <span class="st">"#44286E"</span>, <span class="st">"#4B0055"</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>        )</span>
-<span id="cb9-6"><a href="#cb9-6"></a>raster<span class="op">::</span><span class="kw">filledContour</span>(production_total, <span class="dt">nlevels =</span> <span class="dv">11</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a>             , <span class="dt">col =</span> col</span>
-<span id="cb9-8"><a href="#cb9-8"></a>             , <span class="dt">main=</span><span class="st">"Total production"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="co"># generated with R 3.6 &gt;=</span>
+<span class="co">#col &lt;- hcl.colors(11, rev=TRUE)</span>
+<span class="va">col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#FDE333"</span>, <span class="st">"#C2DE34"</span>, <span class="st">"#7ED357"</span>, <span class="st">"#00C475"</span>, <span class="st">"#00B28A"</span>, <span class="st">"#009B95"</span>
+        ,  <span class="st">"#008298"</span>, <span class="st">"#006791"</span>, <span class="st">"#274983"</span>, <span class="st">"#44286E"</span>, <span class="st">"#4B0055"</span>
+        <span class="op">)</span>
+<span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/filledContour.html">filledContour</a></span><span class="op">(</span><span class="va">production_total</span>, nlevels <span class="op">=</span> <span class="fl">11</span>
+             , col <span class="op">=</span> <span class="va">col</span>
+             , main<span class="op">=</span><span class="st">"Total production"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-7.png" width="100%"></p>
 </div>
 </div>
@@ -211,7 +221,7 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=sdcSpatial"><img src="https://www.r-pkg.org/badges/version/sdcSpatial" alt="CRAN status"></a></li>
-<li><a href="https://travis-ci.org/edwindj/sdcSpatial"><img src="https://travis-ci.org/edwindj/sdcSpatial.svg?branch=master" alt="Travis build status"></a></li>
+<li><a href="https://github.com/edwindj/sdcSpatial/actions"><img src="https://github.com/edwindj/sdcSpatial/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://ci.appveyor.com/project/edwindj/sdcSpatial"><img src="https://ci.appveyor.com/api/projects/status/github/edwindj/sdcSpatial?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
 <li><a href="https://CRAN.R-project.org/package=sdcSpatial"><img src="https://tinyverse.netlify.com/badge/sdcSpatial" alt="status"></a></li>
 </ul>
