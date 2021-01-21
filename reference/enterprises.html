@@ -82,7 +82,7 @@ The locations are realistic, but the associated data is simulated." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -108,7 +108,7 @@ The locations are realistic, but the associated data is simulated." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/edwindj/sdcSpatial/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -136,7 +136,7 @@ The locations are realistic, but the associated data is simulated." />
 The locations are realistic, but the associated data is simulated.</p>
     </div>
 
-    <pre class="usage"><span class='kw'>enterprises</span></pre>
+    <pre class="usage"><span class='va'>enterprises</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
@@ -153,23 +153,23 @@ The locations are realistic, but the associated data is simulated.</p>
     <p>Basisregistratie Adressen en Gebouwen: <a href='https://zakelijk.kadaster.nl/bag-producten'>https://zakelijk.kadaster.nl/bag-producten</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://github.com/edwindj/sdcSpatial'>sdcSpatial</a></span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://rspatial.org/raster'>raster</a></span>)
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/edwindj/sdcSpatial'>sdcSpatial</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rspatial.org/raster'>raster</a></span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Loading required package: sp</span></div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"enterprises"</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"enterprises"</span><span class='op'>)</span>
 
-<span class='kw'>production</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span>(<span class='kw'>enterprises</span>, <span class='st'>"production"</span>, min_count = <span class='fl'>10</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>production</span>)
+<span class='va'>production</span> <span class='op'>&lt;-</span> <span class='fu'><a href='sdc_raster.html'>sdc_raster</a></span><span class='op'>(</span><span class='va'>enterprises</span>, <span class='st'>"production"</span>, min_count <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>production</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; numeric sdc_raster object: 
 #&gt;    resolution: 200 200 ,  max_risk: 0.95 , min_count: 10 
 #&gt;    mean sensitivity score [0,1]:  0.8581363</div><div class='input'>
 <span class='co'># show the average production per cell</span>
-<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='kw'>production</span>, <span class='st'>"mean"</span>)
-</div><div class='img'><img src='enterprises-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='kw'>production</span><span class='op'>$</span><span class='kw'>min_count</span> <span class='op'>&lt;-</span> <span class='fl'>2</span> <span class='co'># adjust norm for sdc</span>
-<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='kw'>production</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>production</span>, <span class='st'>"mean"</span><span class='op'>)</span>
+</div><div class='img'><img src='enterprises-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='va'>production</span><span class='op'>$</span><span class='va'>min_count</span> <span class='op'>&lt;-</span> <span class='fl'>2</span> <span class='co'># adjust norm for sdc</span>
+<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>production</span><span class='op'>)</span>
 </div><div class='img'><img src='enterprises-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='kw'>production_safe</span> <span class='op'>&lt;-</span> <span class='fu'><a href='remove_sensitive.html'>remove_sensitive</a></span>(<span class='kw'>production</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span>(<span class='kw'>production_safe</span>)
+<span class='va'>production_safe</span> <span class='op'>&lt;-</span> <span class='fu'><a href='remove_sensitive.html'>remove_sensitive</a></span><span class='op'>(</span><span class='va'>production</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/raster/man/plot.html'>plot</a></span><span class='op'>(</span><span class='va'>production_safe</span><span class='op'>)</span>
 </div><div class='img'><img src='enterprises-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

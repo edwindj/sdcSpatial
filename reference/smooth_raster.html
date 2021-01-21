@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -106,7 +106,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/edwindj/sdcSpatial/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -132,18 +132,18 @@
     <p>Create kde density version of a raster</p>
     </div>
 
-    <pre class="usage"><span class='fu'>smooth_raster</span>(
-  <span class='kw'>x</span>,
-  bw = <span class='kw'>raster</span>::<span class='fu'><a href='https://rdrr.io/pkg/raster/man/resolution.html'>res</a></span>(<span class='kw'>x</span>),
-  smooth_fact = <span class='fl'>5</span>,
-  keep_resolution = <span class='fl'>TRUE</span>,
-  na.rm = <span class='fl'>TRUE</span>,
-  pad = <span class='fl'>TRUE</span>,
-  padValue = <span class='fl'>NA</span>,
-  threshold = <span class='kw'>NULL</span>,
-  type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Gauss"</span>, <span class='st'>"circle"</span>, <span class='st'>"rectangle"</span>),
-  <span class='kw'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>smooth_raster</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  bw <span class='op'>=</span> <span class='fu'>raster</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/raster/man/resolution.html'>res</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
+  smooth_fact <span class='op'>=</span> <span class='fl'>5</span>,
+  keep_resolution <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  na.rm <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  pad <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  padValue <span class='op'>=</span> <span class='cn'>NA</span>,
+  threshold <span class='op'>=</span> <span class='cn'>NULL</span>,
+  type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Gauss"</span>, <span class='st'>"circle"</span>, <span class='st'>"rectangle"</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
