@@ -1,7 +1,7 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
-  privacy_protecting_maps: privacy_protecting_maps.html
-last_built: 2021-01-21T15:21Z
+  sdcSpatial: sdcSpatial.html
+last_built: 2022-03-18T10:56Z
 
