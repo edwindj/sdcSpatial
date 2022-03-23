@@ -35,7 +35,7 @@ mask_voronoi <- function(x, r = 0, k = 10, plot = FALSE){
                          , dTolerance = 0
                          , bOnlyEdges = TRUE
                          )
-    plot(vor, col = "black", lty=3)
+    plot(vor, col = "black", lty=3, axes=TRUE)
     graphics::points(x, col="black", pch=19)
     graphics::points(x_vm, col="red")
   }

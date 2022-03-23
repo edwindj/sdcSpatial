@@ -4,6 +4,7 @@
 * Fixed a bug in `protect_smooth`, it now can return a higher resolution version
 `keep_resolution=FALSE`.
 * internal improvements with $scale.
+* added `mask_grid`, `mask_random`, `mask_weighted_random` and `mask_voronoi` functions, for perturbating points before rasterization.
 
 # sdcSpatial 0.2.0.9000
 
