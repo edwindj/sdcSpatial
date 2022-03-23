@@ -52,7 +52,7 @@ of protection operation \code{\link[=protect_smooth]{protect_smooth()}} or \code
 \description{
 \code{sdc_raster} creates multiple \code{\link[raster:raster]{raster::raster}} objects
 ("count", "mean", "sum") from supplied point data \code{x} and calculates
-the sensitivity to privacy disclosure for each location.
+the sensitivity to privacy disclosure for each raster location.
 }
 \details{
 A \code{sdc_raster} object is the vehicle that does the book keeping for calculating

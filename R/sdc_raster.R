@@ -2,7 +2,7 @@
 #'
 #' `sdc_raster` creates multiple [`raster::raster`] objects
 #' ("count", "mean", "sum") from supplied point data `x` and calculates
-#' the sensitivity to privacy disclosure for each location.
+#' the sensitivity to privacy disclosure for each raster location.
 #'
 #' A `sdc_raster` object is the vehicle that does the book keeping for calculating
 #' sensitivity. Protection methods work upon a `sdc_raster` and return a new
