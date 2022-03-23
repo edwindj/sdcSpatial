@@ -5,8 +5,7 @@
 status](https://www.r-pkg.org/badges/version/sdcSpatial)](https://cran.r-project.org/package=sdcSpatial)
 [![R build
 status](https://github.com/edwindj/sdcSpatial/workflows/R-CMD-check/badge.svg)](https://github.com/edwindj/sdcSpatial/actions)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/edwindj/sdcSpatial?branch=master&svg=true)](https://ci.appveyor.com/project/edwindj/sdcSpatial)
+[![](https://cranlogs.r-pkg.org/badges/sdcSpatial)](https://cran.r-project.org/package=sdcSpatial)
 [![status](https://tinyverse.netlify.com/badge/sdcSpatial)](https://CRAN.R-project.org/package=sdcSpatial)
 
 [![Mentioned in Awesome Official
