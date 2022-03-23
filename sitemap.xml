@@ -40,6 +40,18 @@
     <loc>/reference/is_sensitive_at.html</loc>
   </url>
   <url>
+    <loc>/reference/mask_grid.html</loc>
+  </url>
+  <url>
+    <loc>/reference/mask_random.html</loc>
+  </url>
+  <url>
+    <loc>/reference/mask_voronoi.html</loc>
+  </url>
+  <url>
+    <loc>/reference/mask_weighted_random.html</loc>
+  </url>
+  <url>
     <loc>/reference/max2.html</loc>
   </url>
   <url>
