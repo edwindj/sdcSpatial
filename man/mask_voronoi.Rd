@@ -51,7 +51,7 @@ if ( requireNamespace("FNN", quietly = TRUE)
 }
 }
 \seealso{
-Other point pertubation: 
+Other point pertubation:
 \code{\link{mask_grid}()},
 \code{\link{mask_random}()},
 \code{\link{mask_weighted_random}()}
