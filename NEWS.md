@@ -6,6 +6,7 @@
 * internal improvements with $scale.
 * added `mask_grid`, `mask_random`, `mask_weighted_random` and `mask_voronoi` functions, for perturbating points before rasterization.
 
+
 # sdcSpatial 0.2.0.9000
 
 * Added a `NEWS.md` file to track changes to the package.
