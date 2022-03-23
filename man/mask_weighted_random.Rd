@@ -4,7 +4,7 @@
 \alias{mask_weighted_random}
 \title{Mask coordinates using weighted random pertubation}
 \usage{
-mask_weighted_random(x, k = 5, r = NULL)
+mask_weighted_random(x, k = 5, r = NULL, plot = FALSE)
 }
 \arguments{
 \item{x}{coordinates, \code{matrix} or \code{data.frame} (first two columns)}
@@ -12,11 +12,39 @@ mask_weighted_random(x, k = 5, r = NULL)
 \item{k}{\code{integer} number of neighbors to be used as the maximum distance}
 
 \item{r}{\code{numeric} maximum pertubation distance (vectorized)}
+
+\item{plot}{if \code{TRUE} points will be plotted.}
+}
+\value{
+adapted \code{x} with perturbed coordinates
 }
 \description{
 This method uses per point the distance to the \code{k}th neighbor as the maximum
 pertubation distance. Parameter \code{r} can be used to restrict the maximum distance
 of the \code{k}th neighbor.
+}
+\examples{
+x <- cbind(
+  x = c(2.5, 3.5, 7.2, 1.5),
+  y = c(6.2, 3.8, 4.4, 2.1)
+)
+
+# plotting is only useful from small datasets!
+
+# grid masking
+x_g <- mask_grid(x, r=1, plot=TRUE)
+
+# random pertubation
+set.seed(3)
+x_r <- mask_random(x, r=1, plot=TRUE)
+
+if (requireNamespace("FNN", quietly = TRUE)){
+  # weighted random pertubation
+  x_wr <- mask_weighted_random(x, k = 2, r = 4, plot=TRUE)
+
+  # voronoi masking, plotting needs package `sf`
+  x_vor <- mask_voronoi(x, r = 1, plot=FALSE)
+}
 }
 \references{
 Spatial obfuscation methods for privacy protection of
