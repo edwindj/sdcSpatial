@@ -1,3 +1,4 @@
+\donttest{
 data(enterprises)
 
 # create a sdc_raster from point data with raster with
@@ -21,3 +22,4 @@ plot(neighborhood)
 
 # what is the sensitivy fraction?
 sensitivity_score(neighborhood)
+}

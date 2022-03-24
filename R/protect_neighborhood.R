@@ -5,6 +5,8 @@
 #' @param radius of the neighborhood to take
 #' @param ... not used at the moment
 #' @return `sdc_raster` object
+#' @example ./example/protect_neighborhood.R
+#' @export
 protect_neighborhood <- function(x, radius = 10 * raster::res(x$value)[1], ...){
   assert_sdc_raster(x)
 
