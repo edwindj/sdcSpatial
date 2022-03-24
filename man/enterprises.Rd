@@ -13,7 +13,7 @@ An object of class \code{SpatialPointsDataFrame} with 8348 rows and 2 columns.
 }
 }
 \source{
-Basisregistratie Adressen en Gebouwen: \url{https://zakelijk.kadaster.nl/bag-producten}
+Basisregistratie Adressen en Gebouwen: \url{https://www.kadaster.nl/zakelijk/registraties/basisregistraties/bag/bag-producten}
 }
 \usage{
 enterprises
@@ -24,6 +24,7 @@ enterprises
 The locations are realistic, but the associated data is simulated.
 }
 \examples{
+\donttest{
 library(sdcSpatial)
 library(raster)
 
@@ -39,5 +40,6 @@ plot(production)
 
 production_safe <- remove_sensitive(production)
 plot(production_safe)
+}
 }
 \keyword{datasets}

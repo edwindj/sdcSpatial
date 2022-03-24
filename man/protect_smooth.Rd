@@ -27,6 +27,7 @@ The smoother acts upon the \code{x$value$count} and \code{x$value$sum}
 from which a new \code{x$value$mean} is derived.
 }
 \examples{
+\donttest{
 library(sdcSpatial)
 library(raster)
 
@@ -84,6 +85,7 @@ col <- c("#FDE333", "#C2DE34", "#7ED357", "#00C475", "#00B28A", "#009B95"
 raster::filledContour(production_total, nlevels = 11
              , col = col
              , main="Total production")
+}
 }
 \references{
 de Jonge, E., & de Wolf, P. P. (2016, September).

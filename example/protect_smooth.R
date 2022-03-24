@@ -1,3 +1,4 @@
+\donttest{
 library(sdcSpatial)
 library(raster)
 
@@ -55,3 +56,4 @@ col <- c("#FDE333", "#C2DE34", "#7ED357", "#00C475", "#00B28A", "#009B95"
 raster::filledContour(production_total, nlevels = 11
              , col = col
              , main="Total production")
+}

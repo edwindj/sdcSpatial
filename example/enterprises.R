@@ -1,3 +1,4 @@
+\donttest{
 library(sdcSpatial)
 library(raster)
 
@@ -13,3 +14,4 @@ plot(production)
 
 production_safe <- remove_sensitive(production)
 plot(production_safe)
+}

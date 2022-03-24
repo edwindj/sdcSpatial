@@ -34,6 +34,7 @@ Different risk functions can be used:
 }
 }
 \examples{
+\donttest{
 dwellings_sp <- dwellings
 sp::coordinates(dwellings_sp) <- ~ x + y
 tryCatch(
@@ -46,6 +47,7 @@ print(unemployed)
 
 # retrieve the sensitive cells
 is_sensitive(unemployed)
+}
 }
 \seealso{
 Other sensitive: 

@@ -33,7 +33,7 @@ _Statistical disclosure control_ (SDC) deals with problems related to privacy in
 publishing statistics. SDC provides measures to assess disclosure risk and methods to 
 reduce disclosure risk in publications while trying to minimize information loss.
 
-Several open source tools are available; see [sdcTools](https://github.com/sdcTools) for a collection of them. Commonly used tools include the standalone software tools [$\mu$-argus](http://research.cbs.nl/casc/mu.htm) and [$\tau$-argus](http://research.cbs.nl/casc/tau.htm) as well as the R-packages [sdcTable](https://cran.r-project.org/package=sdcTable)
+Several open source tools are available; see [sdcTools](https://github.com/sdcTools) for a collection of them. Commonly used tools include the standalone software tools [$\mu$-argus](https://research.cbs.nl/casc/mu.htm) and [$\tau$-argus](https://research.cbs.nl/casc/tau.htm) as well as the R-packages [sdcTable](https://cran.r-project.org/package=sdcTable)
 and [sdcMicro](https://cran.r-project.org/package=sdcMicro).
 
 Traditionally, SDC software operates on values of (aggregated) records, where it does not directly make use of spatial characteristics that might be present in the data.

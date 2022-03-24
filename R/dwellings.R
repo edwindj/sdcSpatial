@@ -13,6 +13,6 @@
 #'  \item{unemployed}{logical, simulated discrete value}
 #' }
 #' @source Basisregistratie Adressen en Gebouwen
-#' <https://zakelijk.kadaster.nl/bag-producten>
+#' <https://www.kadaster.nl/zakelijk/registraties/basisregistraties/bag/bag-producten>
 #' @example ./example/dwellings.R
 "dwellings"

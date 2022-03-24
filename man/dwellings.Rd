@@ -16,7 +16,7 @@ a \code{data.frame} with 90603 rows and 4 columns.
 }
 \source{
 Basisregistratie Adressen en Gebouwen
-\url{https://zakelijk.kadaster.nl/bag-producten}
+\url{https://www.kadaster.nl/zakelijk/registraties/basisregistraties/bag/bag-producten}
 }
 \usage{
 dwellings
