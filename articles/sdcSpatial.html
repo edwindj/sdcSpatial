@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">sdcSpatial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +78,7 @@
     
     
 <p>Plotting data on a map is a popular and helpful tool to analyze spatial data. R makes it easy to plot spatial data with packages such as <code>ggplot2</code>, <code>tmap</code>, <code>mapview</code> or <code>leaflet</code>. However when plotting the spatial distribution of a <em>sensitive</em> variable, e.g. income or unemployment, you may accidentally reveal a sensitive value of an individual observation. <em>Statistical disclosure control</em> (SDC) deals with problems related to privacy in connection with publishing statistics. SDC provides measures to assess disclosure risk and methods to reduce disclosure risk in publications while trying to minimize information loss.</p>
-<p>Several open source tools are available; see <a href="https://github.com/sdcTools" class="external-link">sdcTools</a> for a collection of them. Commonly used tools include the standalone software tools <a href="http://research.cbs.nl/casc/mu.htm" class="external-link"><span class="math inline">\(\mu\)</span>-argus</a> and <a href="http://research.cbs.nl/casc/tau.htm" class="external-link"><span class="math inline">\(\tau\)</span>-argus</a> as well as the R-packages <a href="https://cran.r-project.org/package=sdcTable" class="external-link">sdcTable</a> and <a href="https://cran.r-project.org/package=sdcMicro" class="external-link">sdcMicro</a>.</p>
+<p>Several open source tools are available; see <a href="https://github.com/sdcTools" class="external-link">sdcTools</a> for a collection of them. Commonly used tools include the standalone software tools <a href="https://research.cbs.nl/casc/mu.htm" class="external-link"><span class="math inline">\(\mu\)</span>-argus</a> and <a href="https://research.cbs.nl/casc/tau.htm" class="external-link"><span class="math inline">\(\tau\)</span>-argus</a> as well as the R-packages <a href="https://cran.r-project.org/package=sdcTable" class="external-link">sdcTable</a> and <a href="https://cran.r-project.org/package=sdcMicro" class="external-link">sdcMicro</a>.</p>
 <p>Traditionally, SDC software operates on values of (aggregated) records, where it does not directly make use of spatial characteristics that might be present in the data.</p>
 <p><code>sdcSpatial</code> contains functions to create spatial distribution maps, assess the risk of disclosure in locations on the map and to suppress or adjust locations with revealing sensitive values.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
