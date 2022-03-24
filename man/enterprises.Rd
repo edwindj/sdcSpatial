@@ -20,7 +20,7 @@ enterprises
 }
 \description{
 \code{enterprises} is generated from the dutch open data
-\href{https://zakelijk.kadaster.nl/bag-producten}{BAG register}.
+\href{https://www.kadaster.nl/zakelijk/registraties/basisregistraties/bag/bag-producten}{BAG register}.
 The locations are realistic, but the associated data is simulated.
 }
 \examples{

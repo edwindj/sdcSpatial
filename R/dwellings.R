@@ -1,7 +1,7 @@
 #' Simulated dwellings data set
 #'
 #' The data are generated with residence/household locations from the Dutch open
-#' data [BAG register](https://zakelijk.kadaster.nl/bag-producten).
+#' data [BAG register](https://www.kadaster.nl/zakelijk/registraties/basisregistraties/bag/bag-producten).
 #' The locations are realistic, but the associated data is simulated.
 #'
 #' @format a `data.frame` with 90603 rows and 4 columns.

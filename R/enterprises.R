@@ -1,7 +1,7 @@
 #' Simulated data set with enterprise locations.
 #'
 #' `enterprises` is generated from the dutch open data
-#' [BAG register](https://zakelijk.kadaster.nl/bag-producten).
+#' [BAG register](https://www.kadaster.nl/zakelijk/registraties/basisregistraties/bag/bag-producten).
 #' The locations are realistic, but the associated data is simulated.
 #' @format An object of class `SpatialPointsDataFrame` with 8348 rows and 2 columns.
 #'

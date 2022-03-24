@@ -23,7 +23,7 @@ dwellings
 }
 \description{
 The data are generated with residence/household locations from the Dutch open
-data \href{https://zakelijk.kadaster.nl/bag-producten}{BAG register}.
+data \href{https://www.kadaster.nl/zakelijk/registraties/basisregistraties/bag/bag-producten}{BAG register}.
 The locations are realistic, but the associated data is simulated.
 }
 \examples{
