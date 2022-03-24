@@ -29,10 +29,12 @@ A typical use is to calculate the sensitivity for each of the locations \code{x}
 was created with (see example).
 }
 \examples{
+\donttest{
 production <- sdc_raster(enterprises, "production")
 
 # add the sensitive variable to original data set.
 enterprises$sensitive <- is_sensitive_at(production, enterprises)
+}
 }
 \seealso{
 Other sensitive: 
