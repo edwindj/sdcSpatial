@@ -93,19 +93,23 @@ plot(smoothed)
 
 ``` r
 # let's smooth to reduce the sensitivity, with higher resolution
-# smoothed <- protect_smooth(production, bw = 400, fact=4, keep_resolution=FALSE)
-# plot(smoothed)
+smoothed <- protect_smooth(production, bw = 400, smooth_fact=4, keep_resolution=FALSE)
+plot(smoothed)
+```
 
+<img src="man/figures/README-example-4.png" width="100%" />
+
+``` r
 # what is the sensitivy fraction?
 sensitivity_score(smoothed)
-#> [1] 0.09800066
+#> [1] 0.007902973
 
 # let's remove the sensitive data.
 smoothed_safe <- remove_sensitive(smoothed, min_count = 3)
 plot(smoothed_safe)
 ```
 
-<img src="man/figures/README-example-4.png" width="100%" />
+<img src="man/figures/README-example-5.png" width="100%" />
 
 ``` r
 # let's communicate!
@@ -116,7 +120,7 @@ production_total <- sum(smoothed_safe)
 raster::filledContour(production_mean, nlevels = 6, main = "Mean production")
 ```
 
-<img src="man/figures/README-example-5.png" width="100%" />
+<img src="man/figures/README-example-6.png" width="100%" />
 
 ``` r
 
@@ -130,4 +134,4 @@ raster::filledContour(production_total, nlevels = 11
              , main="Total production")
 ```
 
-<img src="man/figures/README-example-6.png" width="100%" />
+<img src="man/figures/README-example-7.png" width="100%" />

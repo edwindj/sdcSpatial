@@ -26,7 +26,6 @@ smooth_raster <- function( x
                          , type            = c("Gauss", "circle", "rectangle")
                          , ...
                          ){
-
   if (any(bw < raster::res(x))){
     warning("bandwidth 'bw' is smaller than resolution.")
     return(x)
