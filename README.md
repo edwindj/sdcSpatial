@@ -7,7 +7,6 @@ status](https://www.r-pkg.org/badges/version/sdcSpatial)](https://cran.r-project
 status](https://github.com/edwindj/sdcSpatial/workflows/R-CMD-check/badge.svg)](https://github.com/edwindj/sdcSpatial/actions)
 [![](https://cranlogs.r-pkg.org/badges/sdcSpatial)](https://cran.r-project.org/package=sdcSpatial)
 [![status](https://tinyverse.netlify.com/badge/sdcSpatial)](https://CRAN.R-project.org/package=sdcSpatial)
-
 [![Mentioned in Awesome Official
 Statistics](https://awesome.re/mentioned-badge.svg)](http://www.awesomeofficialstatistics.org)
 
@@ -94,23 +93,19 @@ plot(smoothed)
 
 ``` r
 # let's smooth to reduce the sensitivity, with higher resolution
-smoothed <- protect_smooth(production, bw = 400, fact=4, keep_resolution=FALSE)
-plot(smoothed)
-```
+# smoothed <- protect_smooth(production, bw = 400, fact=4, keep_resolution=FALSE)
+# plot(smoothed)
 
-<img src="man/figures/README-example-4.png" width="100%" />
-
-``` r
 # what is the sensitivy fraction?
 sensitivity_score(smoothed)
-#> [1] 0.007962441
+#> [1] 0.09800066
 
 # let's remove the sensitive data.
 smoothed_safe <- remove_sensitive(smoothed, min_count = 3)
 plot(smoothed_safe)
 ```
 
-<img src="man/figures/README-example-5.png" width="100%" />
+<img src="man/figures/README-example-4.png" width="100%" />
 
 ``` r
 # let's communicate!
@@ -121,7 +116,7 @@ production_total <- sum(smoothed_safe)
 raster::filledContour(production_mean, nlevels = 6, main = "Mean production")
 ```
 
-<img src="man/figures/README-example-6.png" width="100%" />
+<img src="man/figures/README-example-5.png" width="100%" />
 
 ``` r
 
@@ -135,4 +130,4 @@ raster::filledContour(production_total, nlevels = 11
              , main="Total production")
 ```
 
-<img src="man/figures/README-example-7.png" width="100%" />
+<img src="man/figures/README-example-6.png" width="100%" />
