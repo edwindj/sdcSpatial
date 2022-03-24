@@ -100,10 +100,12 @@ SpatialPointsDataFrame object</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">production</span> <span class="op">&lt;-</span> <span class="fu"><a href="sdc_raster.html">sdc_raster</a></span><span class="op">(</span><span class="va">enterprises</span>, <span class="st">"production"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
+<span class="r-in"><span class="va">production</span> <span class="op">&lt;-</span> <span class="fu"><a href="sdc_raster.html">sdc_raster</a></span><span class="op">(</span><span class="va">enterprises</span>, <span class="st">"production"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># add the sensitive variable to original data set.</span></span>
 <span class="r-in"><span class="va">enterprises</span><span class="op">$</span><span class="va">sensitive</span> <span class="op">&lt;-</span> <span class="fu">is_sensitive_at</span><span class="op">(</span><span class="va">production</span>, <span class="va">enterprises</span><span class="op">)</span></span>
+<span class="r-in"><span class="co"># }</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
