@@ -1,3 +1,4 @@
+\donttest{
 library(raster)
 prod <- sdc_raster(enterprises, field = "production", r = 500)
 print(prod)
@@ -12,3 +13,4 @@ summary(prod_mean)
 # get raster with the total production per cell
 prod_total <- sum(prod)
 summary(prod_total)
+}

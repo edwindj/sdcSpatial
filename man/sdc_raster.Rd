@@ -65,6 +65,7 @@ Reducing the sensitivity can be done with \code{\link[=protect_smooth]{protect_s
 \code{sum} and \code{count} data can be extracted from the \verb{$value} (\code{\link[=brick]{brick()}}).
 }
 \examples{
+\donttest{
 library(raster)
 prod <- sdc_raster(enterprises, field = "production", r = 500)
 print(prod)
@@ -79,6 +80,7 @@ summary(prod_mean)
 # get raster with the total production per cell
 prod_total <- sum(prod)
 summary(prod_total)
+}
 }
 \seealso{
 Other sensitive: 

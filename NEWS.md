@@ -1,4 +1,4 @@
-# version 0.5.0
+# version 0.5.2
 
 * Added a `protect_neighborhood` function
 * Fixed a bug in `protect_smooth`, it now can return a higher resolution version

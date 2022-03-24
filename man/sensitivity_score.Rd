@@ -20,6 +20,7 @@ sensitivity_score(x, max_risk = x$max_risk, min_count = x$min_count, ...)
 that are considered sensitive according to the used \code{\link{disclosure_risk}}
 }
 \examples{
+\donttest{
 consumption <- sdc_raster(dwellings[1:2], variable = dwellings$consumption, r = 500)
 
 sensitivity_score(consumption)
@@ -28,6 +29,7 @@ print(consumption)
 
 # change the rules! A higher norm generates more sensitive cells
 sensitivity_score(consumption, min_count = 20)
+}
 }
 \seealso{
 Other sensitive: 
