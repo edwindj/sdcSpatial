@@ -140,26 +140,27 @@
 <p><img src="reference/figures/README-example-3.png" width="100%"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># let's smooth to reduce the sensitivity, with higher resolution</span>
-<span class="co"># smoothed &lt;- protect_smooth(production, bw = 400, fact=4, keep_resolution=FALSE)</span>
-<span class="co"># plot(smoothed)</span>
-
-<span class="co"># what is the sensitivy fraction?</span>
+<span class="va">smoothed</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/protect_smooth.html">protect_smooth</a></span><span class="op">(</span><span class="va">production</span>, bw <span class="op">=</span> <span class="fl">400</span>, smooth_fact<span class="op">=</span><span class="fl">4</span>, keep_resolution<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">smoothed</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/README-example-4.png" width="100%"></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># what is the sensitivy fraction?</span>
 <span class="fu"><a href="reference/sensitivity_score.html">sensitivity_score</a></span><span class="op">(</span><span class="va">smoothed</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.09800066</span>
+<span class="co">#&gt; [1] 0.007902973</span>
 
 <span class="co"># let's remove the sensitive data.</span>
 <span class="va">smoothed_safe</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/remove_sensitive.html">remove_sensitive</a></span><span class="op">(</span><span class="va">smoothed</span>, min_count <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">smoothed_safe</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-example-4.png" width="100%"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p><img src="reference/figures/README-example-5.png" width="100%"></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># let's communicate!</span>
 <span class="va">production_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">smoothed_safe</span><span class="op">)</span>
 <span class="va">production_total</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">smoothed_safe</span><span class="op">)</span>
 
 <span class="co"># and create a contour plot</span>
 <span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/filledContour.html" class="external-link">filledContour</a></span><span class="op">(</span><span class="va">production_mean</span>, nlevels <span class="op">=</span> <span class="fl">6</span>, main <span class="op">=</span> <span class="st">"Mean production"</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-example-5.png" width="100%"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<p><img src="reference/figures/README-example-6.png" width="100%"></p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># generated with R 3.6 &gt;=</span>
 <span class="co">#col &lt;- hcl.colors(11, rev=TRUE)</span>
@@ -169,7 +170,7 @@
 <span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/filledContour.html" class="external-link">filledContour</a></span><span class="op">(</span><span class="va">production_total</span>, nlevels <span class="op">=</span> <span class="fl">11</span>
              , col <span class="op">=</span> <span class="va">col</span>
              , main<span class="op">=</span><span class="st">"Total production"</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-example-6.png" width="100%"></p>
+<p><img src="reference/figures/README-example-7.png" width="100%"></p>
 </div>
 </div>
 
