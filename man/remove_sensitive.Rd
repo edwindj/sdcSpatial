@@ -32,6 +32,7 @@ finalize map protection after other protection methods have been applied.
 experienced \code{raster} users as well as sdc users.
 }
 \examples{
+\donttest{
 library(raster)
 
 unemployed <- sdc_raster(dwellings[1:2], dwellings$unemployed, r=200)
@@ -44,6 +45,7 @@ unemployed_safe <- remove_sensitive(unemployed, risk_type="discrete")
 plot_sensitive(unemployed_safe, zlim=c(0,1))
 print(unemployed)
 unemployed$value
+}
 }
 \seealso{
 Other sensitive: 
