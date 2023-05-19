@@ -1,9 +1,9 @@
 #' Mask coordinates using random pertubation
 #'
 #' Pertubates points with a uniform pertubation in a circle.
-#' Note that `r` can either be one distance, of a distance per data point.
+#' Note that `r` can either be one distance, or a distance per data point.
 #' @param x coordinates, `matrix` or `data.frame` (first two columns)
-#' @param r `numeric` maximum pertubation distance (vectorized)
+#' @param r `numeric` pertubation distance (vectorized)
 #' @param plot if `TRUE` points will be plotted.
 #' @return adapted `x` with perturbed coordinates
 #' @example ./example/mask.R
