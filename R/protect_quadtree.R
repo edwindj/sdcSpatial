@@ -29,7 +29,7 @@ protect_quadtree <- function(x, max_zoom = Inf, ...){
   sdc <- x
 
   zoom <- seq_len(floor(log(min(nrow(x$value), ncol(x$value)), 2)))
-  zoom <- zoom[zoom < max_zoom]
+  zoom <- zoom[zoom <= max_zoom]
 
   for (fact in 2^zoom){
     # logical
@@ -37,6 +37,11 @@ protect_quadtree <- function(x, max_zoom = Inf, ...){
 
     #sdc1$value <- z1
     z1$sens <- is_sensitive(sdc)
+
+    # stopping criterium, thanks to Martin Moehler
+    if (max(z1$sens[], na.rm = TRUE) < 1){
+      break
+    }
 
     #
     z1$area <- 1

@@ -1,5 +1,5 @@
 ---
-title: "Introducing sdcSpatial"
+title: "Introduction sdcSpatial: privacy protected density maps"
 subtitle: "Privacy protected density maps"
 output: 
   rmarkdown::html_vignette:
@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 # preloading
 library(sdcSpatial)
 ```
-
+ q
 Plotting data on a map is a popular and helpful tool to analyze spatial data. 
 R makes it easy to plot spatial data with packages such as `ggplot2`, 
 `tmap`, `mapview` or `leaflet`. 

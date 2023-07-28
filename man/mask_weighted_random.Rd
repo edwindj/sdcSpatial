@@ -11,7 +11,7 @@ mask_weighted_random(x, k = 5, r = NULL, plot = FALSE)
 
 \item{k}{\code{integer} number of neighbors to be used as the maximum distance}
 
-\item{r}{\code{numeric} maximum pertubation distance (vectorized)}
+\item{r}{\code{numeric} pertubation distance (vectorized)}
 
 \item{plot}{if \code{TRUE} points will be plotted.}
 }

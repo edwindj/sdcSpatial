@@ -1,3 +1,9 @@
+# version 0.6.0
+
+* Fixed `max_zoom` level specification issue #12 for `protect_quadtree`. 
+max_zoom = 2 resulted earlier in max_zoom = 1. Thanks to Martin Moehler (@mamoeh).
+* Added earlier stopping criterion for `protect_quadtree`. Thanks to Martin Moehler (@mamoeh).
+
 # version 0.5.2
 
 * Added a `protect_neighborhood` function
