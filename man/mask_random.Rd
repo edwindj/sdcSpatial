@@ -9,7 +9,7 @@ mask_random(x, r, plot = FALSE)
 \arguments{
 \item{x}{coordinates, \code{matrix} or \code{data.frame} (first two columns)}
 
-\item{r}{\code{numeric} maximum pertubation distance (vectorized)}
+\item{r}{\code{numeric} pertubation distance (vectorized)}
 
 \item{plot}{if \code{TRUE} points will be plotted.}
 }
@@ -18,7 +18,7 @@ adapted \code{x} with perturbed coordinates
 }
 \description{
 Pertubates points with a uniform pertubation in a circle.
-Note that \code{r} can either be one distance, of a distance per data point.
+Note that \code{r} can either be one distance, or a distance per data point.
 }
 \examples{
 x <- cbind(
