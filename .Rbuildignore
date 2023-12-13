@@ -6,6 +6,7 @@
 ^example
 ^data-raw
 ^useR2019
+^uros2023
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
