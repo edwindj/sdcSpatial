@@ -34,3 +34,9 @@
 #'  disclosure control on visualising geocoded population data using
 #' a structure in quadtrees, NTTS 2017
 "_PACKAGE"
+
+## usethis namespace: start
+#' @importFrom Rcpp sourceCpp
+#' @useDynLib sdcSpatial, .registration = TRUE
+## usethis namespace: end
+NULL

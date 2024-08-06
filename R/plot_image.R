@@ -12,9 +12,9 @@ plot_image <- function(x, div=FALSE, ...){
   #   par(old_par)
   # })
   image( x
-         , col = hcl.colors(n = 20, palette = palette, rev=!div)
+         , col  = hcl.colors(n = 20, palette = palette, rev=!div)
          , zlim = zlim
-         , asp = 1
+         , asp  = 1
          , axes = FALSE
          , useRaster = TRUE
          , ...

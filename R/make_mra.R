@@ -23,3 +23,11 @@ make_mra2 <- function(mra){
   mra2
 }
 
+make_mra3 <- function(mra2){
+  a <- 0
+  mra3 <- lapply(rev(mra2), function(x){
+    a <<- x + a
+    a
+  })
+  rev(mra3)
+}

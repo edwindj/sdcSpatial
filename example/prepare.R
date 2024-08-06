@@ -1,48 +1,87 @@
 library(sdcSpatial)
-unemployed <- sdc_raster( dwellings[c("x", "y")] # realistic locations
-                          , dwellings$unemployed # simulated data!
-                          , r = 100 # raster resolution of 500m
-                          , min_count = 10 # min support
-)
+prod <- sdc_raster(enterprises
+                  , field = "production"
+                  , r = 500
+                  , min_count = 5
+                  )
+print(prod)
 
-U <- extract_matrix(unemployed$value$mean)
-ux <- make_dyadic(U)
-ux
+plot(prod, value="count")
 
-protect_wavelet(unemployed)
+plot(prod, value="count", sensitive = FALSE)
 
-plot_image(ux)
-plot_image(ux, div=TRUE)
+library(raster)
+plot(prod$value)
+image(prod$value$count)
 
-#ux_dwt <- dwt.2d(ux, "la8")
-ux_dwt <- waveslim::dwt.2d(ux, "haar")
-
-ux_mra <- make_mra(ux_dwt)
-u <- ux_mra[[1]]
-for (i in 2:length(ux_mra)){
-  u <- u + ux_mra[[i]]
+extract_matrix <- function(r){
+  x <- raster::as.matrix(force(r))
+  x <- x[nrow(x):1,]
+  t(x)
 }
-plot_image(u)
 
-protect_wavelet(unemployed)
-
-pdf("test.pdf")
-old_par <- par(mfrow = c(2,2))
-mra2 <- make_mra2(ux_mra)
-for (l in mra2){
-  plot_image(l, div = TRUE)
+to_cells <- function(x){
+  x <- t(x)
+  x <- x[nrow(x):1,]
+  x
 }
-par(old_par)
-dev.off()
+
+raster::image
+
+make_dyadic <- function(x){
+  nr <- nrow(x)
+  nc <- ncol(x)
+
+  dnr <- 2^(ceiling(log2(nr)))
+  dnc <- 2^(ceiling(log2(nc)))
+
+  dx <- matrix(0, nrow=dnr, ncol=dnc)
+  xr <- seq_len(nr) + (dnr - nr)/2
+  xc <- seq_len(nc) + (dnc - nc)/2
+
+  dx[xr, xc] <- x
+
+  list(dx = dx, xr = xr, xc = xc)
+  dx[is.na(dx)] <- 0
+  dx
+}
+
+
+cnt <- extract_matrix(prod$value$count)
+
+saveRDS(cnt, "data/count.rds")
+
+plot_image <- function(x, div=FALSE, ...){
+
+  if (isTRUE(div)){
+    palette = "Purple-Green"
+    zlim = max(abs(x), na.rm = TRUE) * c(-1,1)
+  } else {
+    palette = "Reds"
+    zlim = max(x, na.rm = TRUE) * c(0,1)
+  }
+  # old_par <- par(omi = c(0,0,0,0), mar=c(0,0,2,0))
+  # on.exit({
+  #   par(old_par)
+  # })
+  image( x
+       , col = hcl.colors(n = 20, palette = palette, rev=!div)
+       , zlim = zlim
+       , asp = 1
+       , axes = FALSE
+       , useRaster = TRUE
+       , ...
+       )
+}
+
+dcnt <- cnt |> make_dyadic()
+
+plot_image(dcnt, main="test")
+
+plot_image(cnt, main = "test")
+plot_image(cnt, div=TRUE)
 
 library(waveslim)
-
-
-dwt_cnt <- dwt.2d(ux, wf = "la8")
-x <- dwt_cnt
-
-
-mra <- mra_dwt(x)
 
 af <- farras()$af
 dcnt[is.na(cnt)] <- 0

@@ -7,6 +7,7 @@ gemeente_2018 <- cbsodataR::cbs_get_sf("gemeente", 2018)
 
 data("enterprises")
 RES <- 100
+SCALE <- 0.7
 
 r <- sdc_raster( enterprises
                  , variable = "production"
@@ -56,10 +57,15 @@ for (i in RES*(0:10)){
     scale_fill_viridis_c(na.value = "transparent", direction = -1, limits = c(0, 50000)) +
     geom_sf(data=gem, mapping=aes(), fill = "transparent", linewidth=0.5) +
     geom_sf_text(data = gem, mapping=aes(label = statnaam), alpha = 0.5, size = 3, check_overlap = TRUE) +
-    labs(fill="", title=sprintf(" bandwith = %im", i)) +
+    labs(fill="", title=sprintf(" band width = %im", i)) +
     theme_void()
 
-  ggsave("example/figures/fixed_smooth_%i.png" |> sprintf(i), width = 7, height = 5)
+  ggsave(
+    "example/figures/fixed_smooth_%i.png" |> sprintf(i),
+    width = 7,
+    height = 5,
+    scale = SCALE
+  )
 
   # v |>
   #   as.data.frame(xy = TRUE) |>
@@ -68,7 +74,7 @@ for (i in RES*(0:10)){
   #   scale_fill_viridis_c(na.value = "transparent", direction = -1, limits = c(59, 21000), transform = "log10") +
   #   geom_sf(data=gem, mapping=aes(), fill = "transparent", linewidth=0.5) +
   #   geom_sf_text(data = gem, mapping=aes(label = statnaam)) +
-  #   labs(fill="", title=sprintf(" bandwith = %im", i)) +
+  #   labs(fill="", title=sprintf(" band width = %im", i)) +
   #   theme_void()
   #
   # ggsave("example/figures/fixed_log_smooth_%i.png" |> sprintf(i), width = 7, height = 5)
@@ -152,10 +158,10 @@ for (i in RES*(1:10)){
     scale_fill_viridis_c(na.value = "transparent", direction = -1, limits = c(0, 50000)) +
     geom_sf(data=gem, mapping=aes(), fill = "transparent", linewidth=0.5) +
     geom_sf_text(data = gem, mapping=aes(label = statnaam), alpha = 0.5, size = 3, check_overlap = TRUE) +
-    labs(fill="", title=sprintf(" bandwith = %im", i)) +
+    labs(fill="", title=sprintf(" resolution = %im", i)) +
     theme_void()
 
-  ggsave("example/figures/res_%i.png" |> sprintf(i), width = 7, height = 5)
+  ggsave("example/figures/res_%i.png" |> sprintf(i), width = 7, height = 5, scale = SCALE)
 
   # v |>
   #   as.data.frame(xy = TRUE) |>

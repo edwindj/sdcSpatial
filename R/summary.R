@@ -1,3 +1,4 @@
+#' @export
 summary.sdc_raster <- function(object, ...){
   x <- object
   r <- x$value
@@ -13,6 +14,7 @@ summary.sdc_raster <- function(object, ...){
   )
 }
 
+#' @export
 print.sdc_raster_summary <- function(x, ...){
   x
 }

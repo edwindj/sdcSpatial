@@ -41,6 +41,7 @@ plot_image <- function(x, div=FALSE, ..., axes = FALSE){
   # on.exit({
   #   par(old_par)
   # })
+  is.na(x) <- x < .Machine$double.eps
   image( x
          , col = hcl.colors(n = 20, palette = palette, rev=!div)
          , zlim = zlim
