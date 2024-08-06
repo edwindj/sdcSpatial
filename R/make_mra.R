@@ -15,11 +15,24 @@ make_mra <- function(x, wf = "la8", J = 4, ...){
   mra
 }
 
-make_mra2 <- function(mra){
+make_mra_layer <- function(mra){
   layer <- gsub("[A-z]","", names(mra))
   mra2 <- lapply(split(mra, layer), function(l){
     u <- Reduce(`+`, l)
   })
   mra2
 }
+
+make_mra_cumsum <- function(mra){
+  N <- length(mra)
+  last <- mra[[N]]
+  for (i in rev(seq_len(N - 1))){
+    last <- last + mra[[i]]
+    mra[[i]] <- last
+  }
+  last[last < 0] <- 0
+  mra[[1]] <- round(last, digits = 2)
+  mra
+}
+
 

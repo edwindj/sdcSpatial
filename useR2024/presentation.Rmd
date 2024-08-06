@@ -205,6 +205,12 @@ Also:
 knitr::include_graphics("fig/wavelet2d.png")
 ```
 
+## 
+
+```{r, echo=FALSE, out.width="90%"}
+knitr::include_graphics("fig/wavelet_d.png")
+```
+
 
 ## sdcSpatial and Wavelets:
 
@@ -223,10 +229,20 @@ unemployed_wvlt <- protect_wavelet(
 ```
 
 
+## 
+
+```{r, echo=FALSE, out.width="90%"}
+knitr::include_graphics("fig/protect_wavelet.png")
+```
+
 ## The end
 
-- `protect_wavelet` wip on github
+- `protect_wavelet` **wip on github**, highly in flux.
 - "raw version", testing make it user friendly, in September on CRAN.
+- update will also include:
+
+    - Hellinger distance for measuring "utility"
+    - performance improvements large rasters (country size)
 
 ### Thank you for your attention!
 

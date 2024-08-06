@@ -25,11 +25,24 @@ make_dyadic <- function(x){
 
   list(dx = dx, xr = xr, xc = xc)
   dx[is.na(dx)] <- 0
+  attr(dx, "original") <- list(xr = xr, xc = xc, nc = nc, nr = nr)
   dx
 }
 
-plot_image <- function(x, div=FALSE, ..., axes = FALSE){
+make_dyadic2 <- function(r){
+  x <- extract_matrix(r)
+  make_dyadic(x)
+}
 
+restore_from_dyadic <- function(x){
+  n <- attr(x, "original")
+  x2 <- matrix(0, nrow = n$nr, ncol = n$nc)
+  x2[] <- x[n$xr, n$xc]
+  x2
+}
+
+
+plot_image <- function(x, div=FALSE, ..., axes = FALSE){
   if (isTRUE(div)){
     palette = "Purple-Green"
     zlim = max(abs(x), na.rm = TRUE) * c(-1,1)

@@ -28,8 +28,8 @@ Other plotting:
 
 Other sensitive: 
 \code{\link{disclosure_risk}()},
-\code{\link{is_sensitive_at}()},
 \code{\link{is_sensitive}()},
+\code{\link{is_sensitive_at}()},
 \code{\link{remove_sensitive}()},
 \code{\link{sdc_raster}()},
 \code{\link{sensitivity_score}()}

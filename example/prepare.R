@@ -4,13 +4,69 @@ unemployed <- sdc_raster( dwellings[c("x", "y")] # realistic locations
                           , r = 100 # raster resolution of 500m
                           , min_count = 10 # min support
 )
+x <- unemployed
+wf <- "haar"
+depth <- 3
 
 U <- extract_matrix(unemployed$value$mean)
+dim(U)
+ux <- make_dyadic(U)
+dim(ux)
+u2 <- ux |> restore_from_dyadic()
+dim(u2)
+
+all(u2 == U, na.rm = TRUE)
+
+p <- wavelet_process(unemployed, "haar", J = 4)
+B <- U[]
+B[] <- 10
+
+u_dwt <-
+  make_dyadic(U) |>
+  make_mra(wf = "la8", J = 3) |>
+  make_mra_layer()
+
+ln <- u_dwt[[3]]
+ln[ln < 0] <- 0
+
+plot_image(ln)
+attributes(ln) <- attributes(ux)
+ln2 <- restore_from_dyadic(ln)
+
+m <- x$value$mean
+m[] <- ln2 |> to_cells()
+x$value$mean <- m
+plot(x, sensitive = FALSE)
+plot_dwt2(u_dwt)
+
+a <- make_dyadic(B) |>
+  make_mra(wf = "haar") |>
+  make_mra2()
+
+dn <-
+  U |>
+  make_dyadic() |>
+  waveslim::denoise.dwt.2d(J = 5)
+
+dn <-
+  U |>
+  make_dyadic() |>
+  make_mra(wf = "haar", J = 5) |>
+  make_mra2()
+
+plot_image(dn[[1]], div = T)
+d$HL1
+
+plot_image(a[[4]])
+dwt.2d
 ux <- make_dyadic(U)
 ux
 
-protect_wavelet(unemployed)
+p <- wavelet_process(unemployed)
+p$is_below[[4]]
 
+p <- protect_wavelet(unemployed)
+p$cnt
 plot_image(ux)
 plot_image(ux, div=TRUE)
 
@@ -92,3 +148,7 @@ dn  <- denoise.modwt.2d(dcnt, wf = "haar")
 plot_image(dn, div=TRUE)
 plot_image(dcnt, div=TRUE)
 convolve()
+
+plot_image(x)
+
+

@@ -49,6 +49,13 @@ if ( requireNamespace("FNN", quietly = TRUE)
   # voronoi masking, plotting needs package `sf`
   x_vor <- mask_voronoi(x, r = 1, plot=TRUE)
 }
+
+r_smooth <-
+  sdc_raster(enterprises, "production") |>
+  protect_smooth() |>
+  remove_sensitive()
+
+mask_values(enterprises, r_smooth)
 }
 \references{
 Spatial obfuscation methods for privacy protection of
