@@ -22,22 +22,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// calc_risk
-NumericMatrix calc_risk(NumericMatrix image, double sigma);
-RcppExport SEXP _sdcSpatial_calc_risk(SEXP imageSEXP, SEXP sigmaSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type image(imageSEXP);
-    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
-    rcpp_result_gen = Rcpp::wrap(calc_risk(image, sigma));
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_sdcSpatial_apply_gaussian_filter", (DL_FUNC) &_sdcSpatial_apply_gaussian_filter, 2},
-    {"_sdcSpatial_calc_risk", (DL_FUNC) &_sdcSpatial_calc_risk, 2},
     {NULL, NULL, 0}
 };
 

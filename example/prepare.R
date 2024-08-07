@@ -52,6 +52,11 @@ cnt <- extract_matrix(prod$value$count)
 saveRDS(cnt, "data/count.rds")
 
 plot_image <- function(x, div=FALSE, ...){
+  old_par <- par(oma=c(0,0,0,0), mar=c(0,0,0,0))
+
+  on.exit({
+    par(old_par)
+  })
 
   if (isTRUE(div)){
     palette = "Purple-Green"
@@ -124,7 +129,6 @@ for (n in names(l)){
   M <- Reduce(`+`,mra_haar[l[[n]]])
   plot_image(M, main = n, div=TRUE)
 }
-
 
 dn  <- denoise.modwt.2d(dcnt, wf = "haar")
 # dn[dn < 0] <- 0

@@ -5,7 +5,3 @@ apply_gaussian_filter <- function(image, sigma) {
     .Call(`_sdcSpatial_apply_gaussian_filter`, image, sigma)
 }
 
-calc_risk <- function(image, sigma) {
-    .Call(`_sdcSpatial_calc_risk`, image, sigma)
-}
-
