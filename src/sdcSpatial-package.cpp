@@ -1,5 +1,6 @@
 #include <Rcpp.h>
 #include <cmath>
+
 #ifdef _OPENMP
 #include <omp.h>
 #endif
@@ -60,12 +61,16 @@ NumericMatrix apply_gaussian_filter(NumericMatrix image, double sigma) {
           int pixel_y = y + ky;
 
           auto w = kernel(ky + half_size, kx + half_size);
-          auto value = image(pixel_y, pixel_x);
 
-          if (NumericVector::is_na(value) || pixel_x < 0 || pixel_x >= width || pixel_y < 0 || pixel_y >= height) {
+          if ( pixel_x < 0
+            || pixel_x >= width
+            || pixel_y < 0
+            || pixel_y >= height
+            || NumericVector::is_na(image(pixel_y, pixel_x))
+            ) {
             skip += w;
           } else {
-            sum += w * value;
+            sum += w * image(pixel_y, pixel_x);
           }
         }
       }
@@ -84,7 +89,7 @@ NumericMatrix apply_gaussian_filter(NumericMatrix image, double sigma) {
 
 V <- volcano
 image(V)
-sigma <- 10
+sigma <- 1
 
 system.time({
   V1 <- apply_gaussian_filter(V, sigma = sigma)
@@ -101,7 +106,7 @@ pdf("example/volcano_gaussian_filter.pdf")
 par(mfrow=c(2,2))
 r <- sapply(0.5*(1:20), function(s){
   t <- system.time({
-    V1 <- sdcSpatial:::apply_gaussian_filter(V, sigma = s)
+    V1 <- sapply_gaussian_filter(V, sigma = s)
   })
   image(V1, zlim=c(90,195), main=paste0("V1 (sigma=", s, ")"))
   t
