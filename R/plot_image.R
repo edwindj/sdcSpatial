@@ -1,3 +1,5 @@
+#' @importFrom grDevices hcl.colors
+#' @importFrom graphics image
 plot_image <- function(x, div=FALSE, ...){
 
   if (isTRUE(div)){

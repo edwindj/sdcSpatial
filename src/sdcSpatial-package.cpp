@@ -4,7 +4,7 @@
 #include <omp.h>
 #endif
 
-// [[Rcpp::plugins(openmp)]]
+//[[Rcpp::plugins(openmp)]]
 using namespace Rcpp;
 // Function to create a 2D Gaussian kernel
 NumericMatrix generate_gaussian_kernel(int kernel_size, double sigma) {
@@ -96,11 +96,12 @@ image(V1, zlim=c(90,195), main=paste0("V1 (sigma=", sigma, ")"))
 par(old_par)
 range(V1)
 
+dir.create("example", showWarnings = FALSE)
 pdf("example/volcano_gaussian_filter.pdf")
 par(mfrow=c(2,2))
 r <- sapply(0.5*(1:20), function(s){
   t <- system.time({
-    V1 <- apply_gaussian_filter(V, sigma = s)
+    V1 <- sdcSpatial:::apply_gaussian_filter(V, sigma = s)
   })
   image(V1, zlim=c(90,195), main=paste0("V1 (sigma=", s, ")"))
   t
