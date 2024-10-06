@@ -31,11 +31,22 @@ NumericMatrix generate_gaussian_kernel(int kernel_size, double sigma) {
   return kernel;
 }
 
+int get_nthreads() {
+#ifdef _OPENMP
+  return omp_get_max_threads();
+#endif
+  return 1;
+}
+
 // Function to apply the Gaussian filter to an image
 // [[Rcpp::export]]
-NumericMatrix apply_gaussian_filter(NumericMatrix image, double sigma) {
+NumericMatrix apply_gaussian_filter(NumericMatrix image, double sigma, int nthreads = -1) {
   int width = image.ncol();
   int height = image.nrow();
+
+  if (nthreads < 1){
+    nthreads = get_nthreads();
+  }
 
   // the kernel size must be odd
   int kernel_size = 6 * sigma + 1;
@@ -45,11 +56,20 @@ NumericMatrix apply_gaussian_filter(NumericMatrix image, double sigma) {
   // check that kernel is less then height and width
   int half_size = kernel_size / 2;
 
+  if (half_size >= height || half_size >= width) {
+    stop("Kernel size is too large for the image size");
+  }
+
+  if (half_size <= 0){
+    return image;
+  }
+
+
   NumericMatrix kernel = generate_gaussian_kernel(kernel_size, sigma);
   NumericMatrix output_image(height, width);
 
 #ifdef _OPENMP
-#pragma omp parallel for
+#pragma omp parallel for num_threads(nthreads)
 #endif
   for (int y = 0; y < height; y++) {
     for (int x = 0; x < width; x++) {
