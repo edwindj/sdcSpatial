@@ -101,16 +101,21 @@ image(V1, zlim=c(90,195), main=paste0("V1 (sigma=", sigma, ")"))
 par(old_par)
 range(V1)
 
-dir.create("example", showWarnings = FALSE)
-pdf("example/volcano_gaussian_filter.pdf")
+dir.create("example/img", showWarnings = FALSE)
+# pdf("example/volcano_gaussian_filter.pdf")
 par(mfrow=c(2,2))
+png("example/img/volcano_gaussian_filter%02d.png")
 r <- sapply(0.5*(1:20), function(s){
   t <- system.time({
-    V1 <- sapply_gaussian_filter(V, sigma = s)
+    V1 <- apply_gaussian_filter(V, sigma = s)
   })
   image(V1, zlim=c(90,195), main=paste0("V1 (sigma=", s, ")"))
   t
 })
 dev.off()
+l <- list.files("example/img/", "*.png", full.names = TRUE)
+i <- magick::image_read(l)
+i2 <- magick::image_animate(i, fps = 2)
+magick::image_write_video(i2, path = "example/volcano.mp4", framerate = 4)
 t(r[1:3,])
 */
