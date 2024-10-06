@@ -1,7 +1,7 @@
 ---
 title: "Wavelet Secure Maps: enhancing privacy protected maps"
 author: "Edwin de Jonge \\@edwindjonge"
-date: "useR! 2024, July 9 2024"
+date: "2024, October 7 2024"
 bibliography: sdcmap.bib
 output: 
   beamer_presentation:
