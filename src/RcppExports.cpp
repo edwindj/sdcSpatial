@@ -11,20 +11,21 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // apply_gaussian_filter
-NumericMatrix apply_gaussian_filter(NumericMatrix image, double sigma);
-RcppExport SEXP _sdcSpatial_apply_gaussian_filter(SEXP imageSEXP, SEXP sigmaSEXP) {
+NumericMatrix apply_gaussian_filter(NumericMatrix image, double sigma, int nthreads);
+RcppExport SEXP _sdcSpatial_apply_gaussian_filter(SEXP imageSEXP, SEXP sigmaSEXP, SEXP nthreadsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type image(imageSEXP);
     Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
-    rcpp_result_gen = Rcpp::wrap(apply_gaussian_filter(image, sigma));
+    Rcpp::traits::input_parameter< int >::type nthreads(nthreadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(apply_gaussian_filter(image, sigma, nthreads));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_sdcSpatial_apply_gaussian_filter", (DL_FUNC) &_sdcSpatial_apply_gaussian_filter, 2},
+    {"_sdcSpatial_apply_gaussian_filter", (DL_FUNC) &_sdcSpatial_apply_gaussian_filter, 3},
     {NULL, NULL, 0}
 };
 
