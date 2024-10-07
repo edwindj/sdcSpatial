@@ -42,7 +42,9 @@ Finance etc.
 - Publishing geo-referenced data
 
 
-## Country Context may be different.
+## Side note
+
+### Country Context may be different.
 
 - The privacy of citizens must be protected, EU/GDPR.  (good thing!)
 
@@ -87,7 +89,7 @@ an aggregate level, not on a microlevel. Which is a different topic.
 
 ## This presentation
 
-- Uses a lot of material from Guidelines for Statistical Disclosure Control 
+- Uses material from Guidelines for Statistical Disclosure Control 
 Methods Applied on Georeference Data, [@guidelines2024] (to be published)
 
 - contains examples with R package: `sdcSpatial` 
@@ -269,7 +271,7 @@ Quadtree method [@Lagonigro_Oller_Martori_2017]
 
 ## Quadtree
 
-```{r, echo=FALSE, out.width="79%"}
+```{r, echo=FALSE, out.width="90%"}
 knitr::include_graphics("fig/quadtree.png")
 ```
 
@@ -278,7 +280,7 @@ knitr::include_graphics("fig/quadtree.png")
 
 from [@Lagonigro_Oller_Martori_2017]
 
-```{r, echo=FALSE, out.width="79%"}
+```{r, echo=FALSE, out.width="90%"}
 knitr::include_graphics("fig/quadtree2.png")
 ```
 
@@ -286,7 +288,7 @@ knitr::include_graphics("fig/quadtree2.png")
 ## Quadtree disadvantages:
 
 
-```{r, echo=FALSE, out.height="65%"}
+```{r, echo=FALSE, out.width="90%"}
 knitr::include_graphics("fig/quadtree_problem.png")
 ```
 
@@ -314,6 +316,8 @@ Idea:
 $$
 f_h(r) = \frac{1}{h^2} \sum_{i=1}^N \big(\frac{r-r_i}{h}\big)
 $$
+
+
 ## Actually,  two smoothers...
 
 - For relative number, two smoothers:
@@ -321,9 +325,13 @@ $$
     - variable / population 
     - e.g. energy comsumption density / enterprise density
     
-- Related to spatial risk literature
+$$
+m_h(\vec{r}) = \frac{g_h(\vec{r})}{f_h(\vec{r})} = \frac{\sum_{i=1}^N a_i k\left((\vec{r}-\vec{r}_i)/h\right)}{\sum_{i=1}^N k\left((\vec{r}-\vec{r}_i)/h\right)}, \quad \vec{r}\in\mathcal{D}.
+$$
 
-## 
+- related to spatial relative risk
+
+## KDE smoothing 
 
 ```{r, echo=FALSE, out.width="49%"}
 knitr::include_graphics("fig/fixed_smooth_0.png")
@@ -549,6 +557,10 @@ We need both a smooth and adaptive method!
 - Builds a multi-resolution version of density map
 - Checks sensitivity (privacy) multiple resolutions
 
+## Wavelet
+
+\scriptsize
+
 ```{r, eval=FALSE}
 unemployed_wvlt <- protect_wavelet(
   unemployed,
@@ -556,6 +568,13 @@ unemployed_wvlt <- protect_wavelet(
   depth = 4, # resolution depth
   ... # denoising parameters
 )
+```
+
+```{r, echo=FALSE}
+unemployed_100m <- sdc_raster( dwellings[c("x","y")], dwellings$unemployed
+                               , r = 100) # use a finer raster
+unemployed_qt <- protect_quadtree(unemployed_100m) |> protect_smooth(bw = 300)
+plot(unemployed_qt)
 ```
 
 ## Upcoming (December)
