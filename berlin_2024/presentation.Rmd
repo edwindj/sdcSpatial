@@ -1,10 +1,11 @@
 ---
-title: "Wavelet Secure Maps: enhancing privacy protected maps"
+title: "Wavelet Adaptive Maps: enhancing privacy protected maps"
 author: "Edwin de Jonge \\@edwindjonge"
-date: "2024, October 7 2024"
+date: "October 7, 2024"
 bibliography: sdcmap.bib
 output: 
   beamer_presentation:
+    keep_tex: false
     include: 
       in_header: ./00tex/presheader.tex
 ---
@@ -13,15 +14,172 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Wavelet Secure Maps: enhancing privacy protected maps
+## Enhancing privacy protected maps
 
 ```{r, echo=FALSE}
 knitr::include_graphics("fig/privacy.jpg")
 ```
 
+## Who am I?
+
+- Statistical consultant, Data Scientist \@cbs.nl / Statistics NL
+- Statistics Netherlands (CBS) is producer main official statistics in the 
+Netherlands:
+
+    - Stats on Demographics, economy (GDP), education, environment, agriculture, 
+Finance etc.
+    - Part of the European Statistical System, ESS
+    - Like DEStatis, only national office (smaller country...) 
+
+
+## Some Aspects Geographical confidentiality 
+
+- Legal, what is allowed?
+- Cultural, what is considered sensitive?
+- Computational (methods)
+- What kind of Information?
+- Combining sources with spatial information
+- Analysing geo-referenced data, who has access?
+- Publishing geo-referenced data
+- Tension between privacy and public safety. In times of crisis... 
+(i.e. COVID19 pandemic)
+
+
+## Context in European context is different.
+
+- Privacy and sensitive information is not an absolute thing.
+
+- Government should protect their citizens and citizen should be protected by their government. 
+
+- sensitive information of citizens should be not be disclosed. 
+
+- What is sensitive is not an absolute given:
+
+- Cultural component:
+
+  e.g. Scandanavian countries had a public register of income. 
+  
+## Country context can be different
+
+- In the Netherlands there is a public register of buildings and addresses.
+who is residing there is not public though.
+
+## This presentation
+
+- Legal
+- Cultural
+- Computational
+- kind of information
+- Combining information with spatial information
+- Analysing geo-referenced data, who has access?
+- **Publishing geo-referenced data on maps**
+- Tension between privacy and public safety. In times of crisis... 
+(i.e. COVID19 pandemic)
+
+
+## This presentation
+
+- Being a statistical office, we do not disclose information of individuals.
+- Main task is to compile information on population level.
+- **Will focus on methods of publication of (density) maps**
+
+- Focus on publishing regional data, i.e. on the population living or operating in the spatial dimension. 
+
+- e.g. Unemployment, or Spatial distribution of income etc.
+
+- So we are talking about "aggregated" data: and the protection takes place at 
+an aggregate level, not on a microlevel. Which is a different topic.
+
+- Assumption: the raw / original data has most information / utility. (come back later)
+
+## This presentation
+
+- Uses a lot of material from Guidelines for Statistical Disclosure Control 
+Methods Applied on Georeference Data, [@guidelines2024] (to be published)
+
+- contains examples with R package: `sdcSpatial` 
+
+- Describes methods and their aspects
+
+- Introduces a new adaptive wavelet method.
+
+## Publishing maps
+
+- Demand of policymakers and society to have ever more detailed spatial detail.
+- Often on administrative regions
+- More detail, more risk for disclosing individual information...
+
+### Maps for a long time:
+
+- Attractive and useful means for displaying spatial data (maps earlier then charts...)
+- Maps may disclose information on individuals
+- Different type of maps:  Proportional Symbol Maps, Choropleths, Density maps 
+
+## Map: proportional symbol
+
+```{r, echo=FALSE,out.height="79%"}
+knitr::include_graphics("fig/proportGermany.png")
+```
+
+## Map: proportional symbol:
+
+- Used for a long time (1858, Minard)
+- Publish **absolute numbers**
+- Can be multi variate
+- Mostly on administrative regions
+- Privacy protection methods: same as tabular
+methods, "it's just a table".
+- *Spatial dimension (mostly) not used*
+
+## Maps: choropleth:
+
+```{r, echo=FALSE,out.height="79%"}
+knitr::include_graphics("fig/choroGermany.png")
+```
+
+## Maps: choropleth:
+
+- Choropleth: **relative numbers** (percentage/density)
+- Mostly univariate
+- Mostly on administrative regions
+- Privacy protection methods: same as tabular
+methods, "it's just a table".
+- *Spatial dimension (mostly) not used*
+
+## Map: density maps
+
+```{r, echo=FALSE, out.height="79%"}
+knitr::include_graphics("fig/germanyPopDens1200.png")
+```
+
+## Map: density maps
+
+- **absolute** or **relative** numbers
+
+## Demands:
+
+- Each maps has their use
+- Density maps are under used, but have the following nice properties:
+
+    - no administrative region size bias (distortion)
+    - resolution can be choosen (oops)
+    - can depict absolute densities: e.g. population density, unemployed.
+    - can depict relative densities: unemployment *rate*.
+
+
+
+## KDE
+
+$$
+f_h(r) = \frac{1}{h^2} \sum_{i=1}^N \big(\frac{r-r_i}{h}\big)
+$$
+
+
+## Software sdcSpatial
+
 ## sdcSpatial: Privacy protected maps
 
-### Takeout message: `sdcSpatial` and Wavelets:
+### `sdcSpatial` and Wavelets:
 
 - `sdcSpatial` helps to assess sensitiviy and create privacy protected density maps.
 
@@ -30,24 +188,6 @@ knitr::include_graphics("fig/privacy.jpg")
 - takes care of rural vs urban spatial resolution.
 
 - can be seen as combination of `protect_smooth` and `protect_quadtree`.
-
-- _work in progress, on github, not yet on CRAN_
-
-## Who am I and why these protection methods?
-
-- Statistical consultant, Data Scientist \@cbs.nl / Statistics NL
-- Statistics Netherlands is producer main official statistics in the 
-Netherlands:
-
-    - Stats on Demographics, economy (GDP), education, environment, agriculture, 
-Finance etc.
-    - Part of the European Statistical System, ESS.
-
-### Motivation for `sdcSpatial`
-
-- ESS has European Code of Statistical Practice (predates GDPR, European law 
-on Data Protection):  
-**no individual information may be revealed**.
 
 ## Sdc in `sdcSpatial`?
 
@@ -61,6 +201,85 @@ SDC = "Statistical Disclosure Control"
   - shifting mass
 - Most SDC methods operate on records.
 - **`sdcSpatial` works upon locations.**
+
+## resolution
+
+```{r, echo=FALSE, out.width="85%"}
+knitr::include_graphics("fig/resolution.png")
+```
+
+## Disclosure risk 
+
+Disclosure risk scenario:
+Plotting a variable on a map:
+
+- The location of a population unit is very identifying.
+- zooming in makes it easy to pinpoint the exact
+location of a population unit.
+- The value of the variable at a certain location may be sensitive information.
+- Densely of sparsely populated regions, implies identifiability
+
+## Disclosure scenario
+
+Attacker:
+
+- identifies hot / cold spots: locations that have extreme values or low density.
+- Zooming in the map
+- Identifies locations of individuals 
+- Connects the value with the individuals.
+
+## Risk measure (general)
+
+For each area $A$ (can be overlapping):
+
+- the number of units $n$, should be at least $k$ (k-anonymity)
+- the largest value of a unit should be lower then $p\%$ of the total
+value (dominance rule).
+
+## Information loss
+
+- Protecting privacy  is removing information
+- Perfectly safe data is publishing no data
+- Strive for maximum utility (or information), while removing risk     (removing information).
+- Note: utility is not necessarily maximum information: raw individual data can be noisy, incomplete, etc.
+- Look at information measures
+
+## Information loss measures
+
+(from Guidelines on Georeferenced data, 2024)
+
+- Hellinger Distance, MSE, MAD on grid
+- Earth Moving Distance
+
+## Methods
+
+- Quadtree
+- Kernel Density Smoothing
+- Wavelet Adaptive Smoothing
+
+## Quadtree
+
+```{r, echo=FALSE, out.width="65%"}
+knitr::include_graphics("fig/quadtree2.png")
+```
+
+[@Lagonigro_Oller_Martori_2017]
+
+## Quadtree
+
+```{r, echo=FALSE, out.width="65%"}
+knitr::include_graphics("fig/quadtree.png")
+```
+
+[@Lagonigro_Oller_Martori_2017]
+
+## Quadtree problem
+
+```{r, echo=FALSE, out.width="65%"}
+knitr::include_graphics("fig/quadtree_problem.png")
+```
+
+from: [@Guidelines2024]
 
 ## Data 
 
@@ -120,7 +339,6 @@ strongly interacts with population density.
 plot(unemployed, "mean")
 ```
 
-
 ## How to reduce sensitivity?
 
 ### Options: 
@@ -128,7 +346,7 @@ plot(unemployed, "mean")
 a) Remove sensitive locations: **`remove_sensitive`**.
 b) Use a coarser raster: `sdc_raster`.
 c) Aggregate sensitive cells hierarchically with a quad tree until not 
-sensitive: **`protect_quadtree`** [@Sune2017].
+sensitive: **`protect_quadtree`** [@Sune2017, @Lagonigro_Oller_Martori_2017].
 d) Apply spatial smoothing: **`protect_smooth`** [@WolfJonge2018; @JongeWolf2016].
 e) Do a multi-resolution analysis **`protect_wavelet`**
 
@@ -181,6 +399,7 @@ plot(unemployed_smoothed, "mean")
 - A fixed band width is used for all locations: may remove detailed patterns...  
 spatial processes often have location dependent band widths.
 
+
 ## Problem: smooth and adaptive
 
 We need both a smooth and adaptive method!
@@ -201,7 +420,7 @@ Also:
 ## Wavelet and images (e.g. JPEG)
 
 
-```{r, echo=FALSE, out.width="90%"}
+```{r, echo=FALSE, out.width="85%"}
 knitr::include_graphics("fig/wavelet2d.png")
 ```
 
@@ -222,11 +441,10 @@ unemployed_wvlt <- protect_wavelet(
 )
 ```
 
-
 ## The end
 
-- `protect_wavelet` wip on github
-- "raw version", testing make it user friendly, in September on CRAN.
+- `protect_wavelet` (work in progress) on github
+- "raw version", testing make it user friendly, in December on CRAN.
 
 ### Thank you for your attention!
 
@@ -242,4 +460,5 @@ install.packages("sdcSpatial")
 <https://github.com/edwindj/sdcSpatial>
 
 ## References
+
 \scriptsize
