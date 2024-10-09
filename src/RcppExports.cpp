@@ -10,6 +10,19 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// donut_adjust
+DataFrame donut_adjust(DataFrame d, double outer, double inner);
+RcppExport SEXP _sdcSpatial_donut_adjust(SEXP dSEXP, SEXP outerSEXP, SEXP innerSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< DataFrame >::type d(dSEXP);
+    Rcpp::traits::input_parameter< double >::type outer(outerSEXP);
+    Rcpp::traits::input_parameter< double >::type inner(innerSEXP);
+    rcpp_result_gen = Rcpp::wrap(donut_adjust(d, outer, inner));
+    return rcpp_result_gen;
+END_RCPP
+}
 // apply_gaussian_filter
 NumericMatrix apply_gaussian_filter(NumericMatrix image, double sigma, int nthreads);
 RcppExport SEXP _sdcSpatial_apply_gaussian_filter(SEXP imageSEXP, SEXP sigmaSEXP, SEXP nthreadsSEXP) {
@@ -25,6 +38,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_sdcSpatial_donut_adjust", (DL_FUNC) &_sdcSpatial_donut_adjust, 3},
     {"_sdcSpatial_apply_gaussian_filter", (DL_FUNC) &_sdcSpatial_apply_gaussian_filter, 3},
     {NULL, NULL, 0}
 };
