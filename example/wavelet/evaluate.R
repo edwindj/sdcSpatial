@@ -42,5 +42,4 @@ plot_image(mra_c$LL2)
 plot_image(p_c)
 plot_image(p_s)
 
-
 # plot_image(p_c / p_s)
