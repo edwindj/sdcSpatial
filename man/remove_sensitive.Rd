@@ -50,8 +50,8 @@ unemployed$value
 \seealso{
 Other sensitive: 
 \code{\link{disclosure_risk}()},
-\code{\link{is_sensitive_at}()},
 \code{\link{is_sensitive}()},
+\code{\link{is_sensitive_at}()},
 \code{\link{plot_sensitive}()},
 \code{\link{sdc_raster}()},
 \code{\link{sensitivity_score}()}

@@ -3,6 +3,8 @@
 * Fixed `max_zoom` level specification issue #12 for `protect_quadtree`. 
 max_zoom = 2 resulted earlier in max_zoom = 1. Thanks to Martin Moehler (@mamoeh).
 * Added earlier stopping criterion for `protect_quadtree`. Thanks to Martin Moehler (@mamoeh).
+* fixed a bug in `protect_quadtree` that caused an invalid sensitive count (scale), issue #14. Thanks to Martin Mohler (@mamoeh).
+* fixed a bug in `protect_quadtree` that was caused sometimes by raster::cover in which the names of the layers were dropped. Thanks to Michael Buchner
 
 # version 0.5.2
 

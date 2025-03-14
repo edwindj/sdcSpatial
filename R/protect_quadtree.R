@@ -36,7 +36,7 @@ protect_quadtree <- function(x, max_zoom = Inf, ...){
     z1 <- sdc$value
 
     #sdc1$value <- z1
-    z1$sens <- is_sensitive(sdc)
+    z1$sens <- is_sensitive(sdc, ...)
 
     # stopping criterium, thanks to Martin Moehler
     if (max(z1$sens[], na.rm = TRUE) < 1){
@@ -63,19 +63,23 @@ protect_quadtree <- function(x, max_zoom = Inf, ...){
       z2$max2 <- z2$max2 / z2$area
     }
     # reorder z1 to have same order as z2, implicitly dropping "mean'
-    z1 <- z1[[names(z2)]]
+    z1 <- z1[[c(names(z2), "scale")]]
 
     #only take value that were sensitive
-    z2 <- raster::mask(z2, z2$sens, maskvalue=0)
+    z2 <- raster::mask(z2, mask = z2$sens, maskvalue=0)
     z2 <- raster::disaggregate(z2, fact=fact)
+    z2$scale <- 1 / z2$area
 
     # crop needed because aggregate might have changed the raster size
     z2 <- raster::crop(z2, z1)
     z2 <- raster::cover(z2, z1)
 
+    # thanks to Michael Buchner
+    names(z2) <- names(z1)
+
     sdc$value$sum <- z2$sum
     sdc$value$count <- z2$count
-    sdc$value$scale <- sdc$value$scale / z2$area
+    sdc$value$scale <- z2$scale
 
     # not directly necessary to do here, but helps in debugging
     sdc$value$mean <- mean(sdc)
@@ -87,7 +91,8 @@ protect_quadtree <- function(x, max_zoom = Inf, ...){
   }
 
   # last check: if a lowest detail block is still sensitive, replace it with its highest detail.
-  # sens <- is_sensitive(sdc, ...)
+  sens <- is_sensitive(sdc, ...)
+  sdc$value$sens <- sens
   # value <- raster::mask(x$value, sens, maskvalue = 0)
   # value <- raster::cover(value, sdc$value)
   # sdc$value <- value

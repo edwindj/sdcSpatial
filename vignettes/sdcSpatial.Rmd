@@ -211,3 +211,4 @@ sensitivity_score(fined_smooth)
 `sdcSpatial` builds heavily upon the excellent [raster](https://cran.r-project.org/package=raster) package: it creates `raster` maps and uses the machinery of `raster` to calculate sensitivity
 and to apply protection methods to raster maps. 
 
+

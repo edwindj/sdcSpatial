@@ -7,6 +7,8 @@
 ^data-raw
 ^useR2019
 ^uros2023
+^useR2024
+^berlin_2024
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$

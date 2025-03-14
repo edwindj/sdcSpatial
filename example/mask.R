@@ -28,5 +28,3 @@ r_smooth <-
   sdc_raster(enterprises, "production") |>
   protect_smooth() |>
   remove_sensitive()
-
-mask_values(enterprises, r_smooth)

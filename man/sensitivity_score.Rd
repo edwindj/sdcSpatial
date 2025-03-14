@@ -34,8 +34,8 @@ sensitivity_score(consumption, min_count = 20)
 \seealso{
 Other sensitive: 
 \code{\link{disclosure_risk}()},
-\code{\link{is_sensitive_at}()},
 \code{\link{is_sensitive}()},
+\code{\link{is_sensitive_at}()},
 \code{\link{plot_sensitive}()},
 \code{\link{remove_sensitive}()},
 \code{\link{sdc_raster}()}

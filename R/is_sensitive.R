@@ -18,9 +18,9 @@
 #' @family sensitive
 #' @example ./example/is_sensitive.R
 is_sensitive <- function( x
-                        , max_risk = x$max_risk
+                        , max_risk  = x$max_risk
                         , min_count = x$min_count
-                        , risk_type= x$risk_type
+                        , risk_type = x$risk_type
                         ){
   r_risk <- disclosure_risk(x, risk_type = risk_type)
 

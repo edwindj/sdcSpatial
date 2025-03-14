@@ -3,6 +3,8 @@ protect_coarsen <- function(x, fact = 2, ...){
   aggregate.sdc_raster(x, fact = fact, ...)
 }
 
+#' @export
+#' @importFrom stats aggregate
 aggregate.sdc_raster <- function(x, fact = 2, ...){
   # copy sdc_raster info
   x_agg <- x
