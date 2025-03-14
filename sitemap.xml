@@ -1,90 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/sdcSpatial.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/create_raster.html</loc>
-  </url>
-  <url>
-    <loc>/reference/disclosure_risk.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dwellings.html</loc>
-  </url>
-  <url>
-    <loc>/reference/enterprises.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/is_sensitive.html</loc>
-  </url>
-  <url>
-    <loc>/reference/is_sensitive_at.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mask_grid.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mask_random.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mask_voronoi.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mask_weighted_random.html</loc>
-  </url>
-  <url>
-    <loc>/reference/max2.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot.sdc_raster.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_sensitive.html</loc>
-  </url>
-  <url>
-    <loc>/reference/protect_neighborhood.html</loc>
-  </url>
-  <url>
-    <loc>/reference/protect_quadtree.html</loc>
-  </url>
-  <url>
-    <loc>/reference/protect_smooth.html</loc>
-  </url>
-  <url>
-    <loc>/reference/remove_sensitive.html</loc>
-  </url>
-  <url>
-    <loc>/reference/sdcSpatial-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/sdc_raster.html</loc>
-  </url>
-  <url>
-    <loc>/reference/sensitivity_score.html</loc>
-  </url>
-  <url>
-    <loc>/reference/smooth_raster.html</loc>
-  </url>
-  <url>
-    <loc>/reference/topdown_code.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/sdcSpatial.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/create_raster.html</loc></url>
+<url><loc>/reference/disclosure_risk.html</loc></url>
+<url><loc>/reference/dwellings.html</loc></url>
+<url><loc>/reference/enterprises.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/is_sensitive.html</loc></url>
+<url><loc>/reference/is_sensitive_at.html</loc></url>
+<url><loc>/reference/mask_grid.html</loc></url>
+<url><loc>/reference/mask_random.html</loc></url>
+<url><loc>/reference/mask_voronoi.html</loc></url>
+<url><loc>/reference/mask_weighted_random.html</loc></url>
+<url><loc>/reference/max2.html</loc></url>
+<url><loc>/reference/plot.sdc_raster.html</loc></url>
+<url><loc>/reference/plot_sensitive.html</loc></url>
+<url><loc>/reference/protect_neighborhood.html</loc></url>
+<url><loc>/reference/protect_quadtree.html</loc></url>
+<url><loc>/reference/protect_smooth.html</loc></url>
+<url><loc>/reference/remove_sensitive.html</loc></url>
+<url><loc>/reference/sdcSpatial-package.html</loc></url>
+<url><loc>/reference/sdc_raster.html</loc></url>
+<url><loc>/reference/sensitivity_score.html</loc></url>
+<url><loc>/reference/smooth_raster.html</loc></url>
+<url><loc>/reference/topdown_code.html</loc></url>
 </urlset>
+
