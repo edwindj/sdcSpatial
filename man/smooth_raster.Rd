@@ -39,7 +39,7 @@ resolution as \code{x} or keep the disaggregated raster resulting from
 
 \item{type}{what is the type of smoothing (see \code{raster::focal()})}
 
-\item{...}{passed through to \code{\link{focal}}.}
+\item{...}{passed through to \code{\link[raster:focal]{raster::focal()}}.}
 }
 \description{
 Create kde density version of a raster

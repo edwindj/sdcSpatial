@@ -11,13 +11,13 @@
 #' [plot.sdc_raster()], [plot_sensitive()] or `print`.
 #' Reducing the sensitivity can be done with [protect_smooth()],
 #' [protect_quadtree()] and [remove_sensitive()]. Raster maps for `mean`,
-#' `sum` and `count` data can be extracted from the `$value` ([brick()]).
+#' `sum` and `count` data can be extracted from the `$value` ([raster::brick()]).
 #'
 #' @param x [sp::SpatialPointsDataFrame], [sf::sf] or a two column matrix or [data.frame]
 #' that is used to create a raster map.
 #' @param variable name of data column or `numeric` with same length as `x`
 #' to be used for the data in the raster map.
-#' @param r either a desired resolution or a pre-existing [raster] object.
+#' @param r either a desired resolution or a pre-existing [raster::raster()] object.
 #' In the first case, the crs of `x` (if present) will be used, in the latter
 #' the properties of the `r` will be kept.
 #' @param max_risk `numeric`, the maximum_risk score ([`disclosure_risk`])

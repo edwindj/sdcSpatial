@@ -4,7 +4,7 @@
 #' @param x geographical object (that supports extent).
 #' @param res desired resolution (default 200).
 #' @param ... passed through to \code{\link{raster}} function.
-#' @return [`raster::raster`] object
+#' @return [`raster::raster()`] object
 #' @keywords internal
 create_raster <- function(x, res = 200, ...){
   stopifnot(length(res) == 1)

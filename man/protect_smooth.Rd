@@ -11,7 +11,7 @@ protect_smooth(x, bw = raster::res(x$value), ...)
 
 \item{bw}{bandwidth}
 
-\item{...}{passed through to \code{\link{focal}}.}
+\item{...}{passed through to \code{\link[raster:focal]{raster::focal()}}.}
 }
 \description{
 \code{protect_smooth} reduces the sensitivity by applying a Gaussian smoother,
