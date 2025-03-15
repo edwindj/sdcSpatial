@@ -11,7 +11,7 @@ the sensitivity to privacy disclosure for each raster location.'></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">sdcSpatial</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +73,7 @@ to be used for the data in the raster map.</p></dd>
 
 
 <dt id="arg-r">r<a class="anchor" aria-label="anchor" href="#arg-r"></a></dt>
-<dd><p>either a desired resolution or a pre-existing <a href="https://rdrr.io/pkg/raster/man/raster.html" class="external-link">raster</a> object.
+<dd><p>either a desired resolution or a pre-existing <code><a href="https://rdrr.io/pkg/raster/man/raster.html" class="external-link">raster::raster()</a></code> object.
 In the first case, the crs of <code>x</code> (if present) will be used, in the latter
 the properties of the <code>r</code> will be kept.</p></dd>
 
@@ -118,7 +118,7 @@ The sensitivity of the map can be assessed with <a href="sensitivity_score.html"
 <code><a href="plot.sdc_raster.html">plot.sdc_raster()</a></code>, <code><a href="plot_sensitive.html">plot_sensitive()</a></code> or <code>print</code>.
 Reducing the sensitivity can be done with <code><a href="protect_smooth.html">protect_smooth()</a></code>,
 <code><a href="protect_quadtree.html">protect_quadtree()</a></code> and <code><a href="remove_sensitive.html">remove_sensitive()</a></code>. Raster maps for <code>mean</code>,
-<code>sum</code> and <code>count</code> data can be extracted from the <code>$value</code> (<code><a href="https://rdrr.io/pkg/raster/man/brick.html" class="external-link">brick()</a></code>).</p>
+<code>sum</code> and <code>count</code> data can be extracted from the <code>$value</code> (<code><a href="https://rdrr.io/pkg/raster/man/brick.html" class="external-link">raster::brick()</a></code>).</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
