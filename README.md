@@ -19,14 +19,14 @@ observations.
 
 `sdcSpatial` offers a `sdc_raster` class that allows to:
 
--   find out which locations are considered sensitive / unsafe for
-    publishing: `plot_sensitive`, `is_sensitive`, `sensitivity_score`.
--   apply protection methods that reduce sensitiviy and enhance spatial
-    patterns: `protect_smooth`, `protect_quadtree`.
--   remove sensitive locations: `remove_sensitive`.
--   extract relative as well as absolute density `raster`s that can be
-    used with visualisation packages, such as `tmap` and `leaflet`:
-    `x$value$mean`, `x$value$sum`, `mean`, `sum`.
+- find out which locations are considered sensitive / unsafe for
+  publishing: `plot_sensitive`, `is_sensitive`, `sensitivity_score`.
+- apply protection methods that reduce sensitiviy and enhance spatial
+  patterns: `protect_smooth`, `protect_quadtree`.
+- remove sensitive locations: `remove_sensitive`.
+- extract relative as well as absolute density `raster`s that can be
+  used with visualisation packages, such as `tmap` and `leaflet`:
+  `x$value$mean`, `x$value$sum`, `mean`, `sum`.
 
 ## Installation
 
@@ -54,6 +54,8 @@ data(enterprises)
 # a resolution of 200m
 production <- sdc_raster(enterprises, variable = "production"
                         , r = 200, min_count = 3)
+#> Warning in CPL_crs_from_input(x): GDAL Message 1: +init=epsg:XXXX syntax is
+#> deprecated. It might return a CRS with a non-EPSG compliant axis order.
 
 print(production)
 #> numeric sdc_raster object: 
@@ -69,6 +71,7 @@ plot(production, zlim=zlim)
 <img src="man/figures/README-example-1.png" width="100%" />
 
 ``` r
+
 # but we can also retrieve directly the raster
 sensitive <- is_sensitive(production, min_count = 3)
 plot(sensitive, col = c('white', 'red'))
@@ -77,6 +80,7 @@ plot(sensitive, col = c('white', 'red'))
 <img src="man/figures/README-example-2.png" width="100%" />
 
 ``` r
+
 # what is the sensitivy fraction?
 sensitivity_score(production)
 #> [1] 0.6328234
@@ -92,6 +96,7 @@ plot(smoothed)
 <img src="man/figures/README-example-3.png" width="100%" />
 
 ``` r
+
 # let's smooth to reduce the sensitivity, with higher resolution
 smoothed <- protect_smooth(production, bw = 400, smooth_fact=4, keep_resolution=FALSE)
 plot(smoothed)
@@ -100,6 +105,7 @@ plot(smoothed)
 <img src="man/figures/README-example-4.png" width="100%" />
 
 ``` r
+
 # what is the sensitivy fraction?
 sensitivity_score(smoothed)
 #> [1] 0.007902973
@@ -112,6 +118,7 @@ plot(smoothed_safe)
 <img src="man/figures/README-example-5.png" width="100%" />
 
 ``` r
+
 # let's communicate!
 production_mean <- mean(smoothed_safe)
 production_total <- sum(smoothed_safe)
@@ -123,6 +130,7 @@ raster::filledContour(production_mean, nlevels = 6, main = "Mean production")
 <img src="man/figures/README-example-6.png" width="100%" />
 
 ``` r
+
 
 # generated with R 3.6 >=
 #col <- hcl.colors(11, rev=TRUE)

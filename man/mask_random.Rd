@@ -47,10 +47,6 @@ if ( requireNamespace("FNN", quietly = TRUE)
   x_vor <- mask_voronoi(x, r = 1, plot=TRUE)
 }
 
-r_smooth <-
-  sdc_raster(enterprises, "production") |>
-  protect_smooth() |>
-  remove_sensitive()
 }
 \seealso{
 Other point pertubation: 
