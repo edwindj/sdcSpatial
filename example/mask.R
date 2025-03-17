@@ -12,6 +12,9 @@ x_g <- mask_grid(x, r=1, plot=TRUE)
 set.seed(3)
 x_r <- mask_random(x, r=1, plot=TRUE)
 
+x_d <- mask_donut(x, r_min=1, r_max=2, plot=TRUE)
+
+
 \donttest{
   if (requireNamespace("FNN", quietly = TRUE)){
     # weighted random pertubation

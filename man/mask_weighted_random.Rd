@@ -11,7 +11,7 @@ mask_weighted_random(x, k = 5, r = NULL, plot = FALSE)
 
 \item{k}{\code{integer} number of neighbors to be used as the maximum distance}
 
-\item{r}{\code{numeric} pertubation distance (vectorized)}
+\item{r}{\code{numeric} perturbation distance (vectorized)}
 
 \item{plot}{if \code{TRUE} points will be plotted.}
 }
@@ -37,6 +37,9 @@ x_g <- mask_grid(x, r=1, plot=TRUE)
 # random pertubation
 set.seed(3)
 x_r <- mask_random(x, r=1, plot=TRUE)
+
+x_d <- mask_donut(x, r_min=1, r_max=2, plot=TRUE)
+
 
 \donttest{
   if (requireNamespace("FNN", quietly = TRUE)){

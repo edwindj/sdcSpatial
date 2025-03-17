@@ -1,3 +1,8 @@
+# version 0.6.9.9000
+
+* added `mask_donut`
+* fixed `mask_random`
+
 # version 0.6.1
 
 * Fixed `max_zoom` level specification issue #12 for `protect_quadtree`. 
