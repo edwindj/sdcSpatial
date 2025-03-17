@@ -1,9 +1,9 @@
 #' Mask coordinates using random pertubation
 #'
-#' Pertubates points with a uniform pertubation in a circle.
+#' Perturbs points with a uniform perturbation in a circle.
 #' Note that `r` can either be one distance, or a distance per data point.
 #' @param x coordinates, `matrix` or `data.frame` (first two columns)
-#' @param r `numeric` pertubation distance (vectorized)
+#' @param r `numeric` perturbation distance (vectorized)
 #' @param plot if `TRUE` points will be plotted.
 #' @return adapted `x` with perturbed coordinates
 #' @example ./example/mask.R
@@ -11,10 +11,15 @@
 #' @family point pertubation
 mask_random <- function(x, r, plot = FALSE){
   N <- nrow(x)
-  a <- stats::runif(N, max = 2*pi)
+  if (length(r) == 1){
+    r <- rep(r, N)
+  }
 
-  px <- r*cos(a) + x[,1]
-  py <- r*sin(a) + x[,2]
+  ra <- r * stats::runif(N)
+  a <-  stats::runif(N, max = 2*pi)
+
+  px <- ra * cos(a) + x[,1]
+  py <- ra * sin(a) + x[,2]
 
   if (isTRUE(plot)){
     x_r <- cbind(px,py)
