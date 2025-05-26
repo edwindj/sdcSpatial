@@ -45,7 +45,7 @@ NumericMatrix apply_gaussian_filter(NumericMatrix image, double sigma, int nthre
   int height = image.nrow();
 
   if (nthreads < 1){
-    nthreads = get_nthreads();
+    nthreads = get_nthreads() / 2;
   }
 
   // the kernel size must be odd

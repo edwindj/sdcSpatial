@@ -5,6 +5,10 @@ donut_adjust <- function(d, outer, inner = 0) {
     .Call(`_sdcSpatial_donut_adjust`, d, outer, inner)
 }
 
+quadcount <- function(d, resolution = 100L, J = 4L) {
+    .Call(`_sdcSpatial_quadcount`, d, resolution, J)
+}
+
 apply_gaussian_filter <- function(image, sigma, nthreads = -1L) {
     .Call(`_sdcSpatial_apply_gaussian_filter`, image, sigma, nthreads)
 }

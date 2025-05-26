@@ -23,6 +23,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// quadcount
+List quadcount(DataFrame d, int resolution, int J);
+RcppExport SEXP _sdcSpatial_quadcount(SEXP dSEXP, SEXP resolutionSEXP, SEXP JSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< DataFrame >::type d(dSEXP);
+    Rcpp::traits::input_parameter< int >::type resolution(resolutionSEXP);
+    Rcpp::traits::input_parameter< int >::type J(JSEXP);
+    rcpp_result_gen = Rcpp::wrap(quadcount(d, resolution, J));
+    return rcpp_result_gen;
+END_RCPP
+}
 // apply_gaussian_filter
 NumericMatrix apply_gaussian_filter(NumericMatrix image, double sigma, int nthreads);
 RcppExport SEXP _sdcSpatial_apply_gaussian_filter(SEXP imageSEXP, SEXP sigmaSEXP, SEXP nthreadsSEXP) {
@@ -39,6 +52,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_sdcSpatial_donut_adjust", (DL_FUNC) &_sdcSpatial_donut_adjust, 3},
+    {"_sdcSpatial_quadcount", (DL_FUNC) &_sdcSpatial_quadcount, 3},
     {"_sdcSpatial_apply_gaussian_filter", (DL_FUNC) &_sdcSpatial_apply_gaussian_filter, 3},
     {NULL, NULL, 0}
 };
