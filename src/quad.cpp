@@ -14,11 +14,18 @@ List quadcount(DataFrame d, int resolution = 100, int J = 4){
   List counts = List();
   int res = resolution;
 
-  int min_res = resolution * 2^(J-1);
+  int min_res = res * pow(2, J-1);
   x_min = floor(x_min / min_res) * min_res;
   x_max = ceil(x_max / min_res) * min_res;
   y_min = floor(y_min / min_res) * min_res;
   y_max = ceil(y_max / min_res) * min_res;
+
+  counts["x_max"] = x_max;
+  counts["x_min"] = x_min;
+  counts["y_max"] = y_max;
+  counts["y_min"] = y_min;
+  counts["resolution"] = res;
+  counts["min_res"] = min_res;
 
   for (int j = 0; j < J; j++){
     int n_x = (x_max - x_min) / res;

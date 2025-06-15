@@ -37,10 +37,10 @@ plot_image <- function(x, div=FALSE, ..., axes = FALSE){
     palette = "Blues"
     zlim = max(x, na.rm = TRUE) * c(0,1)
   }
-  # old_par <- par(omi = c(0,0,0,0), mar=c(0,0,2,0))
-  # on.exit({
-  #   par(old_par)
-  # })
+  old_par <- par(omi = c(0,0,0,0), mar=c(0,0,2,0))
+  on.exit({
+    par(old_par)
+  })
   is.na(x) <- x < .Machine$double.eps
   image( x
          , col = hcl.colors(n = 20, palette = palette, rev=!div)
