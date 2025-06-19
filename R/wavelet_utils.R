@@ -28,29 +28,6 @@ make_dyadic <- function(x){
   dx
 }
 
-plot_image <- function(x, div=FALSE, ..., axes = FALSE){
-
-  if (isTRUE(div)){
-    palette = "Purple-Green"
-    zlim = max(abs(x), na.rm = TRUE) * c(-1,1)
-  } else {
-    palette = "Blues"
-    zlim = max(x, na.rm = TRUE) * c(0,1)
-  }
-  old_par <- par(omi = c(0,0,0,0), mar=c(0,0,2,0))
-  on.exit({
-    par(old_par)
-  })
-  is.na(x) <- x < .Machine$double.eps
-  image( x
-         , col = hcl.colors(n = 20, palette = palette, rev=!div)
-         , zlim = zlim
-         , asp = 1
-         , axes = axes
-         , useRaster = TRUE
-         , ...
-  )
-}
 
 make_zero <- function(x){
   zero <- x
