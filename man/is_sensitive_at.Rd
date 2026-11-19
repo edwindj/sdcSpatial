@@ -13,7 +13,7 @@ is_sensitive_at(x, xy, ...)
 SpatialPointsDataFrame object}
 
 \item{...}{
-  Arguments passed on to \code{\link[=is_sensitive]{is_sensitive}}
+  Arguments passed on to \code{\link{is_sensitive}}
   \describe{
     \item{\code{max_risk}}{a risk value higher than \code{max_risk} will be sensitive.}
     \item{\code{min_count}}{a count lower than \code{min_count} will be sensitive.}
@@ -37,12 +37,12 @@ enterprises$sensitive <- is_sensitive_at(production, enterprises)
 }
 }
 \seealso{
-Other sensitive: 
-\code{\link{disclosure_risk}()},
-\code{\link{is_sensitive}()},
-\code{\link{plot_sensitive}()},
-\code{\link{remove_sensitive}()},
-\code{\link{sdc_raster}()},
-\code{\link{sensitivity_score}()}
+Other sensitive:
+\code{\link[=disclosure_risk]{disclosure_risk()}},
+\code{\link[=is_sensitive]{is_sensitive()}},
+\code{\link[=plot_sensitive]{plot_sensitive()}},
+\code{\link[=remove_sensitive]{remove_sensitive()}},
+\code{\link[=sdc_raster]{sdc_raster()}},
+\code{\link[=sensitivity_score]{sensitivity_score()}}
 }
 \concept{sensitive}

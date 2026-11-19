@@ -16,13 +16,13 @@ sdc_raster(
 )
 }
 \arguments{
-\item{x}{\link[sp:SpatialPoints]{sp::SpatialPointsDataFrame}, \link[sf:sf]{sf::sf} or a two column matrix or \link{data.frame}
+\item{x}{\link[sp:SpatialPointsDataFrame]{sp::SpatialPointsDataFrame}, \link[sf:sf]{sf::sf} or a two column matrix or \link{data.frame}
 that is used to create a raster map.}
 
 \item{variable}{name of data column or \code{numeric} with same length as \code{x}
 to be used for the data in the raster map.}
 
-\item{r}{either a desired resolution or a pre-existing \link{raster} object.
+\item{r}{either a desired resolution or a pre-existing \link[raster:raster]{raster} object.
 In the first case, the crs of \code{x} (if present) will be used, in the latter
 the properties of the \code{r} will be kept.}
 
@@ -62,7 +62,7 @@ The sensitivity of the map can be assessed with \link{sensitivity_score},
 \code{\link[=plot.sdc_raster]{plot.sdc_raster()}}, \code{\link[=plot_sensitive]{plot_sensitive()}} or \code{print}.
 Reducing the sensitivity can be done with \code{\link[=protect_smooth]{protect_smooth()}},
 \code{\link[=protect_quadtree]{protect_quadtree()}} and \code{\link[=remove_sensitive]{remove_sensitive()}}. Raster maps for \code{mean},
-\code{sum} and \code{count} data can be extracted from the \verb{$value} (\code{\link[=brick]{brick()}}).
+\code{sum} and \code{count} data can be extracted from the \verb{$value} (\code{\link[raster:brick]{brick()}}).
 }
 \examples{
 \donttest{
@@ -83,12 +83,12 @@ summary(prod_total)
 }
 }
 \seealso{
-Other sensitive: 
-\code{\link{disclosure_risk}()},
-\code{\link{is_sensitive}()},
-\code{\link{is_sensitive_at}()},
-\code{\link{plot_sensitive}()},
-\code{\link{remove_sensitive}()},
-\code{\link{sensitivity_score}()}
+Other sensitive:
+\code{\link[=disclosure_risk]{disclosure_risk()}},
+\code{\link[=is_sensitive]{is_sensitive()}},
+\code{\link[=is_sensitive_at]{is_sensitive_at()}},
+\code{\link[=plot_sensitive]{plot_sensitive()}},
+\code{\link[=remove_sensitive]{remove_sensitive()}},
+\code{\link[=sensitivity_score]{sensitivity_score()}}
 }
 \concept{sensitive}

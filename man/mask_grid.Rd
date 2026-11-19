@@ -51,9 +51,9 @@ r_smooth <-
 mask_values(enterprises, r_smooth)
 }
 \seealso{
-Other point pertubation: 
-\code{\link{mask_random}()},
-\code{\link{mask_voronoi}()},
-\code{\link{mask_weighted_random}()}
+Other point pertubation:
+\code{\link[=mask_random]{mask_random()}},
+\code{\link[=mask_voronoi]{mask_voronoi()}},
+\code{\link[=mask_weighted_random]{mask_weighted_random()}}
 }
 \concept{point pertubation}

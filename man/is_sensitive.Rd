@@ -50,12 +50,12 @@ is_sensitive(unemployed)
 }
 }
 \seealso{
-Other sensitive: 
-\code{\link{disclosure_risk}()},
-\code{\link{is_sensitive_at}()},
-\code{\link{plot_sensitive}()},
-\code{\link{remove_sensitive}()},
-\code{\link{sdc_raster}()},
-\code{\link{sensitivity_score}()}
+Other sensitive:
+\code{\link[=disclosure_risk]{disclosure_risk()}},
+\code{\link[=is_sensitive_at]{is_sensitive_at()}},
+\code{\link[=plot_sensitive]{plot_sensitive()}},
+\code{\link[=remove_sensitive]{remove_sensitive()}},
+\code{\link[=sdc_raster]{sdc_raster()}},
+\code{\link[=sensitivity_score]{sensitivity_score()}}
 }
 \concept{sensitive}

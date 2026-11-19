@@ -32,12 +32,12 @@ sensitivity_score(consumption, min_count = 20)
 }
 }
 \seealso{
-Other sensitive: 
-\code{\link{disclosure_risk}()},
-\code{\link{is_sensitive}()},
-\code{\link{is_sensitive_at}()},
-\code{\link{plot_sensitive}()},
-\code{\link{remove_sensitive}()},
-\code{\link{sdc_raster}()}
+Other sensitive:
+\code{\link[=disclosure_risk]{disclosure_risk()}},
+\code{\link[=is_sensitive]{is_sensitive()}},
+\code{\link[=is_sensitive_at]{is_sensitive_at()}},
+\code{\link[=plot_sensitive]{plot_sensitive()}},
+\code{\link[=remove_sensitive]{remove_sensitive()}},
+\code{\link[=sdc_raster]{sdc_raster()}}
 }
 \concept{sensitive}

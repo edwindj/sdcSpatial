@@ -11,7 +11,7 @@ protect_smooth(x, bw = raster::res(x$value), ...)
 
 \item{bw}{bandwidth}
 
-\item{...}{passed through to \code{\link{focal}}.}
+\item{...}{passed through to \code{\link[terra:focal]{focal}}.}
 }
 \description{
 \code{protect_smooth} reduces the sensitivity by applying a Gaussian smoother,
@@ -98,8 +98,8 @@ Safely Plotting Continuous Variables on a Map. In International Conference
 on Privacy in Statistical Databases (pp. 347-359). Springer, Cham.
 }
 \seealso{
-Other protection methods: 
-\code{\link{protect_quadtree}()},
-\code{\link{remove_sensitive}()}
+Other protection methods:
+\code{\link[=protect_quadtree]{protect_quadtree()}},
+\code{\link[=remove_sensitive]{remove_sensitive()}}
 }
 \concept{protection methods}

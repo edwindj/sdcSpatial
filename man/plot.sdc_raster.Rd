@@ -34,7 +34,7 @@ When \code{sensitive} is set to \code{TRUE}, a side-by-side plot will be made of
 the \code{value} and its \code{sensitivity}.
 }
 \seealso{
-Other plotting: 
-\code{\link{plot_sensitive}()}
+Other plotting:
+\code{\link[=plot_sensitive]{plot_sensitive()}}
 }
 \concept{plotting}

@@ -62,9 +62,9 @@ Spatial obfuscation methods for privacy protection of
 household-level data
 }
 \seealso{
-Other point pertubation: 
-\code{\link{mask_grid}()},
-\code{\link{mask_random}()},
-\code{\link{mask_voronoi}()}
+Other point pertubation:
+\code{\link[=mask_grid]{mask_grid()}},
+\code{\link[=mask_random]{mask_random()}},
+\code{\link[=mask_voronoi]{mask_voronoi()}}
 }
 \concept{point pertubation}

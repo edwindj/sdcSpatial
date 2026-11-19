@@ -13,7 +13,7 @@ protect_quadtree(x, max_zoom = Inf, ...)
 blocks. Each step will zoom with a factor of 2 in x and y so the max resolution = resolution * 2^max_zoom.}
 
 \item{...}{
-  Arguments passed on to \code{\link[=is_sensitive]{is_sensitive}}
+  Arguments passed on to \code{\link{is_sensitive}}
   \describe{
     \item{\code{max_risk}}{a risk value higher than \code{max_risk} will be sensitive.}
     \item{\code{min_count}}{a count lower than \code{min_count} will be sensitive.}
@@ -108,8 +108,8 @@ Statistical disclosure control on visualising geocoded population data using
 a structure in quadtrees, NTTS 2017
 }
 \seealso{
-Other protection methods: 
-\code{\link{protect_smooth}()},
-\code{\link{remove_sensitive}()}
+Other protection methods:
+\code{\link[=protect_smooth]{protect_smooth()}},
+\code{\link[=remove_sensitive]{remove_sensitive()}}
 }
 \concept{protection methods}

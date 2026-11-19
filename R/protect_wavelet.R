@@ -5,6 +5,7 @@ protect_wavelet <- function(
     depth = 4,
     ...
     ){
+
   x_cnt <-
     extract_matrix(x$value$count) |>
     make_dyadic() |>

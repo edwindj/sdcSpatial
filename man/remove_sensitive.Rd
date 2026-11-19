@@ -48,17 +48,17 @@ unemployed$value
 }
 }
 \seealso{
-Other sensitive: 
-\code{\link{disclosure_risk}()},
-\code{\link{is_sensitive}()},
-\code{\link{is_sensitive_at}()},
-\code{\link{plot_sensitive}()},
-\code{\link{sdc_raster}()},
-\code{\link{sensitivity_score}()}
+Other sensitive:
+\code{\link[=disclosure_risk]{disclosure_risk()}},
+\code{\link[=is_sensitive]{is_sensitive()}},
+\code{\link[=is_sensitive_at]{is_sensitive_at()}},
+\code{\link[=plot_sensitive]{plot_sensitive()}},
+\code{\link[=sdc_raster]{sdc_raster()}},
+\code{\link[=sensitivity_score]{sensitivity_score()}}
 
-Other protection methods: 
-\code{\link{protect_quadtree}()},
-\code{\link{protect_smooth}()}
+Other protection methods:
+\code{\link[=protect_quadtree]{protect_quadtree()}},
+\code{\link[=protect_smooth]{protect_smooth()}}
 }
 \concept{protection methods}
 \concept{sensitive}
